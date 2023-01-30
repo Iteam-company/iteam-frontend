@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 import arrowIcon from "@/assets/icon/down-arrow.svg";
 import { COLORS } from "@/lib/theme/color";
 import { Link } from "../Link";
+import { FlexColumn, FlexRow } from "../Flex";
 
 interface Options {
     option: string;
@@ -15,10 +16,14 @@ interface Props {
     activeRoute?: string;
 }
 
-export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
+export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
+    const [open, setOpen] = useState(false);
+    const handleClick = () => {
+        setOpen(!open);
+    };
     return (
         <Container>
-            <Title>
+            <Title onClick={handleClick}>
                 <Text
                     color={
                         options.find(({ href }) => href === activeRoute)
@@ -33,28 +38,31 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                 >
                     {title}
                 </Text>
+
                 <Icon src={arrowIcon.src} />
             </Title>
-            <Menu>
-                {options.map((item) => (
-                    <LinkElem
-                        active={item.href === activeRoute}
-                        p={"10px 20px"}
-                        href={item.href}
-                        key={item.href}
-                        weight={TEXT_WEIGHTS.bold}
-                        size={TEXT_SIZES.xxxs}
-                        color={
-                            item.href === activeRoute
-                                ? COLORS.activePath
-                                : COLORS.dropdown
-                        }
-                        textTransform="uppercase"
-                        linkText={item.option}
-                        letterSpacing="0.44px"
-                    />
-                ))}
-            </Menu>
+            {open && (
+                <Menu>
+                    {options.map((item) => (
+                        <LinkElem
+                            active={item.href === activeRoute}
+                            href={item.href}
+                            key={item.href}
+                            size={TEXT_SIZES.xxxs}
+                            color={
+                                item.href === activeRoute
+                                    ? COLORS.activePath
+                                    : COLORS.dropdown
+                            }
+                            textTransform="uppercase"
+                            linkText={item.option}
+                            weight={TEXT_WEIGHTS.bold}
+                            letterSpacing="0.44px"
+                            p="7px 15px"
+                        />
+                    ))}
+                </Menu>
+            )}
         </Container>
     );
 };
@@ -63,18 +71,18 @@ const Icon = styled.img`
     width: 16px;
     height: 16px;
     position: relative;
-    top: 0;
     transition: top ease 0.5s;
+    top: 0;
 `;
 
 const Title = styled.div`
-    padding: 25px 15px;
+    padding: 10px 20px;
     cursor: pointer;
     transition: opacity 0.5s;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 5px;
-    width: auto;
 `;
 
 const LinkElem = styled(Link)<{ active: boolean }>`
@@ -84,32 +92,16 @@ const LinkElem = styled(Link)<{ active: boolean }>`
     }
 `;
 
-const Menu = styled.div`
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s ease;
-    display: flex;
-    z-index: 100;
-    padding: 10px 0px;
-    list-style: none;
-    min-width: 180px;
-    max-width: 200px;
-    flex-direction: column;
-    position: absolute;
-    border-radius: 6px;
-    background-color: ${COLORS.white};
-    box-shadow: 0 0 3px rgb(60 72 88 / 15%);
+const Menu = styled(FlexColumn)`
+    padding-left: 20px;
 `;
 
 const Container = styled.div`
-    position: relative;
+    width: 100%;
     :hover {
         div {
             visibility: visible;
             opacity: 1;
-        }
-        img {
-            top: 5px;
         }
     }
 `;

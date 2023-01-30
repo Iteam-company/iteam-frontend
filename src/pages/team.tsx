@@ -2,13 +2,11 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_TYPES } from "@/anatomic/atoms/Button/util";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
-import { Header } from "@/anatomic/organisms/Header";
 import { COLORS } from "@/lib/theme/color";
 
-const Home = () => {
+const Team = () => {
     return (
         <>
-            <Header />
             <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
                 Beatae impedit reiciendis facilis quisquam repellat id minus
@@ -43,4 +41,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Team;
