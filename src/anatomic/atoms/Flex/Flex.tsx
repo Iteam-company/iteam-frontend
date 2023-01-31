@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 interface DefaultElementProps {
     w?: string;
+    mw?: string;
     h?: string;
     m?: string;
     mh?: string;
@@ -25,6 +26,7 @@ interface FlexProps {
 const StyledFlex = styled.div<FlexProps & DefaultElementProps>`
     display: flex;
     width: ${(props) => props.w || "auto"};
+    max-width: ${(props) => props.mw || "auto"};
     height: ${(props) => props.h || "auto"};
     margin: ${(props) => props.m || "0"};
     min-height: ${(props) => props.mh || "auto"};

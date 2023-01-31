@@ -1,40 +1,32 @@
-import React, { FC } from "react";
+import { Component } from "@/anatomic/organisms/Header/Component";
 import { useRouter } from "next/router";
-import { Dropdown } from "@/anatomic/atoms/Dropdown";
-import { FlexRow } from "@/anatomic/atoms/Flex";
+import styled from "styled-components";
+import { MobileComponent } from "./MobileComponent";
 
-const OPTIONS1 = [
-    { option: "Web", href: "/" },
-    { option: "Mobile", href: "/la" },
-    { option: "TV Apps", href: "/lal" },
-    { option: "Machine learning & AI", href: "/lala" },
-    { option: "Mobile", href: "/lall" },
-    { option: "TV Apps", href: "/laaa" },
-];
-const OPTIONS = [
-    { option: "Web", href: "/be" },
-    { option: "Mobile", href: "/bwe" },
-    { option: "TV Apps", href: "/bed" },
-    { option: "Machine learning & AI", href: "/bde" },
-    { option: "Mobile", href: "/bwwe" },
-    { option: "TV Apps", href: "/bfe" },
-];
-
-export const Header: FC = () => {
+export const Header = ({}) => {
     const activeRoute = useRouter().asPath;
 
     return (
-        <FlexRow>
-            <Dropdown
-                title="development"
-                activeRoute={activeRoute}
-                options={OPTIONS1}
-            />
-            <Dropdown
-                title="development2"
-                activeRoute={activeRoute}
-                options={OPTIONS}
-            />
-        </FlexRow>
+        <>
+            <Mobile>
+                <MobileComponent activeRoute={activeRoute} />
+            </Mobile>
+
+            <Desktop>
+                <Component activeRoute={activeRoute} />
+            </Desktop>
+        </>
     );
 };
+
+const Mobile = styled.div`
+    @media all and (min-width: 993px) {
+        display: none;
+    }
+`;
+
+const Desktop = styled.div`
+    @media all and (max-width: 992px) {
+        display: none;
+    }
+`;

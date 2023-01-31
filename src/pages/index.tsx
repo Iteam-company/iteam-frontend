@@ -8,13 +8,11 @@ import {
 } from "@/anatomic/atoms/Grid/grid";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
-import { Header } from "@/anatomic/organisms/Header";
 import { COLORS } from "@/lib/theme/color";
 
 const Home = () => {
     return (
         <>
-            <Header />
             <Grid
                 mobileColumnsCount="1"
                 tabletColumnsCount="2"

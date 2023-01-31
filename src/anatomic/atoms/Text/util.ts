@@ -1,4 +1,5 @@
 export const enum TEXT_SIZES {
+    xxxs = "11px",
     xxs = "13px",
     xs = "16px",
     s = "18px",
