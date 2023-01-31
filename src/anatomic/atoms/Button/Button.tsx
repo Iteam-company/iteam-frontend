@@ -11,9 +11,24 @@ interface Props {
     p?: string;
     textColor?: string;
     label?: ReactNode;
+    icon?: string;
+    href?: string;
+    hoverColor?: string;
+    onClick?: Function;
 }
 
-export const Button: FC<Props> = ({ type, className, color, w, p, label }) => {
+export const Button: FC<Props> = ({
+    type,
+    className,
+    color,
+    w,
+    p,
+    label,
+    icon,
+    href,
+    hoverColor,
+    onClick,
+}) => {
     if (type === BUTTON_TYPES.color) {
         return (
             <ColorButton className={className} color={color} w={w}>
@@ -28,6 +43,16 @@ export const Button: FC<Props> = ({ type, className, color, w, p, label }) => {
             </ChangeButton>
         );
     }
+    if (type === BUTTON_TYPES.icon) {
+        return (
+            <ButtonIcon className={className} hoverColor={hoverColor}>
+                <Link href={href} target="_blank">
+                    <Icon src={icon} />
+                </Link>
+            </ButtonIcon>
+        );
+    }
+
     return null;
 };
 
@@ -48,4 +73,26 @@ const ChangeButton = styled(ColorButton)<Props>`
         }
         background-color: ${COLORS.buttonDark};
     }
+`;
+
+const ButtonIcon = styled.div<Props>`
+    cursor: pointer;
+    border: 1px solid ${COLORS.blue};
+    border-radius: 6px;
+    :hover {
+        background-color: ${({ hoverColor }) => hoverColor};
+    }
+`;
+
+const Link = styled.a`
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Icon = styled.img`
+    height: 16px;
+    width: 16px;
 `;

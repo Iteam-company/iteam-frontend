@@ -28,9 +28,11 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                             title={item.title}
                             activeRoute={activeRoute}
                             options={item.options}
+                            key={item.id}
                         />
                     ) : (
                         <Link
+                            key={item.id}
                             p="20px 10px"
                             href={item.href}
                             linkText={item.title}

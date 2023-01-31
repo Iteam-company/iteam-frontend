@@ -8,6 +8,7 @@ import {
 } from "@/anatomic/atoms/Grid/grid";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
+import useScrollUp from "@/hooks/useScrollUp";
 import { COLORS } from "@/lib/theme/color";
 
 const Home = () => {
@@ -72,6 +73,24 @@ const Home = () => {
                     </Text>
                 </GridItemArea>
             </GridWithTemplate>
+            <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
+                Beatae impedit reiciendis facilis quisquam repellat id minus
+                voluptatum! Error soluta id maxime cumque, obcaecati earum
+                veritatis ipsa doloribus quasi delectus perferendis.
+            </Text>
+            <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
+                Beatae impedit reiciendis facilis quisquam repellat id minus
+                voluptatum! Error soluta id maxime cumque, obcaecati earum
+                veritatis ipsa doloribus quasi delectus perferendis.
+            </Text>
+            <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
+                Beatae impedit reiciendis facilis quisquam repellat id minus
+                voluptatum! Error soluta id maxime cumque, obcaecati earum
+                veritatis ipsa doloribus quasi delectus perferendis.
+            </Text>
             <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
                 Beatae impedit reiciendis facilis quisquam repellat id minus

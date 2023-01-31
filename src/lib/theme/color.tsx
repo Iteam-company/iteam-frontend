@@ -5,4 +5,6 @@ export const enum COLORS {
     buttonDark = "#222F3E",
     activePath = "#D66F1F",
     dropdown = "#222f3e",
+    link = "#ADB5BD",
+    blue = "#283353",
 }
