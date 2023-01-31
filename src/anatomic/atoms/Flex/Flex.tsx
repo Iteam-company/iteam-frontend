@@ -23,7 +23,7 @@ interface FlexProps {
     gap?: string;
 }
 
-const StyledFlex = styled.div<FlexProps & DefaultElementProps>`
+export const StyledFlex = styled.div<FlexProps & DefaultElementProps>`
     display: flex;
     width: ${(props) => props.w || "auto"};
     max-width: ${(props) => props.mw || "auto"};

@@ -29,12 +29,14 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                     NAV_LINKS.map((item) =>
                         item.options ? (
                             <DropdownMobile
+                                key={item.id}
                                 title={item.title}
                                 activeRoute={activeRoute}
                                 options={item.options}
                             />
                         ) : (
                             <Link
+                                key={item.id}
                                 p="10px 20px"
                                 href={item.href}
                                 linkText={item.title}
