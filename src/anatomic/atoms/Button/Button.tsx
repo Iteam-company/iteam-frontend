@@ -1,10 +1,10 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { COLORS } from "@/lib/theme/color";
-import { BUTTON_TYPES } from "./util";
+import { BUTTON_VARIANTS } from "./util";
 
 interface Props {
-    type?: BUTTON_TYPES;
+    variant?: BUTTON_VARIANTS;
     className?: string;
     color?: any;
     w?: string;
@@ -15,10 +15,11 @@ interface Props {
     href?: string;
     hoverColor?: string;
     onClick?: Function;
+    type?: "button" | "submit" | "reset";
 }
 
 export const Button: FC<Props> = ({
-    type,
+    variant,
     className,
     color,
     w,
@@ -28,24 +29,34 @@ export const Button: FC<Props> = ({
     href,
     hoverColor,
     onClick,
+    type = "button",
 }) => {
-    if (type === BUTTON_TYPES.color) {
+    if (variant === BUTTON_VARIANTS.color) {
         return (
-            <ColorButton className={className} color={color} w={w}>
+            <ColorButton className={className} color={color} w={w} type={type}>
                 {label}
             </ColorButton>
         );
     }
-    if (type === BUTTON_TYPES.change) {
+    if (variant === BUTTON_VARIANTS.change) {
         return (
-            <ChangeButton className={className} color={COLORS.white} w={w}>
+            <ChangeButton
+                className={className}
+                color={COLORS.white}
+                w={w}
+                type={type}
+            >
                 {label}
             </ChangeButton>
         );
     }
-    if (type === BUTTON_TYPES.icon) {
+    if (variant === BUTTON_VARIANTS.icon) {
         return (
-            <ButtonIcon className={className} hoverColor={hoverColor}>
+            <ButtonIcon
+                className={className}
+                hoverColor={hoverColor}
+                type={type}
+            >
                 <Link href={href} target="_blank">
                     <Icon src={icon} />
                 </Link>
@@ -57,6 +68,8 @@ export const Button: FC<Props> = ({
 };
 
 const ColorButton = styled.button<Props>`
+    height: 43px;
+    width: 100%;
     padding: 8px 20px;
     border: none;
     border-radius: 6px;

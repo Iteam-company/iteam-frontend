@@ -1,4 +1,4 @@
-export const enum BUTTON_TYPES {
+export const enum BUTTON_VARIANTS {
     color = "COLOR",
     change = "CHANGE",
     icon = "ICON",

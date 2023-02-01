@@ -7,7 +7,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import { Button } from "@/anatomic/atoms/Button";
-import { BUTTON_TYPES } from "@/anatomic/atoms/Button/util";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import styled from "styled-components";
 
 export const Footer = () => {
@@ -96,7 +96,7 @@ export const Footer = () => {
                         <FlexRow justifyContent="space-between" gap="8px">
                             {SOCIAL_MEDIA.map((item) => (
                                 <Button
-                                    type={BUTTON_TYPES.icon}
+                                    variant={BUTTON_VARIANTS.icon}
                                     icon={item.icon.src}
                                     href={item.href}
                                     hoverColor={COLORS.blue}

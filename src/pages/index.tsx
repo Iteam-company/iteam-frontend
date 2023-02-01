@@ -1,5 +1,5 @@
 import { Button } from "@/anatomic/atoms/Button";
-import { BUTTON_TYPES } from "@/anatomic/atoms/Button/util";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import {
     Grid,
     GridItem,
@@ -8,7 +8,6 @@ import {
 } from "@/anatomic/atoms/Grid/grid";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
-import useScrollUp from "@/hooks/useScrollUp";
 import { COLORS } from "@/lib/theme/color";
 
 const Home = () => {
@@ -105,7 +104,7 @@ const Home = () => {
             </Text>
             <div>
                 <Button
-                    type={BUTTON_TYPES.color}
+                    variant={BUTTON_VARIANTS.color}
                     label={
                         <Text lineHeight="1.5" color={COLORS.white}>
                             Read More
@@ -113,7 +112,7 @@ const Home = () => {
                     }
                 />
                 <Button
-                    type={BUTTON_TYPES.change}
+                    variant={BUTTON_VARIANTS.change}
                     label={
                         <Text lineHeight="1.5" color={COLORS.black}>
                             Read More

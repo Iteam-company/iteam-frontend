@@ -1,5 +1,5 @@
 import { Button } from "@/anatomic/atoms/Button";
-import { BUTTON_TYPES } from "@/anatomic/atoms/Button/util";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
 import { COLORS } from "@/lib/theme/color";
@@ -21,7 +21,7 @@ const Team = () => {
             </Text>
             <div>
                 <Button
-                    type={BUTTON_TYPES.color}
+                    variant={BUTTON_VARIANTS.color}
                     label={
                         <Text lineHeight="1.5" color={COLORS.white}>
                             Read More
@@ -29,7 +29,7 @@ const Team = () => {
                     }
                 />
                 <Button
-                    type={BUTTON_TYPES.change}
+                    variant={BUTTON_VARIANTS.change}
                     label={
                         <Text lineHeight="1.5" color={COLORS.black}>
                             Read More

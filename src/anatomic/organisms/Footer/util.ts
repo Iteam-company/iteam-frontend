@@ -26,9 +26,9 @@ export const NAV_LINKS = [
 
 export const SOCIAL_MEDIA = [
     { href: "https://www.facebook.com/", icon: FacebookIcon, id: 0 },
-    { href: "https://www.facebook.com/", icon: InstagramIcon, id: 1 },
-    { href: "https://www.facebook.com/", icon: TwitterIcon, id: 2 },
-    { href: "https://www.facebook.com/", icon: LinkedinIcon, id: 3 },
+    { href: "https://www.facebook.com1/", icon: InstagramIcon, id: 1 },
+    { href: "https://www.facebook.com2/", icon: TwitterIcon, id: 2 },
+    { href: "https://www.facebook.com3/", icon: LinkedinIcon, id: 3 },
 ];
 
 export const TITLES = {
