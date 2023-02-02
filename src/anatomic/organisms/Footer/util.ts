@@ -9,7 +9,7 @@ export const NAV_LINKS = [
         options: [
             { option: "Home", href: "/" },
             { option: "Team", href: "/team" },
-            { option: "Contact us", href: "/contact_us" },
+            { option: "Contact us", href: "/contactUs" },
         ],
         id: 0,
     },
