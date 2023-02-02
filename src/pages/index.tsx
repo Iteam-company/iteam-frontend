@@ -1,5 +1,6 @@
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
+import { FlexRow } from "@/anatomic/atoms/Flex";
 import {
     Grid,
     GridItem,
@@ -13,7 +14,7 @@ import { COLORS } from "@/lib/theme/color";
 const Home = () => {
     return (
         <>
-            <Grid
+            {/* <Grid
                 mobileColumnsCount="1"
                 tabletColumnsCount="2"
                 desktopColumnsCount="7"
@@ -46,8 +47,8 @@ const Home = () => {
                         delectus perferendis.
                     </Text>
                 </GridItem>
-            </Grid>
-            <GridWithTemplate
+            </Grid> */}
+            {/* <GridWithTemplate
                 mobileColumnsCount="1"
                 tabletColumnsCount="2"
                 desktopColumnsCount="3"
@@ -71,7 +72,7 @@ const Home = () => {
                         text0
                     </Text>
                 </GridItemArea>
-            </GridWithTemplate>
+            </GridWithTemplate> */}
             <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
                 Beatae impedit reiciendis facilis quisquam repellat id minus
@@ -102,7 +103,7 @@ const Home = () => {
                 voluptatum! Error soluta id maxime cumque, obcaecati earum
                 veritatis ipsa doloribus quasi delectus perferendis.
             </Text>
-            <div>
+            <FlexRow w="400px" gap="20px">
                 <Button
                     variant={BUTTON_VARIANTS.color}
                     label={
@@ -119,7 +120,7 @@ const Home = () => {
                         </Text>
                     }
                 />
-            </div>
+            </FlexRow>
         </>
     );
 };
