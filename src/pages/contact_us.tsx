@@ -7,7 +7,7 @@ import styled from "styled-components";
 const ContactUs = () => {
     return (
         <FlexRow justifyContent="center" p="50px 0">
-            <Flex w="80%" alignItems="center">
+            <Flex w="80%" alignItems="center" justifyContent="center">
                 <FormElem />
                 <Info />
             </Flex>

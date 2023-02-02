@@ -103,24 +103,6 @@ const Home = () => {
                 voluptatum! Error soluta id maxime cumque, obcaecati earum
                 veritatis ipsa doloribus quasi delectus perferendis.
             </Text>
-            <FlexRow w="400px" gap="20px">
-                <Button
-                    variant={BUTTON_VARIANTS.color}
-                    label={
-                        <Text lineHeight="1.5" color={COLORS.white}>
-                            Read More
-                        </Text>
-                    }
-                />
-                <Button
-                    variant={BUTTON_VARIANTS.change}
-                    label={
-                        <Text lineHeight="1.5" color={COLORS.black}>
-                            Read More
-                        </Text>
-                    }
-                />
-            </FlexRow>
         </>
     );
 };
