@@ -14,7 +14,7 @@ export const Info = () => {
                 size={TEXT_SIZES.l}
                 lineHeight="1.5"
             >
-                Let's talk
+                Lets talk
             </Text>
             <FlexColumn gap="16px">
                 <Text>
@@ -22,7 +22,7 @@ export const Info = () => {
                     will replay within 24 hour
                 </Text>
                 {INFO.map((item) => (
-                    <FlexRow alignItems="center" gap="16px">
+                    <FlexRow alignItems="center" gap="16px" key={item.title}>
                         {item.icon}
                         <FlexColumn>
                             <Text

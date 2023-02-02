@@ -9,7 +9,7 @@ const ContactUs = () => {
         <FlexRow justifyContent="center" p="50px 0">
             <Flex w="80%" alignItems="center">
                 <FormElem />
-                <Info />
+                {/* <Info /> */}
             </Flex>
         </FlexRow>
     );

@@ -12,6 +12,10 @@ import { Button } from "@/anatomic/atoms/Button";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { COLORS } from "@/lib/theme/color";
+import { REACT_APP_SMTP_USER } from "env";
+import { Transporter } from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
+import axios from "axios";
 import client from "@/axios";
 
 interface FormikValues {
