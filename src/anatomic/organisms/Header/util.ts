@@ -4,7 +4,7 @@ export const NAV_LINKS = [
         title: "Compamy",
         options: [
             { option: "Team", href: "/team" },
-            { option: "Contact us", href: "/contactUs" },
+            { option: "Contact us", href: "/contact_us" },
         ],
         id: 1,
     },
