@@ -20,7 +20,7 @@ export const Input: FC<Props> = ({ id, name, placeholder, icon, lable }) => {
                 <Text
                     weight={TEXT_WEIGHTS.bold}
                     size={TEXT_SIZES.xxs}
-                    color={COLORS.black}
+                    color={COLORS.text}
                     letterSpacing="0.44px"
                     textTransform="capitalize"
                 >

@@ -1,7 +1,7 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Input } from "@/anatomic/atoms/Input";
 import { Form, Formik } from "formik";
-import React, { FC } from "react";
+import React from "react";
 import { FiMail } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { BsWindowDock } from "react-icons/bs";
@@ -12,10 +12,6 @@ import { Button } from "@/anatomic/atoms/Button";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { COLORS } from "@/lib/theme/color";
-import { REACT_APP_SMTP_USER } from "env";
-import { Transporter } from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
-import axios from "axios";
 import client from "@/axios";
 
 interface FormikValues {

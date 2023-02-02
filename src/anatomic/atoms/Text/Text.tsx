@@ -23,7 +23,7 @@ export const Text: FC<Props> = ({
     type = TEXT_TYPES.text,
     color,
     weight = TEXT_WEIGHTS.normal,
-    size = TEXT_SIZES.xs,
+    size,
     children = null,
     className = "",
     w = "auto",
