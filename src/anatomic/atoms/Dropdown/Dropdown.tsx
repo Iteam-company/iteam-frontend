@@ -9,6 +9,7 @@ interface Options {
     option: string;
     href: string;
 }
+
 interface Props {
     title: string;
     options: Options[];
@@ -30,6 +31,7 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                     weight={TEXT_WEIGHTS.bold}
                     size={TEXT_SIZES.xxs}
                     letterSpacing="1px"
+                    textAlign="center"
                 >
                     {title}
                 </Text>
@@ -63,18 +65,20 @@ const Icon = styled.img`
     width: 16px;
     height: 16px;
     position: relative;
-    top: 0;
     transition: top ease 0.5s;
+    top: 0;
+    margin-top: -2.5px;
 `;
 
 const Title = styled.div`
-    padding: 25px 15px;
+    padding: 20px 10px;
     cursor: pointer;
     transition: opacity 0.5s;
     display: flex;
     align-items: center;
     gap: 5px;
     width: auto;
+    vertical-align: middle;
 `;
 
 const LinkElem = styled(Link)<{ active: boolean }>`

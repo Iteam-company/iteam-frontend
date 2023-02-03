@@ -11,9 +11,19 @@ interface Props {
     placeholder?: string;
     icon?: ReactNode;
     lable?: string;
+    validate?: Function;
+    error?: string | null;
 }
 
-export const Input: FC<Props> = ({ id, name, placeholder, icon, lable }) => {
+export const Input: FC<Props> = ({
+    id,
+    name,
+    placeholder,
+    icon,
+    lable,
+    validate,
+    error,
+}) => {
     return (
         <FlexColumn w="100%" gap="4px">
             <FlexRow gap="4px">
@@ -33,8 +43,14 @@ export const Input: FC<Props> = ({ id, name, placeholder, icon, lable }) => {
 
             <Container>
                 <Icon>{icon}</Icon>
-                <StyledInput id={id} name={name} placeholder={placeholder} />
+                <StyledInput
+                    id={id}
+                    name={name}
+                    placeholder={placeholder}
+                    validate={validate}
+                />
             </Container>
+            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
         </FlexColumn>
     );
 };

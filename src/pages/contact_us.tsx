@@ -7,7 +7,12 @@ import styled from "styled-components";
 const ContactUs = () => {
     return (
         <FlexRow justifyContent="center" p="50px 0">
-            <Flex w="80%" alignItems="center" justifyContent="center">
+            <Flex
+                w="60%"
+                alignItems="center"
+                justifyContent="center"
+                gap="20px"
+            >
                 <FormElem />
                 <Info />
             </Flex>
@@ -20,7 +25,7 @@ export default ContactUs;
 const Flex = styled(StyledFlex)`
     flex-direction: row;
 
-    @media all and (max-width: 850px) {
+    @media all and (max-width: 885px) {
         flex-direction: column;
     }
 `;

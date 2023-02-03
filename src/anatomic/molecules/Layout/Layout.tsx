@@ -26,3 +26,6 @@ const StyledLayout = styled.div`
         flex-grow: 1;
     }
 `;
+const Content = styled.div`
+    display: flex;
+`;

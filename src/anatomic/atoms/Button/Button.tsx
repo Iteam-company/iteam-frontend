@@ -16,6 +16,7 @@ interface Props {
     hoverColor?: string;
     onClick?: Function;
     type?: "button" | "submit" | "reset";
+    disabled?: boolean;
 }
 
 export const Button: FC<Props> = ({
@@ -30,10 +31,17 @@ export const Button: FC<Props> = ({
     hoverColor,
     onClick,
     type = "button",
+    disabled,
 }) => {
     if (variant === BUTTON_VARIANTS.color) {
         return (
-            <ColorButton className={className} color={color} w={w} type={type}>
+            <ColorButton
+                className={className}
+                color={color}
+                w={w}
+                type={type}
+                disabled={disabled}
+            >
                 {label}
             </ColorButton>
         );
@@ -45,6 +53,7 @@ export const Button: FC<Props> = ({
                 color={COLORS.white}
                 w={w}
                 type={type}
+                disabled={disabled}
             >
                 {label}
             </ChangeButton>
@@ -56,6 +65,7 @@ export const Button: FC<Props> = ({
                 className={className}
                 hoverColor={hoverColor}
                 type={type}
+                disabled={disabled}
             >
                 <Link href={href} target="_blank">
                     <Icon src={icon} />

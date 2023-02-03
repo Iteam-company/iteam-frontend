@@ -6,6 +6,7 @@ import { Link } from "@/anatomic/atoms/Link";
 import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
+import { ContentLayout } from "@/anatomic/molecules/ContentLayout";
 
 export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
     return (
@@ -15,12 +16,7 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
             justifyContent="space-between"
             mh="74px"
         >
-            <FlexRow
-                alignItems="center"
-                justifyContent="space-between"
-                m="auto"
-                w="80%"
-            >
+            <ContentLayout>
                 <Logo />
                 {NAV_LINKS.map((item) =>
                     item.options ? (
@@ -32,6 +28,7 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                         />
                     ) : (
                         <Link
+                            textAlign="center"
                             key={item.id}
                             p="20px 10px"
                             href={item.href}
@@ -49,7 +46,7 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                         />
                     ),
                 )}
-            </FlexRow>
+            </ContentLayout>
         </FlexRow>
     );
 };

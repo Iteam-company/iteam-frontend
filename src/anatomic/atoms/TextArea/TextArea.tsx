@@ -13,6 +13,7 @@ interface Props {
     lable?: string;
     value?: string;
     onChange?: any;
+    error?: string | null;
 }
 
 export const TextArea: FC<Props> = ({
@@ -23,6 +24,8 @@ export const TextArea: FC<Props> = ({
     lable,
     onChange,
     value,
+
+    error,
 }) => {
     return (
         <FlexColumn w="100%" gap="4px">
@@ -52,6 +55,7 @@ export const TextArea: FC<Props> = ({
                     value={value}
                 />
             </Container>
+            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
         </FlexColumn>
     );
 };

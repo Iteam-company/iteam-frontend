@@ -9,6 +9,7 @@ import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import styled from "styled-components";
+import { ContentLayout } from "@/anatomic/molecules/ContentLayout";
 
 export const Footer = () => {
     return (
@@ -16,7 +17,7 @@ export const Footer = () => {
             <FlexRow justifyContent="center" bg={COLORS.black} p="60px 0">
                 <Flex
                     justifyContent="space-between"
-                    w="80%"
+                    w="60%"
                     flexWrap="wrap"
                     gap="40px"
                 >
@@ -109,11 +110,11 @@ export const Footer = () => {
             </FlexRow>
             <Divider />
             <FlexRow justifyContent="center" bg={COLORS.black} p="30px 0">
-                <FlexRow w="80%">
+                <ContentLayout>
                     <Text color={COLORS.white} size={TEXT_SIZES.m}>
                         © 2023 ITeam. All rights reserved.
                     </Text>
-                </FlexRow>
+                </ContentLayout>
             </FlexRow>
         </footer>
     );
