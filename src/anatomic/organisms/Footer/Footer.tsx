@@ -1,8 +1,8 @@
-import { FlexColumn, FlexRow, Flex } from "@/anatomic/atoms/Flex";
+import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
-import { NAV_LINKS, SOCIAL_MEDIA, TITLES } from "./util";
+import { FOOTER_TEXT, NAV_LINKS, SOCIAL_MEDIA, TITLES } from "./util";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
@@ -35,21 +35,21 @@ export const Footer = () => {
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Address:
+                                {FOOTER_TEXT.address}
                             </Text>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Tel:
+                                {FOOTER_TEXT.tel}
                             </Text>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Hours:
+                                {FOOTER_TEXT.hours}
                             </Text>
                         </FlexColumn>
                     </FlexColumn>
@@ -112,18 +112,14 @@ export const Footer = () => {
             <FlexRow justifyContent="center" bg={COLORS.black} p="30px 0">
                 <Adaptive>
                     <Text color={COLORS.white} size={TEXT_SIZES.m}>
-                        © 2023 ITeam. All rights reserved.
+                        {FOOTER_TEXT.rights}
                     </Text>
                 </Adaptive>
             </FlexRow>
         </footer>
     );
 };
-const FlexElem = styled(Flex)`
-    @media all and (max-width: 500px) {
-        flex-direction: column;
-    }
-`;
+
 const Divider = styled.div`
     height: 0;
     width: 100%;

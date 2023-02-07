@@ -35,3 +35,9 @@ export const TITLES = {
     office: "Office",
     socil_media: "Social Media",
 };
+export const FOOTER_TEXT = {
+    rights: "© 2023 ITeam. All rights reserved.",
+    address: "Address:",
+    tel: "Tel:",
+    hours: "Hours:",
+};

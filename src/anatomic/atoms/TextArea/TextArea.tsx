@@ -1,9 +1,8 @@
 import { COLORS } from "@/lib/theme/color";
-import { Field } from "formik";
 import React, { FC, ReactNode } from "react";
-import styled from "styled-components";
 import { FlexColumn, FlexRow } from "../Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { LETTER_SPACING, Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { Container, Icon, StyledTextArea } from "./styled";
 
 interface Props {
     id?: string;
@@ -24,7 +23,6 @@ export const TextArea: FC<Props> = ({
     lable,
     onChange,
     value,
-
     error,
 }) => {
     return (
@@ -34,7 +32,7 @@ export const TextArea: FC<Props> = ({
                     weight={TEXT_WEIGHTS.bold}
                     size={TEXT_SIZES.xxs}
                     color={COLORS.black}
-                    letterSpacing="0.44px"
+                    letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
                 >
                     {lable}
@@ -59,29 +57,3 @@ export const TextArea: FC<Props> = ({
         </FlexColumn>
     );
 };
-const StyledTextArea = styled(Field)`
-    resize: vertical;
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
-    box-sizing: border-box;
-    padding: 6px 12px 6px 40px;
-    width: 100%;
-    min-height: 143px;
-    outline: none;
-    font-family: "Nunito", sans-serif;
-    line-height: 26px;
-
-    :focus-within {
-        border: 1px solid ${COLORS.black};
-        transition: border 0.5s;
-    }
-`;
-const Icon = styled.div`
-    position: absolute;
-    top: 12px;
-    left: 12px;
-`;
-const Container = styled.div`
-    position: relative;
-    width: 100%;
-`;

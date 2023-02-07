@@ -1,10 +1,14 @@
 import { FC, useState } from "react";
-import styled from "styled-components";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
-import arrowIcon from "@/assets/icon/down-arrow.svg";
+import {
+    LETTER_SPACING,
+    LINE_HEIGHT,
+    Text,
+    TEXT_SIZES,
+    TEXT_WEIGHTS,
+} from "../Text";
 import { COLORS } from "@/lib/theme/color";
-import { Link } from "../Link";
-import { FlexColumn, FlexRow } from "../Flex";
+import { Container, Title, Icon, Menu, LinkElem } from "./styledMobile";
+import arrowIcon from "@/assets/icon/down-arrow.svg";
 
 interface Options {
     option: string;
@@ -21,6 +25,7 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
     const handleClick = () => {
         setOpen(!open);
     };
+
     return (
         <Container>
             <Title onClick={handleClick}>
@@ -31,10 +36,10 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             : COLORS.dropdown
                     }
                     textTransform="uppercase"
-                    lineHeight="1.6"
+                    lineHeight={LINE_HEIGHT.m}
                     weight={TEXT_WEIGHTS.bold}
                     size={TEXT_SIZES.xxs}
-                    letterSpacing="1px"
+                    letterSpacing={LETTER_SPACING.l}
                 >
                     {title}
                 </Text>
@@ -57,7 +62,7 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             textTransform="uppercase"
                             linkText={item.option}
                             weight={TEXT_WEIGHTS.bold}
-                            letterSpacing="0.44px"
+                            letterSpacing={LETTER_SPACING.xs}
                             p="7px 15px"
                         />
                     ))}
@@ -66,42 +71,3 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
         </Container>
     );
 };
-
-const Icon = styled.img`
-    width: 16px;
-    height: 16px;
-    position: relative;
-    transition: top ease 0.5s;
-    top: 0;
-`;
-
-const Title = styled.div`
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: opacity 0.5s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-`;
-
-const LinkElem = styled(Link)<{ active: boolean }>`
-    cursor: pointer;
-    :hover {
-        color: ${({ active }) => !active && COLORS.black};
-    }
-`;
-
-const Menu = styled(FlexColumn)`
-    padding-left: 20px;
-`;
-
-const Container = styled.div`
-    width: 100%;
-    :hover {
-        div {
-            visibility: visible;
-            opacity: 1;
-        }
-    }
-`;

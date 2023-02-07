@@ -3,7 +3,12 @@ import { DropdownMobile } from "@/anatomic/atoms/Dropdown";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Logo } from "@/anatomic/atoms/Logo/Logo";
 import { Link } from "@/anatomic/atoms/Link";
-import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    LETTER_SPACING,
+    LINE_HEIGHT,
+    TEXT_SIZES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -12,6 +17,7 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
     activeRoute,
 }) => {
     const [open, setOpen] = useState(false);
+
     return (
         <>
             <FlexRow
@@ -46,10 +52,10 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                         : COLORS.dropdown
                                 }
                                 textTransform="uppercase"
-                                lineHeight="1.6"
+                                lineHeight={LINE_HEIGHT.m}
                                 weight={TEXT_WEIGHTS.bold}
                                 size={TEXT_SIZES.xxs}
-                                letterSpacing="1px"
+                                letterSpacing={LETTER_SPACING.l}
                             />
                         ),
                     )}

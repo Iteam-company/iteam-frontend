@@ -1,5 +1,10 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    LINE_HEIGHT,
+    Text,
+    TEXT_SIZES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
 import styled from "styled-components";
@@ -12,7 +17,7 @@ export const Info = () => {
                 weight={TEXT_WEIGHTS.main}
                 color={COLORS.text}
                 size={TEXT_SIZES.l}
-                lineHeight="1.5"
+                lineHeight={LINE_HEIGHT.s}
             >
                 Lets talk
             </Text>

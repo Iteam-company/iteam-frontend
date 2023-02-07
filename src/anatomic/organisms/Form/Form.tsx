@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { TextArea } from "@/anatomic/atoms/TextArea";
 import { Button } from "@/anatomic/atoms/Button";
 import {
+    LETTER_SPACING,
     Text,
     TEXT_SIZES,
     TEXT_TYPES,
@@ -108,7 +109,7 @@ export const FormElem = () => {
                                         size={TEXT_SIZES.xs}
                                         color={COLORS.white}
                                         weight={TEXT_WEIGHTS.medium}
-                                        letterSpacing="0.5px"
+                                        letterSpacing={LETTER_SPACING.s}
                                     >
                                         Send Message
                                     </Text>
