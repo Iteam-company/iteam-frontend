@@ -54,7 +54,7 @@ export const Footer = () => {
                         </FlexColumn>
                     </FlexColumn>
                     {NAV_LINKS.map((item) => (
-                        <FlexColumn gap="20px" key={item.href}>
+                        <FlexColumn gap="20px" key={item.id}>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.m}
