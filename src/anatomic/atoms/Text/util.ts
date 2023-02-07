@@ -12,6 +12,7 @@ export const enum TEXT_SIZES {
 export const enum TEXT_TYPES {
     title = "TITLE",
     text = "TEXT",
+    text_block = "TEXT_BLOCK",
 }
 
 export const enum TEXT_WEIGHTS {

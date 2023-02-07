@@ -27,8 +27,6 @@ export const FormElem = () => {
     const [success, setSuccess] = useState(false);
 
     const onSubmit = async (values: FormikValues) => {
-        console.log(values);
-
         try {
             await client.post("/api/nodemailer", values);
             setSuccess(true);

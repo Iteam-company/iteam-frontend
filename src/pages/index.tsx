@@ -1,11 +1,11 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
-import { ContentLayout } from "@/anatomic/molecules/ContentLayout";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 const Home = () => {
     return (
-        <ContentLayout>
+        <Adaptive>
             <FlexColumn>
                 {/* <Grid
                 mobileColumnsCount="1"
@@ -97,7 +97,7 @@ const Home = () => {
                     veritatis ipsa doloribus quasi delectus perferendis.
                 </Text>
             </FlexColumn>
-        </ContentLayout>
+        </Adaptive>
     );
 };
 

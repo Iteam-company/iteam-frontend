@@ -94,6 +94,10 @@ export const Link: FC<Props> = ({
 const StyledLink = styled.a<StyledProps>`
     text-decoration: none;
     padding: ${({ p }) => p || 0};
+    width: fit-content;
+    & > * {
+        white-space: nowrap !important;
+    }
 
     &:hover {
         svg {

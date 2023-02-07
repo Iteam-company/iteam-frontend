@@ -30,7 +30,7 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                     lineHeight="1.6"
                     weight={TEXT_WEIGHTS.bold}
                     size={TEXT_SIZES.xxs}
-                    letterSpacing="1px"
+                    letterSpacing="0.8px"
                     textAlign="center"
                 >
                     {title}

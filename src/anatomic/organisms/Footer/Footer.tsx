@@ -1,4 +1,4 @@
-import { FlexColumn, FlexRow, StyledFlex } from "@/anatomic/atoms/Flex";
+import { FlexColumn, FlexRow, Flex } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
@@ -9,17 +9,17 @@ import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import styled from "styled-components";
-import { ContentLayout } from "@/anatomic/molecules/ContentLayout";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 export const Footer = () => {
     return (
         <footer>
             <FlexRow justifyContent="center" bg={COLORS.black} p="60px 0">
-                <Flex
+                <Adaptive
                     justifyContent="space-between"
-                    w="60%"
                     flexWrap="wrap"
                     gap="40px"
+                    alignItems="start"
                 >
                     <FlexColumn gap="20px">
                         <Text
@@ -106,22 +106,20 @@ export const Footer = () => {
                             ))}
                         </FlexRow>
                     </FlexColumn>
-                </Flex>
+                </Adaptive>
             </FlexRow>
             <Divider />
             <FlexRow justifyContent="center" bg={COLORS.black} p="30px 0">
-                <ContentLayout>
+                <Adaptive>
                     <Text color={COLORS.white} size={TEXT_SIZES.m}>
                         © 2023 ITeam. All rights reserved.
                     </Text>
-                </ContentLayout>
+                </Adaptive>
             </FlexRow>
         </footer>
     );
 };
-const Flex = styled(StyledFlex)`
-    flex-direction: row;
-
+const FlexElem = styled(Flex)`
     @media all and (max-width: 500px) {
         flex-direction: column;
     }

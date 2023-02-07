@@ -73,6 +73,25 @@ export const Text: FC<Props> = ({
             </StyledText>
         );
     }
+    if (type === TEXT_TYPES.text_block) {
+        return (
+            <StyledBlockText
+                className={className}
+                color={color}
+                weight={weight}
+                size={size}
+                textAlign={textAlign}
+                textTransform={textTransform}
+                w={w}
+                whiteSpace={whiteSpace}
+                letterSpacing={letterSpacing}
+                lineHeight={lineHeight}
+                font={font}
+            >
+                {children}
+            </StyledBlockText>
+        );
+    }
 
     return null;
 };
@@ -91,6 +110,20 @@ const StyledTitle = styled.h2<Props>`
 `;
 
 const StyledText = styled.span<Props>`
+    font-size: ${({ size }) => size || TEXT_SIZES.xs};
+    color: ${({ color }) => color || COLORS.gray};
+    font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};
+    text-align: ${({ textAlign }) => textAlign || "start"};
+    z-index: 2;
+    text-transform: ${({ textTransform }) => textTransform || "none"};
+    width: ${({ w }) => w || "auto"};
+    letter-spacing: ${({ letterSpacing }) => letterSpacing || "auto"};
+    white-space: ${({ whiteSpace }) => whiteSpace || "auto"};
+    line-height: ${({ lineHeight }) => lineHeight || "auto"};
+    font: ${({ font }) => font || "auto"};
+`;
+
+const StyledBlockText = styled.p<Props>`
     font-size: ${({ size }) => size || TEXT_SIZES.xs};
     color: ${({ color }) => color || COLORS.gray};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};

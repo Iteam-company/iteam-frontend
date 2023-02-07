@@ -24,7 +24,6 @@ const Mobile = styled.div`
         display: none;
     }
 `;
-
 const Desktop = styled.div`
     @media all and (max-width: 992px) {
         display: none;

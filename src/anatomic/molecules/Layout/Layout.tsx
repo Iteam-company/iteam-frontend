@@ -1,3 +1,4 @@
+import { FlexRow } from "@/anatomic/atoms/Flex";
 import { Footer } from "@/anatomic/organisms/Footer";
 import { Header } from "@/anatomic/organisms/Header";
 import React, { FC, ReactNode } from "react";
@@ -12,7 +13,11 @@ export const Layout: FC<Props> = ({ children }) => {
     return (
         <StyledLayout className="layout">
             <Header />
-            <main>{children}</main>
+            <main>
+                <FlexRow w="100%" justifyContent="center">
+                    {children}
+                </FlexRow>
+            </main>
             <ButtonUp />
             <Footer />
         </StyledLayout>
@@ -25,7 +30,4 @@ const StyledLayout = styled.div`
     main {
         flex-grow: 1;
     }
-`;
-const Content = styled.div`
-    display: flex;
 `;
