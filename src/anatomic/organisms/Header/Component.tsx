@@ -17,7 +17,7 @@ import styled from "styled-components";
 export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
     return (
         <FlexRow
-            bg="rgba(189, 195, 199, 0.4)"
+            bg="black"
             alignItems="center"
             justifyContent="center"
             mh="74px"
