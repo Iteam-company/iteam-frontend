@@ -23,7 +23,7 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
             <FlexRow
                 p="0 20px"
                 mh="74px"
-                bg="rgba(189, 195, 199, 0.4)"
+                bg="black"
                 alignItems="center"
                 justifyContent="space-between"
             >

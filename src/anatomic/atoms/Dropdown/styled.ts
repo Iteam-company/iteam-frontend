@@ -44,6 +44,7 @@ export const Menu = styled.div`
     border-radius: 6px;
     background-color: ${COLORS.white};
     box-shadow: 0 0 3px rgb(60 72 88 / 15%);
+    background-color: black;
 `;
 
 export const Container = styled.div`
