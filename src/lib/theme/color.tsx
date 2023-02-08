@@ -7,4 +7,6 @@ export const enum COLORS {
     dropdown = "#222f3e",
     link = "#ADB5BD",
     blue = "#283353",
+    red = "#e43f52",
+    text = "#161C2D",
 }

@@ -6,5 +6,5 @@ export const Logo = () => {
     return <Icon src={LogoIcon.src} />;
 };
 const Icon = styled.img`
-    height: 45px;
+    height: 40px;
 `;

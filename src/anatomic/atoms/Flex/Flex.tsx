@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface DefaultElementProps {
     w?: string;
@@ -21,9 +21,10 @@ interface FlexProps {
     justifySelf?: string;
     flexWrap?: string;
     gap?: string;
+    type?: "column";
 }
 
-export const StyledFlex = styled.div<FlexProps & DefaultElementProps>`
+export const Flex = styled.div<FlexProps & DefaultElementProps>`
     display: flex;
     width: ${(props) => props.w || "auto"};
     max-width: ${(props) => props.mw || "auto"};
@@ -41,12 +42,13 @@ export const StyledFlex = styled.div<FlexProps & DefaultElementProps>`
     z-index: ${({ zIndex }) => zIndex || "auto"};
     ${({ gap }) => gap && `gap: ${gap}`};
     ${({ position }) => position && `position: ${position}`};
+    flex-direction: ${(props) => props.type || "row"};
 `;
 
-export const FlexRow = styled(StyledFlex)`
+export const FlexRow = styled(Flex)`
     flex-direction: row;
 `;
 
-export const FlexColumn = styled(StyledFlex)`
+export const FlexColumn = styled(Flex)`
     flex-direction: column;
 `;

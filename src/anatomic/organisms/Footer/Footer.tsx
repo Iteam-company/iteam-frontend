@@ -1,24 +1,25 @@
-import { FlexColumn, FlexRow, StyledFlex } from "@/anatomic/atoms/Flex";
+import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
-import { NAV_LINKS, SOCIAL_MEDIA, TITLES } from "./util";
+import { FOOTER_TEXT, NAV_LINKS, SOCIAL_MEDIA, TITLES } from "./util";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import { Button } from "@/anatomic/atoms/Button";
-import { BUTTON_TYPES } from "@/anatomic/atoms/Button/util";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import styled from "styled-components";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 export const Footer = () => {
     return (
         <footer>
             <FlexRow justifyContent="center" bg={COLORS.black} p="60px 0">
-                <Flex
+                <Adaptive
                     justifyContent="space-between"
-                    w="80%"
                     flexWrap="wrap"
                     gap="40px"
+                    alignItems="start"
                 >
                     <FlexColumn gap="20px">
                         <Text
@@ -34,26 +35,26 @@ export const Footer = () => {
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Address:
+                                {FOOTER_TEXT.address}
                             </Text>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Tel:
+                                {FOOTER_TEXT.tel}
                             </Text>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                Hours:
+                                {FOOTER_TEXT.hours}
                             </Text>
                         </FlexColumn>
                     </FlexColumn>
                     {NAV_LINKS.map((item) => (
-                        <FlexColumn gap="20px" key={item.href}>
+                        <FlexColumn gap="20px" key={item.id}>
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.m}
@@ -96,7 +97,7 @@ export const Footer = () => {
                         <FlexRow justifyContent="space-between" gap="8px">
                             {SOCIAL_MEDIA.map((item) => (
                                 <Button
-                                    type={BUTTON_TYPES.icon}
+                                    variant={BUTTON_VARIANTS.icon}
                                     icon={item.icon.src}
                                     href={item.href}
                                     hoverColor={COLORS.blue}
@@ -105,26 +106,20 @@ export const Footer = () => {
                             ))}
                         </FlexRow>
                     </FlexColumn>
-                </Flex>
+                </Adaptive>
             </FlexRow>
             <Divider />
             <FlexRow justifyContent="center" bg={COLORS.black} p="30px 0">
-                <FlexRow w="80%">
+                <Adaptive>
                     <Text color={COLORS.white} size={TEXT_SIZES.m}>
-                        © 2023 ITeam. All rights reserved.
+                        {FOOTER_TEXT.rights}
                     </Text>
-                </FlexRow>
+                </Adaptive>
             </FlexRow>
         </footer>
     );
 };
-const Flex = styled(StyledFlex)`
-    flex-direction: row;
 
-    @media all and (max-width: 500px) {
-        flex-direction: column;
-    }
-`;
 const Divider = styled.div`
     height: 0;
     width: 100%;
