@@ -12,7 +12,8 @@ export const StyledTextArea = styled(Field)`
     min-height: 143px;
     outline: none;
     font-family: "Nunito", sans-serif;
-    line-height: 26px;
+    line-height: 32px;
+    font-size: 16px;
 
     :focus-within {
         border: 1px solid ${COLORS.black};
@@ -21,8 +22,8 @@ export const StyledTextArea = styled(Field)`
 `;
 export const Icon = styled.div`
     position: absolute;
-    top: 12px;
-    left: 12px;
+    top: 15px;
+    left: 15px;
 `;
 export const Container = styled.div`
     position: relative;

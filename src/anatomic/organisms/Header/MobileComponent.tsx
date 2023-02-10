@@ -22,15 +22,18 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
         <>
             <FlexRow
                 p="0 20px"
-                mh="74px"
+                mh="70px"
                 bg="black"
                 alignItems="center"
                 justifyContent="space-between"
             >
                 <Logo />
-                <RxHamburgerMenu onClick={() => setOpen(!open)} />
+                <RxHamburgerMenu
+                    color={COLORS.white}
+                    onClick={() => setOpen(!open)}
+                />
             </FlexRow>
-            <FlexColumn>
+            <FlexColumn bg={COLORS.black}>
                 {open &&
                     NAV_LINKS.map((item) =>
                         item.options ? (

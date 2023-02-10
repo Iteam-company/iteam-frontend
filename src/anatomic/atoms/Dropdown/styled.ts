@@ -42,9 +42,8 @@ export const Menu = styled.div`
     flex-direction: column;
     position: absolute;
     border-radius: 6px;
-    background-color: ${COLORS.white};
+    background-color: ${COLORS.black};
     box-shadow: 0 0 3px rgb(60 72 88 / 15%);
-    background-color: black;
 `;
 
 export const Container = styled.div`

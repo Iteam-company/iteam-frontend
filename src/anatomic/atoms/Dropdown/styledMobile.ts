@@ -24,12 +24,13 @@ export const Title = styled.div`
 export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
     :hover {
-        color: ${({ active }) => !active && COLORS.black};
+        color: ${({ active }) => !active && COLORS.white};
     }
 `;
 
 export const Menu = styled(FlexColumn)`
     padding-left: 20px;
+    background-color: ${COLORS.black};
 `;
 
 export const Container = styled.div`

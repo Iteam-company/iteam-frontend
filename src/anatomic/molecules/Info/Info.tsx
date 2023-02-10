@@ -12,7 +12,7 @@ import { INFO } from "./utils";
 
 export const Info = () => {
     return (
-        <Flex gap="24px" p="24px">
+        <Flex gap="24px" p="24px" w="40%">
             <Text
                 weight={TEXT_WEIGHTS.main}
                 color={COLORS.text}
@@ -47,5 +47,6 @@ export const Info = () => {
 const Flex = styled(FlexColumn)`
     @media all and (max-width: 850px) {
         order: -1;
+        width: 80%;
     }
 `;

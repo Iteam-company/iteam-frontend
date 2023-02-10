@@ -17,10 +17,10 @@ import styled from "styled-components";
 export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
     return (
         <FlexRow
-            bg="black"
+            bg={COLORS.black}
             alignItems="center"
             justifyContent="center"
-            mh="74px"
+            mh="70px"
         >
             <AdaptiveElem
                 justifyContent="space-between"
