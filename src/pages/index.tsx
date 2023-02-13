@@ -12,7 +12,7 @@ const Home = () => {
                 alignItems="center"
                 w="100%"
                 h="calc(100vh - 70px)"
-                bg={COLORS.lightGray}
+                bg="#F2F4F7"
             >
                 <Bunner />
             </FlexColumn>
