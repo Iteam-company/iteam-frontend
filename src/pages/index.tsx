@@ -3,7 +3,6 @@ import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { Bunner } from "@/anatomic/molecules/Banner";
-import { COLORS } from "@/lib/theme/color";
 
 const Home = () => {
     return (
