@@ -26,7 +26,6 @@ import RxJsIcon from "@/assets/icon/rxjs.png";
 import ExpressjsIcon from "@/assets/icon/expressjs.png";
 import FirebaseIcon from "@/assets/icon/firebase.png";
 import { CardElem } from "@/anatomic/molecules/TeamItemCard/TeamItemCard";
-import { useId } from "react";
 
 const DATA = [
     {
@@ -160,7 +159,7 @@ const Team = () => {
             bg="#f4f6f8"
         >
             {DATA.map((item, index) => (
-                <CardElem index={index} key={useId()}>
+                <CardElem index={index} key={item.avatar.src}>
                     <Row gap="20px">
                         <Avatar image={item.avatar.src} />
                         <FlexColumn gap="10px">
@@ -188,7 +187,7 @@ const Team = () => {
                             className="mySwiper"
                         >
                             {item.comments.map((elem) => (
-                                <SwiperSlide className="slide" key={useId()}>
+                                <SwiperSlide className="slide" key={elem.src}>
                                     <FitToViewport
                                         style={{
                                             height: "100%",
@@ -209,7 +208,7 @@ const Team = () => {
                     </FlexColumn>
                     <FlexRow gap="20px" alignItems="center" flexWrap="wrap">
                         {item.technology.map((elem) => (
-                            <ImgContainer key={useId()}>
+                            <ImgContainer key={elem.src}>
                                 <Img src={elem.src} />
                             </ImgContainer>
                         ))}
