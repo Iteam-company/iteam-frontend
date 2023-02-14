@@ -159,7 +159,7 @@ const Team = () => {
             bg="#f4f6f8"
         >
             {DATA.map((item, index) => (
-                <CardElem index={index} key={item.avatar.src}>
+                <CardElem index={index} key={index}>
                     <Row gap="20px">
                         <Avatar image={item.avatar.src} />
                         <FlexColumn gap="10px">
@@ -186,8 +186,8 @@ const Team = () => {
                             ]}
                             className="mySwiper"
                         >
-                            {item.comments.map((elem) => (
-                                <SwiperSlide className="slide" key={elem.src}>
+                            {item.comments.map((elem, index) => (
+                                <SwiperSlide className="slide" key={index}>
                                     <FitToViewport
                                         style={{
                                             height: "100%",
@@ -207,8 +207,8 @@ const Team = () => {
                         </StyledSwiper>
                     </FlexColumn>
                     <FlexRow gap="20px" alignItems="center" flexWrap="wrap">
-                        {item.technology.map((elem) => (
-                            <ImgContainer key={elem.src}>
+                        {item.technology.map((elem, index) => (
+                            <ImgContainer key={index}>
                                 <Img src={elem.src} />
                             </ImgContainer>
                         ))}
