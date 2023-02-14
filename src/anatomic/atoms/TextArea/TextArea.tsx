@@ -30,7 +30,7 @@ export const TextArea: FC<Props> = ({
             <FlexRow gap="4px">
                 <Text
                     weight={TEXT_WEIGHTS.bold}
-                    size={TEXT_SIZES.xxs}
+                    size={TEXT_SIZES.xs}
                     color={COLORS.black}
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"

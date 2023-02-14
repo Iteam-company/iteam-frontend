@@ -1,4 +1,4 @@
-import { FlexRow } from "@/anatomic/atoms/Flex";
+import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Footer } from "@/anatomic/organisms/Footer";
 import { Header } from "@/anatomic/organisms/Header";
 import React, { FC, ReactNode } from "react";
@@ -14,9 +14,13 @@ export const Layout: FC<Props> = ({ children }) => {
         <StyledLayout className="layout">
             <Header />
             <main>
-                <FlexRow w="100%" justifyContent="center">
+                <FlexColumn
+                    w="100%"
+                    alignItems="center"
+                    justifyContent="center"
+                >
                     {children}
-                </FlexRow>
+                </FlexColumn>
             </main>
             <ButtonUp />
             <Footer />

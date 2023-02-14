@@ -28,7 +28,7 @@ export const Input: FC<Props> = ({
             <FlexRow gap="4px">
                 <Text
                     weight={TEXT_WEIGHTS.bold}
-                    size={TEXT_SIZES.xxs}
+                    size={TEXT_SIZES.xs}
                     color={COLORS.text}
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
@@ -49,7 +49,7 @@ export const Input: FC<Props> = ({
                     validate={validate}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
+            {error && <Text size={TEXT_SIZES.xs}>{error}</Text>}
         </FlexColumn>
     );
 };

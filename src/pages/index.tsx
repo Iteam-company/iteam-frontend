@@ -2,12 +2,23 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text } from "@/anatomic/atoms/Text";
 import { TEXT_SIZES, TEXT_TYPES } from "@/anatomic/atoms/Text/util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
+import { Bunner } from "@/anatomic/molecules/Banner";
+import { COLORS } from "@/lib/theme/color";
 
 const Home = () => {
     return (
-        <Adaptive>
-            <FlexColumn>
-                {/* <Grid
+        <>
+            <FlexColumn
+                alignItems="center"
+                w="100%"
+                h="calc(100vh - 70px)"
+                bg="#F2F4F7"
+            >
+                <Bunner />
+            </FlexColumn>
+            <Adaptive>
+                <FlexColumn>
+                    {/* <Grid
                 mobileColumnsCount="1"
                 tabletColumnsCount="2"
                 desktopColumnsCount="7"
@@ -41,7 +52,7 @@ const Home = () => {
                     </Text>
                 </GridItem>
             </Grid> */}
-                {/* <GridWithTemplate
+                    {/* <GridWithTemplate
                 mobileColumnsCount="1"
                 tabletColumnsCount="2"
                 desktopColumnsCount="3"
@@ -66,38 +77,44 @@ const Home = () => {
                     </Text>
                 </GridItemArea>
             </GridWithTemplate> */}
-                <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
-                    Beatae impedit reiciendis facilis quisquam repellat id minus
-                    voluptatum! Error soluta id maxime cumque, obcaecati earum
-                    veritatis ipsa doloribus quasi delectus perferendis.
-                </Text>
-                <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
-                    Beatae impedit reiciendis facilis quisquam repellat id minus
-                    voluptatum! Error soluta id maxime cumque, obcaecati earum
-                    veritatis ipsa doloribus quasi delectus perferendis.
-                </Text>
-                <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
-                    Beatae impedit reiciendis facilis quisquam repellat id minus
-                    voluptatum! Error soluta id maxime cumque, obcaecati earum
-                    veritatis ipsa doloribus quasi delectus perferendis.
-                </Text>
-                <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.s
-                    Beatae impedit reiciendis facilis quisquam repellat id minus
-                    voluptatum! Error soluta id maxime cumque, obcaecati earum
-                    veritatis ipsa doloribus quasi delectus perferendis.
-                </Text>
-                <Text type={TEXT_TYPES.text} color="green">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Beatae impedit reiciendis facilis quisquam repellat id minus
-                    voluptatum! Error soluta id maxime cumque, obcaecati earum
-                    veritatis ipsa doloribus quasi delectus perferendis.
-                </Text>
-            </FlexColumn>
-        </Adaptive>
+                    <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.s Beatae impedit reiciendis facilis quisquam
+                        repellat id minus voluptatum! Error soluta id maxime
+                        cumque, obcaecati earum veritatis ipsa doloribus quasi
+                        delectus perferendis.
+                    </Text>
+                    <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.s Beatae impedit reiciendis facilis quisquam
+                        repellat id minus voluptatum! Error soluta id maxime
+                        cumque, obcaecati earum veritatis ipsa doloribus quasi
+                        delectus perferendis.
+                    </Text>
+                    <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.s Beatae impedit reiciendis facilis quisquam
+                        repellat id minus voluptatum! Error soluta id maxime
+                        cumque, obcaecati earum veritatis ipsa doloribus quasi
+                        delectus perferendis.
+                    </Text>
+                    <Text type={TEXT_TYPES.title} size={TEXT_SIZES.xxl}>
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.s Beatae impedit reiciendis facilis quisquam
+                        repellat id minus voluptatum! Error soluta id maxime
+                        cumque, obcaecati earum veritatis ipsa doloribus quasi
+                        delectus perferendis.
+                    </Text>
+                    <Text type={TEXT_TYPES.text} color="green">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit. Beatae impedit reiciendis facilis quisquam
+                        repellat id minus voluptatum! Error soluta id maxime
+                        cumque, obcaecati earum veritatis ipsa doloribus quasi
+                        delectus perferendis.
+                    </Text>
+                </FlexColumn>
+            </Adaptive>
+        </>
     );
 };
 

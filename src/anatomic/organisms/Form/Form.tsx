@@ -104,7 +104,7 @@ export const FormElem = () => {
                             <Button
                                 type="submit"
                                 variant={BUTTON_VARIANTS.color}
-                                color="black"
+                                color={COLORS.black}
                                 label={
                                     <Text
                                         size={TEXT_SIZES.xs}

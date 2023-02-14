@@ -14,7 +14,7 @@ import { Adaptive } from "@/anatomic/molecules/Adaptive";
 export const Footer = () => {
     return (
         <footer>
-            <FlexRow justifyContent="center" bg={COLORS.black} p="60px 0">
+            <FlexRow justifyContent="center" bg={COLORS.black} p="45px 0">
                 <Adaptive
                     justifyContent="space-between"
                     flexWrap="wrap"
