@@ -10,14 +10,18 @@ export const CardElem: FC<{ index: number; children: ReactNode }> = ({
     const container = useRef(null);
     const isInView = useInView(container, { once: true });
     return (
-        <Card
-            as={isInView ? motion.div : ""}
-            animate={{ x: index % 2 == 0 ? [-500, 0] : [500, 0] }}
-            transition={{ duration: 0.7 }}
-            ref={container}
-        >
-            {children}
-        </Card>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 0, 1] }}>
+            <Card
+                as={isInView ? motion.div : ""}
+                animate={{
+                    x: index % 2 == 0 ? ["-500px", "0px"] : ["500px", "0px"],
+                }}
+                transition={{ duration: 0.7 }}
+                ref={container}
+            >
+                {children}
+            </Card>
+        </motion.div>
     );
 };
 const Card = styled(FlexColumn)`

@@ -2,219 +2,102 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-
 import styled from "styled-components";
-import AvatarIcon from "@/assets/team/avatar.jpeg";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { COLORS } from "@/lib/theme/color";
-import IgorComment1 from "@/assets/team/igor/comment_1.png";
-import IgorComment2 from "@/assets/team/igor/comment_2.png";
-import IgorComment3 from "@/assets/team/igor/comment_3.png";
 import { FitToViewport } from "react-fit-to-viewport";
-
-import JavascriptIcon from "@/assets/icon/javascript.png";
-import TypescriptIcon from "@/assets/icon/typescript.png";
-import ReduxIcon from "@/assets/icon/redux.png";
-import ReactIcon from "@/assets/icon/react.png";
-import NestIcon from "@/assets/icon/nest-js.svg";
-import NodeIcon from "@/assets/icon/node-js.png";
-import MongoIcon from "@/assets/icon/mongo.png";
-import PostgressIcon from "@/assets/icon/postgress.png";
-import MobXIcon from "@/assets/icon/mobx.png";
-import RxJsIcon from "@/assets/icon/rxjs.png";
-import ExpressjsIcon from "@/assets/icon/expressjs.png";
-import FirebaseIcon from "@/assets/icon/firebase.png";
 import { CardElem } from "@/anatomic/molecules/TeamItemCard/TeamItemCard";
+import { TeamInterface } from "./api/team";
+import { useCallback, useEffect, useState } from "react";
+import client from "@/axios";
 
-const DATA = [
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        name: "Igor Sergienko",
-        avatar: AvatarIcon,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-];
 const Team = () => {
+    const [team, setTeam] = useState<TeamInterface[]>([]);
+
+    const getTeam = useCallback(async () => {
+        try {
+            const { data } = await client.get("/api/team");
+            setTeam(data);
+        } catch (err) {
+            console.log(err);
+        }
+    }, []);
+
+    useEffect(() => {
+        getTeam();
+    }, []);
+
     return (
         <FlexColumn
             gap="100px"
             w="100%"
+            h="100vh"
             alignItems="center"
             p="50px 0"
             bg="#f4f6f8"
+            style={{ overflow: "hidden" }}
         >
-            {DATA.map((item, index) => (
-                <CardElem index={index} key={index}>
-                    <Row gap="20px">
-                        <Avatar image={item.avatar.src} />
-                        <FlexColumn gap="10px">
-                            <Text
-                                weight={TEXT_WEIGHTS.medium}
-                                color={COLORS.black}
-                                size={TEXT_SIZES.m}
+            {team &&
+                team.map((item, index) => (
+                    <CardElem index={index} key={index}>
+                        <Row gap="20px">
+                            <Avatar image={item.avatar.src} />
+                            <FlexColumn gap="10px">
+                                <Text
+                                    weight={TEXT_WEIGHTS.medium}
+                                    color={COLORS.black}
+                                    size={TEXT_SIZES.m}
+                                >
+                                    {item.name}
+                                </Text>
+                                <Text size={TEXT_SIZES.xs}>
+                                    {item.position}
+                                </Text>
+                            </FlexColumn>
+                        </Row>
+                        <FlexColumn w="100%" justifyContent="center">
+                            <StyledSwiper
+                                direction="vertical"
+                                navigation={true}
+                                scrollbar={{ draggable: true }}
+                                modules={[
+                                    Navigation,
+                                    Pagination,
+                                    Mousewheel,
+                                    Keyboard,
+                                ]}
+                                className="mySwiper"
                             >
-                                {item.name}
-                            </Text>
-                            <Text size={TEXT_SIZES.xs}>{item.position}</Text>
+                                {item.comments.map((elem, index) => (
+                                    <SwiperSlide className="slide" key={index}>
+                                        <FitToViewport
+                                            style={{
+                                                height: "100%",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                            }}
+                                            width={750}
+                                            height={0}
+                                            minZoom={0}
+                                            maxZoom={1}
+                                        >
+                                            <SlideImg src={elem.src} />
+                                        </FitToViewport>
+                                    </SwiperSlide>
+                                ))}
+                            </StyledSwiper>
                         </FlexColumn>
-                    </Row>
-                    <FlexColumn w="100%" justifyContent="center">
-                        <StyledSwiper
-                            direction="vertical"
-                            navigation={true}
-                            scrollbar={{ draggable: true }}
-                            modules={[
-                                Navigation,
-                                Pagination,
-                                Mousewheel,
-                                Keyboard,
-                            ]}
-                            className="mySwiper"
-                        >
-                            {item.comments.map((elem, index) => (
-                                <SwiperSlide className="slide" key={index}>
-                                    <FitToViewport
-                                        style={{
-                                            height: "100%",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                        }}
-                                        width={750}
-                                        height={0}
-                                        minZoom={0}
-                                        maxZoom={1}
-                                    >
-                                        <SlideImg src={elem.src} />
-                                    </FitToViewport>
-                                </SwiperSlide>
+                        <FlexRow gap="20px" alignItems="center" flexWrap="wrap">
+                            {item.technology.map((elem, index) => (
+                                <ImgContainer key={index}>
+                                    <Img src={elem.src} />
+                                </ImgContainer>
                             ))}
-                        </StyledSwiper>
-                    </FlexColumn>
-                    <FlexRow gap="20px" alignItems="center" flexWrap="wrap">
-                        {item.technology.map((elem, index) => (
-                            <ImgContainer key={index}>
-                                <Img src={elem.src} />
-                            </ImgContainer>
-                        ))}
-                    </FlexRow>
-                </CardElem>
-            ))}
+                        </FlexRow>
+                    </CardElem>
+                ))}
         </FlexColumn>
     );
 };
@@ -254,7 +137,10 @@ const StyledSwiper = styled(Swiper)`
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: calc(100vw - 80px);
+        max-width: 750px;
+        @media screen and (max-width: 600px) {
+            max-width: calc(100vw - 80px);
+        }
     }
 
     .swiper-button-next,
