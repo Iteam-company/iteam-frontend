@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next/types";
-
+import AngularIcon from "@/assets/icon/angular.png";
 import JavascriptIcon from "@/assets/icon/javascript.png";
 import TypescriptIcon from "@/assets/icon/typescript.png";
 import ReduxIcon from "@/assets/icon/redux.png";
@@ -30,23 +30,19 @@ export interface TeamInterface {
 
 const TEAM = [
     {
-        name: "Igor Sergienko",
+        name: "Vitaliy Kachan",
         avatar: AvatarIcon,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [
+            AngularIcon,
             JavascriptIcon,
             TypescriptIcon,
             ReduxIcon,
-            ReactIcon,
-            NestIcon,
             NodeIcon,
             MongoIcon,
             PostgressIcon,
-            MobXIcon,
             RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
         ],
     },
     {
