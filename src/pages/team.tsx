@@ -1,16 +1,13 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Keyboard, Mousewheel, Navigation, Pagination } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
 import styled from "styled-components";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { COLORS } from "@/lib/theme/color";
-import { FitToViewport } from "react-fit-to-viewport";
 import { CardElem } from "@/anatomic/molecules/TeamItemCard/TeamItemCard";
 import { TeamInterface } from "./api/team";
 import { useCallback, useEffect, useState } from "react";
 import client from "@/axios";
+import { SwiperElem } from "@/anatomic/molecules/Swiper/Swiper";
+import { ParticlesElem } from "@/anatomic/molecules/Particles";
 
 const Team = () => {
     const [team, setTeam] = useState<TeamInterface[]>([]);
@@ -30,18 +27,20 @@ const Team = () => {
 
     return (
         <FlexColumn
-            gap="100px"
-            w="100%"
-            h="100vh"
-            alignItems="center"
-            p="50px 0"
+            gap="50px"
             bg="#f4f6f8"
+            w="100%"
+            mh="100vh"
+            h="auto"
+            alignItems="center"
+            p="20px 0"
             style={{ overflow: "hidden" }}
         >
+            <ParticlesElem />
             {team &&
                 team.map((item, index) => (
                     <CardElem index={index} key={index}>
-                        <Row gap="20px">
+                        <FlexRow gap="20px">
                             <Avatar image={item.avatar.src} />
                             <FlexColumn gap="10px">
                                 <Text
@@ -55,39 +54,9 @@ const Team = () => {
                                     {item.position}
                                 </Text>
                             </FlexColumn>
-                        </Row>
+                        </FlexRow>
                         <FlexColumn w="100%" justifyContent="center">
-                            <StyledSwiper
-                                direction="vertical"
-                                navigation={true}
-                                scrollbar={{ draggable: true }}
-                                modules={[
-                                    Navigation,
-                                    Pagination,
-                                    Mousewheel,
-                                    Keyboard,
-                                ]}
-                                className="mySwiper"
-                            >
-                                {item.comments.map((elem, index) => (
-                                    <SwiperSlide className="slide" key={index}>
-                                        <FitToViewport
-                                            style={{
-                                                height: "100%",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                            }}
-                                            width={750}
-                                            height={0}
-                                            minZoom={0}
-                                            maxZoom={1}
-                                        >
-                                            <SlideImg src={elem.src} />
-                                        </FitToViewport>
-                                    </SwiperSlide>
-                                ))}
-                            </StyledSwiper>
+                            <SwiperElem sliders={item.comments} />
                         </FlexColumn>
                         <FlexRow gap="20px" alignItems="center" flexWrap="wrap">
                             {item.technology.map((elem, index) => (
@@ -104,8 +73,6 @@ const Team = () => {
 
 export default Team;
 
-const Row = styled(FlexRow)``;
-
 const ImgContainer = styled.div`
     padding: 5px;
     display: flex;
@@ -116,10 +83,6 @@ const Img = styled.img`
     height: 25px;
 `;
 
-const SlideImg = styled.img`
-    z-index: 100;
-`;
-
 const Avatar = styled.div<{ image: string }>`
     height: 60px;
     width: 60px;
@@ -127,40 +90,4 @@ const Avatar = styled.div<{ image: string }>`
     background: transparent no-repeat center;
     background-size: cover;
     background-image: url(${({ image }) => image});
-`;
-
-const StyledSwiper = styled(Swiper)`
-    max-height: 200px;
-    margin: 0;
-
-    .slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 750px;
-        @media screen and (max-width: 600px) {
-            max-width: calc(100vw - 80px);
-        }
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        left: 50%;
-        transform: rotate(90deg);
-        transform-origin: left center;
-    }
-    .swiper-button-next {
-        ::after {
-            font-size: 18px;
-        }
-        color: ${COLORS.black};
-        top: 175px;
-    }
-    .swiper-button-prev {
-        ::after {
-            font-size: 18px;
-        }
-        color: ${COLORS.black};
-        top: 0;
-    }
 `;

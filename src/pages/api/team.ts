@@ -53,7 +53,14 @@ const TEAM = [
         name: "Igor Sergienko",
         avatar: AvatarIcon,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
+        comments: [
+            IgorComment1,
+            IgorComment2,
+            IgorComment3,
+            IgorComment1,
+            IgorComment2,
+            IgorComment3,
+        ],
         technology: [
             JavascriptIcon,
             TypescriptIcon,

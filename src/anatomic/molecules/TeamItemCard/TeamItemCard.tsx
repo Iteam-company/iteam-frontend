@@ -9,15 +9,19 @@ export const CardElem: FC<{ index: number; children: ReactNode }> = ({
 }) => {
     const container = useRef(null);
     const isInView = useInView(container, { once: true });
+
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 0, 1] }}>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 0, 1] }}
+            ref={container}
+        >
             <Card
-                as={isInView ? motion.div : ""}
+                as={isInView ? motion.div : FlexColumn}
                 animate={{
                     x: index % 2 == 0 ? ["-500px", "0px"] : ["500px", "0px"],
                 }}
-                transition={{ duration: 0.7 }}
-                ref={container}
+                transition={{ duration: 1 }}
             >
                 {children}
             </Card>
@@ -25,8 +29,10 @@ export const CardElem: FC<{ index: number; children: ReactNode }> = ({
     );
 };
 const Card = styled(FlexColumn)`
-    padding: 20px 40px;
+    padding: 20px 30px;
     border-radius: 5px;
     gap: 20px;
     background-color: white;
+    overflow: hidden;
+    user-select: none;
 `;
