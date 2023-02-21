@@ -30,7 +30,7 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                 <Logo />
                 <FlexRow
                     justifyContent="space-evenly"
-                    gap="50px"
+                    gap="40px"
                     alignItems="center"
                 >
                     {NAV_LINKS.map((item) =>

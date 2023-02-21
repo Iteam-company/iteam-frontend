@@ -8,6 +8,11 @@ import NestIcon from "@/assets/icon/nest-js.svg";
 import NodeIcon from "@/assets/icon/node-js.png";
 import MongoIcon from "@/assets/icon/mongo.png";
 import PostgressIcon from "@/assets/icon/postgress.png";
+import MobXIcon from "@/assets/icon/mobx.png";
+import RxJsIcon from "@/assets/icon/rxjs.png";
+import ExpressjsIcon from "@/assets/icon/expressjs.png";
+import FirebaseIcon from "@/assets/icon/firebase.png";
+
 import { StaticImageData } from "next/image";
 
 export interface InfoInterface {
@@ -55,6 +60,18 @@ const INFO = [
                 icon: ReduxIcon,
                 href: "https://redux.js.org/",
             },
+            {
+                title: "MobX",
+                description: "Simple, scalable state management",
+                icon: MobXIcon,
+                href: "https://mobx.js.org/",
+            },
+            {
+                title: "RxJS",
+                description: "Reactive Extensions Library for JavaScript",
+                icon: RxJsIcon,
+                href: "https://rxjs.dev/",
+            },
         ],
     },
     {
@@ -72,6 +89,12 @@ const INFO = [
                 icon: NodeIcon,
                 href: "https://nodejs.org/en/",
             },
+            {
+                title: "Express",
+                description: "Web framework for Node.js",
+                icon: ExpressjsIcon,
+                href: "https://expressjs.com/",
+            },
         ],
     },
     {
@@ -88,6 +111,12 @@ const INFO = [
                 description: "Document-oriented database program",
                 icon: MongoIcon,
                 href: "https://www.mongodb.com/cloud/atlas/lp/try2-de?utm_source=google&utm_campaign=gs_emea_germany_search_core_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624524&adgroup=115749704783&gclid=Cj0KCQiA47GNBhDrARIsAKfZ2rC9I0_UaytqmqRuy2o-9yAcgyhnirhtMvNJFvUJzBmbNv1sKOtWhbgaAo0CEALw_wcB/",
+            },
+            {
+                title: "Firebase",
+                description: "Firebase is a Backend-as-a-Service (Baas)",
+                icon: FirebaseIcon,
+                href: "https://firebase.google.com/",
             },
         ],
     },

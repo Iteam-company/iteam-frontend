@@ -1,7 +1,15 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { TEXT_TYPES, Text } from "@/anatomic/atoms/Text";
+import { Link } from "@/anatomic/atoms/Link";
+import {
+    TEXT_TYPES,
+    Text,
+    TEXT_WEIGHTS,
+    TEXT_SIZES,
+} from "@/anatomic/atoms/Text";
 import { TextTyping } from "@/anatomic/atoms/TextTyping";
+import { COLORS } from "@/lib/theme/color";
 import React from "react";
+import styled from "styled-components";
 import {
     Block,
     Box,
@@ -17,6 +25,8 @@ export const Bunner = () => {
     return (
         <FlexColumn
             justifyContent="center"
+            alignItems="center"
+            gap="100px"
             h="100%"
             w="100%"
             position="relative"
@@ -67,6 +77,24 @@ export const Bunner = () => {
                     </Container>
                 </Typewriter>
             </GridLineH>
+
+            <Button>
+                <Link
+                    href="/team"
+                    weight={TEXT_WEIGHTS.bold}
+                    color={COLORS.black}
+                    textTransform="uppercase"
+                    linkText="A Sky Full Of Stars"
+                    size={TEXT_SIZES.m}
+                />
+            </Button>
         </FlexColumn>
     );
 };
+const Button = styled.button`
+    z-index: 1;
+    border: 2px solid ${COLORS.black};
+    padding: 18px 24px;
+    background-color: transparent;
+    cursor: pointer;
+`;
