@@ -80,6 +80,7 @@ const Team = () => {
                 {team &&
                     team.map((item) => (
                         <CardElem
+                            key={item.id}
                             avatar={item.avatar.src}
                             name={item.name}
                             position={item.position}

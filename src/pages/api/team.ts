@@ -20,6 +20,7 @@ import { StaticImageData } from "next/image";
 import Igor from "@/assets/icon/igor.png";
 
 export interface TeamInterface {
+    id?: number;
     name: string;
     avatar: any;
     position: string;
@@ -30,6 +31,7 @@ export interface TeamInterface {
 
 const TEAM = [
     {
+        id: 1,
         period: "2019",
         name: "Vitaliy Kachan",
         avatar: Igor,
@@ -47,6 +49,7 @@ const TEAM = [
         ],
     },
     {
+        id: 2,
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
@@ -74,6 +77,7 @@ const TEAM = [
         ],
     },
     {
+        id: 3,
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
@@ -94,6 +98,7 @@ const TEAM = [
         ],
     },
     {
+        id: 4,
         period: "2020",
         name: "Igor Sergienko",
         avatar: Igor,
@@ -115,6 +120,7 @@ const TEAM = [
         ],
     },
     {
+        id: 5,
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
@@ -135,6 +141,7 @@ const TEAM = [
         ],
     },
     {
+        id: 6,
         period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
@@ -156,6 +163,7 @@ const TEAM = [
         ],
     },
     {
+        id: 7,
         period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
@@ -177,6 +185,7 @@ const TEAM = [
         ],
     },
     {
+        id: 8,
         period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
@@ -198,6 +207,7 @@ const TEAM = [
         ],
     },
     {
+        id: 9,
         period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
@@ -219,6 +229,7 @@ const TEAM = [
         ],
     },
     {
+        id: 10,
         period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
