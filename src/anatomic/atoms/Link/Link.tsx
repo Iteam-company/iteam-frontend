@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Text } from "@/anatomic/atoms/Text";
+import { Text, TEXT_TYPES } from "@/anatomic/atoms/Text";
 import { FlexRow } from "../Flex";
 import { StyledLink } from "./styled";
 import { Props } from "./util";
@@ -7,6 +7,7 @@ import { Props } from "./util";
 export const Link: FC<Props> = ({
     href,
     className,
+    textClassName,
     color,
     weight,
     size,
@@ -24,13 +25,18 @@ export const Link: FC<Props> = ({
     linkPosition,
 }) => {
     return (
-        <StyledLink href={href} p={p} linkPosition={linkPosition}>
+        <StyledLink
+            href={href}
+            p={p}
+            linkPosition={linkPosition}
+            className={className}
+        >
             {icon ? (
                 <FlexRow alignItems="center" gap={gap}>
                     {icon}
                     <Text
+                        className={textClassName}
                         size={size}
-                        className={className}
                         color={color}
                         weight={weight}
                         textAlign={textAlign}
@@ -46,8 +52,8 @@ export const Link: FC<Props> = ({
                 </FlexRow>
             ) : (
                 <Text
-                    size={size}
                     className={className}
+                    size={size}
                     color={color}
                     weight={weight}
                     textAlign={textAlign}
@@ -57,6 +63,7 @@ export const Link: FC<Props> = ({
                     whiteSpace={whiteSpace}
                     lineHeight={lineHeight}
                     font={font}
+                    type={TEXT_TYPES.text_block}
                 >
                     {linkText}
                 </Text>

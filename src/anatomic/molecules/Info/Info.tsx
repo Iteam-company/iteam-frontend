@@ -14,9 +14,9 @@ export const Info = () => {
     return (
         <Flex gap="24px" p="24px" w="40%">
             <Text
-                weight={TEXT_WEIGHTS.main}
+                weight={TEXT_WEIGHTS.medium}
                 color={COLORS.text}
-                size={TEXT_SIZES.l}
+                size={TEXT_SIZES.m}
                 lineHeight={LINE_HEIGHT.s}
             >
                 Lets talk
@@ -31,7 +31,7 @@ export const Info = () => {
                         {item.icon}
                         <FlexColumn>
                             <Text
-                                weight={TEXT_WEIGHTS.bold}
+                                weight={TEXT_WEIGHTS.main}
                                 color={COLORS.text}
                             >
                                 {item.title}

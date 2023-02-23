@@ -9,6 +9,7 @@ export interface Props {
     lineHeight?: string;
     color?: COLORS | string;
     className?: string;
+    textClassName?: string;
     w?: string;
     font?: string;
     textAlign?: string;

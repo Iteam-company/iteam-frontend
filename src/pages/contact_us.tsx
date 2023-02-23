@@ -16,7 +16,7 @@ const ContactUs = () => {
 export default ContactUs;
 
 const AdaptiveElem = styled(Adaptive)`
-    padding: 50px 0;
+    padding: 100px 0 50px;
     @media all and (max-width: 885px) {
         flex-direction: column;
     }

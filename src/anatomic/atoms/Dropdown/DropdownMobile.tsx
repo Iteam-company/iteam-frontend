@@ -8,7 +8,7 @@ import {
 } from "../Text";
 import { COLORS } from "@/lib/theme/color";
 import { Container, Title, Icon, Menu, LinkElem } from "./styledMobile";
-import arrowIcon from "@/assets/icon/down-arrow.svg";
+import { IoIosArrowDown } from "react-icons/io";
 
 interface Options {
     option: string;
@@ -28,23 +28,22 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
 
     return (
         <Container>
-            <Title onClick={handleClick}>
+            <Title
+                onClick={handleClick}
+                active={options.find(({ href }) => href === activeRoute)}
+            >
                 <Text
-                    color={
-                        options.find(({ href }) => href === activeRoute)
-                            ? COLORS.activePath
-                            : COLORS.dropdown
-                    }
+                    color={COLORS.white}
                     textTransform="uppercase"
                     lineHeight={LINE_HEIGHT.m}
-                    weight={TEXT_WEIGHTS.bold}
-                    size={TEXT_SIZES.xxs}
+                    weight={TEXT_WEIGHTS.main}
+                    size={TEXT_SIZES.s}
                     letterSpacing={LETTER_SPACING.l}
                 >
                     {title}
                 </Text>
 
-                <Icon src={arrowIcon.src} />
+                <IoIosArrowDown color={COLORS.white} />
             </Title>
             {open && (
                 <Menu>
@@ -54,14 +53,10 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             href={item.href}
                             key={item.href}
                             size={TEXT_SIZES.xxxs}
-                            color={
-                                item.href === activeRoute
-                                    ? COLORS.activePath
-                                    : COLORS.dropdown
-                            }
+                            color={COLORS.white}
                             textTransform="uppercase"
                             linkText={item.option}
-                            weight={TEXT_WEIGHTS.bold}
+                            weight={TEXT_WEIGHTS.main}
                             letterSpacing={LETTER_SPACING.xs}
                             p="7px 15px"
                         />

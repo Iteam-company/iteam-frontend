@@ -11,9 +11,13 @@ export const StyledTextArea = styled(Field)`
     width: 100%;
     min-height: 143px;
     outline: none;
-    font-family: "Nunito", sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 32px;
-    font-size: 16px;
+    font-size: 14px;
+
+    ::placeholder {
+        font-size: 14px;
+    }
 
     :focus-within {
         border: 1px solid ${COLORS.black};

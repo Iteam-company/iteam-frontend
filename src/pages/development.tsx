@@ -33,19 +33,21 @@ const Development = () => {
 
     return (
         <Adaptive type="column">
+            <BgImages />
+
             <FlexRow
                 justifyContent="center"
                 w="100%"
                 alignItems="center"
-                p="60px 0"
+                p="100px 0 120px"
             >
                 <Text
                     textAlign="center"
                     type={TEXT_TYPES.title}
                     color={COLORS.text}
-                    size={TEXT_SIZES.xl}
+                    size={TEXT_SIZES.l}
                     letterSpacing={LETTER_SPACING.s}
-                    weight={TEXT_WEIGHTS.medium}
+                    weight={TEXT_WEIGHTS.main}
                 >
                     Technology we use
                 </Text>
@@ -89,15 +91,15 @@ const Development = () => {
                                         h="100%"
                                     >
                                         <Text
-                                            size={TEXT_SIZES.s}
+                                            size={TEXT_SIZES.xs}
                                             type={TEXT_TYPES.text_block}
-                                            weight={TEXT_WEIGHTS.medium}
+                                            weight={TEXT_WEIGHTS.main}
                                             color={COLORS.text}
                                         >
                                             {elem.title}
                                         </Text>
                                         <Text
-                                            size={TEXT_SIZES.xs}
+                                            size={TEXT_SIZES.xxs}
                                             type={TEXT_TYPES.text_block}
                                         >
                                             {elem.description}
@@ -142,3 +144,4 @@ export const GridElem = styled(Grid)`
     width: 100%;
     align-items: start;
 `;
+const BgImages = styled.div``;

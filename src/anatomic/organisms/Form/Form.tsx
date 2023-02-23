@@ -107,7 +107,7 @@ export const FormElem = () => {
                                 color={COLORS.black}
                                 label={
                                     <Text
-                                        size={TEXT_SIZES.xs}
+                                        size={TEXT_SIZES.xxs}
                                         color={COLORS.white}
                                         weight={TEXT_WEIGHTS.medium}
                                         letterSpacing={LETTER_SPACING.s}

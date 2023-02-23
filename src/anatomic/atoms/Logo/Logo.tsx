@@ -1,14 +1,14 @@
-import React from "react";
-import LogoIcon from "@/assets/icon/logo.png";
-import LogoWhiteIcon from "@/assets/icon/logo-white.png";
-import LogoGoldIcon from "@/assets/icon/logo-orange.png";
+import React, { FC } from "react";
 
 import styled from "styled-components";
+import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 
-export const Logo = () => {
-    // return <Icon src={LogoIcon.src} />;
-    // return <Icon src={LogoWhiteIcon.src} />;
-    return <Icon src={LogoGoldIcon.src} />;
+export const Logo: FC<{ color?: string }> = ({ color = "black" }) => {
+    return (
+        <Text size={TEXT_SIZES.s} weight={TEXT_WEIGHTS.main} color={color}>
+            iteam.
+        </Text>
+    );
 };
 const Icon = styled.img`
     height: 40px;

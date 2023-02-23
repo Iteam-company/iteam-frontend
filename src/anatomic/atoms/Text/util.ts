@@ -18,7 +18,7 @@ export interface Props {
 }
 export const enum TEXT_SIZES {
     xxxs = "11px",
-    xxs = "13px",
+    xxs = "14px",
     xs = "16px",
     s = "18px",
     m = "20px",

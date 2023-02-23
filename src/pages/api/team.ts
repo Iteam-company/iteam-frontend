@@ -13,25 +13,26 @@ import RxJsIcon from "@/assets/icon/rxjs.png";
 import ExpressjsIcon from "@/assets/icon/expressjs.png";
 import FirebaseIcon from "@/assets/icon/firebase.png";
 
-import AvatarIcon from "@/assets/team/avatar.jpeg";
-
 import IgorComment1 from "@/assets/team/igor/comment_1.png";
 import IgorComment2 from "@/assets/team/igor/comment_2.png";
 import IgorComment3 from "@/assets/team/igor/comment_3.png";
 import { StaticImageData } from "next/image";
+import Igor from "@/assets/icon/igor.png";
 
 export interface TeamInterface {
     name: string;
-    avatar: StaticImageData;
+    avatar: any;
     position: string;
-    comments: StaticImageData[];
-    technology: StaticImageData[];
+    comments?: StaticImageData[];
+    technology?: StaticImageData[];
+    period?: string;
 }
 
 const TEAM = [
     {
+        period: "2019",
         name: "Vitaliy Kachan",
-        avatar: AvatarIcon,
+        avatar: Igor,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [
@@ -47,7 +48,7 @@ const TEAM = [
     },
     {
         name: "Igor Sergienko",
-        avatar: AvatarIcon,
+        avatar: Igor,
         position: "Full stack",
         comments: [
             IgorComment1,
@@ -74,7 +75,28 @@ const TEAM = [
     },
     {
         name: "Igor Sergienko",
-        avatar: AvatarIcon,
+        avatar: Igor,
+        position: "Full stack",
+        comments: [IgorComment1, IgorComment2, IgorComment3],
+        technology: [
+            JavascriptIcon,
+            TypescriptIcon,
+            ReduxIcon,
+            ReactIcon,
+            NestIcon,
+            NodeIcon,
+            MongoIcon,
+            PostgressIcon,
+            MobXIcon,
+            RxJsIcon,
+            ExpressjsIcon,
+            FirebaseIcon,
+        ],
+    },
+    {
+        period: "2020",
+        name: "Igor Sergienko",
+        avatar: Igor,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [
@@ -94,7 +116,7 @@ const TEAM = [
     },
     {
         name: "Igor Sergienko",
-        avatar: AvatarIcon,
+        avatar: Igor,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [
@@ -113,8 +135,9 @@ const TEAM = [
         ],
     },
     {
+        period: "2021",
         name: "Igor Sergienko",
-        avatar: AvatarIcon,
+        avatar: Igor,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [
@@ -133,8 +156,72 @@ const TEAM = [
         ],
     },
     {
+        period: "2021",
         name: "Igor Sergienko",
-        avatar: AvatarIcon,
+        avatar: Igor,
+        position: "Full stack",
+        comments: [IgorComment1, IgorComment2, IgorComment3],
+        technology: [
+            JavascriptIcon,
+            TypescriptIcon,
+            ReduxIcon,
+            ReactIcon,
+            NestIcon,
+            NodeIcon,
+            MongoIcon,
+            PostgressIcon,
+            MobXIcon,
+            RxJsIcon,
+            ExpressjsIcon,
+            FirebaseIcon,
+        ],
+    },
+    {
+        period: "2021",
+        name: "Igor Sergienko",
+        avatar: Igor,
+        position: "Full stack",
+        comments: [IgorComment1, IgorComment2, IgorComment3],
+        technology: [
+            JavascriptIcon,
+            TypescriptIcon,
+            ReduxIcon,
+            ReactIcon,
+            NestIcon,
+            NodeIcon,
+            MongoIcon,
+            PostgressIcon,
+            MobXIcon,
+            RxJsIcon,
+            ExpressjsIcon,
+            FirebaseIcon,
+        ],
+    },
+    {
+        period: "2021",
+        name: "Igor Sergienko",
+        avatar: Igor,
+        position: "Full stack",
+        comments: [IgorComment1, IgorComment2, IgorComment3],
+        technology: [
+            JavascriptIcon,
+            TypescriptIcon,
+            ReduxIcon,
+            ReactIcon,
+            NestIcon,
+            NodeIcon,
+            MongoIcon,
+            PostgressIcon,
+            MobXIcon,
+            RxJsIcon,
+            ExpressjsIcon,
+            FirebaseIcon,
+        ],
+    },
+    {
+        period: "2021",
+        name: "Igor Sergienko",
+        avatar: Igor,
         position: "Full stack",
         comments: [IgorComment1, IgorComment2, IgorComment3],
         technology: [

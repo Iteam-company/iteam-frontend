@@ -7,12 +7,7 @@ import { Bunner } from "@/anatomic/molecules/Banner";
 const Home = () => {
     return (
         <>
-            <FlexColumn
-                alignItems="center"
-                w="100%"
-                h="calc(100vh - 70px)"
-                bg="#F2F4F7"
-            >
+            <FlexColumn alignItems="center" w="100%" h="calc(100vh - 100px)">
                 <Bunner />
             </FlexColumn>
             <Adaptive>

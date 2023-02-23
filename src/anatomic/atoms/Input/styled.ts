@@ -10,14 +10,14 @@ export const StyledInput = styled(Field)`
     padding: 6px 12px 6px 40px;
     width: 100%;
     outline: none;
-    font-size: 16px;
+    font-size: 14px;
 
     :focus-within {
         border: 1px solid ${COLORS.black};
         transition: border 0.5s;
     }
     ::placeholder {
-        font-size: 16px;
+        font-size: 14px;
     }
 `;
 

@@ -1,9 +1,9 @@
 import { FC } from "react";
 import {
     LETTER_SPACING,
-    LINE_HEIGHT,
     Text,
     TEXT_SIZES,
+    TEXT_TYPES,
     TEXT_WEIGHTS,
 } from "../Text";
 import arrowIcon from "@/assets/icon/down-arrow.svg";
@@ -24,18 +24,12 @@ interface Props {
 export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
     return (
         <Container>
-            <Title>
+            <Title active={options.find(({ href }) => href === activeRoute)}>
                 <Text
-                    color={
-                        options.find(({ href }) => href === activeRoute)
-                            ? COLORS.activePath
-                            : COLORS.dropdown
-                    }
-                    textTransform="uppercase"
-                    lineHeight={LINE_HEIGHT.m}
-                    weight={TEXT_WEIGHTS.bold}
-                    size={TEXT_SIZES.xxs}
-                    letterSpacing={LETTER_SPACING.m}
+                    type={TEXT_TYPES.text_block}
+                    color={COLORS.black}
+                    weight={TEXT_WEIGHTS.main}
+                    size="14px"
                     textAlign="center"
                 >
                     {title}
@@ -49,14 +43,9 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                         p={"10px 20px"}
                         href={item.href}
                         key={item.href}
-                        weight={TEXT_WEIGHTS.bold}
+                        weight={TEXT_WEIGHTS.medium}
                         size={TEXT_SIZES.xxxs}
-                        color={
-                            item.href === activeRoute
-                                ? COLORS.activePath
-                                : COLORS.dropdown
-                        }
-                        textTransform="uppercase"
+                        color={COLORS.dropdown}
                         linkText={item.option}
                         letterSpacing={LETTER_SPACING.xs}
                     />
