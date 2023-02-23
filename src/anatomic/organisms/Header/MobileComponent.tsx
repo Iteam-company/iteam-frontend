@@ -50,9 +50,12 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                 options={item.options}
                             />
                         ) : (
-                            <FlexRow position="relative" alignItems="center">
+                            <FlexRow
+                                position="relative"
+                                alignItems="center"
+                                key={item.id}
+                            >
                                 <LinkElem
-                                    key={item.id}
                                     href={item.href}
                                     linkText={item.title}
                                     color={COLORS.white}

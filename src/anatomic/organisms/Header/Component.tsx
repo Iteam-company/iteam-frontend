@@ -37,10 +37,9 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                 key={item.id}
                             />
                         ) : (
-                            <FlexRow position="relative">
+                            <FlexRow position="relative" key={item.id}>
                                 <LinkElem
                                     textAlign="center"
-                                    key={item.id}
                                     href={item.href}
                                     linkText={item.title}
                                     active={item.href === activeRoute}
