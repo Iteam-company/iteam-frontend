@@ -1,22 +1,36 @@
+import { TEXT_CONTENT } from "@/lib/lang";
+
 export const NAV_LINKS = [
-    { title: "Home", href: "/", id: 0 },
+    { title: TEXT_CONTENT.header.home, href: "/", id: 0 },
     {
-        title: "Compamy",
-        options: [{ option: "Team", href: "/team" }],
+        title: TEXT_CONTENT.header.company.title,
+        options: [{ option: TEXT_CONTENT.header.company.team, href: "/team" }],
         id: 1,
     },
     {
-        title: "Portfolio",
-        options: [{ option: "Projects", href: "/projects" }],
+        title: TEXT_CONTENT.header.portfolio.title,
+        options: [
+            {
+                option: TEXT_CONTENT.header.portfolio.projects,
+                href: "/projects",
+            },
+        ],
         id: 2,
     },
     {
-        title: "Services",
+        title: TEXT_CONTENT.header.service.title,
         options: [
-            { option: "Outsourcing", href: "/outsourcing" },
-            { option: "Outstaffing", href: "/outstaffing" },
+            {
+                option: TEXT_CONTENT.header.service.outsourcing,
+                href: "/outsourcing",
+            },
+            {
+                option: TEXT_CONTENT.header.service.outstaffing,
+                href: "/outstaffing",
+            },
         ],
         id: 3,
     },
-    { title: "Development", href: "/development", id: 4 },
+    { title: TEXT_CONTENT.header.development, href: "/development", id: 4 },
+    { title: TEXT_CONTENT.header.contact_us, href: "/contact_us", id: 5 },
 ];

@@ -1,9 +1,14 @@
+import React from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { TEXT_TYPES, Text } from "@/anatomic/atoms/Text";
+import {
+    LETTER_SPACING,
+    Text,
+    TEXT_SIZES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
+import { TEXT_CONTENT } from "@/lib/lang";
 import { TextTyping } from "@/anatomic/atoms/TextTyping";
 import { COLORS } from "@/lib/theme/color";
-import React from "react";
-import styled from "styled-components";
 import BunnerBg from "@/assets/icon/bunnerBG.svg";
 
 export const Bunner = () => {
@@ -13,45 +18,35 @@ export const Bunner = () => {
             alignItems="center"
             h="100%"
             w="100%"
-            position="relative"
             bg={`url(${BunnerBg.src})`}
+            position="relative"
             bgSize="cover"
         >
             <FlexColumn>
                 <Text
-                    size="50px"
-                    letterSpacing="2px"
-                    color="black"
-                    weight="700"
-                    type={TEXT_TYPES.text_block}
+                    size={TEXT_SIZES.xxxl}
+                    letterSpacing={LETTER_SPACING.xl}
+                    color={COLORS.black}
+                    weight={TEXT_WEIGHTS.bold}
                 >
-                    Here at All Front, we always
+                    {TEXT_CONTENT.bunner.text}
                 </Text>
                 <TextTyping
                     textStyles={{
-                        size: "50px",
-                        letterSpacing: "2px",
-                        color: "#black",
-                        weight: "700",
-                        type: TEXT_TYPES.text_block,
+                        size: TEXT_SIZES.xxxl,
+                        letterSpacing: LETTER_SPACING.xl,
+                        color: COLORS.black,
+                        weight: TEXT_WEIGHTS.bold,
                     }}
                     text={[
-                        "test out work.",
-                        "put your users first.",
-                        "make you feel at easy.",
-                        "deliver on time.",
-                        "strive of simplicity.",
+                        TEXT_CONTENT.bunner.options[0],
+                        TEXT_CONTENT.bunner.options[1],
+                        TEXT_CONTENT.bunner.options[2],
+                        TEXT_CONTENT.bunner.options[3],
+                        TEXT_CONTENT.bunner.options[4],
                     ]}
                 />
             </FlexColumn>
         </FlexColumn>
     );
 };
-
-const Button = styled.button`
-    z-index: 1;
-    border: 2px solid ${COLORS.black};
-    padding: 18px 24px;
-    background-color: transparent;
-    cursor: pointer;
-`;

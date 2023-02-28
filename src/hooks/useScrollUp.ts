@@ -16,8 +16,8 @@ const useScrollUp = ({ useCase = "default" }: Arguments) => {
     }, []);
 
     if (typeof window !== "undefined") {
-        const onScrollTop = (behavior?: ScrollBehavior) =>
-            window.scrollTo({ top: 0, behavior: behavior || "smooth" });
+        const onScrollTop = (behavior?: ScrollBehavior, y = 0) =>
+            window.scrollTo({ top: y, behavior: behavior || "smooth" });
         if (useCase === "button") {
             return { onScrollTop, scroll };
         }

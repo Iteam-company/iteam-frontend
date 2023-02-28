@@ -3,11 +3,12 @@ import { Dropdown } from "@/anatomic/atoms/Dropdown";
 import { FlexRow } from "@/anatomic/atoms/Flex";
 import { Logo } from "@/anatomic/atoms/Logo/Logo";
 import { Link } from "@/anatomic/atoms/Link";
-import { TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import styled from "styled-components";
+import { TEXT_CONTENT } from "@/lib/lang";
 
 export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
     return (
@@ -38,41 +39,43 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                             />
                         ) : (
                             <FlexRow position="relative" key={item.id}>
-                                <LinkElem
-                                    textAlign="center"
-                                    href={item.href}
-                                    linkText={item.title}
-                                    active={item.href === activeRoute}
-                                    color={COLORS.black}
-                                    weight={TEXT_WEIGHTS.main}
-                                    size={"14px"}
-                                />
+                                {item.title !==
+                                TEXT_CONTENT.header.contact_us ? (
+                                    <LinkElem
+                                        textAlign="center"
+                                        href={item.href}
+                                        linkText={item.title}
+                                        active={item.href === activeRoute}
+                                        color={COLORS.black}
+                                        weight={TEXT_WEIGHTS.main}
+                                        size={TEXT_SIZES.xxs}
+                                    />
+                                ) : "/contact_us" === activeRoute ? (
+                                    <FlexRow position="relative">
+                                        <LinkElem
+                                            textAlign="center"
+                                            href={item.href}
+                                            linkText={item.title}
+                                            active={item.href === activeRoute}
+                                            color={COLORS.black}
+                                            weight={TEXT_WEIGHTS.main}
+                                            size={TEXT_SIZES.xxs}
+                                        />
+                                    </FlexRow>
+                                ) : (
+                                    <Button>
+                                        <Link
+                                            textAlign="center"
+                                            href={item.href}
+                                            linkText={item.title}
+                                            color={COLORS.black}
+                                            weight={TEXT_WEIGHTS.main}
+                                            size={TEXT_SIZES.xxs}
+                                        />
+                                    </Button>
+                                )}
                             </FlexRow>
                         ),
-                    )}
-                    {"/contact_us" === activeRoute ? (
-                        <FlexRow position="relative">
-                            <LinkElem
-                                textAlign="center"
-                                href="/contact_us"
-                                linkText="Contact Us"
-                                active={"/contact_us" === activeRoute}
-                                color={COLORS.black}
-                                weight={TEXT_WEIGHTS.main}
-                                size={"14px"}
-                            />
-                        </FlexRow>
-                    ) : (
-                        <Button>
-                            <Link
-                                textAlign="center"
-                                href="/contact_us"
-                                linkText="Contact Us"
-                                color={COLORS.black}
-                                weight={TEXT_WEIGHTS.main}
-                                size="14px"
-                            />
-                        </Button>
                     )}
                 </FlexRow>
             </AdaptiveElem>
@@ -95,7 +98,7 @@ const LinkElem = styled(Link)<{ active: boolean }>`
         position: absolute;
         bottom: -8px;
         width: ${({ active }) => (active ? "100%" : "0")};
-        background-color: #111;
+        background-color: ${COLORS.black};
         height: 2px;
         transition: width 0.5s ease;
         right: 0;
@@ -103,18 +106,18 @@ const LinkElem = styled(Link)<{ active: boolean }>`
 `;
 
 const Button = styled.button`
-    background-color: black;
-    border: 1px solid black;
+    background-color: ${COLORS.black};
+    border: 1px solid ${COLORS.black};
 
     &:hover {
-        background-color: white;
-        border: 1px solid black;
+        background-color: ${COLORS.white};
+        border: 1px solid ${COLORS.black};
         & > * > * {
-            color: black;
+            color: ${COLORS.black};
         }
     }
     & > * > * {
-        color: white;
+        color: ${COLORS.white};
         padding: 12px 38px;
     }
 `;

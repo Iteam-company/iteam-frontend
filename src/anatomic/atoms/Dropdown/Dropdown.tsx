@@ -29,7 +29,7 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                     type={TEXT_TYPES.text_block}
                     color={COLORS.black}
                     weight={TEXT_WEIGHTS.main}
-                    size="14px"
+                    size={TEXT_SIZES.xxs}
                     textAlign="center"
                 >
                     {title}

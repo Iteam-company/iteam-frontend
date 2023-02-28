@@ -1,3 +1,4 @@
+import { TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { Field } from "formik";
 import styled from "styled-components";
@@ -13,10 +14,10 @@ export const StyledTextArea = styled(Field)`
     outline: none;
     font-family: "Poppins", sans-serif;
     line-height: 32px;
-    font-size: 14px;
+    font-size: ${TEXT_SIZES.xxs};
 
     ::placeholder {
-        font-size: 14px;
+        font-size: ${TEXT_SIZES.xxs};
     }
 
     :focus-within {

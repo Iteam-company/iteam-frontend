@@ -1,5 +1,5 @@
 export const enum COLORS {
-    black = "#000000",
+    black = "#150227",
     white = "#ffffff",
     gray = "#8492A6",
     buttonDark = "#222F3E",

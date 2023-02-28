@@ -1,15 +1,12 @@
 import React, { FC } from "react";
-
-import styled from "styled-components";
+import { COLORS } from "@/lib/theme/color";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { TEXT_CONTENT } from "@/lib/lang";
 
-export const Logo: FC<{ color?: string }> = ({ color = "black" }) => {
+export const Logo: FC<{ color?: string }> = ({ color = COLORS.black }) => {
     return (
         <Text size={TEXT_SIZES.s} weight={TEXT_WEIGHTS.main} color={color}>
-            iteam.
+            {TEXT_CONTENT.logo}
         </Text>
     );
 };
-const Icon = styled.img`
-    height: 40px;
-`;
