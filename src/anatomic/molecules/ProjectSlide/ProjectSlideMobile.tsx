@@ -7,6 +7,7 @@ import { COLORS } from "@/lib/theme/color";
 import { FitToViewport } from "react-fit-to-viewport";
 import styled from "styled-components";
 import { iconsMobile } from "./utils";
+import waveBg from "@/assets/projects/wave-bg.svg";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     title,
@@ -24,7 +25,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 gap="20px"
                 w="85vw"
             >
-                <FlexColumn gap="20px" w="100%">
+                <FlexColumn gap="20px" w="100%" bg={waveBg}>
                     <Text
                         color={COLORS.black}
                         size={TEXT_SIZES.m}

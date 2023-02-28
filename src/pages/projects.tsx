@@ -1,53 +1,25 @@
-import React, {
-    createContext,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
-import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
-import Swiper, { A11y, Mousewheel, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Mousewheel, Navigation, Pagination } from "swiper";
 import { ProjectsInterface } from "./api/projects";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
-
 import styled from "styled-components";
 import client from "@/axios";
-import { Text, TEXT_SIZES } from "@/anatomic/atoms/Text";
-import useScrollUp from "@/hooks/useScrollUp";
-import { motion, useInView } from "framer-motion";
-
-interface DataInterface {
-    currentSlide: number;
-    isInView: boolean;
-}
-
-interface ContextDataInterface {
-    data: DataInterface;
-    setData: React.Dispatch<DataInterface> | null;
-}
-
-const initialData = {
-    currentSlide: 0,
-    isInView: false,
-};
-
-export const SliderDataContext = createContext<ContextDataInterface>({
-    data: initialData,
-    setData: null,
-});
+import {
+    LETTER_SPACING,
+    Text,
+    TEXT_SIZES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
+import { COLORS } from "@/lib/theme/color";
 
 const Projects = () => {
     const [project, setProject] = useState<ProjectsInterface[]>([]);
-    const [contextData, setContextData] = useState(initialData);
-    const [swiper, setSwiper] = useState<Swiper | null>(null);
-    const [scrollFromTop, setScrollFromTop] = useState(false);
-
-    const { onScrollTop, scroll } = useScrollUp({ useCase: "button" });
 
     const getProject = useCallback(async () => {
         try {
@@ -59,95 +31,85 @@ const Projects = () => {
     }, []);
 
     useEffect(() => {
-        // const scrollEvent = () => {
-        //     const { currentSlide, isInView } = contextData;
-        //     if (currentSlide === 0 && !isInView && scroll.y === 0) {
-        //         onScrollTop("auto", window.innerHeight - 330);
-        //         console.log("SCROLL", currentSlide === 0 && !isInView);
-        //     }
         getProject();
-        // };
-        // document.addEventListener("scroll", scrollEvent);
-        // return () => {
-        //     document.removeEventListener("scroll", scrollEvent);
-        // };
     }, []);
 
-    useEffect(() => {
-        if (swiper) {
-            setContextData((prev) => ({
-                ...prev,
-                currentSlide: swiper.activeIndex,
-            }));
-        }
-    }, [swiper]);
-
     return (
-        <FlexColumn
+        <Container
             mw="100%"
             justifyContent="center"
             alignItems="center"
-            style={{ overflow: "hidden" }}
+            style={{
+                paddingBottom: "100px",
+            }}
         >
-            <Text size={TEXT_SIZES.xxxl}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est
-                iusto aperiam impedit necessitatibus, sunt qui labore
-                consectetur, facere explicabo cumque officia laudantium
-                distinctio in repellat fuga nihil non accusamus ducimus!
-            </Text>
-            <SliderDataContext.Provider
-                value={{ data: contextData, setData: setContextData }}
+            <FlexColumn
+                h="50vh"
+                justifyContent="center"
+                alignItems="start"
+                style={{
+                    maxWidth: "1000px",
+                }}
             >
-                <StyledSwiper
-                    // onSwiper={setSwiper as any}
-                    style={{
-                        height: "calc(100vh - 100px)",
-                        width: "100vw",
-                    }}
-                    edgeSwipeDetection={true}
-                    direction="vertical"
-                    modules={[Mousewheel, Navigation, Pagination, A11y]}
-                    pagination={{ clickable: true }}
-                    mousewheel={{
-                        forceToAxis: true,
-                        sensitivity: 1,
-                        releaseOnEdges: true,
-                    }}
+                <Text
+                    size={TEXT_SIZES.xxxs}
+                    letterSpacing={LETTER_SPACING.s}
+                    weight={TEXT_WEIGHTS.medium}
                 >
-                    {project &&
-                        project.map((item, index) => (
-                            <SwiperSlide
-                                key={item.id}
-                                style={{
-                                    width: "100vw",
-                                }}
-                            >
-                                <Slide
-                                    title={item.title}
-                                    description={item.description}
-                                    location={item.location}
-                                    budget={item.budget}
-                                    tech={item.tech}
-                                    img={item.img}
-                                    color={item.color}
-                                />
-                            </SwiperSlide>
-                        ))}
-                </StyledSwiper>
-            </SliderDataContext.Provider>
-        </FlexColumn>
+                    OUR WORK
+                </Text>
+                <Text
+                    size={TEXT_SIZES.xxxl}
+                    color={COLORS.black}
+                    weight={TEXT_WEIGHTS.medium}
+                >
+                    Creating digital products your clients fall in love with.
+                </Text>
+            </FlexColumn>
+            <StyledSwiper
+                style={{
+                    height: "calc(81vh)",
+                    width: "100vw",
+                    padding: "5px 0",
+                }}
+                spaceBetween={50}
+                edgeSwipeDetection={true}
+                direction="vertical"
+                modules={[Mousewheel, Navigation, Pagination, A11y]}
+                pagination={{ clickable: true }}
+                mousewheel={{
+                    forceToAxis: true,
+                    sensitivity: 1,
+                    releaseOnEdges: true,
+                }}
+            >
+                {project &&
+                    project.map((item, index) => (
+                        <SwiperSlide
+                            key={item.id}
+                            style={{
+                                width: "100vw",
+                            }}
+                        >
+                            <Slide
+                                title={item.title}
+                                description={item.description}
+                                location={item.location}
+                                budget={item.budget}
+                                tech={item.tech}
+                                img={item.img}
+                                color={item.color}
+                            />
+                        </SwiperSlide>
+                    ))}
+            </StyledSwiper>
+        </Container>
     );
 };
 
 export default Projects;
 
-const Divider = styled.div`
-    height: 1px;
-    width: 100%;
-    background-color: red;
-`;
-
-const StyledSwiper = styled(SwiperComponent)`
+const StyledSwiper = styled(Swiper)`
     .swiper-pagination-vertical {
         left: 7%;
         right: auto;
@@ -163,4 +125,7 @@ const StyledSwiper = styled(SwiperComponent)`
             background-color: black;
         }
     }
+`;
+const Container = styled(FlexColumn)`
+    overflow: hidden;
 `;

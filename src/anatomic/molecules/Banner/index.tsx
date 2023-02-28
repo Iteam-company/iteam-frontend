@@ -1,1 +1,1 @@
-export { Bunner } from "./Bunner";
+export { Banner } from "./Banner";

@@ -3,9 +3,7 @@ import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { ProjectsInterface, Technologies } from "@/pages/api/projects";
-import { SliderDataContext } from "@/pages/projects";
-import { useInView } from "framer-motion";
-import React, { FC, useContext, useEffect, useRef } from "react";
+import React, { FC } from "react";
 import { FitToViewport } from "react-fit-to-viewport";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
@@ -21,15 +19,6 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     img,
     color,
 }) => {
-    const { data, setData } = useContext(SliderDataContext);
-
-    const buttonRef = useRef(null);
-    const isButtonInView = useInView(buttonRef);
-
-    useEffect(() => {
-        setData!({ ...data, isInView: isButtonInView });
-    }, [isButtonInView]);
-
     return (
         <>
             <FlexRow
@@ -123,7 +112,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
             </FlexRow>
 
             <FlexRow justifyContent="center" alignItems="center" w="100%">
-                <Button ref={buttonRef} href="/" color={color}>
+                <Button href="/" color={color}>
                     <ButtonContent justifyContent="center" alignItems="center">
                         <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
                             View Case

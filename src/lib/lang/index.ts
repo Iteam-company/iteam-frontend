@@ -12,7 +12,7 @@ export const TEXT_CONTENT = {
         development: "Development",
         contact_us: "Contact Us",
     },
-    bunner: {
+    banner: {
         text: "Here at All Front, we always",
         options: [
             "test out work.",

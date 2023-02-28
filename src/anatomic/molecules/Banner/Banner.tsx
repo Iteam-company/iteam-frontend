@@ -9,16 +9,16 @@ import {
 import { TEXT_CONTENT } from "@/lib/lang";
 import { TextTyping } from "@/anatomic/atoms/TextTyping";
 import { COLORS } from "@/lib/theme/color";
-import BunnerBg from "@/assets/icon/bunnerBG.svg";
+import BannerBg from "@/assets/icon/bannerBG.svg";
 
-export const Bunner = () => {
+export const Banner = () => {
     return (
         <FlexColumn
             justifyContent="center"
             alignItems="center"
             h="100%"
             w="100%"
-            bg={`url(${BunnerBg.src})`}
+            bg={`url(${BannerBg.src})`}
             position="relative"
             bgSize="cover"
         >
@@ -29,7 +29,7 @@ export const Bunner = () => {
                     color={COLORS.black}
                     weight={TEXT_WEIGHTS.bold}
                 >
-                    {TEXT_CONTENT.bunner.text}
+                    {TEXT_CONTENT.banner.text}
                 </Text>
                 <TextTyping
                     textStyles={{
@@ -39,11 +39,11 @@ export const Bunner = () => {
                         weight: TEXT_WEIGHTS.bold,
                     }}
                     text={[
-                        TEXT_CONTENT.bunner.options[0],
-                        TEXT_CONTENT.bunner.options[1],
-                        TEXT_CONTENT.bunner.options[2],
-                        TEXT_CONTENT.bunner.options[3],
-                        TEXT_CONTENT.bunner.options[4],
+                        TEXT_CONTENT.banner.options[0],
+                        TEXT_CONTENT.banner.options[1],
+                        TEXT_CONTENT.banner.options[2],
+                        TEXT_CONTENT.banner.options[3],
+                        TEXT_CONTENT.banner.options[4],
                     ]}
                 />
             </FlexColumn>
