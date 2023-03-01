@@ -71,12 +71,9 @@ const Projects = () => {
                     Creating digital products your clients fall in love with.
                 </Text>
             </FlexColumn>
-            <Divider ref={firstRef} />
-            <StyledSwiper
-                onScroll={(e) => {
-                    if (isFirstInView && isSecondInView) {
-                        e.allowSlideNext = true;
-                    } else {
+            <div
+                onScroll={() => {
+                    if (!isFirstInView && !isSecondInView) {
                         window.scrollTo({
                             top: 500,
                             left: 0,
@@ -84,43 +81,58 @@ const Projects = () => {
                         });
                     }
                 }}
-                style={{
-                    height: "calc(81vh)",
-                    width: "100vw",
-                    padding: "5px 0",
-                }}
-                allowSlideNext={false}
-                effect="cards"
-                spaceBetween={50}
-                direction="vertical"
-                modules={[Mousewheel, Navigation, Pagination, A11y]}
-                pagination={{ clickable: true }}
-                mousewheel={{
-                    forceToAxis: true,
-                    sensitivity: 1,
-                    releaseOnEdges: true,
-                }}
             >
-                {project &&
-                    project.map((item, index) => (
-                        <SwiperSlide
-                            key={item.id}
-                            style={{
-                                width: "100vw",
-                            }}
-                        >
-                            <Slide
-                                title={item.title}
-                                description={item.description}
-                                location={item.location}
-                                budget={item.budget}
-                                tech={item.tech}
-                                img={item.img}
-                                color={item.color}
-                            />
-                        </SwiperSlide>
-                    ))}
-            </StyledSwiper>
+                <Divider ref={firstRef} />
+                <StyledSwiper
+                    // onScroll={(e) => {
+                    //     if (isFirstInView && isSecondInView) {
+                    //         e.allowSlideNext = true;
+                    //     } else {
+                    //         window.scrollTo({
+                    //             top: 500,
+                    //             left: 0,
+                    //             behavior: "smooth",
+                    //         });
+                    //     }
+                    // }}
+                    style={{
+                        height: "calc(81vh)",
+                        width: "100vw",
+                        padding: "5px 0",
+                    }}
+                    allowSlideNext={false}
+                    effect="cards"
+                    spaceBetween={50}
+                    direction="vertical"
+                    modules={[Mousewheel, Navigation, Pagination, A11y]}
+                    pagination={{ clickable: true }}
+                    mousewheel={{
+                        forceToAxis: true,
+                        sensitivity: 1,
+                        releaseOnEdges: true,
+                    }}
+                >
+                    {project &&
+                        project.map((item, index) => (
+                            <SwiperSlide
+                                key={item.id}
+                                style={{
+                                    width: "100vw",
+                                }}
+                            >
+                                <Slide
+                                    title={item.title}
+                                    description={item.description}
+                                    location={item.location}
+                                    budget={item.budget}
+                                    tech={item.tech}
+                                    img={item.img}
+                                    color={item.color}
+                                />
+                            </SwiperSlide>
+                        ))}
+                </StyledSwiper>
+            </div>
             <Divider ref={secondRef} />
         </Container>
     );
