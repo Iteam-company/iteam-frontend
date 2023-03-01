@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
-import { A11y, Mousewheel, Navigation, Pagination } from "swiper";
+import Swiper, { A11y, Mousewheel, Navigation, Pagination } from "swiper";
 import { ProjectsInterface } from "./api/projects";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -38,6 +38,18 @@ const Projects = () => {
     const secondRef = useRef(null);
     const isFirstInView: boolean = useInView(firstRef);
     const isSecondInView = useInView(secondRef);
+
+    const swipeHandler = (e: Swiper) => {
+        if (isFirstInView && isSecondInView) {
+            e.allowSlideNext = true;
+        } else {
+            window.scrollTo({
+                top: 550,
+                left: 0,
+                behavior: "smooth",
+            });
+        }
+    };
 
     return (
         <Container
@@ -75,28 +87,10 @@ const Projects = () => {
 
             <Divider ref={firstRef} />
             <StyledSwiper
-                onTouchStart={(e) => {
-                    if (isFirstInView && isSecondInView) {
-                        e.allowSlideNext = true;
-                    } else {
-                        window.scrollTo({
-                            top: 550,
-                            left: 0,
-                            behavior: "smooth",
-                        });
-                    }
-                }}
-                onScroll={(e) => {
-                    if (isFirstInView && isSecondInView) {
-                        e.allowSlideNext = true;
-                    } else {
-                        window.scrollTo({
-                            top: 550,
-                            left: 0,
-                            behavior: "smooth",
-                        });
-                    }
-                }}
+                onTouchStart={(e) => swipeHandler(e)}
+                onScroll={(e) => swipeHandler(e)}
+                onTap={(e) => swipeHandler(e)}
+                onTouchMove={(e) => swipeHandler(e)}
                 style={{
                     height: "calc(81vh)",
                     width: "100vw",
