@@ -1,4 +1,5 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { Banner } from "@/anatomic/molecules/Banner";
 
@@ -8,6 +9,7 @@ const Home = () => {
             <FlexColumn alignItems="center" w="100%" h="calc(100vh - 100px)">
                 <Banner />
             </FlexColumn>
+            <LogoAnimation />
             <Adaptive></Adaptive>
         </>
     );
