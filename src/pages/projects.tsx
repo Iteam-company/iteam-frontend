@@ -18,6 +18,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { useInView } from "framer-motion";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 const Projects = () => {
     const [project, setProject] = useState<ProjectsInterface[]>([]);
@@ -60,39 +61,37 @@ const Projects = () => {
                 paddingBottom: "100px",
             }}
         >
-            <FlexColumn
+            <Adaptive
                 h="500px"
-                justifyContent="center"
-                alignItems="start"
-                p="0 50px"
-                style={{
-                    maxWidth: "1000px",
-                }}
+                justifyContent="start"
+                alignItems="center"
+                p="20px 50px"
             >
-                <Text
-                    size={TEXT_SIZES.xxxs}
-                    letterSpacing={LETTER_SPACING.s}
-                    weight={TEXT_WEIGHTS.medium}
-                >
-                    OUR WORK
-                </Text>
-                <Text
-                    size={TEXT_SIZES.xxxl}
-                    color={COLORS.black}
-                    weight={TEXT_WEIGHTS.medium}
-                >
-                    Creating digital products your clients fall in love with.
-                </Text>
-            </FlexColumn>
+                <FlexColumn justifyContent="center" alignItems="start">
+                    <Text
+                        size={TEXT_SIZES.xxxs}
+                        letterSpacing={LETTER_SPACING.s}
+                        weight={TEXT_WEIGHTS.medium}
+                    >
+                        OUR WORK
+                    </Text>
+                    <Title
+                        size={TEXT_SIZES.xxxl}
+                        color={COLORS.black}
+                        weight={TEXT_WEIGHTS.medium}
+                    >
+                        Creating digital products your clients fall in love
+                        with.
+                    </Title>
+                </FlexColumn>
+            </Adaptive>
 
             <Divider ref={firstRef} />
             <StyledSwiper
                 // onTouchStart={(e) => swipeHandler(e)}
                 // onScroll={(e) => swipeHandler(e)}
-                // onTap={(e) => swipeHandler(e)}
-                // onTouchMove={(e) => swipeHandler(e)}
                 style={{
-                    height: "calc(81vh)",
+                    height: "calc(86vh)",
                     width: "100vw",
                     padding: "5px 0",
                 }}
@@ -165,4 +164,10 @@ const Divider = styled.div`
     width: 100%;
     height: 1px;
     background-color: transparent;
+`;
+const Title = styled(Text)`
+    max-width: 1000px;
+    @media all and (max-width: 899px) {
+        font-size: ${TEXT_SIZES.xxl};
+    }
 `;
