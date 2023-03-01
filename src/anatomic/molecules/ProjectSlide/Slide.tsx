@@ -41,7 +41,7 @@ const Desktop = styled(FlexColumn)`
     }
 `;
 const Container = styled.div`
-    margin: 0 100px;
+    margin: 0 50px;
     height: 80vh;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 24px;

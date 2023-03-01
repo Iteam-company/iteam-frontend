@@ -49,9 +49,10 @@ const Projects = () => {
             }}
         >
             <FlexColumn
-                h="50vh"
+                h="500px"
                 justifyContent="center"
                 alignItems="start"
+                p="0 50px"
                 style={{
                     maxWidth: "1000px",
                 }}
@@ -79,7 +80,7 @@ const Projects = () => {
                         e.allowSlideNext = true;
                     } else {
                         window.scrollTo({
-                            top: 500,
+                            top: 550,
                             left: 0,
                             behavior: "smooth",
                         });
@@ -90,7 +91,7 @@ const Projects = () => {
                         e.allowSlideNext = true;
                     } else {
                         window.scrollTo({
-                            top: 500,
+                            top: 550,
                             left: 0,
                             behavior: "smooth",
                         });
@@ -142,8 +143,14 @@ export default Projects;
 
 const StyledSwiper = styled(SwiperComponent)`
     .swiper-pagination-vertical {
-        left: 7%;
+        left: 6%;
         right: auto;
+        @media all and (max-width: 1100px) {
+            left: 8%;
+        }
+        @media all and (max-width: 899px) {
+            left: 5vw;
+        }
 
         .swiper-pagination-bullet {
             border: 2px solid black;
