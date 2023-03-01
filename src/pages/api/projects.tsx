@@ -153,7 +153,7 @@ const DATA = [
         id: 5,
         title: "Pictures editor",
         description:
-            "Pictures editor is a platform for measuring objects in uploaded images, results were saving to the Google photos, and presented in thw gallery. There were no back end in the project, instead Google functions were used. It's an Angular SPA. The design were done with Bootstrap",
+            "Pictures editor is a platform for measuring objects in uploaded images, results were saving to the Google photos, and presented in thw gallery. There were no back end in the project, instead Google functions were used. It's an Angular SPA.",
         location: "Location",
         budget: "Budget",
         tech: [
@@ -177,7 +177,7 @@ const DATA = [
         id: 6,
         title: "Platform for medicine consultations",
         description:
-            "Platform for medicine consultations. As a user of the app you have ability to buy a consultations from different doctors, contact them via built-in chat, and even have a video call. Angular application had Java back-end and processes handled by Firebase, such as authentication, payments, CI/CD. Material design was used, and NGRX store.",
+            "Platform for medicine consultations. As a user of the app you have ability to buy a consultations from different doctors, contact them via built-in chat, and even have a video call.",
         location: "Location",
         budget: "Budget",
         tech: [
@@ -201,7 +201,7 @@ const DATA = [
         id: 7,
         title: "System for forex brokers",
         description:
-            "System for forex brokers, that presents different financial reports. The project was done with latest Angular version, Material design, NGRX, and Ag Grid. Ag Grid tables were used throughout the whole project, lots of built-in functionality were used, and a lot of custom modifications were done on the tables.",
+            "System for forex brokers, that presents different financial reports.",
         location: "Location",
         budget: "Budget",
         tech: [
@@ -223,9 +223,9 @@ const DATA = [
     },
     {
         id: 8,
-        title: "norder.app",
+        title: "Web application for managing the expenses",
         description:
-            "This is an application for managing the expenses of your own business. The main idea is to collect all the financial activity of your business in one place. This is a list of transactions, a schedule of expenses, a list of clients and works. You can bill your client and immediately generate an invoice (includes billing address and everything needed for an invoice). There is also a landing page for this application, which describes the functionality and capabilities  https://norder.app/",
+            "This is an application for managing the expenses of your own business. The main idea is to collect all the financial activity of your business in one place.",
         location: "Location",
         budget: "Budget",
         tech: [
@@ -250,7 +250,7 @@ const DATA = [
         id: 9,
         title: "Web application for medical personnel",
         description:
-            "The main idea: to track the amount and frequency of taking medications by patients. It is possible to add new patients, manage the medication schedule, review the quantitative statistics of the consumption of medicinal products. Filter patients by categories of drug consumption. It is possible to create your own filters for searching for patients: by drug, by event (day of medication administration), time period of taking the selected medication, the ratio of clk intakes of one medication to others. You can also view lists of deleted patients, lists of invited colleagues, manage these lists: assign roles: admin, super-admin, user. Ability to create your own space (program), information about individual patients, medications and staff will be collected here.",
+            "The main idea: to track the amount and frequency of taking medications by patients. It is possible to add new patients, manage the medication schedule, review the quantitative statistics of the consumption of medicinal products. ",
         location: "Location",
         budget: "Budget",
         tech: [

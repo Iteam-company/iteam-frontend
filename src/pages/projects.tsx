@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
 import { A11y, Mousewheel, Navigation, Pagination } from "swiper";
 import { ProjectsInterface } from "./api/projects";
 import "swiper/css";
@@ -17,6 +17,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
+import { useInView } from "framer-motion";
 
 const Projects = () => {
     const [project, setProject] = useState<ProjectsInterface[]>([]);
@@ -33,6 +34,10 @@ const Projects = () => {
     useEffect(() => {
         getProject();
     }, []);
+    const firstRef = useRef(null);
+    const secondRef = useRef(null);
+    const isFirstInView: boolean = useInView(firstRef);
+    const isSecondInView = useInView(secondRef);
 
     return (
         <Container
@@ -66,14 +71,27 @@ const Projects = () => {
                     Creating digital products your clients fall in love with.
                 </Text>
             </FlexColumn>
+            <Divider ref={firstRef} />
             <StyledSwiper
+                onScroll={(e) => {
+                    if (isFirstInView && isSecondInView) {
+                        e.allowSlideNext = true;
+                    } else {
+                        window.scrollTo({
+                            top: 500,
+                            left: 0,
+                            behavior: "smooth",
+                        });
+                    }
+                }}
                 style={{
                     height: "calc(81vh)",
                     width: "100vw",
                     padding: "5px 0",
                 }}
+                allowSlideNext={false}
+                effect="cards"
                 spaceBetween={50}
-                edgeSwipeDetection={true}
                 direction="vertical"
                 modules={[Mousewheel, Navigation, Pagination, A11y]}
                 pagination={{ clickable: true }}
@@ -103,13 +121,14 @@ const Projects = () => {
                         </SwiperSlide>
                     ))}
             </StyledSwiper>
+            <Divider ref={secondRef} />
         </Container>
     );
 };
 
 export default Projects;
 
-const StyledSwiper = styled(Swiper)`
+const StyledSwiper = styled(SwiperComponent)`
     .swiper-pagination-vertical {
         left: 7%;
         right: auto;
@@ -128,4 +147,9 @@ const StyledSwiper = styled(Swiper)`
 `;
 const Container = styled(FlexColumn)`
     overflow: hidden;
+`;
+const Divider = styled.div`
+    width: 100%;
+    height: 1px;
+    background-color: transparent;
 `;
