@@ -87,10 +87,10 @@ const Projects = () => {
 
             <Divider ref={firstRef} />
             <StyledSwiper
-                onTouchStart={(e) => swipeHandler(e)}
-                onScroll={(e) => swipeHandler(e)}
-                onTap={(e) => swipeHandler(e)}
-                onTouchMove={(e) => swipeHandler(e)}
+                // onTouchStart={(e) => swipeHandler(e)}
+                // onScroll={(e) => swipeHandler(e)}
+                // onTap={(e) => swipeHandler(e)}
+                // onTouchMove={(e) => swipeHandler(e)}
                 style={{
                     height: "calc(81vh)",
                     width: "100vw",
@@ -98,7 +98,7 @@ const Projects = () => {
                 }}
                 effect="cards"
                 spaceBetween={50}
-                allowSlideNext={false}
+                // allowSlideNext={false}
                 direction="vertical"
                 modules={[Mousewheel, Navigation, Pagination, A11y]}
                 pagination={{ clickable: true }}
