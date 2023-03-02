@@ -11,7 +11,7 @@ export const LogoAnimation = () => {
         <motion.div
             initial={{ y: 0 }}
             animate={{
-                y: [0, 1000],
+                y: [0, 0, 0, 1000],
                 display: display,
             }}
             transition={{ duration: 0.8 }}
