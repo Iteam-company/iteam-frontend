@@ -127,7 +127,7 @@ export const Card = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
-    gap: 16px;
+    grid-gap: 16px;
     cursor: pointer;
     text-decoration: none;
 `;

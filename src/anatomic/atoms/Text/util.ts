@@ -13,6 +13,7 @@ export interface Props {
     font?: string;
     textAlign?: string;
     textTransform?: string;
+    textDecoration?: string;
     whiteSpace?: string;
     letterSpacing?: string;
 }

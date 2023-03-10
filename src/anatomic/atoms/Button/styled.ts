@@ -1,5 +1,6 @@
 import { COLORS } from "@/lib/theme/color";
 import styled from "styled-components";
+import { FlexRow } from "../Flex";
 import { Props } from "./util";
 
 export const ColorButton = styled.button<Props>`
@@ -43,4 +44,21 @@ export const Link = styled.a`
 export const Icon = styled.img`
     height: 16px;
     width: 16px;
+`;
+
+export const GradientButton = styled.a<{ gradient: string }>`
+    text-decoration: none;
+    height: 46px;
+    width: 167px;
+    border-radius: 50px;
+    padding: 5px;
+    background-image: linear-gradient(${({ gradient }) => gradient});
+    cursor: pointer;
+`;
+
+export const GradientButtonContent = styled(FlexRow)`
+    background: white;
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
 `;

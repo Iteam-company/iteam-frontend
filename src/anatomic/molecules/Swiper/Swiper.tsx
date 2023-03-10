@@ -1,85 +1,80 @@
-import { COLORS } from "@/lib/theme/color";
-import React, { FC } from "react";
-import { FitToViewport } from "react-fit-to-viewport";
-import styled from "styled-components";
-import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { FC, ReactNode } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/mousewheel";
+import { Swiper as SwiperComponent } from "swiper/react";
+import { A11y, Mousewheel, Navigation, Pagination } from "swiper";
+import styled from "styled-components";
 
-export const SwiperElem: FC<{ sliders: any }> = ({ sliders }) => {
+interface Props {
+    children: ReactNode;
+    swipeHandler?: any;
+    allowSlideNext?: boolean;
+}
+
+export const SwiperElem: FC<Props> = ({
+    children,
+    swipeHandler,
+    allowSlideNext = true,
+}) => {
+    const onTouchStart = (e: any) => {
+        if (swipeHandler) {
+            swipeHandler(e);
+        }
+    };
+    const onScroll = (e: any) => {
+        if (swipeHandler) {
+            swipeHandler(e);
+        }
+    };
+
     return (
         <StyledSwiper
+            onTouchStart={(e) => onTouchStart(e)}
+            onScroll={(e) => onScroll(e)}
+            style={{
+                height: "calc(86vh)",
+                width: "100vw",
+                padding: "5px 0",
+            }}
+            effect="cards"
+            spaceBetween={50}
+            allowSlideNext={allowSlideNext}
             direction="vertical"
-            navigation={true}
-            scrollbar={{ draggable: true }}
-            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-            className="mySwiper"
+            modules={[Mousewheel, Navigation, Pagination, A11y]}
+            pagination={{ clickable: true }}
+            mousewheel={{
+                forceToAxis: true,
+                sensitivity: 1,
+                releaseOnEdges: true,
+            }}
         >
-            {sliders.map((elem: any, index: number) => (
-                <SwiperSlide className="slide" key={index}>
-                    <FitToViewport
-                        style={{
-                            height: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                        width={750}
-                        height={0}
-                        minZoom={0}
-                        maxZoom={1}
-                    >
-                        <SlideImg src={elem.src} />
-                    </FitToViewport>
-                </SwiperSlide>
-            ))}
+            {children}
         </StyledSwiper>
     );
 };
-const StyledSwiper = styled(Swiper)`
-    max-height: 200px;
-    margin: 0;
+const StyledSwiper = styled(SwiperComponent)`
+    .swiper-pagination-vertical {
+        left: 6%;
+        right: auto;
 
-    .slide {
-        transition: 0.3s all;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 750px;
-        @media screen and (max-width: 850px) {
-            max-width: calc(100vw - 80px);
+        @media all and (max-width: 1100px) {
+            left: 8%;
         }
-    }
-    .swiper-wrapper {
-        height: 200px !important;
-        @media screen and (max-width: 750px) {
-            height: 150px !important;
+        @media all and (max-width: 899px) {
+            left: 5vw;
         }
-    }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-        left: 50%;
-        transform: rotate(90deg);
-        transform-origin: left center;
-    }
-    .swiper-button-next {
-        ::after {
-            font-size: 18px;
+        .swiper-pagination-bullet {
+            border: 2px solid black;
+            background-color: transparent;
+            opacity: 1;
+            margin: 15px 0;
         }
-        color: ${COLORS.black};
-        /* top: 175px; */
-        top: 88%;
-    }
-    .swiper-button-prev {
-        ::after {
-            font-size: 18px;
+
+        .swiper-pagination-bullet-active {
+            background-color: black;
         }
-        color: ${COLORS.black};
-        top: 0;
     }
-`;
-const SlideImg = styled.img`
-    z-index: 100;
 `;

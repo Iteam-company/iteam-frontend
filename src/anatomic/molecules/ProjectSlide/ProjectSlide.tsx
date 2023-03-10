@@ -1,3 +1,5 @@
+import { Button } from "@/anatomic/atoms/Button";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
@@ -7,10 +9,10 @@ import React, { FC } from "react";
 import { FitToViewport } from "react-fit-to-viewport";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
-import styled from "styled-components";
 import { icons } from "./utils";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
+    id,
     title,
     description,
     location,
@@ -112,30 +114,17 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
             </FlexRow>
 
             <FlexRow justifyContent="center" alignItems="center" w="100%">
-                <Button href="/" color={color}>
-                    <ButtonContent justifyContent="center" alignItems="center">
+                <Button
+                    href={`/project/${id}`}
+                    gradient={color}
+                    variant={BUTTON_VARIANTS.gradient}
+                    label={
                         <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
                             View Case
                         </Text>
-                    </ButtonContent>
-                </Button>
+                    }
+                />
             </FlexRow>
         </>
     );
 };
-const Button = styled.a<{ color: string }>`
-    text-decoration: none;
-    height: 46px;
-    width: 167px;
-    border-radius: 50px;
-    padding: 5px;
-    background-image: linear-gradient(${({ color }) => color});
-    cursor: pointer;
-`;
-
-const ButtonContent = styled(FlexRow)`
-    background: white;
-    border-radius: 50px;
-    width: 100%;
-    height: 100%;
-`;

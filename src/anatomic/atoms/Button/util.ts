@@ -14,10 +14,12 @@ export interface Props {
     onClick?: Function;
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
+    gradient?: any;
 }
 
 export const enum BUTTON_VARIANTS {
     color = "COLOR",
     change = "CHANGE",
     icon = "ICON",
+    gradient = "GRADIENT",
 }

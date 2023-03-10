@@ -10,6 +10,7 @@ export const Device: FC<{ image: string }> = ({ image }) => {
     );
 };
 const Screen = styled.img`
+    //
     height: 100%;
     width: 100%;
 `;

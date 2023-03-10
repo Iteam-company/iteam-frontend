@@ -12,7 +12,7 @@ import NorderIcon from "@/assets/projects/norder.jpeg";
 import { StaticImageData } from "next/image";
 
 export interface ProjectsInterface {
-    id?: number;
+    id: number;
     title: string;
     description: string;
     location: string;
