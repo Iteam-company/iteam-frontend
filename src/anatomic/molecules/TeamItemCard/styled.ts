@@ -4,7 +4,7 @@ import styled from "styled-components";
 import LabelIcon from "@/assets/icon/label.png";
 import { TEXT_WEIGHTS, Text } from "@/anatomic/atoms/Text";
 import { Swiper as SwiperComponent } from "swiper/react";
-import ArrowLeft from "@/assets/icon/leftVector.svg";
+import ArrowLeft from "@/assets/icon/leftvector.svg";
 import ArrowRight from "@/assets/icon/vector.svg";
 
 export const Avatar = styled.div<{ image: any }>`
