@@ -5,7 +5,15 @@ import client from "@/axios";
 import { CardElem } from "@/anatomic/molecules/TeamItemCard/TeamItemCard";
 import { SwiperElem } from "@/anatomic/molecules/Swiper";
 import { SwiperSlide } from "swiper/react";
-import styled from "styled-components";
+import {
+    TEXT_SIZES,
+    LETTER_SPACING,
+    TEXT_WEIGHTS,
+    Text,
+} from "@/anatomic/atoms/Text";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
+import { COLORS } from "@/lib/theme/color";
+import { Container, Title } from "@/lib/pageStyles/teamStyles";
 
 const Team = () => {
     const [team, setTeam] = useState<TeamInterface[]>([]);
@@ -28,11 +36,36 @@ const Team = () => {
             mw="100%"
             justifyContent="center"
             alignItems="center"
+            p="50px 0"
             style={{
-                paddingBottom: "100px",
                 overflow: "hidden",
             }}
         >
+            <Adaptive
+                h="500px"
+                justifyContent="start"
+                alignItems="center"
+                p="20px 50px"
+            >
+                <FlexColumn justifyContent="center" alignItems="start">
+                    <Text
+                        size={TEXT_SIZES.xxxs}
+                        letterSpacing={LETTER_SPACING.s}
+                        weight={TEXT_WEIGHTS.medium}
+                    >
+                        OUR TEAM
+                    </Text>
+                    <Title
+                        size={TEXT_SIZES.xxl}
+                        color={COLORS.black}
+                        weight={TEXT_WEIGHTS.medium}
+                    >
+                        We are a group of brilliant minds and exceptional
+                        talents who promote the values of effective
+                        communication and process transparency.
+                    </Title>
+                </FlexColumn>
+            </Adaptive>
             <SwiperElem>
                 {team.map((item, index) => (
                     <SwiperSlide
@@ -47,6 +80,10 @@ const Team = () => {
                                 avatar={item.avatar.src}
                                 name={item.name}
                                 position={item.position}
+                                technology={item.technology}
+                                comments={item.comments}
+                                experience={item.experience}
+                                rate={item.rate}
                             />
                         </Container>
                     </SwiperSlide>
@@ -57,14 +94,3 @@ const Team = () => {
 };
 
 export default Team;
-
-const Container = styled.div`
-    margin: 0 50px;
-    height: 70vh;
-    padding: 20px 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 24px;
-    @media all and (max-width: 899px) {
-        margin: 0 10px;
-    }
-`;

@@ -1,21 +1,19 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import React, { useCallback, useEffect, useState } from "react";
-import styled from "styled-components";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
-import { Swiper as SwiperComponent, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper";
 import client from "@/axios";
-import ArrowLeft from "@/assets/icon/left.svg";
-import ArrowRight from "@/assets/icon/right.svg";
 import { useRouter } from "next/router";
 import { ProjectItemInterface, SolutionInterface } from "../api/project-item";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
+import { Title, StyledSwiper, Divider } from "@/lib/pageStyles/projectItem";
 
 const Project = () => {
     const router = useRouter();
@@ -158,32 +156,38 @@ const Project = () => {
                         </Text>
                     </FlexColumn>
                     <FlexRow justifyContent="space-between" w="100%">
-                        {project.solution.map((item: SolutionInterface) => (
-                            <FlexColumn
-                                bg={item.BgColor}
-                                style={{ borderRadius: "16px" }}
-                                w="25%"
-                                p="24px"
-                                gap="15px"
-                            >
-                                <FlexRow justifyContent="center" w="100%">
-                                    <Text
-                                        textDecoration="underline"
-                                        size={TEXT_SIZES.m}
-                                        color={item.textColor}
-                                    >
-                                        {item.title}
-                                    </Text>
-                                </FlexRow>
-                                <FlexColumn gap="8px">
-                                    {item.text.map((elem) => (
-                                        <Text color={item.textColor}>
-                                            • {elem}
+                        {project.solution.map(
+                            (item: SolutionInterface, index) => (
+                                <FlexColumn
+                                    bg={item.BgColor}
+                                    style={{ borderRadius: "16px" }}
+                                    w="25%"
+                                    p="24px"
+                                    gap="15px"
+                                    key={index}
+                                >
+                                    <FlexRow justifyContent="center" w="100%">
+                                        <Text
+                                            textDecoration="underline"
+                                            size={TEXT_SIZES.m}
+                                            color={item.textColor}
+                                        >
+                                            {item.title}
                                         </Text>
-                                    ))}
+                                    </FlexRow>
+                                    <FlexColumn gap="8px">
+                                        {item.text.map((elem, index) => (
+                                            <Text
+                                                key={index}
+                                                color={item.textColor}
+                                            >
+                                                • {elem}
+                                            </Text>
+                                        ))}
+                                    </FlexColumn>
                                 </FlexColumn>
-                            </FlexColumn>
-                        ))}
+                            ),
+                        )}
                     </FlexRow>
                     <FlexRow w="100%" gap="40px" p="30px 0">
                         <FlexColumn
@@ -207,8 +211,8 @@ const Project = () => {
                                     {project.result.title}
                                 </Text>
                                 <FlexColumn gap="10px">
-                                    {project.result.text.map((elem) => (
-                                        <Text size={TEXT_SIZES.xxs}>
+                                    {project.result.text.map((elem, index) => (
+                                        <Text size={TEXT_SIZES.xxs} key={index}>
                                             • {elem}
                                         </Text>
                                     ))}
@@ -262,53 +266,3 @@ const Project = () => {
     );
 };
 export default Project;
-
-const Title = styled(Text)<{ color: string }>`
-    background-image: linear-gradient(${({ color }) => color});
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-`;
-
-const StyledSwiper = styled(SwiperComponent)`
-    .swiper-button-next,
-    .swiper-button-prev {
-        top: calc(60vh + 14px);
-    }
-
-    .swiper-button-next {
-        right: 10%;
-    }
-    .swiper-button-prev {
-        left: 10%;
-    }
-
-    .swiper-button-prev {
-        ::after {
-            content: url(${ArrowLeft.src});
-        }
-    }
-    .swiper-button-next {
-        ::after {
-            content: url(${ArrowRight.src});
-        }
-    }
-
-    .swiper-pagination {
-        bottom: 8px;
-        z-index: 0;
-        .swiper-pagination-bullet {
-            border: 2px solid black;
-            background-color: transparent;
-            opacity: 1;
-            margin: 0px 5px;
-        }
-        .swiper-pagination-bullet-active {
-            background-color: black;
-        }
-    }
-`;
-const Divider = styled.div`
-    height: 0px;
-    border: 1px solid #989898;
-    width: 100%;
-`;

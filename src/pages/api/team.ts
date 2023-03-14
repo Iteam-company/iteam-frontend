@@ -1,22 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next/types";
-import AngularIcon from "@/assets/icon/angular.png";
-import JavascriptIcon from "@/assets/icon/javascript.png";
-import TypescriptIcon from "@/assets/icon/typescript.png";
-import ReduxIcon from "@/assets/icon/redux.png";
-import ReactIcon from "@/assets/icon/react.png";
-import NestIcon from "@/assets/icon/nest-js.svg";
-import NodeIcon from "@/assets/icon/node-js.png";
-import MongoIcon from "@/assets/icon/mongo.png";
-import PostgressIcon from "@/assets/icon/postgress.png";
-import MobXIcon from "@/assets/icon/mobx.png";
-import RxJsIcon from "@/assets/icon/rxjs.png";
-import ExpressjsIcon from "@/assets/icon/expressjs.png";
-import FirebaseIcon from "@/assets/icon/firebase.png";
-
-import IgorComment1 from "@/assets/team/igor/comment_1.png";
-import IgorComment2 from "@/assets/team/igor/comment_2.png";
-import IgorComment3 from "@/assets/team/igor/comment_3.png";
-import { StaticImageData } from "next/image";
 import Igor from "@/assets/icon/igor.png";
 
 export interface TeamInterface {
@@ -24,231 +6,175 @@ export interface TeamInterface {
     name: string;
     avatar: any;
     position: string;
-    comments?: StaticImageData[];
-    technology?: StaticImageData[];
-    period?: string;
+    comments?: string[];
+    technology?: Technology[];
+    experience: { position: string; year: number };
+    rate: number;
+}
+export interface Technology {
+    text: string;
+    short: string;
+    id: number;
 }
 
 const TEAM = [
     {
         id: 1,
-        period: "2019",
-        name: "Vitaliy Kachan",
+        name: "Igor Sergienko",
         avatar: Igor,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            AngularIcon,
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            RxJsIcon,
+        position: "Full stack Developer",
+        comments: [
+            "Igor is grate developer, he provided excellent job. Highly recommend him! Thank you!",
         ],
+        technology: [
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
+        ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "3",
+        },
+        rate: 25,
     },
     {
         id: 2,
-        name: "Igor Sergienko",
+        name: "Yurii Yurii",
         avatar: Igor,
         position: "Full stack",
         comments: [
-            IgorComment1,
-            IgorComment2,
-            IgorComment3,
-            IgorComment1,
-            IgorComment2,
-            IgorComment3,
+            "Yurii is outstanding!",
+            "Worked normal working days with a set schedule and was always reachable. Very dedicated!",
+            "Grate work!",
         ],
         technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
         ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "4",
+        },
+        rate: 25,
     },
     {
         id: 3,
-        name: "Igor Sergienko",
+        name: "Andrii Andrii",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+        comments: [
+            "Andrii did a good job! Good communication skills, he was fast and efficient. Highly recommended.",
         ],
+        technology: [
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
+        ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "5",
+        },
+        rate: 25,
     },
     {
         id: 4,
-        period: "2020",
-        name: "Igor Sergienko",
+        name: "Oleksii Oleksii",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+        comments: [
+            "Highly recommended Oleksii. He quick to review and assess the merits if various libraries, he can extend functionality where needed, and works quiet well with the rest of the team. I'm impressed with his hight quality code contribution and use a modern patterns.",
+            "Oleksii, did just Great. He delivered on time and with Quality. Very professional and communicative. As soon as we have another project that matches his skill set he'll be for sure our 1st pick. Thanks a lot for your work and commitment.",
+            "Thanks for your work!",
         ],
+        technology: [
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
+        ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "3",
+        },
+        rate: 25,
     },
     {
         id: 5,
-        name: "Igor Sergienko",
+        name: "Yaroslav Yaroslav",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+        comments: [
+            "Yaroslav is very attentive to work. He understand the needs of the project and is able to offer solutions. Always available if there are any questions arises. Work done in timely manner with high quality. Will hire him again for sure!",
         ],
+        technology: [
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
+        ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "1",
+        },
+        rate: 25,
     },
     {
         id: 6,
-        period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
+        comments: [""],
         technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
         ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "0",
+        },
+        rate: 25,
     },
     {
         id: 7,
-        period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
+        comments: [""],
         technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
         ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "4",
+        },
+        rate: 25,
     },
     {
         id: 8,
-        period: "2021",
         name: "Igor Sergienko",
         avatar: Igor,
         position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
+        comments: [""],
         technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
+            { text: "JavaScript", short: "JS", id: 0 },
+            { text: "TypeScript", short: "TS", id: 1 },
+            { text: "Angular", short: "A", id: 2 },
+            { text: "React", short: "R", id: 3 },
         ],
-    },
-    {
-        id: 9,
-        period: "2021",
-        name: "Igor Sergienko",
-        avatar: Igor,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
-    },
-    {
-        id: 10,
-        period: "2021",
-        name: "Igor Sergienko",
-        avatar: Igor,
-        position: "Full stack",
-        comments: [IgorComment1, IgorComment2, IgorComment3],
-        technology: [
-            JavascriptIcon,
-            TypescriptIcon,
-            ReduxIcon,
-            ReactIcon,
-            NestIcon,
-            NodeIcon,
-            MongoIcon,
-            PostgressIcon,
-            MobXIcon,
-            RxJsIcon,
-            ExpressjsIcon,
-            FirebaseIcon,
-        ],
+        experience: {
+            position: "Mid-Senior Developer",
+            year: "4",
+        },
+        rate: 25,
     },
 ];
 

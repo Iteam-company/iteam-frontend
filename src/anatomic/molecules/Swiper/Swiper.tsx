@@ -3,9 +3,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
-import { Swiper as SwiperComponent } from "swiper/react";
 import { A11y, Mousewheel, Navigation, Pagination } from "swiper";
-import styled from "styled-components";
+import { StyledSwiper } from "./styled";
 
 interface Props {
     children: ReactNode;
@@ -54,27 +53,3 @@ export const SwiperElem: FC<Props> = ({
         </StyledSwiper>
     );
 };
-const StyledSwiper = styled(SwiperComponent)`
-    .swiper-pagination-vertical {
-        left: 6%;
-        right: auto;
-
-        @media all and (max-width: 1100px) {
-            left: 8%;
-        }
-        @media all and (max-width: 899px) {
-            left: 5vw;
-        }
-
-        .swiper-pagination-bullet {
-            border: 2px solid black;
-            background-color: transparent;
-            opacity: 1;
-            margin: 15px 0;
-        }
-
-        .swiper-pagination-bullet-active {
-            background-color: black;
-        }
-    }
-`;

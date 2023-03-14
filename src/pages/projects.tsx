@@ -4,7 +4,6 @@ import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SwiperSlide } from "swiper/react";
 import Swiper from "swiper";
 import { ProjectsInterface } from "./api/projects";
-import styled from "styled-components";
 import client from "@/axios";
 import {
     LETTER_SPACING,
@@ -16,6 +15,7 @@ import { COLORS } from "@/lib/theme/color";
 import { useInView } from "framer-motion";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { SwiperElem } from "@/anatomic/molecules/Swiper";
+import { Divider, Title } from "@/lib/pageStyles/projectStyles";
 
 const Projects = () => {
     const [project, setProject] = useState<ProjectsInterface[]>([]);
@@ -112,15 +112,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-const Divider = styled.div`
-    width: 100%;
-    height: 1px;
-    background-color: transparent;
-`;
-const Title = styled(Text)`
-    max-width: 1000px;
-    @media all and (max-width: 899px) {
-        font-size: ${TEXT_SIZES.xxl};
-    }
-`;

@@ -1,1 +1,0 @@
-export { ParticlesElem } from "./ParticlecElem";

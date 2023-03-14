@@ -14,7 +14,7 @@ export const LogoAnimation = () => {
                 y: [0, 0, 0, 1000],
                 display: display,
             }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 2 }}
             onAnimationComplete={() => setDisplay("none")}
             style={{
                 height: "100vh",
