@@ -23,12 +23,14 @@ export const Card = styled(FlexColumn)`
     box-shadow: 0px 4px 20px rgba(37, 7, 67, 0.37);
     border-radius: 16px;
 `;
+
 export const ProgressBar = styled.div`
     width: 100%;
     background: ${COLORS.progressTrail};
     border-radius: 16px;
     height: 7px;
 `;
+
 export const ProgressIndicator = styled.div<{ width: number }>`
     width: calc(${({ width }) => width} * 20%);
     background: ${COLORS.progressPath};
