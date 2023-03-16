@@ -9,7 +9,7 @@ interface Props {
     name?: string;
     placeholder?: string;
     icon?: ReactNode;
-    lable?: string;
+    label?: string;
     value?: string;
     onChange?: any;
     error?: string | null;
@@ -20,7 +20,7 @@ export const TextArea: FC<Props> = ({
     name,
     placeholder,
     icon,
-    lable,
+    label,
     onChange,
     value,
     error,
@@ -35,7 +35,7 @@ export const TextArea: FC<Props> = ({
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
                 >
-                    {lable}
+                    {label}
                 </Text>
                 <sub>
                     <Text color={COLORS.red}>*</Text>

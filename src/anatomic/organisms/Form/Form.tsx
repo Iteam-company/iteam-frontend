@@ -1,12 +1,11 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Input } from "@/anatomic/atoms/Input";
-import { Form, Formik } from "formik";
+import { Formik } from "formik";
 import React, { useState } from "react";
 import { FiMail } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { BsWindowDock } from "react-icons/bs";
 import { TbMessageCircle2 } from "react-icons/tb";
-import styled from "styled-components";
 import { TextArea } from "@/anatomic/atoms/TextArea";
 import { Button } from "@/anatomic/atoms/Button";
 import {
@@ -22,6 +21,7 @@ import client from "@/axios";
 import successIcon from "@/assets/icon/success-image.svg";
 import { motion } from "framer-motion";
 import { FormSchema, FormikValues, initialValues } from "./util";
+import { StyledForm, Icon } from "./styled";
 
 export const FormElem = () => {
     const [error, setError] = useState("");
@@ -52,7 +52,7 @@ export const FormElem = () => {
                                     name="name"
                                     placeholder="Name"
                                     icon={<BiUser size={16} />}
-                                    lable="Your Name"
+                                    label="Your Name"
                                     error={
                                         errors.name && touched.name
                                             ? errors.name
@@ -65,7 +65,7 @@ export const FormElem = () => {
                                     name="email"
                                     placeholder="Email"
                                     icon={<FiMail size={16} />}
-                                    lable="Your Email"
+                                    label="Your Email"
                                     error={
                                         errors.email && touched.email
                                             ? errors.email
@@ -78,7 +78,7 @@ export const FormElem = () => {
                                 name="subject"
                                 placeholder="Subject"
                                 icon={<BsWindowDock size={16} />}
-                                lable="Subject"
+                                label="Subject"
                                 error={
                                     errors.subject && touched.subject
                                         ? errors.subject
@@ -90,7 +90,7 @@ export const FormElem = () => {
                                 name="comments"
                                 placeholder="Message"
                                 icon={<TbMessageCircle2 size={16} />}
-                                lable="Comments"
+                                label="Comments"
                                 value={values.comments}
                                 onChange={(e: any) =>
                                     setFieldValue("comments", e.target.value)
@@ -142,11 +142,3 @@ export const FormElem = () => {
         </Formik>
     );
 };
-const StyledForm = styled(Form)`
-    box-shadow: 0 0 3px rgb(60 72 88 / 15%);
-    padding: 24px;
-    border-radius: 6px;
-`;
-const Icon = styled.img`
-    width: 100%;
-`;

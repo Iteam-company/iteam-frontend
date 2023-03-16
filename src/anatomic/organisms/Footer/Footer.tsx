@@ -8,8 +8,8 @@ import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
-import styled from "styled-components";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
+import { Divider } from "./styled";
 
 export const Footer = () => {
     return (
@@ -67,9 +67,11 @@ export const Footer = () => {
                                     <Link
                                         key={option.href}
                                         linkPosition={LINK_POSITION.footer}
-                                        color={COLORS.link}
-                                        size={TEXT_SIZES.xs}
-                                        weight={TEXT_WEIGHTS.normal}
+                                        textStyles={{
+                                            color: COLORS.link,
+                                            size: TEXT_SIZES.xs,
+                                            weight: TEXT_WEIGHTS.normal,
+                                        }}
                                         linkText={option.option}
                                         href={option.href}
                                         gap="8px"
@@ -119,9 +121,3 @@ export const Footer = () => {
         </footer>
     );
 };
-
-const Divider = styled.div`
-    height: 0;
-    width: 100%;
-    border-top: 1px solid ${COLORS.blue};
-`;

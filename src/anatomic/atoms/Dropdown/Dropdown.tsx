@@ -43,11 +43,13 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                         p={"10px 20px"}
                         href={item.href}
                         key={item.href}
-                        weight={TEXT_WEIGHTS.medium}
-                        size={TEXT_SIZES.xxxs}
-                        color={COLORS.dropdown}
                         linkText={item.option}
-                        letterSpacing={LETTER_SPACING.xs}
+                        textStyles={{
+                            weight: TEXT_WEIGHTS.medium,
+                            size: TEXT_SIZES.xxxs,
+                            color: COLORS.dropdown,
+                            letterSpacing: LETTER_SPACING.xs,
+                        }}
                     />
                 ))}
             </Menu>

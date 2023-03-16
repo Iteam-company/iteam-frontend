@@ -2,8 +2,8 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Footer } from "@/anatomic/organisms/Footer";
 import { Header } from "@/anatomic/organisms/Header";
 import React, { FC, ReactNode } from "react";
-import styled from "styled-components";
 import { ButtonUp } from "../ButtonUp";
+import { StyledLayout } from "./styled";
 
 interface Props {
     children: ReactNode;
@@ -27,11 +27,3 @@ export const Layout: FC<Props> = ({ children }) => {
         </StyledLayout>
     );
 };
-const StyledLayout = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    main {
-        flex-grow: 1;
-    }
-`;

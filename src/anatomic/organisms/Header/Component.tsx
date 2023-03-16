@@ -6,9 +6,8 @@ import { Link } from "@/anatomic/atoms/Link";
 import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
-import { Adaptive } from "@/anatomic/molecules/Adaptive";
-import styled from "styled-components";
 import { TEXT_CONTENT } from "@/lib/lang";
+import { AdaptiveElem, LinkElem, Button } from "./styled";
 
 export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
     return (
@@ -42,35 +41,41 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                 {item.title !==
                                 TEXT_CONTENT.header.contact_us ? (
                                     <LinkElem
-                                        textAlign="center"
                                         href={item.href}
                                         linkText={item.title}
                                         active={item.href === activeRoute}
-                                        color={COLORS.black}
-                                        weight={TEXT_WEIGHTS.main}
-                                        size={TEXT_SIZES.xxs}
+                                        textStyles={{
+                                            textAlign: "center",
+                                            color: COLORS.black,
+                                            weight: TEXT_WEIGHTS.main,
+                                            size: TEXT_SIZES.xxs,
+                                        }}
                                     />
                                 ) : "/contact_us" === activeRoute ? (
                                     <FlexRow position="relative">
                                         <LinkElem
-                                            textAlign="center"
                                             href={item.href}
                                             linkText={item.title}
                                             active={item.href === activeRoute}
-                                            color={COLORS.black}
-                                            weight={TEXT_WEIGHTS.main}
-                                            size={TEXT_SIZES.xxs}
+                                            textStyles={{
+                                                textAlign: "center",
+                                                color: COLORS.black,
+                                                weight: TEXT_WEIGHTS.main,
+                                                size: TEXT_SIZES.xxs,
+                                            }}
                                         />
                                     </FlexRow>
                                 ) : (
                                     <Button>
                                         <Link
-                                            textAlign="center"
                                             href={item.href}
                                             linkText={item.title}
-                                            color={COLORS.black}
-                                            weight={TEXT_WEIGHTS.main}
-                                            size={TEXT_SIZES.xxs}
+                                            textStyles={{
+                                                textAlign: "center",
+                                                color: COLORS.black,
+                                                weight: TEXT_WEIGHTS.main,
+                                                size: TEXT_SIZES.xxs,
+                                            }}
                                         />
                                     </Button>
                                 )}
@@ -82,42 +87,3 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
         </FlexRow>
     );
 };
-
-const AdaptiveElem = styled(Adaptive)`
-    max-width: none;
-`;
-const LinkElem = styled(Link)<{ active: boolean }>`
-    :hover {
-        ::after {
-            width: 100%;
-            left: 0;
-        }
-    }
-    ::after {
-        content: "";
-        position: absolute;
-        bottom: -8px;
-        width: ${({ active }) => (active ? "100%" : "0")};
-        background-color: ${COLORS.black};
-        height: 2px;
-        transition: width 0.5s ease;
-        right: 0;
-    }
-`;
-
-const Button = styled.button`
-    background-color: ${COLORS.black};
-    border: 1px solid ${COLORS.black};
-
-    &:hover {
-        background-color: ${COLORS.white};
-        border: 1px solid ${COLORS.black};
-        & > * > * {
-            color: ${COLORS.black};
-        }
-    }
-    & > * > * {
-        color: ${COLORS.white};
-        padding: 12px 38px;
-    }
-`;

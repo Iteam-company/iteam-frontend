@@ -7,7 +7,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
-import styled from "styled-components";
+import { Flex } from "./styled";
 import { INFO } from "./utils";
 
 export const Info = () => {
@@ -44,9 +44,3 @@ export const Info = () => {
         </Flex>
     );
 };
-const Flex = styled(FlexColumn)`
-    @media all and (max-width: 850px) {
-        order: -1;
-        width: 80%;
-    }
-`;

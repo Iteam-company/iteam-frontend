@@ -7,22 +7,12 @@ import { Props } from "./util";
 export const Link: FC<Props> = ({
     href,
     className,
-    textClassName,
-    color,
-    weight,
-    size,
-    textAlign,
-    textTransform,
-    w,
-    letterSpacing,
-    whiteSpace,
-    lineHeight,
-    font,
     linkText,
     p,
     icon,
     gap,
     linkPosition,
+    textStyles,
 }) => {
     return (
         <StyledLink
@@ -34,37 +24,10 @@ export const Link: FC<Props> = ({
             {icon ? (
                 <FlexRow alignItems="center" gap={gap}>
                     {icon}
-                    <Text
-                        className={textClassName}
-                        size={size}
-                        color={color}
-                        weight={weight}
-                        textAlign={textAlign}
-                        textTransform={textTransform}
-                        w={w}
-                        letterSpacing={letterSpacing}
-                        whiteSpace={whiteSpace}
-                        lineHeight={lineHeight}
-                        font={font}
-                    >
-                        {linkText}
-                    </Text>
+                    <Text {...textStyles}>{linkText}</Text>
                 </FlexRow>
             ) : (
-                <Text
-                    className={className}
-                    size={size}
-                    color={color}
-                    weight={weight}
-                    textAlign={textAlign}
-                    textTransform={textTransform}
-                    w={w}
-                    letterSpacing={letterSpacing}
-                    whiteSpace={whiteSpace}
-                    lineHeight={lineHeight}
-                    font={font}
-                    type={TEXT_TYPES.text_block}
-                >
+                <Text type={TEXT_TYPES.text_block} {...textStyles}>
                     {linkText}
                 </Text>
             )}

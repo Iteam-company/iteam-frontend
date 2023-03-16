@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 import { DropdownMobile } from "@/anatomic/atoms/Dropdown";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Logo } from "@/anatomic/atoms/Logo/Logo";
-import { Link } from "@/anatomic/atoms/Link";
 import {
     LETTER_SPACING,
     LINE_HEIGHT,
@@ -12,7 +11,7 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
 import { RxHamburgerMenu } from "react-icons/rx";
-import styled from "styled-components";
+import { LinkElem } from "./styledMobile";
 
 export const MobileComponent: FC<{ activeRoute: string }> = ({
     activeRoute,
@@ -58,12 +57,14 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                 <LinkElem
                                     href={item.href}
                                     linkText={item.title}
-                                    color={COLORS.white}
-                                    textTransform="uppercase"
-                                    lineHeight={LINE_HEIGHT.m}
-                                    weight={TEXT_WEIGHTS.main}
-                                    size={TEXT_SIZES.s}
-                                    letterSpacing={LETTER_SPACING.l}
+                                    textStyles={{
+                                        color: COLORS.white,
+                                        textTransform: "uppercase",
+                                        lineHeight: LINE_HEIGHT.m,
+                                        weight: TEXT_WEIGHTS.main,
+                                        size: TEXT_SIZES.s,
+                                        letterSpacing: LETTER_SPACING.l,
+                                    }}
                                     active={item.href === activeRoute}
                                 />
                             </FlexRow>
@@ -74,16 +75,3 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
         </>
     );
 };
-const LinkElem = styled(Link)<{ active: boolean }>`
-    padding: 10px 0;
-    ::after {
-        content: "";
-        position: absolute;
-        bottom: 7px;
-        width: ${({ active }) => (active ? "100%" : "0")};
-        background-color: #fff;
-        height: 2px;
-        transition: width 0.5s ease;
-        left: 0;
-    }
-`;

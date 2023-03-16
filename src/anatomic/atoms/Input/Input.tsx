@@ -9,7 +9,7 @@ interface Props {
     name?: string;
     placeholder?: string;
     icon?: ReactNode;
-    lable?: string;
+    label?: string;
     validate?: Function;
     error?: string | null;
 }
@@ -19,7 +19,7 @@ export const Input: FC<Props> = ({
     name,
     placeholder,
     icon,
-    lable,
+    label,
     validate,
     error,
 }) => {
@@ -33,7 +33,7 @@ export const Input: FC<Props> = ({
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
                 >
-                    {lable}
+                    {label}
                 </Text>
                 <sub>
                     <Text color={COLORS.red}>*</Text>
