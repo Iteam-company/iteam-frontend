@@ -10,8 +10,11 @@ export const enum COLORS {
     red = "#e43f52",
     text = "#161C2D",
     textSecondary = "#250743",
+    textThird = "#17092D",
+    textMinor = "#5A5A5A",
     lightGray = "#EAEBEB",
     progressPath = "#5F12AC",
     progressTrail = "#C6B8FC",
+    pageBG = "#FDFBFF",
     technologyGradient = "105.85deg, #6b18be 8.7%, #c6b8fc 95.24%",
 }

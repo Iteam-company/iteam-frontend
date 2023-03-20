@@ -1,1 +1,0 @@
-export { SwiperElem } from "./Swiper";

@@ -21,5 +21,6 @@ export const enum BUTTON_VARIANTS {
     color = "COLOR",
     change = "CHANGE",
     icon = "ICON",
-    gradient = "GRADIENT",
+    gradient_link = "GRADIENT_LINK",
+    gradient_button = "GRADIENT_BUTTON",
 }

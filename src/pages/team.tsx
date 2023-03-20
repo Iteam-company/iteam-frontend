@@ -3,7 +3,7 @@ import { TeamInterface } from "./api/team";
 import { useCallback, useEffect, useState } from "react";
 import client from "@/axios";
 import { CardElem } from "@/anatomic/molecules/TeamItemCard/TeamItemCard";
-import { SwiperElem } from "@/anatomic/molecules/Swiper";
+import { VerticalSwiperElem } from "@/anatomic/molecules/VerticalSwiper";
 import { SwiperSlide } from "swiper/react";
 import {
     TEXT_SIZES,
@@ -66,7 +66,7 @@ const Team = () => {
                     </Title>
                 </FlexColumn>
             </Adaptive>
-            <SwiperElem>
+            <VerticalSwiperElem>
                 {team.map((item, index) => (
                     <SwiperSlide
                         key={item.id}
@@ -88,7 +88,7 @@ const Team = () => {
                         </Container>
                     </SwiperSlide>
                 ))}
-            </SwiperElem>
+            </VerticalSwiperElem>
         </FlexColumn>
     );
 };

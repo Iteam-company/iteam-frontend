@@ -86,7 +86,7 @@ const DATA = {
                     "bflueagf,aje",
                 ],
                 BgColor:
-                    " linear-gradient(91.64deg, #95E0E3 11.52%, #696973 57.9%);",
+                    "linear-gradient(91.64deg, #95E0E3 11.52%, #696973 57.9%);",
                 textColor: "#FFFFFF",
             },
         ],

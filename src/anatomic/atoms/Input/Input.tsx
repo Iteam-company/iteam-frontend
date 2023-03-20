@@ -12,6 +12,9 @@ interface Props {
     label?: string;
     validate?: Function;
     error?: string | null;
+    borderRadius?: string;
+    padding?: string;
+    height?: string;
 }
 
 export const Input: FC<Props> = ({
@@ -22,6 +25,9 @@ export const Input: FC<Props> = ({
     label,
     validate,
     error,
+    borderRadius,
+    padding,
+    height,
 }) => {
     return (
         <FlexColumn w="100%" gap="4px">
@@ -35,18 +41,23 @@ export const Input: FC<Props> = ({
                 >
                     {label}
                 </Text>
-                <sub>
-                    <Text color={COLORS.red}>*</Text>
-                </sub>
+                {label && (
+                    <sub>
+                        <Text color={COLORS.red}>*</Text>
+                    </sub>
+                )}
             </FlexRow>
 
             <Container>
-                <Icon>{icon}</Icon>
+                {icon && <Icon>{icon}</Icon>}
                 <StyledInput
                     id={id}
                     name={name}
                     placeholder={placeholder}
                     validate={validate}
+                    radius={borderRadius}
+                    padding={padding}
+                    height={height}
                 />
             </Container>
             {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}

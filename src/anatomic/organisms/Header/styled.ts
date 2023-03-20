@@ -28,6 +28,7 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
 export const Button = styled.button`
     background-color: ${COLORS.black};
     border: 1px solid ${COLORS.black};
+    border-radius: 8px;
 
     &:hover {
         background-color: ${COLORS.white};
@@ -38,6 +39,6 @@ export const Button = styled.button`
     }
     & > * > * {
         color: ${COLORS.white};
-        padding: 12px 38px;
+        padding: 10px 38px;
     }
 `;

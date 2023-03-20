@@ -9,6 +9,7 @@ import {
     Link,
     GradientButton,
     GradientButtonContent,
+    GradientLink,
 } from "./styled";
 
 export const Button: FC<Props> = ({
@@ -65,12 +66,24 @@ export const Button: FC<Props> = ({
             </ButtonIcon>
         );
     }
-    if (variant === BUTTON_VARIANTS.gradient) {
+    if (variant === BUTTON_VARIANTS.gradient_link) {
+        return (
+            <GradientLink href={href} className={className} gradient={gradient}>
+                <GradientButtonContent
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {label}
+                </GradientButtonContent>
+            </GradientLink>
+        );
+    }
+    if (variant === BUTTON_VARIANTS.gradient_button) {
         return (
             <GradientButton
-                href={href}
                 className={className}
                 gradient={gradient}
+                type={type}
             >
                 <GradientButtonContent
                     justifyContent="center"
