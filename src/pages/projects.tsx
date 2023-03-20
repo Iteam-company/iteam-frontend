@@ -14,7 +14,7 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import { useInView } from "framer-motion";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
-import { SwiperElem } from "@/anatomic/molecules/Swiper";
+import { VerticalSwiperElem } from "@/anatomic/molecules/VerticalSwiper";
 import { Divider, Title } from "@/lib/pageStyles/projectStyles";
 
 const Projects = () => {
@@ -85,7 +85,10 @@ const Projects = () => {
                 </FlexColumn>
             </Adaptive>
             <Divider ref={firstRef} />
-            <SwiperElem swipeHandler={swipeHandler} allowSlideNext={false}>
+            <VerticalSwiperElem
+                swipeHandler={swipeHandler}
+                allowSlideNext={false}
+            >
                 {project.map((item, index) => (
                     <SwiperSlide
                         key={item.id}
@@ -105,7 +108,7 @@ const Projects = () => {
                         />
                     </SwiperSlide>
                 ))}
-            </SwiperElem>
+            </VerticalSwiperElem>
             <Divider ref={secondRef} />
         </FlexColumn>
     );

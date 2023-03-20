@@ -4,7 +4,6 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Logo } from "@/anatomic/atoms/Logo/Logo";
 import {
     LETTER_SPACING,
-    LINE_HEIGHT,
     TEXT_SIZES,
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
@@ -60,7 +59,6 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                     textStyles={{
                                         color: COLORS.white,
                                         textTransform: "uppercase",
-                                        lineHeight: LINE_HEIGHT.m,
                                         weight: TEXT_WEIGHTS.main,
                                         size: TEXT_SIZES.s,
                                         letterSpacing: LETTER_SPACING.l,
