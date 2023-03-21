@@ -13,18 +13,20 @@ export interface Props {
     font?: string;
     textAlign?: string;
     textTransform?: string;
+    textDecoration?: string;
     whiteSpace?: string;
     letterSpacing?: string;
 }
 export const enum TEXT_SIZES {
-    xxxs = "11px",
-    xxs = "13px",
+    xxxs = "12px",
+    xxs = "14px",
     xs = "16px",
     s = "18px",
     m = "20px",
     l = "24px",
     xl = "30px",
     xxl = "42px",
+    xxxl = "50px",
 }
 
 export const enum LETTER_SPACING {
@@ -32,6 +34,7 @@ export const enum LETTER_SPACING {
     s = "0.5px",
     m = "0.8px",
     l = "1px",
+    xl = "2px",
 }
 
 export const enum LINE_HEIGHT {

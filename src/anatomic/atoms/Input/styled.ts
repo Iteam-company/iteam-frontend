@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Field } from "formik";
 import { COLORS } from "@/lib/theme/color";
+import { TEXT_SIZES } from "@/anatomic/atoms/Text";
 
 export const StyledInput = styled(Field)`
     border: 1px solid #dee2e6;
@@ -10,14 +11,14 @@ export const StyledInput = styled(Field)`
     padding: 6px 12px 6px 40px;
     width: 100%;
     outline: none;
-    font-size: 16px;
+    font-size: ${TEXT_SIZES.xxs};
 
     :focus-within {
         border: 1px solid ${COLORS.black};
         transition: border 0.5s;
     }
     ::placeholder {
-        font-size: 16px;
+        font-size: ${TEXT_SIZES.xxs};
     }
 `;
 

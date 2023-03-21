@@ -12,6 +12,7 @@ export const Text: FC<Props> = ({
     w = "auto",
     textAlign,
     textTransform,
+    textDecoration,
     letterSpacing,
     whiteSpace,
     lineHeight,
@@ -27,6 +28,7 @@ export const Text: FC<Props> = ({
                 textAlign={textAlign}
                 textTransform={textTransform}
                 w={w}
+                textDecoration={textDecoration}
                 letterSpacing={letterSpacing}
                 whiteSpace={whiteSpace}
                 lineHeight={lineHeight}
@@ -46,6 +48,7 @@ export const Text: FC<Props> = ({
                 size={size}
                 textAlign={textAlign}
                 textTransform={textTransform}
+                textDecoration={textDecoration}
                 w={w}
                 whiteSpace={whiteSpace}
                 letterSpacing={letterSpacing}
@@ -65,6 +68,7 @@ export const Text: FC<Props> = ({
                 size={size}
                 textAlign={textAlign}
                 textTransform={textTransform}
+                textDecoration={textDecoration}
                 w={w}
                 whiteSpace={whiteSpace}
                 letterSpacing={letterSpacing}

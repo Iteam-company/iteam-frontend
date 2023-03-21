@@ -11,21 +11,39 @@ export const Icon = styled.img`
     margin-top: -2.5px;
 `;
 
-export const Title = styled.div`
-    padding: 20px 10px;
+export const Title = styled.div<{ active: any }>`
     cursor: pointer;
     transition: opacity 0.5s;
     display: flex;
     align-items: center;
     gap: 5px;
-    width: auto;
-    vertical-align: middle;
+    padding: 15px 0;
+
+    :hover {
+        ::after {
+            width: 78%;
+            left: 0;
+        }
+    }
+    ::after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        width: ${({ active }) => (active ? "78%" : "0")};
+        left: ${({ active }) => active && "0"};
+        background-color: #111;
+        height: 2px;
+        transition: width 0.5s ease;
+        right: 20px;
+    }
 `;
 
 export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
-    :hover {
-        color: ${({ active }) => !active && COLORS.black};
+    & > * {
+        :hover {
+            border-bottom: 1px solid white;
+        }
     }
 `;
 

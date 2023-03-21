@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Text } from "../Text/Text";
-import { StyledTypinEffect } from "./styled";
+import { StyledTypingEffect } from "./styled";
 import { Props as TextProps, TEXT_TYPES } from "@/anatomic/atoms/Text";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 export const TextTyping: FC<Props> = ({ text, textStyles }) => {
     return (
-        <StyledTypinEffect
+        <StyledTypingEffect
             speed={200}
             typingDelay={1500}
             text={text}

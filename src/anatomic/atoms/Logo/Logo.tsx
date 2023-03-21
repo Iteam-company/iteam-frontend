@@ -1,15 +1,20 @@
-import React from "react";
-import LogoIcon from "@/assets/icon/logo.png";
-import LogoWhiteIcon from "@/assets/icon/logo-white.png";
-import LogoGoldIcon from "@/assets/icon/logo-orange.png";
+import React, { FC } from "react";
+import { COLORS } from "@/lib/theme/color";
+import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { TEXT_CONTENT } from "@/lib/lang";
+import Link from "next/link";
 
-import styled from "styled-components";
-
-export const Logo = () => {
-    // return <Icon src={LogoIcon.src} />;
-    // return <Icon src={LogoWhiteIcon.src} />;
-    return <Icon src={LogoGoldIcon.src} />;
+export const Logo: FC<{ color?: string }> = ({ color = COLORS.black }) => {
+    return (
+        <Link
+            href="/"
+            style={{
+                textDecoration: "none",
+            }}
+        >
+            <Text size={TEXT_SIZES.s} weight={TEXT_WEIGHTS.main} color={color}>
+                {TEXT_CONTENT.logo}
+            </Text>
+        </Link>
+    );
 };
-const Icon = styled.img`
-    height: 40px;
-`;

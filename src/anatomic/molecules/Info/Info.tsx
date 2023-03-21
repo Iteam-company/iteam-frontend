@@ -7,16 +7,16 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React from "react";
-import styled from "styled-components";
+import { Flex } from "./styled";
 import { INFO } from "./utils";
 
 export const Info = () => {
     return (
         <Flex gap="24px" p="24px" w="40%">
             <Text
-                weight={TEXT_WEIGHTS.main}
+                weight={TEXT_WEIGHTS.medium}
                 color={COLORS.text}
-                size={TEXT_SIZES.l}
+                size={TEXT_SIZES.m}
                 lineHeight={LINE_HEIGHT.s}
             >
                 Lets talk
@@ -31,7 +31,7 @@ export const Info = () => {
                         {item.icon}
                         <FlexColumn>
                             <Text
-                                weight={TEXT_WEIGHTS.bold}
+                                weight={TEXT_WEIGHTS.main}
                                 color={COLORS.text}
                             >
                                 {item.title}
@@ -44,9 +44,3 @@ export const Info = () => {
         </Flex>
     );
 };
-const Flex = styled(FlexColumn)`
-    @media all and (max-width: 850px) {
-        order: -1;
-        width: 80%;
-    }
-`;

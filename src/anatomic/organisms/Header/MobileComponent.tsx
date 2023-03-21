@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 import { DropdownMobile } from "@/anatomic/atoms/Dropdown";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Logo } from "@/anatomic/atoms/Logo/Logo";
-import { Link } from "@/anatomic/atoms/Link";
 import {
     LETTER_SPACING,
     LINE_HEIGHT,
@@ -12,6 +11,7 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { LinkElem } from "./styledMobile";
 
 export const MobileComponent: FC<{ activeRoute: string }> = ({
     activeRoute,
@@ -23,19 +23,24 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
             <FlexRow
                 p="0 20px"
                 mh="70px"
-                bg="black"
+                bg={open ? COLORS.black : COLORS.white}
                 alignItems="center"
                 justifyContent="space-between"
             >
-                <Logo />
+                <Logo color={open ? COLORS.white : COLORS.black} />
                 <RxHamburgerMenu
-                    color={COLORS.white}
                     onClick={() => setOpen(!open)}
+                    color={open ? COLORS.white : COLORS.black}
                 />
             </FlexRow>
-            <FlexColumn bg={COLORS.black}>
-                {open &&
-                    NAV_LINKS.map((item) =>
+            {open && (
+                <FlexColumn
+                    alignItems="center"
+                    h="calc(100vh - 70px)"
+                    bg={COLORS.black}
+                    gap="50px"
+                >
+                    {NAV_LINKS.map((item) =>
                         item.options ? (
                             <DropdownMobile
                                 key={item.id}
@@ -44,25 +49,29 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                 options={item.options}
                             />
                         ) : (
-                            <Link
+                            <FlexRow
+                                position="relative"
+                                alignItems="center"
                                 key={item.id}
-                                p="10px 20px"
-                                href={item.href}
-                                linkText={item.title}
-                                color={
-                                    item.href === activeRoute
-                                        ? COLORS.activePath
-                                        : COLORS.dropdown
-                                }
-                                textTransform="uppercase"
-                                lineHeight={LINE_HEIGHT.m}
-                                weight={TEXT_WEIGHTS.bold}
-                                size={TEXT_SIZES.xxs}
-                                letterSpacing={LETTER_SPACING.l}
-                            />
+                            >
+                                <LinkElem
+                                    href={item.href}
+                                    linkText={item.title}
+                                    textStyles={{
+                                        color: COLORS.white,
+                                        textTransform: "uppercase",
+                                        lineHeight: LINE_HEIGHT.m,
+                                        weight: TEXT_WEIGHTS.main,
+                                        size: TEXT_SIZES.s,
+                                        letterSpacing: LETTER_SPACING.l,
+                                    }}
+                                    active={item.href === activeRoute}
+                                />
+                            </FlexRow>
                         ),
                     )}
-            </FlexColumn>
+                </FlexColumn>
+            )}
         </>
     );
 };

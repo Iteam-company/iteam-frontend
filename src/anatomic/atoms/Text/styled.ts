@@ -9,6 +9,7 @@ export const StyledTitle = styled.h2<Props>`
     text-align: ${({ textAlign }) => textAlign || "start"};
     z-index: 2;
     text-transform: ${({ textTransform }) => textTransform || "none"};
+    text-decoration: ${({ textDecoration }) => textDecoration || "none"};
     width: ${({ w }) => w || "auto"};
     letter-spacing: ${({ letterSpacing }) => letterSpacing || "auto"};
     white-space: ${({ whiteSpace }) => whiteSpace || "auto"};
@@ -23,6 +24,7 @@ export const StyledText = styled.span<Props>`
     text-align: ${({ textAlign }) => textAlign || "start"};
     z-index: 2;
     text-transform: ${({ textTransform }) => textTransform || "none"};
+    text-decoration: ${({ textDecoration }) => textDecoration || "none"};
     width: ${({ w }) => w || "auto"};
     letter-spacing: ${({ letterSpacing }) => letterSpacing || "auto"};
     white-space: ${({ whiteSpace }) => whiteSpace || "auto"};
@@ -37,6 +39,7 @@ export const StyledBlockText = styled.p<Props>`
     text-align: ${({ textAlign }) => textAlign || "start"};
     z-index: 2;
     text-transform: ${({ textTransform }) => textTransform || "none"};
+    text-decoration: ${({ textDecoration }) => textDecoration || "none"};
     width: ${({ w }) => w || "auto"};
     letter-spacing: ${({ letterSpacing }) => letterSpacing || "auto"};
     white-space: ${({ whiteSpace }) => whiteSpace || "auto"};

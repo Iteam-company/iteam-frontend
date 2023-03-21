@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@/anatomic/atoms/Grid/grid";
+import { GridItem } from "@/anatomic/atoms/Grid/grid";
 import {
     LETTER_SPACING,
     Text,
@@ -13,7 +13,7 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import client from "@/axios";
 import { InfoInterface } from "./api/technologes";
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import { Card, Icon, GridElem } from "@/lib/pageStyles/developmentStyles";
 
 const Development = () => {
     const [info, setInfo] = useState<InfoInterface[]>([]);
@@ -37,15 +37,15 @@ const Development = () => {
                 justifyContent="center"
                 w="100%"
                 alignItems="center"
-                p="60px 0"
+                p="100px 0 120px"
             >
                 <Text
                     textAlign="center"
                     type={TEXT_TYPES.title}
                     color={COLORS.text}
-                    size={TEXT_SIZES.xl}
+                    size={TEXT_SIZES.l}
                     letterSpacing={LETTER_SPACING.s}
-                    weight={TEXT_WEIGHTS.medium}
+                    weight={TEXT_WEIGHTS.main}
                 >
                     Technology we use
                 </Text>
@@ -89,15 +89,15 @@ const Development = () => {
                                         h="100%"
                                     >
                                         <Text
-                                            size={TEXT_SIZES.s}
+                                            size={TEXT_SIZES.xs}
                                             type={TEXT_TYPES.text_block}
-                                            weight={TEXT_WEIGHTS.medium}
+                                            weight={TEXT_WEIGHTS.main}
                                             color={COLORS.text}
                                         >
                                             {elem.title}
                                         </Text>
                                         <Text
-                                            size={TEXT_SIZES.xs}
+                                            size={TEXT_SIZES.xxs}
                                             type={TEXT_TYPES.text_block}
                                         >
                                             {elem.description}
@@ -114,31 +114,3 @@ const Development = () => {
 };
 
 export default Development;
-
-export const Card = styled.div`
-    height: 100%;
-    width: 100%;
-    box-shadow: 0 0 3px rgb(60 72 88 / 15%);
-    border-radius: 6px;
-    padding: 16px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 16px;
-    cursor: pointer;
-    text-decoration: none;
-`;
-
-export const Icon = styled.img`
-    width: 25px;
-    height: 25px;
-`;
-export const GridElem = styled(Grid)`
-    @media all and (max-width: 1400px) and (min-width: 1200px) {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    padding: 40px 0 60px;
-    width: 100%;
-    align-items: start;
-`;

@@ -9,7 +9,7 @@ interface Props {
     name?: string;
     placeholder?: string;
     icon?: ReactNode;
-    lable?: string;
+    label?: string;
     validate?: Function;
     error?: string | null;
 }
@@ -19,7 +19,7 @@ export const Input: FC<Props> = ({
     name,
     placeholder,
     icon,
-    lable,
+    label,
     validate,
     error,
 }) => {
@@ -27,13 +27,13 @@ export const Input: FC<Props> = ({
         <FlexColumn w="100%" gap="4px">
             <FlexRow gap="4px">
                 <Text
-                    weight={TEXT_WEIGHTS.bold}
-                    size={TEXT_SIZES.xs}
+                    weight={TEXT_WEIGHTS.medium}
+                    size={TEXT_SIZES.xxs}
                     color={COLORS.text}
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
                 >
-                    {lable}
+                    {label}
                 </Text>
                 <sub>
                     <Text color={COLORS.red}>*</Text>
@@ -49,7 +49,7 @@ export const Input: FC<Props> = ({
                     validate={validate}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.xs}>{error}</Text>}
+            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
         </FlexColumn>
     );
 };

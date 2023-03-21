@@ -1,5 +1,5 @@
 export const enum COLORS {
-    black = "#000000",
+    black = "#150227",
     white = "#ffffff",
     gray = "#8492A6",
     buttonDark = "#222F3E",
@@ -9,6 +9,9 @@ export const enum COLORS {
     blue = "#283353",
     red = "#e43f52",
     text = "#161C2D",
+    textSecondary = "#250743",
     lightGray = "#EAEBEB",
-    // blueBg = "#091543",
+    progressPath = "#5F12AC",
+    progressTrail = "#C6B8FC",
+    technologyGradient = "105.85deg, #6b18be 8.7%, #c6b8fc 95.24%",
 }

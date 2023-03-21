@@ -1,7 +1,15 @@
 import { FC } from "react";
 import { COLORS } from "@/lib/theme/color";
 import { BUTTON_VARIANTS, Props } from "./util";
-import { ColorButton, ChangeButton, ButtonIcon, Icon, Link } from "./styled";
+import {
+    ColorButton,
+    ChangeButton,
+    ButtonIcon,
+    Icon,
+    Link,
+    GradientButton,
+    GradientButtonContent,
+} from "./styled";
 
 export const Button: FC<Props> = ({
     variant,
@@ -15,6 +23,7 @@ export const Button: FC<Props> = ({
     hoverColor,
     type = "button",
     disabled,
+    gradient,
 }) => {
     if (variant === BUTTON_VARIANTS.color) {
         return (
@@ -54,6 +63,22 @@ export const Button: FC<Props> = ({
                     <Icon src={icon} />
                 </Link>
             </ButtonIcon>
+        );
+    }
+    if (variant === BUTTON_VARIANTS.gradient) {
+        return (
+            <GradientButton
+                href={href}
+                className={className}
+                gradient={gradient}
+            >
+                <GradientButtonContent
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {label}
+                </GradientButtonContent>
+            </GradientButton>
         );
     }
 

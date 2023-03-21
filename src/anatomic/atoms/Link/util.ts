@@ -1,25 +1,15 @@
-import { COLORS } from "@/lib/theme/color";
 import { ReactNode } from "react";
-import { TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { Props as TextProps } from "@/anatomic/atoms/Text";
 
 export interface Props {
-    href: string;
-    size?: TEXT_SIZES | string;
-    weight?: TEXT_WEIGHTS | string;
-    lineHeight?: string;
-    color?: COLORS | string;
     className?: string;
-    w?: string;
-    font?: string;
-    textAlign?: string;
-    textTransform?: string;
-    whiteSpace?: string;
-    letterSpacing?: string;
+    href: string;
     linkText: string;
     p?: string;
     icon?: ReactNode;
     gap?: string;
     linkPosition?: LINK_POSITION | string;
+    textStyles?: TextProps;
 }
 
 export interface StyledProps {

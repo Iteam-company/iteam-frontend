@@ -11,7 +11,7 @@ export const Icon = styled.img`
     top: 0;
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<{ active?: any }>`
     padding: 10px 20px;
     cursor: pointer;
     transition: opacity 0.5s;
@@ -19,22 +19,34 @@ export const Title = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 5px;
+
+    ::after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        width: ${({ active }) => (active ? "75%" : "0")};
+        left: 20px;
+        background-color: #ffffff;
+        height: 2px;
+        transition: width 0.5s ease;
+    }
 `;
 
 export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
     :hover {
-        color: ${({ active }) => !active && COLORS.white};
+        color: ${({ active }) => !active && COLORS.black};
     }
 `;
 
 export const Menu = styled(FlexColumn)`
     padding-left: 20px;
-    background-color: ${COLORS.black};
 `;
 
 export const Container = styled.div`
-    width: 100%;
+    justify-content: center;
+
+    position: relative;
     :hover {
         div {
             visibility: visible;
