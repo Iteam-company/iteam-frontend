@@ -1,0 +1,1 @@
+export { HorizontalSwiperElem } from "./HorizontalSwiper";

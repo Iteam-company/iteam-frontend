@@ -13,7 +13,9 @@ import { useRouter } from "next/router";
 import { ProjectItemInterface, SolutionInterface } from "../api/project-item";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
-import { Title, StyledSwiper, Divider } from "@/lib/pageStyles/projectItem";
+import { Divider } from "@/lib/pageStyles/projectItem";
+import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
+import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 
 const Project = () => {
     const router = useRouter();
@@ -50,13 +52,13 @@ const Project = () => {
                 <>
                     <FlexRow w="80vw" mh="80vh" alignItems="center" gap="40px">
                         <FlexColumn w="80%" gap="20px">
-                            <Title
+                            <GradientTitle
                                 size={TEXT_SIZES.xxl}
                                 weight={TEXT_WEIGHTS.main}
                                 color={project.color}
                             >
                                 {project.title}
-                            </Title>
+                            </GradientTitle>
                             <FlexColumn gap="10px">
                                 <Text
                                     color={COLORS.black}
@@ -103,18 +105,7 @@ const Project = () => {
                         </FlexColumn>
 
                         <FlexColumn w="100%">
-                            <StyledSwiper
-                                style={{
-                                    minHeight: "60vh",
-                                    width: "40vw",
-                                    padding: "20px",
-                                }}
-                                spaceBetween={50}
-                                modules={[Navigation, Pagination, A11y]}
-                                pagination={{ clickable: true }}
-                                navigation={true}
-                                mousewheel={true}
-                            >
+                            <HorizontalSwiperElem>
                                 <SwiperSlide
                                     style={{
                                         background:
@@ -139,7 +130,7 @@ const Project = () => {
                                 >
                                     2
                                 </SwiperSlide>
-                            </StyledSwiper>
+                            </HorizontalSwiperElem>
                         </FlexColumn>
                     </FlexRow>
                     <FlexColumn
@@ -249,7 +240,7 @@ const Project = () => {
                         <Button
                             href="/contact_us"
                             gradient={project.color}
-                            variant={BUTTON_VARIANTS.gradient}
+                            variant={BUTTON_VARIANTS.gradient_link}
                             label={
                                 <Text
                                     color={COLORS.black}

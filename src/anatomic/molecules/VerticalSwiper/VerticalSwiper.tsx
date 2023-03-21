@@ -12,7 +12,7 @@ interface Props {
     allowSlideNext?: boolean;
 }
 
-export const SwiperElem: FC<Props> = ({
+export const VerticalSwiperElem: FC<Props> = ({
     children,
     swipeHandler,
     allowSlideNext = true,

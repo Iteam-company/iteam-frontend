@@ -84,7 +84,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 <Button
                     href={`/project/${id}`}
                     gradient={color}
-                    variant={BUTTON_VARIANTS.gradient}
+                    variant={BUTTON_VARIANTS.gradient_link}
                     label={
                         <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
                             View Case

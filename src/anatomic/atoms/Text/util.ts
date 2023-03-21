@@ -38,8 +38,8 @@ export const enum LETTER_SPACING {
 }
 
 export const enum LINE_HEIGHT {
-    s = "1.5px",
-    m = "1.6px",
+    s = "1.5",
+    m = "1.6",
 }
 
 export const enum TEXT_TYPES {

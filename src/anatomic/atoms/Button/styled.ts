@@ -46,12 +46,22 @@ export const Icon = styled.img`
     width: 16px;
 `;
 
-export const GradientButton = styled.a<{ gradient: string }>`
+export const GradientLink = styled.a<{ gradient: string }>`
     text-decoration: none;
     height: 46px;
     width: 167px;
     border-radius: 50px;
-    padding: 5px;
+    padding: 3px;
+    background-image: linear-gradient(${({ gradient }) => gradient});
+    cursor: pointer;
+`;
+
+export const GradientButton = styled.button<{ gradient: string }>`
+    border: none;
+    height: 41px;
+    width: 170px;
+    border-radius: 50px;
+    padding: 3px;
     background-image: linear-gradient(${({ gradient }) => gradient});
     cursor: pointer;
 `;

@@ -1,11 +1,5 @@
 import { FC, useState } from "react";
-import {
-    LETTER_SPACING,
-    LINE_HEIGHT,
-    Text,
-    TEXT_SIZES,
-    TEXT_WEIGHTS,
-} from "../Text";
+import { LETTER_SPACING, Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 import { COLORS } from "@/lib/theme/color";
 import { Container, Title, Icon, Menu, LinkElem } from "./styledMobile";
 import { IoIosArrowDown } from "react-icons/io";
@@ -35,7 +29,6 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                 <Text
                     color={COLORS.white}
                     textTransform="uppercase"
-                    lineHeight={LINE_HEIGHT.m}
                     weight={TEXT_WEIGHTS.main}
                     size={TEXT_SIZES.s}
                     letterSpacing={LETTER_SPACING.l}

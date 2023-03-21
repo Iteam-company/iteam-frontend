@@ -1,0 +1,1 @@
+export { BenefitsSlide } from "./BenefitsSlide";

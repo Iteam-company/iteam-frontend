@@ -16,6 +16,7 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
             justifyContent="center"
             h="50px"
             p="50px 0 0"
+            bg={COLORS.pageBG}
         >
             <AdaptiveElem
                 justifyContent="space-between"
