@@ -129,7 +129,7 @@ const Outstaffing = () => {
                         Book an initial 30-min call
                     </Text>
                     <Text size={TEXT_SIZES.xxxs} color={COLORS.textMinor}>
-                        Let's discuss your needs. And we will tell you how we
+                        Let`s discuss your needs. And we will tell you how we
                         can help. Without obligations.
                     </Text>
                     <BookingForm />
