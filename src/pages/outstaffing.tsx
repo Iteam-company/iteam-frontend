@@ -2,10 +2,10 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { useCallback, useEffect, useState } from "react";
-import BgImage1 from "@/assets/bgImage/bgImage1.svg";
-import BgImage2 from "@/assets/bgImage/bgImage2.svg";
-import BgImage3 from "@/assets/bgImage/bgImage3.svg";
-import BgImage4 from "@/assets/bgImage/bgImage4.svg";
+import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
+import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
+import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
+import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
@@ -17,8 +17,9 @@ import { ApproachSlide } from "@/anatomic/molecules/ApproachSlide";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
 import client from "@/axios";
 import { ApproachInterface, BenefitsInterface } from "./api/outstaffing";
-import { BGImage, Card } from "@/lib/pageStyles/outstaffing";
+import { Card } from "@/lib/pageStyles/outstaffing";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
+import { BgImage } from "@/anatomic/atoms/BgImage/";
 
 const Outstaffing = () => {
     const [approach, setApproach] = useState<ApproachInterface[]>([]);
@@ -78,7 +79,7 @@ const Outstaffing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BGImage src={BgImage1.src} top={0} left={0} />
+                <BgImage src={BgImage1.src} top={0} left={-300} />
                 <FlexColumn w="100%">
                     <HorizontalSwiperElem
                         minHeight="670px"
@@ -112,8 +113,13 @@ const Outstaffing = () => {
             </FlexColumn>
 
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BGImage src={BgImage2.src} top={0} right={0} />
-                <BGImage src={ITeamIcon.src} bottom={0} right={0} />
+                <BgImage src={BgImage2.src} top={0} right={-300} />
+                <BgImage
+                    src={ITeamIcon.src}
+                    bottom={0}
+                    right={0}
+                    scrollable={false}
+                />
                 <WhiteSection>
                     <Text
                         color={COLORS.textThird}
@@ -136,7 +142,7 @@ const Outstaffing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BGImage src={BgImage3.src} top={50} left={0} />
+                <BgImage src={BgImage3.src} top={50} left={-700} />
 
                 <FlexColumn
                     mw="975px"
@@ -215,10 +221,10 @@ const Outstaffing = () => {
                 position="relative"
                 alignItems="center"
                 p="200px 20px"
-                style={{ boxSizing: "border-box" }}
+                style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BGImage src={BgImage4.src} top={-360} right={0} />
+                <BgImage src={BgImage4.src} top={-300} right={-500} />
                 <Text
                     color={COLORS.textThird}
                     weight={TEXT_WEIGHTS.medium}
