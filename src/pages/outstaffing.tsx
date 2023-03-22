@@ -20,6 +20,7 @@ import { ApproachInterface, BenefitsInterface } from "./api/outstaffing";
 import { Card } from "@/lib/pageStyles/outstaffing";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { BgImage } from "@/anatomic/atoms/BgImage/";
+import { OurApproach } from "@/anatomic/organisms/OurApproach/OurApproach";
 
 const Outstaffing = () => {
     const [approach, setApproach] = useState<ApproachInterface[]>([]);
@@ -37,7 +38,7 @@ const Outstaffing = () => {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [getData]);
 
     return (
         <FlexColumn
@@ -81,7 +82,7 @@ const Outstaffing = () => {
             >
                 <BgImage src={BgImage1.src} top={0} left={-300} />
                 <FlexColumn w="100%">
-                    <HorizontalSwiperElem
+                    {/* <HorizontalSwiperElem
                         minHeight="670px"
                         width="100%"
                         maxWidth="975px"
@@ -108,7 +109,8 @@ const Outstaffing = () => {
                                     />
                                 </SwiperSlide>
                             ))}
-                    </HorizontalSwiperElem>
+                    </HorizontalSwiperElem> */}
+                    <OurApproach approaches={approach} />
                 </FlexColumn>
             </FlexColumn>
 

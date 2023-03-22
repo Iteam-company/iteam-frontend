@@ -10,6 +10,8 @@ interface DefaultElementProps {
     bg?: string;
     bgSize?: string;
     bgPosition?: string;
+    boxShadow?: string;
+    borderRadius?: string;
     position?: string;
     zIndex?: string;
 }
@@ -43,6 +45,8 @@ export const Flex = styled.div<FlexProps & DefaultElementProps>`
     ${({ gap }) => gap && `gap: ${gap}`};
     ${({ position }) => position && `position: ${position}`};
     flex-direction: ${(props) => props.type || "row"};
+    box-shadow: ${(props) => props.boxShadow || "none"};
+    border-radius: ${(props) => props.borderRadius || "none"};
 `;
 
 export const FlexRow = styled(Flex)`

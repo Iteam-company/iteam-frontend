@@ -1,22 +1,77 @@
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { FC } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import checkIcon from "@/assets/icon/check.svg";
 import { ApproachInterface } from "@/pages/api/outstaffing";
 import { StepTitle, CircularProgressbarContainer, Container } from "./styled";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
+import { motion, useInView } from "framer-motion";
+import { gsap } from "gsap";
+import Image from "next/image";
+interface Props {
+    approaches: ApproachInterface[];
+}
 
-export const ApproachSlide: FC<ApproachInterface> = ({
-    step,
-    title,
-    text,
-    progress = 33,
-    color,
-}) => {
+export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
+    const [currentApproachIndex, setCurrentApproachIndex] = useState<number>(0);
+    const [percents, setPercents] = useState(approaches[0]?.progress || 0);
+
+    const currentApproach = approaches[currentApproachIndex] || approaches[0];
+
+    const circleViewRef = useRef(null);
+    const gsapRef = useRef(null);
+
+    const isCircleInView = useInView(circleViewRef);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (isCircleInView) {
+                setPercents(percents >= 100 ? 100 : percents + 1);
+
+                const currentPossibleApproachIndex = approaches.findIndex(
+                    (approach) => approach.progress === percents,
+                );
+
+                if (currentPossibleApproachIndex !== -1) {
+                    setCurrentApproachIndex(currentPossibleApproachIndex);
+                    gsap.fromTo(
+                        ".text-wrapper",
+                        { opacity: 0 },
+                        { opacity: 1, duration: 1 },
+                    ).play();
+                }
+            }
+        }, 150);
+
+        if (percents >= 100) clearInterval(interval);
+
+        return () => clearInterval(interval);
+    }, [approaches, isCircleInView, percents]);
+
+    const forward = useCallback(
+        () =>
+            setCurrentApproachIndex(
+                approaches[currentApproachIndex + 1]
+                    ? currentApproachIndex + 1
+                    : 0,
+            ),
+        [approaches, currentApproachIndex],
+    );
+
+    if (!approaches) return null;
+
     return (
-        <FlexColumn alignItems="center" gap="30px" p="40px 50px 75px">
+        <FlexColumn
+            alignItems="center"
+            gap="30px"
+            p="40px 50px 75px"
+            position="relative"
+            boxShadow="0px 4px 20px rgba(37, 7, 67, 0.37)"
+            bg={COLORS.white}
+            borderRadius="16px"
+        >
             <Text
                 color={COLORS.textThird}
                 weight={TEXT_WEIGHTS.medium}
@@ -25,7 +80,7 @@ export const ApproachSlide: FC<ApproachInterface> = ({
                 Our approach
             </Text>
             <FlexRow gap="90px" justifyContent="center" alignItems="center">
-                <FlexColumn mw="340px">
+                <FlexColumn mw="340px" ref={gsapRef} className="text-wrapper">
                     <FlexColumn w="100%" position="relative">
                         <GradientTitle
                             size="200px"
@@ -33,14 +88,14 @@ export const ApproachSlide: FC<ApproachInterface> = ({
                             lineHeight="200px"
                             color="180deg, #B9B6DB 0%, rgba(186, 184, 217, 0.12) 100%"
                         >
-                            {step}
+                            {currentApproach?.step}
                         </GradientTitle>
                         <StepTitle
                             color={COLORS.textThird}
                             weight={TEXT_WEIGHTS.medium}
                             size={TEXT_SIZES.xl}
                         >
-                            {title}
+                            {currentApproach?.title}
                         </StepTitle>
                     </FlexColumn>
                     <Text
@@ -48,30 +103,35 @@ export const ApproachSlide: FC<ApproachInterface> = ({
                         color={COLORS.textMinor}
                         lineHeight="38px"
                     >
-                        {text}
+                        {currentApproach?.text}
                     </Text>
                 </FlexColumn>
                 <FlexColumn w="100%">
-                    {progress !== 100 ? (
-                        <CircularProgressbarContainer>
+                    {percents !== 100 ? (
+                        <CircularProgressbarContainer ref={circleViewRef}>
                             <CircularProgressbar
-                                text={`${progress}%`}
+                                text={`${percents}%`}
                                 maxValue={100}
-                                value={progress}
+                                value={percents}
                                 styles={buildStyles({
-                                    pathColor: color,
-                                    textColor: color,
+                                    pathColor: currentApproach?.color,
+                                    textColor: currentApproach?.color,
                                     trailColor: COLORS.progressTrail,
                                 })}
                             />
                         </CircularProgressbarContainer>
                     ) : (
                         <Container
-                            color={color}
+                            color={currentApproach?.color}
                             justifyContent="center"
                             alignItems="center"
                         >
-                            <img src={checkIcon.src} />
+                            <Image
+                                width={200}
+                                height={200}
+                                src={checkIcon.src}
+                                alt="check"
+                            />
                         </Container>
                     )}
                 </FlexColumn>
