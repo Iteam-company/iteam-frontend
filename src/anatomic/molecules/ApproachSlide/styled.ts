@@ -1,7 +1,7 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import { Text } from "@/anatomic/atoms/Text";
-import repeatIcon from "@/assets/icon/repeat.png";
+import repeatIcon from "@/assets/icon/repeat.svg";
 
 export const StepTitle = styled(Text)`
     position: absolute;
@@ -35,6 +35,9 @@ export const CircularProgressbarContainer = styled.div`
 `;
 
 export const RepeatButton = styled.button`
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -53,6 +56,7 @@ export const RepeatButton = styled.button`
     cursor: pointer;
 
     &:after {
+        padding-top: 8px;
         content: url(${repeatIcon.src});
         background-color: #f6eefc;
         border-radius: 50%;
