@@ -7,15 +7,32 @@ import { Input } from "@/anatomic/atoms/Input";
 import { Formik, Form } from "formik";
 import { Button } from "@/anatomic/atoms/Button";
 import { FlexContainer } from "./styled";
+import { FormSchema, FormikValues, initialValues } from "./util";
+import { useRouter } from "next/router";
 
 export const BookingForm = () => {
+    const router = useRouter();
+
+    console.log(new Date().toISOString().split(".")[0]);
+
+    const onSubmit = (values: FormikValues) => {
+        const date = new Date().toISOString().split(".")[0];
+        router.push(
+            `https://calendly.com/labk19/30min/${date}?email=${values.email}`,
+        );
+    };
+
     return (
-        <Formik initialValues={{ email: "" }} onSubmit={() => {}}>
+        <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={FormSchema}
+        >
             {({ values, setFieldValue, errors, touched }) => (
                 <Form style={{ minWidth: "auto", width: "500px" }}>
                     <FlexContainer
                         gap="45px"
-                        alignItems="center"
+                        alignItems="start"
                         justifyContent="center"
                         w="100%"
                         style={{ boxSizing: "border-box" }}
@@ -26,8 +43,12 @@ export const BookingForm = () => {
                                 name="email"
                                 placeholder="Your Email"
                                 padding="8px 12px"
-                                // borderRadius="12px"
                                 height="40px"
+                                error={
+                                    errors.email && touched.email
+                                        ? errors.email
+                                        : null
+                                }
                             />
                         </FlexColumn>
                         <FlexColumn w="auto">

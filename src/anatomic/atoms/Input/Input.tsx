@@ -31,22 +31,22 @@ export const Input: FC<Props> = ({
 }) => {
     return (
         <FlexColumn w="100%" gap="4px">
-            <FlexRow gap="4px">
-                <Text
-                    weight={TEXT_WEIGHTS.medium}
-                    size={TEXT_SIZES.xxs}
-                    color={COLORS.text}
-                    letterSpacing={LETTER_SPACING.xs}
-                    textTransform="capitalize"
-                >
-                    {label}
-                </Text>
-                {label && (
+            {label && (
+                <FlexRow gap="4px">
+                    <Text
+                        weight={TEXT_WEIGHTS.medium}
+                        size={TEXT_SIZES.xxs}
+                        color={COLORS.text}
+                        letterSpacing={LETTER_SPACING.xs}
+                        textTransform="capitalize"
+                    >
+                        {label}
+                    </Text>
                     <sub>
                         <Text color={COLORS.red}>*</Text>
                     </sub>
-                )}
-            </FlexRow>
+                </FlexRow>
+            )}
 
             <Container>
                 {icon && <Icon>{icon}</Icon>}
@@ -60,7 +60,7 @@ export const Input: FC<Props> = ({
                     height={height}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
+            {error && <Text size={TEXT_SIZES.xxxs}>{error}</Text>}
         </FlexColumn>
     );
 };
