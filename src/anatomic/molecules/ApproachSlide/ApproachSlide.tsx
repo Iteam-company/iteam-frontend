@@ -1,15 +1,28 @@
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+    FC,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import checkIcon from "@/assets/icon/check.svg";
 import { ApproachInterface } from "@/pages/api/outstaffing";
-import { StepTitle, CircularProgressbarContainer, Container } from "./styled";
+import {
+    StepTitle,
+    CircularProgressbarContainer,
+    Container,
+    RepeatButton,
+} from "./styled";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import Image from "next/image";
+
 interface Props {
     approaches: ApproachInterface[];
 }
@@ -18,14 +31,17 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
     const [currentApproachIndex, setCurrentApproachIndex] = useState<number>(0);
     const [percents, setPercents] = useState(approaches[0]?.progress || 0);
 
-    const currentApproach = approaches[currentApproachIndex] || approaches[0];
+    const currentApproach = useMemo(
+        () => approaches[currentApproachIndex] || approaches[0],
+        [approaches, currentApproachIndex],
+    );
 
     const circleViewRef = useRef(null);
     const gsapRef = useRef(null);
 
     const isCircleInView = useInView(circleViewRef);
 
-    useEffect(() => {
+    const animationOfPercents = useCallback(() => {
         const interval = setInterval(() => {
             if (isCircleInView) {
                 setPercents(percents >= 100 ? 100 : percents + 1);
@@ -43,22 +59,23 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
                     ).play();
                 }
             }
+
+            if (percents >= 100) clearInterval(interval);
         }, 150);
 
-        if (percents >= 100) clearInterval(interval);
-
-        return () => clearInterval(interval);
+        return interval;
     }, [approaches, isCircleInView, percents]);
 
-    const forward = useCallback(
-        () =>
-            setCurrentApproachIndex(
-                approaches[currentApproachIndex + 1]
-                    ? currentApproachIndex + 1
-                    : 0,
-            ),
-        [approaches, currentApproachIndex],
-    );
+    useEffect(() => {
+        const interval = animationOfPercents();
+
+        return () => clearInterval(interval);
+    }, [animationOfPercents, approaches, isCircleInView, percents]);
+
+    const onRepeatAnimation = useCallback(() => {
+        setPercents(0);
+        setCurrentApproachIndex(0);
+    }, []);
 
     if (!approaches) return null;
 
@@ -106,9 +123,9 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
                         {currentApproach?.text}
                     </Text>
                 </FlexColumn>
-                <FlexColumn w="100%">
+                <FlexColumn w="100%" ref={circleViewRef}>
                     {percents !== 100 ? (
-                        <CircularProgressbarContainer ref={circleViewRef}>
+                        <CircularProgressbarContainer>
                             <CircularProgressbar
                                 text={`${percents}%`}
                                 maxValue={100}
@@ -136,6 +153,15 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
                     )}
                 </FlexColumn>
             </FlexRow>
+            {percents >= 99 && (
+                <RepeatButton
+                    as={motion.button}
+                    animate={{
+                        opacity: [0, 1],
+                    }}
+                    onClick={onRepeatAnimation}
+                />
+            )}
         </FlexColumn>
     );
 };
