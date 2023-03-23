@@ -177,7 +177,7 @@ export const SmoothSlider = () => {
                     style={{
                         position: "relative",
 
-                        paddingBottom: "36.25%",
+                        // paddingBottom: "36.25%",
 
                         height: "30vh",
                         width: "30vw",
@@ -188,10 +188,8 @@ export const SmoothSlider = () => {
                             const containerStyle = {
                                 position: "absolute",
                                 top: "0",
-
                                 width: "100%",
                                 height: "100%",
-
                                 overflow: "hidden",
                                 ...(!!index
                                     ? {
@@ -233,9 +231,10 @@ export const SmoothSlider = () => {
                 <div
                     className="nav-dots"
                     style={{
+                        // background: "red",
+
                         position: "absolute",
                         left: "30px",
-
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
@@ -245,7 +244,7 @@ export const SmoothSlider = () => {
                 >
                     {!!slides.length &&
                         slides.map((_, index) => {
-                            return <Dot />;
+                            return <Dot className="dot" />;
                         })}
                 </div>
             </div>

@@ -3,12 +3,13 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect } from "react";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap/dist/gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 export default function App({ Component, pageProps }: AppProps) {
-    // useLayoutEffect(() => {
-    //     gsap.registerPlugin(ScrollTrigger);
-    // }, []);
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+    }, []);
 
     return (
         <AnimatePresence mode="wait" initial={false}>

@@ -5,6 +5,6 @@ export const StyledLayout = styled.div`
     flex-direction: column;
     min-height: 100vh;
     main {
-        flex-grow: 1;
+        flex: 1 1;
     }
 `;
