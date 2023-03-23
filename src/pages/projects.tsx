@@ -16,6 +16,7 @@ import { useInView } from "framer-motion";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { VerticalSwiperElem } from "@/anatomic/molecules/VerticalSwiper";
 import { Divider, Title } from "@/lib/pageStyles/projectStyles";
+import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
 
 const Projects = () => {
     const [project, setProject] = useState<ProjectsInterface[]>([]);
@@ -84,7 +85,7 @@ const Projects = () => {
                     </Title>
                 </FlexColumn>
             </Adaptive>
-            <Divider ref={firstRef} />
+            {/* <Divider ref={firstRef} />
             <VerticalSwiperElem
                 swipeHandler={swipeHandler}
                 allowSlideNext={false}
@@ -109,7 +110,9 @@ const Projects = () => {
                     </SwiperSlide>
                 ))}
             </VerticalSwiperElem>
-            <Divider ref={secondRef} />
+            <Divider ref={secondRef} /> */}
+
+            <SmoothSlider />
         </FlexColumn>
     );
 };
