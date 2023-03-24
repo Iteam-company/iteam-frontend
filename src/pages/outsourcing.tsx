@@ -22,6 +22,8 @@ import { Input } from "@/lib/pageStyles/outsourcingStyles";
 import { NumbersInterface, ProcessInterface } from "./api/outsourcing";
 import client from "@/axios";
 import styled from "styled-components";
+import CountUp from "react-countup";
+import { useInView } from "framer-motion";
 
 const DATA = [
     {
@@ -54,6 +56,10 @@ const Outsourcing = () => {
     const [numbers, setNumbers] = useState<NumbersInterface[]>([]);
     const [process, setProcess] = useState<ProcessInterface[]>([]);
     const [services, setServices] = useState<string[]>([]);
+
+    const numbersViewRef = useRef(null);
+
+    const isNumbersInView = useInView(numbersViewRef);
 
     const getData = useCallback(async () => {
         try {
@@ -161,6 +167,7 @@ const Outsourcing = () => {
                         w="60%"
                         justifyContent="space-between"
                         p="10px 0 0"
+                        ref={numbersViewRef}
                     >
                         {numbers &&
                             numbers.map((item) => (
@@ -175,7 +182,13 @@ const Outsourcing = () => {
                                         size={TEXT_SIZES.xxl}
                                         color={COLORS.textThird}
                                     >
-                                        {item.title}
+                                        {isNumbersInView && (
+                                            <CountUp
+                                                end={item.title}
+                                                duration={3}
+                                            />
+                                        )}
+                                        {item.subTitle}
                                     </Text>
                                     <Text
                                         weight={TEXT_WEIGHTS.main}
