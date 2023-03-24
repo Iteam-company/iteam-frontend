@@ -112,10 +112,7 @@ const Projects = () => {
             </VerticalSwiperElem>
             <Divider ref={secondRef} /> */}
 
-            <div style={{ height: "calc(500vh)" }}>
-                <SmoothSlider />
-            </div>
-            {/* <div style={{ height: "200px" }}>hdhfjhdksfgv</div> */}
+            <SmoothSlider />
         </FlexColumn>
     );
 };
