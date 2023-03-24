@@ -8,7 +8,8 @@ export interface OutsourcingInterface {
 
 export interface NumbersInterface {
     id?: number;
-    title: string;
+    title: number;
+    subTitle?: string;
     text: string;
 }
 export interface ProcessInterface {
@@ -26,9 +27,19 @@ const OUTSOURCING = {
         "Maintenance and support",
     ],
     numbers: [
-        { id: 1, title: "6", text: "Years of experience in IT" },
-        { id: 2, title: "30%", text: "Shorter time-to-market delivery" },
-        { id: 3, title: "50+", text: "Successfully completed projects" },
+        { id: 1, title: 6, text: "Years of experience in IT" },
+        {
+            id: 2,
+            title: 30,
+            subTitle: "%",
+            text: "Shorter time-to-market delivery",
+        },
+        {
+            id: 3,
+            title: 50,
+            subTitle: "+",
+            text: "Successfully completed projects",
+        },
     ],
     process: [
         {
