@@ -1,16 +1,19 @@
 import inputThumbIcon from "@/assets/bgImage/outsourcing/input-thumb.svg";
 import styled from "styled-components";
-import { COLORS } from "../theme/color";
+import { COLORS } from "../../../lib/theme/color";
 
-export const Input = styled.input`
-    z-index: 3;
-    transform: translateY(-130px);
+export const Input = styled.input<{ translateY: string }>`
+    z-index: 6;
+    transform: translateY(${({ translateY }) => translateY && translateY});
     -webkit-appearance: none;
     background: transparent;
     width: 84%;
+    @media all and (max-width: 602px) {
+        width: 80%;
+    }
 
     &::-webkit-slider-thumb {
-        z-index: 4 !important;
+        z-index: 7 !important;
         transform: translateY(-20px);
         -webkit-appearance: none;
         width: 40px;
@@ -20,6 +23,11 @@ export const Input = styled.input`
         background-size: contain;
         background-image: url(${inputThumbIcon.src});
         cursor: pointer;
+        @media all and (max-width: 602px) {
+            transform: translateY(-12px);
+            width: 24px;
+            height: 24px;
+        }
     }
 
     &::-ms-track {
@@ -38,5 +46,8 @@ export const Input = styled.input`
         width: 100%;
         height: 2px;
         background: ${COLORS.textThird};
+        @media all and (max-width: 602px) {
+            height: 1px;
+        }
     }
 `;

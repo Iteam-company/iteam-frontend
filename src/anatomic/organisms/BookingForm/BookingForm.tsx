@@ -13,8 +13,6 @@ import { useRouter } from "next/router";
 export const BookingForm = () => {
     const router = useRouter();
 
-    console.log(new Date().toISOString().split(".")[0]);
-
     const onSubmit = (values: FormikValues) => {
         const date = new Date().toISOString().split(".")[0];
         router.push(
