@@ -1,8 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useCallback, useEffect, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Slide } from "@/anatomic/molecules/ProjectSlide";
-import { SwiperSlide } from "swiper/react";
-import Swiper from "swiper";
 import { ProjectsInterface } from "./api/projects";
 import client from "@/axios";
 import {
@@ -12,44 +9,40 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { useInView } from "framer-motion";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
-import { VerticalSwiperElem } from "@/anatomic/molecules/VerticalSwiper";
-import { Divider, Title } from "@/lib/pageStyles/projectStyles";
+import { Title } from "@/lib/pageStyles/projectStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
+import { Slide } from "@/anatomic/molecules/ProjectSlide";
 
 const Projects = () => {
-    const [project, setProject] = useState<ProjectsInterface[]>([]);
+    const [slides, setSlides] = useState<ReactNode[]>([]);
 
     const getProject = useCallback(async () => {
         try {
             const { data } = await client.get("/api/projects");
-            setProject(data);
+            setSlides(
+                data.map((item: ProjectsInterface) => (
+                    <Slide
+                        title={item.title}
+                        description={item.description}
+                        location={item.location}
+                        budget={item.budget}
+                        tech={item.tech}
+                        color={item.color}
+                        img={item.img}
+                    />
+                )),
+            );
         } catch (err) {
             console.log(err);
         }
     }, []);
 
+    console.log(slides);
+
     useEffect(() => {
         getProject();
     }, []);
-
-    const firstRef = useRef(null);
-    const secondRef = useRef(null);
-    const isFirstInView: boolean = useInView(firstRef);
-    const isSecondInView = useInView(secondRef);
-
-    const swipeHandler = (e: Swiper) => {
-        if (isFirstInView && isSecondInView) {
-            e.allowSlideNext = true;
-        } else {
-            window.scrollTo({
-                top: 550,
-                left: 0,
-                behavior: "smooth",
-            });
-        }
-    };
 
     return (
         <FlexColumn
@@ -85,34 +78,8 @@ const Projects = () => {
                     </Title>
                 </FlexColumn>
             </Adaptive>
-            {/* <Divider ref={firstRef} />
-            <VerticalSwiperElem
-                swipeHandler={swipeHandler}
-                allowSlideNext={false}
-            >
-                {project.map((item, index) => (
-                    <SwiperSlide
-                        key={item.id}
-                        style={{
-                            width: "100vw",
-                        }}
-                    >
-                        <Slide
-                            title={item.title}
-                            description={item.description}
-                            location={item.location}
-                            budget={item.budget}
-                            tech={item.tech}
-                            img={item.img}
-                            color={item.color}
-                            id={item.id}
-                        />
-                    </SwiperSlide>
-                ))}
-            </VerticalSwiperElem>
-            <Divider ref={secondRef} /> */}
 
-            <SmoothSlider />
+            {slides.length && <SmoothSlider slides={slides} />}
         </FlexColumn>
     );
 };

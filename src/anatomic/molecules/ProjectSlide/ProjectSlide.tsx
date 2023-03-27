@@ -5,11 +5,22 @@ import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { ProjectsInterface, Technologies } from "@/pages/api/projects";
-import React, { FC } from "react";
+import React, {
+    FC,
+    useContext,
+    useEffect,
+    useLayoutEffect,
+    useMemo,
+    useRef,
+} from "react";
 import { FitToViewport } from "react-fit-to-viewport";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
+import { useInView } from "framer-motion";
+import gsap from "gsap";
+import { SliderContext } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,
@@ -21,6 +32,23 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     img,
     color,
 }) => {
+    const containerRef = useRef(null);
+
+    const { currentSlideIndex, setCurrentSlideIndex } =
+        useContext(SliderContext)!;
+
+    useIsomorphicLayoutEffect(() => {
+        console.log(
+            gsap.utils.toArray(".image-wrapper", containerRef.current),
+            "!!!!",
+        );
+        gsap.fromTo(
+            document.querySelectorAll(".image-wrapper")[currentSlideIndex],
+            { opacity: 0, x: 150 },
+            { opacity: 1, x: 0 },
+        );
+    }, [currentSlideIndex]);
+
     return (
         <>
             <FlexRow
@@ -28,6 +56,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                 alignItems="center"
                 gap="50px"
                 w="90%"
+                ref={containerRef}
             >
                 <FlexColumn gap="50px" w="100%">
                     <Text
@@ -74,6 +103,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                             </Text>
                         </FlexRow>
                     </FlexRow>
+
                     <FlexRow gap="20px">
                         {tech.map((el: Technologies, index) => (
                             <FlexRow
@@ -104,12 +134,13 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                         alignItems: "center",
                         justifyContent: "center",
                     }}
+                    className="image-wrapper"
                     width={0}
                     height={0}
                     minZoom={0}
                     maxZoom={1}
                 >
-                    <Device image={img.src} />
+                    <Device image={img} />
                 </FitToViewport>
             </FlexRow>
 

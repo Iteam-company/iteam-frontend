@@ -76,7 +76,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                     minZoom={0}
                     maxZoom={1}
                 >
-                    <Device image={img.src} />
+                    <Device image={img} />
                 </FitToViewport>
             </FlexColumn>
 

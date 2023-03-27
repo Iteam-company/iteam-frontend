@@ -1,31 +1,33 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, {
+    createContext,
+    Dispatch,
+    FC,
+    ReactNode,
+    useRef,
+    useState,
+} from "react";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Dot } from "./styled";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
+import { COLORS } from "@/lib/theme/color";
 
-const slides: Array<any> = [
-    {
-        image: "https://lastfm.freetls.fastly.net/i/u/ar0/2601ee61963451c48291ad87f3a36828.jpg",
-        content: <div>uuuu sukaa</div>,
-    },
-    {
-        image: "https://memepedia.ru/wp-content/uploads/2021/05/photo5264918766142207239-1-768x512.jpg",
-        content: <div>Hi igor!!!</div>,
-    },
-    {
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWj3Ubtf0p5JosI4cpPd0-tmUTPsb-zTjOIg&usqp=CAU",
-        content: <div>BMW GOVNO!!!</div>,
-    },
-    {
-        image: "https://i.scdn.co/image/ab67616d0000b273ba1a0b8f239067333cbc6d4a",
-        content: <div>Hello Vika!!!</div>,
-    },
-];
+export interface SlidesInterface {
+    slides: ReactNode[];
+}
 
-export const SmoothSlider = () => {
+interface SliderContextData {
+    currentSlideIndex: number;
+    setCurrentSlideIndex: Dispatch<number>;
+}
+
+export const SliderContext = createContext<SliderContextData | null>(null);
+
+export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
+    const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
                 containerRef,
@@ -53,33 +55,9 @@ export const SmoothSlider = () => {
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
                     scrub: 0.5,
-                    // markers: true
+                    // markers: true,
                 },
             });
-
-            for (let i = 1; i < slides.length; i++) {
-                contentTimeLine
-
-                    // animate the container one way...
-                    .fromTo(
-                        containerRef.current!.querySelector(
-                            `.image-container--${i}`,
-                        ),
-                        { yPercent: -100, x: 0 },
-                        { yPercent: 0, ease: "none" },
-                        i - 1,
-                    )
-                    // ...and the image the opposite way (at the same time)
-                    .fromTo(
-                        containerRef.current!.querySelector(
-                            `.image-container--${i} .image--${i}`,
-                        ),
-                        { yPercent: 100, x: 0 },
-                        { yPercent: 0, ease: "none" },
-                        i - 1,
-                    )
-                    .rawTime(true);
-            }
 
             const elements = gsap.utils.toArray(
                 ".content-container",
@@ -110,10 +88,14 @@ export const SmoothSlider = () => {
                     trigger: elements[index] as any,
                     start: "top center",
                     end: "bottom center",
-                    onToggle: (self) => self.isActive && setActive(element),
+                    onToggle: (self) => {
+                        setCurrentSlideIndex(index);
+                        self.isActive && setActive(element);
+                    },
                 });
             });
         }, containerRef);
+
         return () => context.revert();
     }, []);
 
@@ -139,7 +121,8 @@ export const SmoothSlider = () => {
                         width: "95vw",
 
                         borderRadius: "20px",
-                        backgroundColor: "#8f81fc",
+                        backgroundColor: COLORS.white,
+                        boxShadow: "0px 4px 20px 0px #00000040",
 
                         display: "flex",
                         justifyContent: "space-between",
@@ -149,86 +132,32 @@ export const SmoothSlider = () => {
                     <div
                         className="left-content-container"
                         style={{
-                            width: "50%",
+                            width: "100%",
                             height: "100%",
                             overflow: "hidden",
                         }}
                     >
-                        {!!slides.length &&
-                            slides.map(({ content }) => {
-                                return (
-                                    <div
-                                        className="content-container"
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                            border: "1px solid black",
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        {content}
-                                    </div>
-                                );
-                            })}
-                    </div>
-                    <div
-                        className="images-conatainer comparisonSection"
-                        style={{
-                            position: "relative",
-
-                            // paddingBottom: "36.25%",
-
-                            height: "30vh",
-                            width: "30vw",
-                        }}
-                    >
-                        {!!slides.length &&
-                            slides.map(({ image }, index) => {
-                                const containerStyle = {
-                                    position: "absolute",
-                                    top: "0",
-                                    width: "100%",
-                                    height: "100%",
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform: "translate(100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
-
-                                const imageStyle = {
-                                    position: "absolute",
-                                    top: "0",
-
-                                    width: "100%",
-                                    height: "100%",
-
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform:
-                                                  "translate(-100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
-
-                                return (
-                                    <div
-                                        className={`image-container--${index}`}
-                                        style={containerStyle}
-                                    >
-                                        <img
-                                            className={`image--${index}`}
-                                            style={imageStyle}
-                                            src={image}
-                                            alt="before"
-                                        />
-                                    </div>
-                                );
-                            })}
+                        <SliderContext.Provider
+                            value={{ currentSlideIndex, setCurrentSlideIndex }}
+                        >
+                            {!!slides.length &&
+                                slides.map((content) => {
+                                    return (
+                                        <div
+                                            className="content-container"
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                                alignItems: "center",
+                                            }}
+                                        >
+                                            {content}
+                                        </div>
+                                    );
+                                })}
+                        </SliderContext.Provider>
                     </div>
                     <div
                         className="nav-dots"

@@ -12,13 +12,3 @@ export const Desktop = styled(FlexColumn)`
         display: none;
     }
 `;
-export const Container = styled.div`
-    margin: 0 50px;
-    height: 80vh;
-    padding: 20px 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 24px;
-    @media all and (max-width: 899px) {
-        margin: 0 10px;
-    }
-`;
