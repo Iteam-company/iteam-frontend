@@ -9,7 +9,11 @@ import { StepTitle, CircularProgressbarContainer, Container } from "./styled";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import Image from "next/image";
 
-const PROGRESS: any = {
+interface ProgressInterface {
+    [key: number]: number;
+}
+
+const PROGRESS: ProgressInterface = {
     1: 33,
     2: 66,
     3: 97,
@@ -85,6 +89,7 @@ export const ApproachSlideMobile: FC<ApproachInterface> = ({
                 )}
             </FlexColumn>
         </FlexRow>
+
         <Text size={TEXT_SIZES.xxs} color={COLORS.textMinor} lineHeight="22px">
             {text}
         </Text>

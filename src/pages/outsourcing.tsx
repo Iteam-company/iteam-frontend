@@ -110,8 +110,8 @@ const Outsourcing = () => {
                             </Text>
                             <FlexColumn gap="20px">
                                 {services &&
-                                    services.map((item) => (
-                                        <Text> • {item}</Text>
+                                    services.map((item, index) => (
+                                        <Text key={index}> • {item}</Text>
                                     ))}
                             </FlexColumn>
                         </FlexColumn>

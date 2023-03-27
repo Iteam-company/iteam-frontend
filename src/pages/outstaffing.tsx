@@ -226,8 +226,9 @@ const Outstaffing = () => {
                                         "React Front End Developers",
                                         "MERN Developers",
                                         "MEAN Developers",
-                                    ].map((item) => (
+                                    ].map((item, index) => (
                                         <Text
+                                            key={index}
                                             color={COLORS.textMinor}
                                             size={TEXT_SIZES.m}
                                         >
