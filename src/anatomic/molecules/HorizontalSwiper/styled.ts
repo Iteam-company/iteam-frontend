@@ -13,7 +13,6 @@ export const StyledSwiper = styled(SwiperComponent)<{
     min-height: ${({ mh }) => mh && mh};
     width: ${({ w }) => w && w};
     max-width: ${({ mw }) => mw && mw};
-
     z-index: 2;
 
     .swiper-button-next,
@@ -23,9 +22,16 @@ export const StyledSwiper = styled(SwiperComponent)<{
 
     .swiper-button-next {
         right: 38%;
+        @media all and (max-width: 600px) {
+            right: 28%;
+        }
     }
+
     .swiper-button-prev {
         left: 38%;
+        @media all and (max-width: 600px) {
+            left: 28%;
+        }
     }
 
     .swiper-button-prev {

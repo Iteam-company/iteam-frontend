@@ -3,10 +3,11 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { BenefitsInterface } from "@/pages/api/outstaffing";
+import styled from "styled-components";
 
 export const BenefitsSlide: FC<BenefitsInterface> = ({ title, text }) => {
     return (
-        <FlexColumn h="100%" gap="50px" p="40px 45px 150px">
+        <FlexContainer h="100%">
             <Text
                 size={TEXT_SIZES.l}
                 color={COLORS.textThird}
@@ -14,9 +15,24 @@ export const BenefitsSlide: FC<BenefitsInterface> = ({ title, text }) => {
             >
                 {title}
             </Text>
-            <Text size={TEXT_SIZES.m} color={COLORS.textMinor}>
+            <TextDefinition size={TEXT_SIZES.m} color={COLORS.textMinor}>
                 {text}
-            </Text>
-        </FlexColumn>
+            </TextDefinition>
+        </FlexContainer>
     );
 };
+
+const FlexContainer = styled(FlexColumn)`
+    padding: 40px 45px 150px;
+    gap: 50px;
+    @media all and (max-width: 700px) {
+        padding: 30px;
+        gap: 20px;
+    }
+`;
+
+const TextDefinition = styled(Text)`
+    @media all and (max-width: 500px) {
+        font-size: ${TEXT_SIZES.xs} !important;
+    }
+`;

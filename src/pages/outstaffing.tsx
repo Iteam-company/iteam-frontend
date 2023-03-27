@@ -13,14 +13,15 @@ import { SwiperSlide } from "swiper/react";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-import { ApproachSlide } from "@/anatomic/molecules/ApproachSlide";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
 import client from "@/axios";
 import { ApproachInterface, BenefitsInterface } from "./api/outstaffing";
-import { Card } from "@/lib/pageStyles/outstaffing";
+import { Card, FlexContainer, Img } from "@/lib/pageStyles/outstaffing";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { BgImage } from "@/anatomic/atoms/BgImage/";
 import { OurApproach } from "@/anatomic/organisms/OurApproach/OurApproach";
+import teamIcon from "@/assets/projects/teamIcon.svg";
+import { FitToViewport } from "react-fit-to-viewport";
 
 const Outstaffing = () => {
     const [approach, setApproach] = useState<ApproachInterface[]>([]);
@@ -81,39 +82,9 @@ const Outstaffing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <BgImage src={BgImage1.src} top={0} left={-300} />
-                <FlexColumn w="100%">
-                    {/* <HorizontalSwiperElem
-                        minHeight="670px"
-                        width="100%"
-                        maxWidth="975px"
-                    >
-                        {approach &&
-                            approach.map((item: ApproachInterface) => (
-                                <SwiperSlide
-                                    key={item.step}
-                                    style={{
-                                        boxSizing: "border-box",
-                                        borderRadius: "16px",
-                                        minHeight: "570px",
-                                        background: "#FFFFFF",
-                                        boxShadow:
-                                            "0px 4px 20px rgba(37, 7, 67, 0.37)",
-                                    }}
-                                >
-                                    <ApproachSlide
-                                        step={item.step}
-                                        title={item.title}
-                                        text={item.text}
-                                        progress={item.progress}
-                                        color={item.color}
-                                    />
-                                </SwiperSlide>
-                            ))}
-                    </HorizontalSwiperElem> */}
-                    <OurApproach approaches={approach} />
-                </FlexColumn>
-            </FlexColumn>
 
+                <OurApproach approaches={approach} />
+            </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage src={BgImage2.src} top={0} right={-300} />
                 <BgImage
@@ -137,7 +108,6 @@ const Outstaffing = () => {
                     <BookingForm />
                 </WhiteSection>
             </FlexColumn>
-
             <FlexColumn
                 w="100%"
                 h="100%"
@@ -241,45 +211,70 @@ const Outstaffing = () => {
                     position="relative"
                     alignItems="center"
                 >
-                    <Card gap="15px" w="100%">
-                        <Text
-                            color={COLORS.textThird}
-                            weight={TEXT_WEIGHTS.main}
-                            size={TEXT_SIZES.l}
+                    <Card w="100%" h="100%">
+                        <FlexContainer
+                            justifyContent="space-between"
+                            alignItems="center"
+                            w="100%"
+                            h="100%"
+                            gap="20px"
                         >
-                            - Angular Front End Developers
-                        </Text>
-                        <Text
-                            color={COLORS.textThird}
-                            weight={TEXT_WEIGHTS.main}
-                            size={TEXT_SIZES.l}
-                        >
-                            - React Front End Developers
-                        </Text>
-                        <Text
-                            color={COLORS.textThird}
-                            weight={TEXT_WEIGHTS.main}
-                            size={TEXT_SIZES.l}
-                        >
-                            - MERN Developers
-                        </Text>
-
-                        <FlexColumn alignItems="center" w="100%">
-                            <Button
-                                href="/projects"
-                                gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
-                                variant={BUTTON_VARIANTS.gradient_link}
-                                label={
-                                    <Text
-                                        color={COLORS.black}
-                                        weight={TEXT_WEIGHTS.main}
-                                        size={TEXT_SIZES.xs}
-                                    >
-                                        Visit Team
-                                    </Text>
-                                }
-                            />
-                        </FlexColumn>
+                            <FlexColumn w="100%" h="100%" gap="40px">
+                                <FlexColumn gap="20px">
+                                    {[
+                                        "Angular Front End Developers",
+                                        "React Front End Developers",
+                                        "MERN Developers",
+                                        "MEAN Developers",
+                                    ].map((item, index) => (
+                                        <Text
+                                            key={index}
+                                            color={COLORS.textMinor}
+                                            size={TEXT_SIZES.m}
+                                        >
+                                            • {item}
+                                        </Text>
+                                    ))}
+                                </FlexColumn>
+                                <Button
+                                    href="/projects"
+                                    gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
+                                    variant={BUTTON_VARIANTS.gradient_link}
+                                    label={
+                                        <Text
+                                            color={COLORS.black}
+                                            weight={TEXT_WEIGHTS.main}
+                                            size={TEXT_SIZES.xs}
+                                        >
+                                            View our team
+                                        </Text>
+                                    }
+                                />
+                            </FlexColumn>
+                            <FlexColumn
+                                w="100%"
+                                h="100%"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <FitToViewport
+                                    style={{
+                                        maxWidth: "600px",
+                                        height: "auto",
+                                        width: "100%",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                    width={0}
+                                    height={0}
+                                    minZoom={0}
+                                    maxZoom={1}
+                                >
+                                    <Img src={teamIcon.src} />
+                                </FitToViewport>
+                            </FlexColumn>
+                        </FlexContainer>
                     </Card>
                 </FlexColumn>
             </FlexColumn>

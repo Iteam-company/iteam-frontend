@@ -18,6 +18,12 @@ export interface ProcessInterface {
     text: string;
 }
 
+export interface AppsInterface {
+    step?: number;
+    title: string;
+    text: string;
+}
+
 const OUTSOURCING = {
     services: [
         "Custom software development",
@@ -66,6 +72,33 @@ const OUTSOURCING = {
             id: 4,
             title: "Delivery",
             text: "Software development can`t do without quality assurance. Each project we deliver is precisely tested either manually or automatically. Quality assurance is one of our main values since it`s the basis of our client`s reputation.",
+        },
+    ],
+    apps: [
+        {
+            title: "Progressive Web App",
+            step: 1,
+            text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        },
+        {
+            title: "Single page Application",
+            step: 2,
+            text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        },
+        {
+            title: "Progressive Web Apps",
+            step: 3,
+            text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        },
+        {
+            title: "Progressive Web Apps",
+            step: 4,
+            text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        },
+        {
+            title: "Progressive Web Apps",
+            step: 5,
+            text: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
         },
     ],
 };

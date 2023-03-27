@@ -6,7 +6,8 @@ import repeatIcon from "@/assets/icon/repeat.svg";
 export const StepTitle = styled(Text)`
     position: absolute;
     bottom: 35px;
-    @media all and (max-width: 1056px) {
+    @media all and (max-width: 600px) {
+        bottom: 0px;
     }
 `;
 export const Container = styled(FlexColumn)<{ color?: string }>`
@@ -21,6 +22,11 @@ export const Container = styled(FlexColumn)<{ color?: string }>`
         min-width: 200px;
         height: 200px;
     }
+    @media all and (max-width: 600px) {
+        max-width: 100px;
+        min-width: 100px;
+        height: 100px;
+    }
 `;
 
 export const CircularProgressbarContainer = styled.div`
@@ -31,6 +37,10 @@ export const CircularProgressbarContainer = styled.div`
     @media all and (max-width: 1056px) {
         max-width: 200px;
         min-width: 200px;
+    }
+    @media all and (max-width: 600px) {
+        max-width: 100px;
+        min-width: 100px;
     }
 `;
 

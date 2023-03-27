@@ -7,7 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
 import { SwiperSlide } from "swiper/react";
-import { A11y, Navigation, Pagination } from "swiper";
 import client from "@/axios";
 import { useRouter } from "next/router";
 import { ProjectItemInterface, SolutionInterface } from "../api/project-item";

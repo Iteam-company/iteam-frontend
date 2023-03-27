@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/mousewheel";
 import { A11y, Navigation } from "swiper";
 import { StyledSwiper } from "./styled";
+import "swiper/swiper-bundle.css";
 
 interface Props {
     children: ReactNode;
@@ -18,6 +19,8 @@ interface Props {
     slidesPerView?: number;
     spaceBetween?: number;
     freeMode?: boolean;
+    loop?: boolean;
+    loopedSlides?: number;
 }
 
 export const HorizontalSwiperElem: FC<Props> = ({
@@ -32,6 +35,8 @@ export const HorizontalSwiperElem: FC<Props> = ({
     slidesPerView = 1,
     spaceBetween = 50,
     freeMode = false,
+    loop,
+    loopedSlides,
 }) => {
     const onSwiperHandler = (e: any) => {
         onSwiper && onSwiper(e);
@@ -49,6 +54,9 @@ export const HorizontalSwiperElem: FC<Props> = ({
             navigation={navigation}
             mousewheel={true}
             slidesPerView={slidesPerView}
+            slidesPerGroup={1}
+            loop={loop}
+            loopedSlides={loopedSlides}
             spaceBetween={spaceBetween}
             freeMode={freeMode}
             onSwiper={(e: any) => onSwiperHandler(e)}
