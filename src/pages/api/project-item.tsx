@@ -32,8 +32,6 @@ export interface Technologies {
 export interface SolutionInterface {
     title: string;
     text: string[];
-    BgColor: string;
-    textColor: string;
 }
 
 export interface ResultInterface {
@@ -59,9 +57,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #30323F 46.55%, #95E0E3 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -72,9 +67,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(149,224,227,1) 0%, rgba(149,224,227,0.25) 50%, rgba(149,224,227,1) 100%);",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -85,9 +77,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #95E0E3 11.52%, #696973 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -133,9 +122,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg,#17263B 46.55%, #18BDFF 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -146,9 +132,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(24,189,255,1) 0%, rgba(24,189,255,0.25) 50%, rgba(24,189,255,1) 100%)",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -159,9 +142,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #18BDFF 11.52%, #17263B 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -207,9 +187,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #FFA712 46.55%,#ECD9AE 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -220,9 +197,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(236,217,174,1) 0%, rgba(236,217,174,0.25) 50%, rgba(236,217,174,1) 100%);",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -233,10 +207,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-
-                BgColor:
-                    "linear-gradient(91.64deg, #ECD9AE 11.52%, #FFA712 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -281,9 +251,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #8237BA 46.55%, #F1286F 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -294,9 +261,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(241,40,111,1) 0%, rgba(241,40,111,0.45) 50%, rgba(241,40,111,1) 100%);",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -307,9 +271,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    " linear-gradient(91.64deg, #F1286F 11.52%, #FF4FCF 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -353,11 +314,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                color: "144deg,#121212, #588542, #1F261E",
-
-                BgColor:
-                    "linear-gradient(91.64deg, #121212 46.55%, #588542 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -368,9 +324,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(88,133,66,1) 0%, rgba(88,133,66,0.5) 55%, rgba(88,133,66,1) 100%)",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -381,9 +334,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #588542 11.52%, #1F261E 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -428,9 +378,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg,#6B38B1 46.55%, #5836B1 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -441,9 +388,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(88,54,177,1) 0%, rgba(88,54,177,0.75) 55%, rgba(88,54,177,1) 100%)",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Time",
@@ -454,9 +398,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #5836B1 11.52%, #363DB2 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -501,9 +442,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #345077 46.55%, #56BBC7 85.03%)",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -514,9 +452,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(86,187,199,1) 0%, rgba(86,187,199,0.75) 55%, rgba(86,187,199,1) 100%)",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Time",
@@ -527,9 +462,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #56BBC7 40.52%, #CFBFBF 77.9%)",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -574,11 +506,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                color: "144deg,#6891ED, #80A0E9, #E3E3E3",
-
-                BgColor:
-                    "linear-gradient(91.64deg, #6891ED 46.55%, #E3E3E3 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -589,9 +516,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(227,227,227,1) 0%, rgba(227,227,227,0.5) 50%, rgba(227,227,227,1) 100%)",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -602,9 +526,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #E3E3E3 11.52%, #6891ED 57.9%)",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -649,9 +570,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #263544 46.55%, #F5F5F5 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -662,9 +580,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(245,245,245,1) 0%, rgba(245,245,245,1) 50%, rgba(245,245,245,0.5) 100%)",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -675,9 +590,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #F5F5F5 11.52%,  #3FA0FD 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {
@@ -723,9 +635,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #041B44 46.55%, #C9D7E0 85.03%);",
-                textColor: "#FFFFFF",
             },
             {
                 title: "Methodology",
@@ -736,9 +645,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(90deg, rgba(201,215,224,1) 0%, rgba(201,215,224,1) 50%, rgba(201,215,224,0.5) 100%)",
-                textColor: "#1D1C1F",
             },
             {
                 title: "Time",
@@ -749,9 +655,6 @@ const DATA = {
                     "euwcnfagfbl",
                     "bflueagf,aje",
                 ],
-                BgColor:
-                    "linear-gradient(91.64deg, #C9D7E0 11.52%, #233D63 57.9%);",
-                textColor: "#FFFFFF",
             },
         ],
         result: {

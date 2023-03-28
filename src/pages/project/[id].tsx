@@ -38,7 +38,6 @@ const Project = () => {
             getProject(id as string);
         }
     }, [id]);
-    console.log(project, "project");
 
     return (
         <FlexColumn
@@ -138,7 +137,7 @@ const Project = () => {
                         alignItems="start"
                     >
                         <Text
-                            size={TEXT_SIZES.l}
+                            size="36px"
                             weight={TEXT_WEIGHTS.main}
                             color={COLORS.black}
                         >
@@ -149,8 +148,11 @@ const Project = () => {
                         {project.solution.map(
                             (item: SolutionInterface, index) => (
                                 <FlexColumn
-                                    bg={item.BgColor}
-                                    style={{ borderRadius: "16px" }}
+                                    bg={COLORS.white}
+                                    style={{
+                                        borderRadius: "16px",
+                                        boxShadow: "0px 4px 20px 0px #00000040",
+                                    }}
                                     w="25%"
                                     p="24px"
                                     gap="15px"
@@ -160,7 +162,7 @@ const Project = () => {
                                         <Text
                                             textDecoration="underline"
                                             size={TEXT_SIZES.m}
-                                            color={item.textColor}
+                                            color={COLORS.textThird}
                                         >
                                             {item.title}
                                         </Text>
@@ -169,7 +171,7 @@ const Project = () => {
                                         {item.text.map((elem, index) => (
                                             <Text
                                                 key={index}
-                                                color={item.textColor}
+                                                color={COLORS.textThird}
                                             >
                                                 • {elem}
                                             </Text>
@@ -187,7 +189,7 @@ const Project = () => {
                             gap="20px"
                         >
                             <Text
-                                size={TEXT_SIZES.l}
+                                size="36px"
                                 weight={TEXT_WEIGHTS.main}
                                 color={COLORS.black}
                             >
@@ -196,13 +198,19 @@ const Project = () => {
                             <FlexColumn gap="20px">
                                 <Text
                                     textDecoration="underline"
-                                    size={TEXT_SIZES.m}
+                                    size={TEXT_SIZES.s}
+                                    color={COLORS.black}
+                                    weight={TEXT_WEIGHTS.medium}
                                 >
                                     {project.result.title}
                                 </Text>
                                 <FlexColumn gap="10px">
                                     {project.result.text.map((elem, index) => (
-                                        <Text size={TEXT_SIZES.xxs} key={index}>
+                                        <Text
+                                            size={TEXT_SIZES.xxs}
+                                            key={index}
+                                            color={COLORS.textMinor}
+                                        >
                                             • {elem}
                                         </Text>
                                     ))}
@@ -233,7 +241,11 @@ const Project = () => {
                         p="30px 0"
                     >
                         <Divider />
-                        <Text size={TEXT_SIZES.xl}>
+                        <Text
+                            size={TEXT_SIZES.xl}
+                            color={COLORS.black}
+                            weight={TEXT_WEIGHTS.medium}
+                        >
                             Can we help you with a similar project?
                         </Text>
                         <Button
