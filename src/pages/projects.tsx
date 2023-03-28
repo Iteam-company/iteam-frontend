@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { ProjectsInterface } from "./api/projects";
 import client from "@/axios";
@@ -13,25 +13,28 @@ import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { Title } from "@/lib/pageStyles/projectStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
+import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 
 const Projects = () => {
-    const [slides, setSlides] = useState<ReactNode[]>([]);
+    const [slides, setSlides] = useState<SlideInterface[]>([]);
 
     const getProject = useCallback(async () => {
         try {
             const { data } = await client.get("/api/projects");
             setSlides(
-                data.map((item: ProjectsInterface) => (
-                    <Slide
-                        title={item.title}
-                        description={item.description}
-                        location={item.location}
-                        budget={item.budget}
-                        tech={item.tech}
-                        color={item.color}
-                        img={item.img}
-                    />
-                )),
+                data.map((item: ProjectsInterface) => ({
+                    content: (
+                        <Slide
+                            title={item.title}
+                            description={item.description}
+                            location={item.location}
+                            budget={item.budget}
+                            tech={item.tech}
+                            color={item.color}
+                        />
+                    ),
+                    image: item.img,
+                })),
             );
         } catch (err) {
             console.log(err);

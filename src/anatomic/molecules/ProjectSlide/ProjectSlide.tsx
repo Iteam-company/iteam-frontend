@@ -19,7 +19,6 @@ import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
 import { useInView } from "framer-motion";
 import gsap from "gsap";
-import { SliderContext } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
@@ -32,22 +31,22 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     img,
     color,
 }) => {
-    const containerRef = useRef(null);
+    // const containerRef = useRef(null);
 
-    const { currentSlideIndex, setCurrentSlideIndex } =
-        useContext(SliderContext)!;
+    // const { currentSlideIndex, setCurrentSlideIndex } =
+    //     useContext(SliderContext)!;
 
-    useIsomorphicLayoutEffect(() => {
-        console.log(
-            gsap.utils.toArray(".image-wrapper", containerRef.current),
-            "!!!!",
-        );
-        gsap.fromTo(
-            document.querySelectorAll(".image-wrapper")[currentSlideIndex],
-            { opacity: 0, x: 150 },
-            { opacity: 1, x: 0 },
-        );
-    }, [currentSlideIndex]);
+    // useIsomorphicLayoutEffect(() => {
+    //     console.log(
+    //         gsap.utils.toArray(".image-wrapper", containerRef.current),
+    //         "!!!!",
+    //     );
+    //     gsap.fromTo(
+    //         document.querySelectorAll(".image-wrapper")[currentSlideIndex],
+    //         { opacity: 0, x: 150 },
+    //         { opacity: 1, x: 0 },
+    //     );
+    // }, [currentSlideIndex]);
 
     return (
         <>
@@ -56,7 +55,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                 alignItems="center"
                 gap="50px"
                 w="90%"
-                ref={containerRef}
+                // ref={containerRef}
             >
                 <FlexColumn gap="50px" w="100%">
                     <Text
@@ -124,27 +123,9 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                         ))}
                     </FlexRow>
                 </FlexColumn>
+                {/* 
 
-                <FitToViewport
-                    style={{
-                        maxWidth: "600px",
-                        height: "auto",
-                        width: "100%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
-                    className="image-wrapper"
-                    width={0}
-                    height={0}
-                    minZoom={0}
-                    maxZoom={1}
-                >
-                    <Device image={img} />
-                </FitToViewport>
-            </FlexRow>
-
-            <FlexRow justifyContent="center" alignItems="center" w="100%">
+            <FlexRow justifyContent="center" alignItems="center" w="100%"> */}
                 <Button
                     href={`/project/${id}`}
                     gradient={color}
