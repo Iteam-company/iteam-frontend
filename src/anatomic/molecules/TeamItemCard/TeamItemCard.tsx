@@ -1,9 +1,10 @@
-import React, { FC } from "react";
-import { TeamInterface, Technology } from "@/pages/api/team";
-import { COLORS } from "@/lib/theme/color";
-import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
+import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import { COLORS } from "@/lib/theme/color";
+import { Technology } from "@/pages/api/team";
+import React, { FC } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { Desktop, Mobile } from "../ProjectSlide/styled";
 import {
     Card,
     Label,
@@ -11,31 +12,38 @@ import {
     ProgressIndicator,
     GradientElem,
     GradientElemContent,
-    CardTitle,
 } from "./styled";
-import { TeamItemInfo } from "./TeamItemInfo";
-import { CommentSlider } from "./CommentSlider";
-import UpWorkLink from "@/assets/icon/upWorkLink.svg";
 
-export const CardElem: FC<TeamInterface> = ({
-    name,
-    avatar,
-    position,
-    technology,
-    comments,
-    experience,
-    rate,
-}) => {
+interface Props {
+    technology?: Technology[];
+    experience: { position: string; year: number };
+    rate: number;
+}
+
+export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
     return (
-        <FlexRow gap="30px" p="46px 90px">
-            <TeamItemInfo name={name} avatar={avatar} position={position} />
-
-            <FlexColumn w="62vw" gap="40px">
-                <FlexRow justifyContent="space-between" w="100%" gap="20px">
+        <FlexColumn w="100%" alignItems="space-between">
+            <Desktop w="100%" alignItems="space-between">
+                <FlexRow
+                    justifyContent="space-between"
+                    alignItems="space-between"
+                    w="100%"
+                    gap="20px"
+                >
                     <Card justifyContent="space-between">
                         <FlexColumn gap="10px">
-                            <CardTitle>Experience</CardTitle>
-                            <Text>{experience.position}</Text>
+                            <Text
+                                color="#433c5c"
+                                textTransform="uppercase"
+                                textDecoration="underline"
+                                weight={TEXT_WEIGHTS.medium}
+                                size={TEXT_SIZES.xxs}
+                            >
+                                Experience
+                            </Text>
+                            <Text color={COLORS.black} size={TEXT_SIZES.xxs}>
+                                {experience.position}
+                            </Text>
                         </FlexColumn>
                         <FlexColumn w="100%">
                             <FlexRow
@@ -63,9 +71,16 @@ export const CardElem: FC<TeamInterface> = ({
                             </ProgressBar>
                         </FlexColumn>
                     </Card>
-
                     <Card gap="20px" alignItems="space-between">
-                        <CardTitle>Expertise</CardTitle>
+                        <Text
+                            color="#433c5c"
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size={TEXT_SIZES.xxs}
+                        >
+                            Expertise
+                        </Text>
                         <FlexRow
                             flexWrap="wrap"
                             gap="20px"
@@ -102,9 +117,16 @@ export const CardElem: FC<TeamInterface> = ({
                                 ))}
                         </FlexRow>
                     </Card>
-
                     <Card>
-                        <CardTitle>Rate</CardTitle>
+                        <Text
+                            color="#433c5c"
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size={TEXT_SIZES.xxs}
+                        >
+                            Rate
+                        </Text>
                         <FlexRow alignItems="end" w="100%" gap="10px" h="100%">
                             <FlexRow alignItems="end" w="100%" h="100%">
                                 <Text
@@ -136,14 +158,67 @@ export const CardElem: FC<TeamInterface> = ({
                         </FlexRow>
                     </Card>
                 </FlexRow>
-                <CommentSlider comments={comments} />
-                <FlexColumn w="100%" justifyContent="end" alignItems="end">
-                    <Text color={COLORS.textSecondary} size={TEXT_SIZES.xxxs}>
-                        Follow the link to see more
-                    </Text>
-                    <img src={UpWorkLink.src} />
-                </FlexColumn>
-            </FlexColumn>
-        </FlexRow>
+            </Desktop>
+
+            <Mobile>
+                <FlexRow justifyContent="space-between" w="100%" gap="20px">
+                    <FlexColumn gap="10px" w="100%" alignItems="center">
+                        <Text
+                            color="#433c5c"
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size="12px"
+                        >
+                            Experience
+                        </Text>
+                        <Text
+                            color={COLORS.black}
+                            size={TEXT_SIZES.xxxs}
+                            textAlign="center"
+                        >
+                            {experience.position}
+                        </Text>
+                        <Text color={COLORS.black} size={TEXT_SIZES.xxxs}>
+                            {experience.year} year
+                        </Text>
+                    </FlexColumn>
+
+                    <FlexColumn gap="10px" w="100%" alignItems="center">
+                        <Text
+                            color="#433c5c"
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size="12px"
+                        >
+                            Expertise
+                        </Text>
+                        <FlexRow
+                            flexWrap="wrap"
+                            gap="20px"
+                            alignItems="space-between"
+                            h="100%"
+                        >
+                            {technology &&
+                                technology.map((elem: Technology) => <></>)}
+                        </FlexRow>
+                    </FlexColumn>
+
+                    <FlexColumn gap="10px" w="100%" alignItems="center">
+                        <Text
+                            color="#433c5c"
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size="12px"
+                        >
+                            Rate
+                        </Text>
+                        <Text>{rate} $</Text>
+                    </FlexColumn>
+                </FlexRow>
+            </Mobile>
+        </FlexColumn>
     );
 };

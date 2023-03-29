@@ -3,16 +3,30 @@ import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Dot } from "./styled";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
+import { COLORS } from "@/lib/theme/color";
+import BgImage1 from "@/assets/projects/bgImage1.svg";
+import { BgImage } from "@/anatomic/atoms/BgImage";
+import { FlexColumn } from "@/anatomic/atoms/Flex";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
+    isTwoColumn?: boolean;
+    navigation?: boolean;
+    height?: string;
+    editionContent?: ReactNode;
 }
 export interface SlideInterface {
     content: ReactNode[];
-    image: string;
+    image?: string;
 }
 
-export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
+export const SmoothSlider: FC<SlidesInterface> = ({
+    slides = [],
+    isTwoColumn = true,
+    navigation = true,
+    height,
+    editionContent,
+}) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     useIsomorphicLayoutEffect(() => {
@@ -44,7 +58,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
                     scrub: true,
-                    // markers: true
                 },
             });
             let incrementor = 0;
@@ -84,7 +97,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                         `.content-container--${0}`,
                     ),
                     { yPercent: 0, x: 0 },
-                    { yPercent: 100, duration: 0.5, ease: "none" },
+                    { yPercent: -100, duration: 0.5, ease: "none" },
                     `${incrementor}`,
                 );
 
@@ -97,9 +110,9 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                         containerRef.current!.querySelector(
                             `.content-container--${i}`,
                         ),
-                        { yPercent: -100, x: 0 },
+                        { yPercent: 100, x: 0 },
                         {
-                            yPercent: isLastSlide ? 0 : 100,
+                            yPercent: isLastSlide ? 0 : -100,
                             duration: isLastSlide ? 0.5 : 1,
                             ease: "none",
                         },
@@ -128,7 +141,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                     start: "top center",
                     end: "bottom center",
                     onToggle: (self) => self.isActive && setActive(element),
-                    markers: true,
                 });
             });
         }, containerRef);
@@ -145,7 +157,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    zIndex: 999,
                     overflow: "hidden",
                 }}
                 ref={containerRef}
@@ -154,24 +165,27 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                     className="pined-window"
                     style={{
                         position: "relative",
-
-                        height: "90vh",
+                        margin: "0 20px",
+                        height: height ? height : "90vh",
                         width: "95vw",
+                        paddingLeft: navigation ? "50px" : "0px",
+                        boxSizing: "border-box",
 
                         borderRadius: "20px",
-                        backgroundColor: "#8f81fc",
+                        backgroundColor: COLORS.white,
+                        boxShadow: "0px 4px 20px 0px #00000040",
 
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
                     }}
                 >
+                    {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
                     <div
                         className="left-content-container"
                         style={{
                             position: "relative",
-
-                            width: "50%",
+                            width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
                             overflow: "hidden",
                         }}
@@ -189,7 +203,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                                     justifyContent: "center",
                                     alignItems: "center",
                                     zIndex: index,
-                                    backgroundColor: "red",
 
                                     overflow: "hidden",
                                     ...(!!index
@@ -204,7 +217,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                                         style={containerStyle}
                                     >
                                         {content}
-                                        index{index}
                                     </div>
                                 );
                             })}
@@ -224,85 +236,84 @@ export const SmoothSlider: FC<SlidesInterface> = ({ slides = [] }) => {
                                 );
                             })}
                     </div>
-                    <div
-                        className="images-conatainer comparisonSection"
-                        style={{
-                            position: "relative",
+                    {isTwoColumn && (
+                        <div
+                            className="images-container comparisonSection"
+                            style={{
+                                position: "relative",
+                                paddingBottom: "36.25%",
+                                height: "auto",
+                                width: "40vw",
+                            }}
+                        >
+                            {!!slides.length &&
+                                slides.map(({ image }, index) => {
+                                    const containerStyle = {
+                                        position: "absolute",
+                                        top: "0",
+                                        width: "100%",
+                                        height: "100%",
+                                        overflow: "hidden",
+                                        ...(!!index
+                                            ? {
+                                                  transform:
+                                                      "translate(100%, 0px)",
+                                              }
+                                            : {}),
+                                    } as any;
 
-                            paddingBottom: "36.25%",
+                                    const imageStyle = {
+                                        position: "absolute",
+                                        top: "0",
+                                        width: "100%",
+                                        height: "100%",
+                                        overflow: "hidden",
+                                        ...(!!index
+                                            ? {
+                                                  transform:
+                                                      "translate(-100%, 0px)",
+                                              }
+                                            : {}),
+                                    } as any;
 
-                            height: "30vh",
-                            width: "30vw",
-                        }}
-                    >
-                        {!!slides.length &&
-                            slides.map(({ image }, index) => {
-                                const containerStyle = {
-                                    position: "absolute",
-                                    top: "0",
+                                    return (
+                                        <div
+                                            className={`image-container--${index}`}
+                                            style={containerStyle}
+                                        >
+                                            <img
+                                                className={`image--${index}`}
+                                                style={imageStyle}
+                                                src={image}
+                                                alt="before"
+                                            />
+                                        </div>
+                                    );
+                                })}
+                        </div>
+                    )}
 
-                                    width: "100%",
-                                    height: "100%",
-
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform: "translate(100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
-
-                                const imageStyle = {
-                                    position: "absolute",
-                                    top: "0",
-
-                                    width: "100%",
-                                    height: "100%",
-
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform:
-                                                  "translate(-100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
-
-                                return (
-                                    <div
-                                        className={`image-container--${index}`}
-                                        style={containerStyle}
-                                    >
-                                        <img
-                                            className={`image--${index}`}
-                                            style={imageStyle}
-                                            src={image}
-                                            alt="before"
-                                        />
-                                    </div>
-                                );
-                            })}
-                    </div>
-
-                    <div
-                        className="nav-dots"
-                        style={{
-                            position: "absolute",
-                            left: "30px",
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            gridGap: "22px",
-                            zIndex: 1000,
-                        }}
-                    >
-                        {!!slides.length &&
-                            slides.map((_, index) => {
-                                return <Dot className="dot" />;
-                            })}
-                    </div>
+                    {navigation && (
+                        <div
+                            className="nav-dots"
+                            style={{
+                                position: "absolute",
+                                left: "30px",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                gridGap: "22px",
+                            }}
+                        >
+                            {!!slides.length &&
+                                slides.map((_) => {
+                                    return <Dot className="dot" />;
+                                })}
+                        </div>
+                    )}
                 </div>
+                {editionContent && editionContent}
             </section>
         </div>
     );

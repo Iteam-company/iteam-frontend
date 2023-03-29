@@ -14,6 +14,7 @@ import { Title } from "@/lib/pageStyles/projectStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
+import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
@@ -25,12 +26,14 @@ const Projects = () => {
                 data.map((item: ProjectsInterface) => ({
                     content: (
                         <Slide
+                            id={item.id}
                             title={item.title}
                             description={item.description}
                             location={item.location}
                             budget={item.budget}
                             tech={item.tech}
                             color={item.color}
+                            img={item.img}
                         />
                     ),
                     image: item.img,
@@ -40,8 +43,6 @@ const Projects = () => {
             console.log(err);
         }
     }, []);
-
-    console.log(slides);
 
     useEffect(() => {
         getProject();
@@ -82,7 +83,20 @@ const Projects = () => {
                 </FlexColumn>
             </Adaptive>
 
-            {slides.length && <SmoothSlider slides={slides} />}
+            {slides.length && (
+                <>
+                    <Desktop>
+                        <SmoothSlider slides={slides} />
+                    </Desktop>
+                    <Mobile>
+                        <SmoothSlider
+                            slides={slides}
+                            isTwoColumn={false}
+                            navigation={false}
+                        />
+                    </Mobile>
+                </>
+            )}
         </FlexColumn>
     );
 };

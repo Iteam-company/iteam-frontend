@@ -1,20 +1,22 @@
 import React, { FC } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text } from "@/anatomic/atoms/Text";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/mousewheel";
+import { Text, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper";
 import { StyledSwiper } from "./styled";
+import styled from "styled-components";
+import { COLORS } from "@/lib/theme/color";
+import { Desktop, Mobile } from "../ProjectSlide/styled";
 
-export const CommentSlider: FC<{ comments?: string[] }> = ({ comments }) => {
+export const CommentSlider: FC<{ comments?: string[]; width?: string }> = ({
+    comments,
+    width = "62vw",
+}) => {
     return (
         <StyledSwiper
             style={{
                 height: "100%",
-                width: "62vw",
+                width: width,
             }}
             spaceBetween={50}
             modules={[Navigation, Pagination, A11y]}
@@ -29,7 +31,7 @@ export const CommentSlider: FC<{ comments?: string[] }> = ({ comments }) => {
                             height: "20vh",
                         }}
                     >
-                        <FlexColumn
+                        <Desktop
                             w="100%"
                             h="100%"
                             justifyContent="center"
@@ -41,11 +43,42 @@ export const CommentSlider: FC<{ comments?: string[] }> = ({ comments }) => {
                                 justifyContent="center"
                                 alignItems="center"
                             >
-                                <Text>&quot;{elem}&quot;</Text>
+                                <ItalicText
+                                    weight="300"
+                                    size={TEXT_SIZES.s}
+                                    color={COLORS.textSecondary}
+                                >
+                                    &quot;{elem}&quot;
+                                </ItalicText>
                             </FlexColumn>
-                        </FlexColumn>
+                        </Desktop>
+                        <Mobile
+                            w="100%"
+                            h="100%"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
+                            <FlexColumn
+                                w="80%"
+                                h="100%"
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                <ItalicText
+                                    weight="300"
+                                    size={TEXT_SIZES.s}
+                                    mobileSize={TEXT_SIZES.xxxs}
+                                    color={COLORS.textSecondary}
+                                >
+                                    &quot;{elem}&quot;
+                                </ItalicText>
+                            </FlexColumn>
+                        </Mobile>
                     </SwiperSlide>
                 ))}
         </StyledSwiper>
     );
 };
+const ItalicText = styled(Text)`
+    font-style: italic;
+`;

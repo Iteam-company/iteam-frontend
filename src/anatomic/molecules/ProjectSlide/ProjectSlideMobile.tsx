@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Device } from "@/anatomic/atoms/Device";
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { ProjectsInterface, Technologies } from "@/pages/api/projects";
@@ -8,6 +7,7 @@ import { FitToViewport } from "react-fit-to-viewport";
 import { iconsMobile } from "./utils";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
+import { Device } from "@/anatomic/atoms/Device";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
@@ -23,9 +23,14 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 justifyContent="center"
                 alignItems="end"
                 gap="20px"
-                w="85vw"
+                w="fit-content"
             >
-                <FlexColumn gap="20px" w="100%">
+                <FlexColumn
+                    gap="20px"
+                    w="100%"
+                    p="0 20px"
+                    style={{ boxSizing: "border-box" }}
+                >
                     <Text
                         color={COLORS.black}
                         size={TEXT_SIZES.m}

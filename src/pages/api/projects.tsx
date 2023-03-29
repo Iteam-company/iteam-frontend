@@ -18,7 +18,7 @@ export interface ProjectsInterface {
     budget: string;
     tech: Technologies[];
     color: string;
-    img?: string;
+    img: string;
 }
 
 export interface Technologies {

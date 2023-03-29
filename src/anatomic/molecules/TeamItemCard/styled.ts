@@ -2,18 +2,21 @@ import { COLORS } from "@/lib/theme/color";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import LabelIcon from "@/assets/icon/label.png";
-import { TEXT_WEIGHTS, Text } from "@/anatomic/atoms/Text";
 import { Swiper as SwiperComponent } from "swiper/react";
 import ArrowLeft from "@/assets/icon/leftvector.svg";
 import ArrowRight from "@/assets/icon/vector.svg";
 
 export const Avatar = styled.div<{ image: any }>`
-    height: 100px;
-    width: 100px;
+    height: 122px;
+    width: 122px;
     border-radius: 50%;
     background: transparent no-repeat center;
     background-size: cover;
     background-image: url(${({ image }) => image});
+    @media all and (max-width: 602px) {
+        height: 100px;
+        width: 100px;
+    }
 `;
 export const Card = styled(FlexColumn)`
     width: 100%;
@@ -37,6 +40,7 @@ export const ProgressIndicator = styled.div<{ width: number }>`
     height: 7px;
     border-radius: 16px;
 `;
+
 export const Label = styled(FlexColumn)<{ width?: number }>`
     height: 27px;
     width: 30px;
@@ -62,12 +66,6 @@ export const GradientElemContent = styled(FlexRow)`
     width: 100%;
     height: 100%;
 `;
-export const CardTitle = styled(Text)`
-    color: #433c5c;
-    text-transform: uppercase;
-    text-decoration: underline;
-    font-weight: ${TEXT_WEIGHTS.medium};
-`;
 export const StyledSwiper = styled(SwiperComponent)`
     border-radius: 16px;
     box-shadow: 0px 4px 20px rgba(37, 7, 67, 0.37);
@@ -80,11 +78,13 @@ export const StyledSwiper = styled(SwiperComponent)`
             justify-content: center;
             align-items: center;
         }
+        left: 0;
     }
     .swiper-button-next {
         height: 30px;
         ::after {
             content: url(${ArrowRight.src});
         }
+        right: 0;
     }
 `;

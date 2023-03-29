@@ -1,1 +1,0 @@
-export { VerticalSwiperElem } from "./VerticalSwiper";

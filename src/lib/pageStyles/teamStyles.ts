@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TEXT_SIZES, Text } from "@/anatomic/atoms/Text";
+import { Text } from "@/anatomic/atoms/Text";
 
 export const Container = styled.div`
     margin: 0 50px;
@@ -13,7 +13,4 @@ export const Container = styled.div`
 `;
 export const Title = styled(Text)`
     max-width: 1000px;
-    @media all and (max-width: 899px) {
-        font-size: ${TEXT_SIZES.xxl};
-    }
 `;
