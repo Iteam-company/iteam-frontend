@@ -12,7 +12,7 @@ interface Props {
 
 export const Layout: FC<Props> = ({ children }) => {
     return (
-        <StyledLayout className="layout">
+        <StyledLayout>
             <Header />
             <main>
                 <FlexColumn

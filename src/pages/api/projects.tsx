@@ -9,17 +9,16 @@ import SurveyplusIcon from "@/assets/projects/Surveyplus.jpg";
 import LiteSiteIcon from "@/assets/projects/litesite.png";
 import PicturesEditorIcon from "@/assets/projects/picturesEditor.jpg";
 import NorderIcon from "@/assets/projects/norder.jpeg";
-import { StaticImageData } from "next/image";
 
 export interface ProjectsInterface {
-    id: number;
+    id?: number;
     title: string;
     description: string;
     location: string;
     budget: string;
     tech: Technologies[];
     color: string;
-    img: StaticImageData;
+    img: string;
 }
 
 export interface Technologies {
@@ -50,7 +49,7 @@ const DATA = [
             },
         ],
         color: "144deg, #30323F, #95E0E3, #696973",
-        img: ProjectLabIcon,
+        img: ProjectLabIcon.src,
     },
 
     {
@@ -75,7 +74,7 @@ const DATA = [
             },
         ],
         color: "144deg, #17263B, #18BDFF, #2B3B54",
-        img: ProjectSkyIcon,
+        img: ProjectSkyIcon.src,
     },
 
     {
@@ -100,7 +99,7 @@ const DATA = [
             },
         ],
         color: "144deg, #FFA712, #ECD9AE, #EBB25B",
-        img: SurveyplusIcon,
+        img: SurveyplusIcon.src,
     },
     {
         id: 3,
@@ -124,7 +123,7 @@ const DATA = [
             },
         ],
         color: "144deg,#8237BA, #F1286F, #FF4FCF",
-        img: LiteSiteIcon,
+        img: LiteSiteIcon.src,
     },
     {
         id: 4,
@@ -147,7 +146,7 @@ const DATA = [
             },
         ],
         color: "144deg,#121212, #588542, #1F261E",
-        img: MegaBetIcon,
+        img: MegaBetIcon.src,
     },
     {
         id: 5,
@@ -171,7 +170,7 @@ const DATA = [
             },
         ],
         color: "144deg,#6B38B1, #5836B1, #363DB2",
-        img: PicturesEditorIcon,
+        img: PicturesEditorIcon.src,
     },
     {
         id: 6,
@@ -195,7 +194,7 @@ const DATA = [
             },
         ],
         color: "144deg,#345077, #56BBC7, #CFBFBF ",
-        img: MedIcon,
+        img: MedIcon.src,
     },
     {
         id: 7,
@@ -219,7 +218,7 @@ const DATA = [
             },
         ],
         color: "144deg,#6891ED, #80A0E9, #E3E3E3",
-        img: BrokersIcon,
+        img: BrokersIcon.src,
     },
     {
         id: 8,
@@ -243,7 +242,7 @@ const DATA = [
             },
         ],
         color: "144deg,#263544, #3FA0FD, #F5F5F5",
-        img: NorderIcon,
+        img: NorderIcon.src,
     },
 
     {
@@ -268,7 +267,7 @@ const DATA = [
             },
         ],
         color: "144deg,#041B44, #233D63, #C9D7E0",
-        img: MedicalIcon,
+        img: MedicalIcon.src,
     },
 ];
 

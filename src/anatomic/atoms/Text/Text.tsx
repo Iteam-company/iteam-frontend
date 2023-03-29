@@ -17,6 +17,7 @@ export const Text: FC<Props> = ({
     whiteSpace,
     lineHeight,
     font,
+    mobileSize,
 }) => {
     if (type === TEXT_TYPES.title) {
         return (
@@ -33,6 +34,7 @@ export const Text: FC<Props> = ({
                 whiteSpace={whiteSpace}
                 lineHeight={lineHeight}
                 font={font}
+                mobileSize={mobileSize}
             >
                 {children}
             </StyledTitle>
@@ -54,6 +56,7 @@ export const Text: FC<Props> = ({
                 letterSpacing={letterSpacing}
                 lineHeight={lineHeight}
                 font={font}
+                mobileSize={mobileSize}
             >
                 {children}
             </StyledText>
@@ -74,6 +77,7 @@ export const Text: FC<Props> = ({
                 letterSpacing={letterSpacing}
                 lineHeight={lineHeight}
                 font={font}
+                mobileSize={mobileSize}
             >
                 {children}
             </StyledBlockText>
