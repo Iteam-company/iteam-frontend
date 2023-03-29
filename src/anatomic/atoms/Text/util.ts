@@ -16,6 +16,7 @@ export interface Props {
     textDecoration?: string;
     whiteSpace?: string;
     letterSpacing?: string;
+    mobileSize?: TEXT_SIZES | string;
 }
 export const enum TEXT_SIZES {
     xxxs = "12px",
