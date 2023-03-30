@@ -213,6 +213,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 } as any;
                                 return (
                                     <div
+                                        key={index}
                                         className={`content-container content-container--${index}`}
                                         style={containerStyle}
                                     >
@@ -232,6 +233,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     <div
                                         className={`page-definer page-definer--${index}`}
                                         style={style}
+                                        key={index}
                                     ></div>
                                 );
                             })}
@@ -280,6 +282,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                         <div
                                             className={`image-container--${index}`}
                                             style={containerStyle}
+                                            key={index}
                                         >
                                             <img
                                                 className={`image--${index}`}
@@ -307,8 +310,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                             }}
                         >
                             {!!slides.length &&
-                                slides.map((_) => {
-                                    return <Dot className="dot" />;
+                                slides.map((_, index) => {
+                                    return <Dot className="dot" key={index} />;
                                 })}
                         </div>
                     )}

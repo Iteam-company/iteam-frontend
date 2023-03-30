@@ -21,14 +21,14 @@ export const StyledSwiper = styled(SwiperComponent)<{
     }
 
     .swiper-button-next {
-        right: 38%;
+        right: 37%;
         @media all and (max-width: 600px) {
             right: 28%;
         }
     }
 
     .swiper-button-prev {
-        left: 38%;
+        left: 37%;
         @media all and (max-width: 600px) {
             left: 28%;
         }
@@ -79,6 +79,19 @@ export const StyledSwiper = styled(SwiperComponent)<{
             box-sizing: border-box;
             padding-left: 5px;
             content: url(${ArrowRight.src});
+        }
+    }
+
+    .swiper-pagination-horizontal {
+        .swiper-pagination-bullet {
+            height: 4px;
+            width: 4px;
+            border: 1.5px solid black;
+            background-color: transparent;
+            opacity: 1;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: black;
         }
     }
 `;
