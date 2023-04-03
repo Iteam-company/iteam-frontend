@@ -38,6 +38,7 @@ export const HowWeWork: FC<Props> = ({ data }) => {
                 {data &&
                     data.map((item: HomeInterface) => (
                         <CircleBorder
+                            key={item.step}
                             topColor={
                                 +item.step % 2 ? "transparent" : COLORS.light
                             }
