@@ -203,8 +203,8 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             alignItems="space-between"
                             h="100%"
                         >
-                            {technology &&
-                                technology.map((elem: Technology) => <></>)}
+                            {/* {technology &&
+                                technology.map((elem: Technology) => <></>)} */}
                         </FlexRow>
                     </FlexColumn>
 
