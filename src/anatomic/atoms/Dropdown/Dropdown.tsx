@@ -40,7 +40,7 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                 {options.map((item) => (
                     <LinkElem
                         active={item.href === activeRoute}
-                        p={"10px 20px"}
+                        p="10px 20px"
                         href={item.href}
                         key={item.href}
                         linkText={item.option}
