@@ -40,11 +40,23 @@ export const Title = styled.div<{ active: any }>`
 
 export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
-    & > * {
+    position: relative;
+
+    ::after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        left: 20px;
+        height: 1px;
+        width: ${({ active }) => (active ? "63%" : "0")};
+        background-color: ${COLORS.white};
+        transition: width 0.5s ease;
+    }
+    /* & > * {
         :hover {
             border-bottom: 1px solid ${COLORS.white};
         }
-    }
+    } */
 `;
 
 export const Menu = styled.div`

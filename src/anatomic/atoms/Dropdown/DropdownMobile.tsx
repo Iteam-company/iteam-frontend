@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { LETTER_SPACING, Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 import { COLORS } from "@/lib/theme/color";
-import { Container, Title, Icon, Menu, LinkElem } from "./styledMobile";
+import { Container, Title, Menu, LinkElem } from "./styledMobile";
 import { IoIosArrowDown } from "react-icons/io";
 
 interface Options {
@@ -26,17 +26,15 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                 onClick={handleClick}
                 active={options.find(({ href }) => href === activeRoute)}
             >
+                <IoIosArrowDown color={COLORS.white} />
                 <Text
                     color={COLORS.white}
-                    textTransform="uppercase"
-                    weight={TEXT_WEIGHTS.main}
-                    size={TEXT_SIZES.small.xl}
+                    weight={TEXT_WEIGHTS.medium}
+                    size={TEXT_SIZES.medium.s}
                     letterSpacing={LETTER_SPACING.l}
                 >
                     {title}
                 </Text>
-
-                <IoIosArrowDown color={COLORS.white} />
             </Title>
             {open && (
                 <Menu>
@@ -46,9 +44,8 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             href={item.href}
                             key={item.href}
                             textStyles={{
-                                size: TEXT_SIZES.small.s,
+                                size: TEXT_SIZES.medium.s,
                                 color: COLORS.white,
-                                textTransform: "uppercase",
                                 weight: TEXT_WEIGHTS.main,
                                 letterSpacing: LETTER_SPACING.xs,
                             }}
