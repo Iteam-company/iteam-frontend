@@ -2,10 +2,6 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import React, { useCallback, useEffect, useState } from "react";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/mousewheel";
 import { SwiperSlide } from "swiper/react";
 import client from "@/axios";
 import { useRouter } from "next/router";
@@ -14,7 +10,14 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Divider } from "@/lib/pageStyles/projectItem";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
-import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
+import { Link } from "@/anatomic/atoms/Link";
+import BackIcon from "@/assets/icon/arrow-back.svg";
+import { FlexContainer } from "@/lib/pageStyles/outstaffing";
+import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
+import { ProjectItemInfo } from "@/anatomic/organisms/ProjectItemInfo";
+import { BgImage } from "@/anatomic/atoms/BgImage";
+import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.svg";
+import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.svg";
 
 const Project = () => {
     const router = useRouter();
@@ -38,202 +41,269 @@ const Project = () => {
             getProject(id as string);
         }
     }, [id]);
-    console.log(project, "project");
 
     return (
         <FlexColumn
-            justifyContent="center"
+            w="100%"
+            h="100%"
             alignItems="center"
+            style={{ overflowX: "hidden" }}
             gap="40px"
-            p="50px 0 50px 0"
         >
+            <BgImage src={BgImage1.src} top={0} left={-350} />
+            <FlexRow
+                mw="1068px"
+                w="100%"
+                justifyContent="start"
+                p="20px 20px 0"
+                style={{ boxSizing: "border-box" }}
+            >
+                <Link
+                    href="/projects"
+                    linkText="Back"
+                    textStyles={{
+                        color: "#6E6E6E",
+                        size: TEXT_SIZES.xs,
+                        mobileSize: TEXT_SIZES.xxxs,
+                    }}
+                    icon={
+                        <img
+                            src={BackIcon.src}
+                            style={{ paddingRight: "10px" }}
+                        />
+                    }
+                />
+            </FlexRow>
             {project && (
-                <>
-                    <FlexRow w="80vw" mh="80vh" alignItems="center" gap="40px">
-                        <FlexColumn w="80%" gap="20px">
-                            <GradientTitle
-                                size={TEXT_SIZES.xxl}
-                                weight={TEXT_WEIGHTS.main}
-                                color={project.color}
-                            >
-                                {project.title}
-                            </GradientTitle>
-                            <FlexColumn gap="10px">
-                                <Text
-                                    color={COLORS.black}
-                                    weight={TEXT_WEIGHTS.main}
-                                >
-                                    Developed responsive app, created new
-                                    features.
-                                </Text>
-                                <Text size={TEXT_SIZES.xs}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
-                                </Text>
-                            </FlexColumn>
-                            <FlexColumn gap="10px">
-                                <Text
-                                    color={COLORS.black}
-                                    weight={TEXT_WEIGHTS.main}
-                                >
-                                    Client’s request
-                                </Text>
-                                <Text size={TEXT_SIZES.xs}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
-                                </Text>
-                            </FlexColumn>
-                            <FlexColumn gap="10px">
-                                <Text
-                                    color={COLORS.black}
-                                    weight={TEXT_WEIGHTS.main}
-                                >
-                                    Our approach
-                                </Text>
-                                <Text size={TEXT_SIZES.xs}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
-                                </Text>
-                            </FlexColumn>
-                        </FlexColumn>
+                <FlexColumn
+                    w="100%"
+                    alignItems="center"
+                    p="0 20px"
+                    gap="40px"
+                    style={{ boxSizing: "border-box" }}
+                >
+                    <ProjectItemInfo {...project} />
 
-                        <FlexColumn w="100%">
-                            <HorizontalSwiperElem>
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    1
-                                </SwiperSlide>
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    2
-                                </SwiperSlide>
-                            </HorizontalSwiperElem>
-                        </FlexColumn>
-                    </FlexRow>
                     <FlexColumn
                         w="100%"
-                        justifyContent="start"
-                        alignItems="start"
+                        h="100%"
+                        gap="20px"
+                        alignItems="center"
+                        position="relative"
                     >
-                        <Text
-                            size={TEXT_SIZES.l}
-                            weight={TEXT_WEIGHTS.main}
-                            color={COLORS.black}
-                        >
-                            Solution
-                        </Text>
-                    </FlexColumn>
-                    <FlexRow justifyContent="space-between" w="100%">
-                        {project.solution.map(
-                            (item: SolutionInterface, index) => (
-                                <FlexColumn
-                                    bg={item.BgColor}
-                                    style={{ borderRadius: "16px" }}
-                                    w="25%"
-                                    p="24px"
-                                    gap="15px"
-                                    key={index}
-                                >
-                                    <FlexRow justifyContent="center" w="100%">
-                                        <Text
-                                            textDecoration="underline"
-                                            size={TEXT_SIZES.m}
-                                            color={item.textColor}
-                                        >
-                                            {item.title}
-                                        </Text>
-                                    </FlexRow>
-                                    <FlexColumn gap="8px">
-                                        {item.text.map((elem, index) => (
-                                            <Text
-                                                key={index}
-                                                color={item.textColor}
-                                            >
-                                                • {elem}
-                                            </Text>
-                                        ))}
-                                    </FlexColumn>
-                                </FlexColumn>
-                            ),
-                        )}
-                    </FlexRow>
-                    <FlexRow w="100%" gap="40px" p="30px 0">
+                        <BgImage src={BgImage2.src} bottom={-50} right={-400} />
                         <FlexColumn
+                            mw="1068px"
                             w="100%"
                             justifyContent="start"
                             alignItems="start"
-                            gap="20px"
                         >
                             <Text
-                                size={TEXT_SIZES.l}
-                                weight={TEXT_WEIGHTS.main}
+                                size="36px"
+                                weight={TEXT_WEIGHTS.medium}
                                 color={COLORS.black}
+                                mobileSize={TEXT_SIZES.s}
                             >
-                                Result
+                                Solution
                             </Text>
-                            <FlexColumn gap="20px">
+                        </FlexColumn>
+                        <Desktop w="100%" mw="1068px" zIndex="2">
+                            <FlexRow justifyContent="space-between" w="100%">
+                                {project.solution.map(
+                                    (item: SolutionInterface, index) => (
+                                        <FlexColumn
+                                            bg={COLORS.white}
+                                            style={{
+                                                borderRadius: "16px",
+                                                boxShadow:
+                                                    "0px 4px 20px 0px #00000040",
+                                            }}
+                                            w="25%"
+                                            p="24px"
+                                            gap="15px"
+                                            key={index}
+                                        >
+                                            <FlexRow
+                                                justifyContent="center"
+                                                w="100%"
+                                            >
+                                                <Text
+                                                    textDecoration="underline"
+                                                    size={TEXT_SIZES.m}
+                                                    color={COLORS.textThird}
+                                                >
+                                                    {item.title}
+                                                </Text>
+                                            </FlexRow>
+                                            <FlexColumn gap="8px">
+                                                {item.text.map(
+                                                    (elem, index) => (
+                                                        <Text
+                                                            key={index}
+                                                            color={
+                                                                COLORS.textThird
+                                                            }
+                                                        >
+                                                            • {elem}
+                                                        </Text>
+                                                    ),
+                                                )}
+                                            </FlexColumn>
+                                        </FlexColumn>
+                                    ),
+                                )}
+                            </FlexRow>
+                        </Desktop>
+                        <Mobile
+                            h="100%"
+                            w="100%"
+                            gap="20px"
+                            style={{ boxSizing: "border-box" }}
+                            p="0 20px"
+                            zIndex="2"
+                        >
+                            <HorizontalSwiperElem
+                                minHeight="330px"
+                                width="100%"
+                                maxWidth="650px"
+                                navigation={false}
+                                pagination={true}
+                            >
+                                {project.solution.map(
+                                    (item: SolutionInterface, index) => (
+                                        <SwiperSlide
+                                            key={index}
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                boxSizing: "border-box",
+                                            }}
+                                        >
+                                            <FlexColumn
+                                                bg={COLORS.white}
+                                                style={{
+                                                    borderRadius: "16px",
+                                                    boxShadow:
+                                                        "0px 4px 20px 0px #00000040",
+                                                }}
+                                                w="100%"
+                                                p="24px"
+                                                gap="15px"
+                                            >
+                                                <FlexRow
+                                                    justifyContent="center"
+                                                    w="100%"
+                                                >
+                                                    <Text
+                                                        textDecoration="underline"
+                                                        size={TEXT_SIZES.m}
+                                                        color={COLORS.textThird}
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </FlexRow>
+                                                <FlexColumn gap="8px">
+                                                    {item.text.map(
+                                                        (elem, index) => (
+                                                            <Text
+                                                                key={index}
+                                                                color={
+                                                                    COLORS.textThird
+                                                                }
+                                                            >
+                                                                • {elem}
+                                                            </Text>
+                                                        ),
+                                                    )}
+                                                </FlexColumn>
+                                            </FlexColumn>
+                                        </SwiperSlide>
+                                    ),
+                                )}
+                            </HorizontalSwiperElem>
+                        </Mobile>
+                        <FlexContainer
+                            w="100%"
+                            mw="1068px"
+                            gap="40px"
+                            p="30px 0"
+                            zIndex="2"
+                        >
+                            <FlexColumn
+                                w="100%"
+                                justifyContent="start"
+                                alignItems="start"
+                                gap="15px"
+                            >
                                 <Text
-                                    textDecoration="underline"
-                                    size={TEXT_SIZES.m}
+                                    size="36px"
+                                    weight={TEXT_WEIGHTS.medium}
+                                    color={COLORS.black}
+                                    mobileSize={TEXT_SIZES.s}
                                 >
-                                    {project.result.title}
+                                    Result
                                 </Text>
-                                <FlexColumn gap="10px">
-                                    {project.result.text.map((elem, index) => (
-                                        <Text size={TEXT_SIZES.xxs} key={index}>
-                                            • {elem}
-                                        </Text>
-                                    ))}
+                                <FlexColumn gap="20px">
+                                    <Text
+                                        textDecoration="underline"
+                                        size={TEXT_SIZES.s}
+                                        color={COLORS.black}
+                                        weight={TEXT_WEIGHTS.medium}
+                                        mobileSize={TEXT_SIZES.xs}
+                                    >
+                                        {project.result.title}
+                                    </Text>
+                                    <FlexColumn gap="10px">
+                                        {project.result.text.map(
+                                            (elem, index) => (
+                                                <Text
+                                                    size={TEXT_SIZES.xxs}
+                                                    key={index}
+                                                    color={COLORS.textMinor}
+                                                >
+                                                    • {elem}
+                                                </Text>
+                                            ),
+                                        )}
+                                    </FlexColumn>
                                 </FlexColumn>
                             </FlexColumn>
-                        </FlexColumn>
-                        <FlexColumn
-                            w="100%"
-                            justifyContent="center"
-                            alignItems="end"
-                        >
-                            <div
-                                style={{
-                                    width: "90%",
-                                    minHeight: "300px",
-                                    boxShadow:
-                                        "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                    borderRadius: "16px",
-                                }}
-                            ></div>
-                        </FlexColumn>
-                    </FlexRow>
+                            <FlexColumn
+                                w="100%"
+                                justifyContent="center"
+                                alignItems="center"
+                                zIndex="2"
+                            >
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        minHeight: "300px",
+                                        background: COLORS.white,
+                                        boxShadow:
+                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                                        borderRadius: "16px",
+                                    }}
+                                ></div>
+                            </FlexColumn>
+                        </FlexContainer>
+                    </FlexColumn>
                     <FlexColumn
-                        gap="50px"
+                        gap="40px"
                         w="100%"
+                        mw="1068px"
                         justifyContent="center"
                         alignItems="center"
                         p="30px 0"
                     >
                         <Divider />
-                        <Text size={TEXT_SIZES.xl}>
+                        <Text
+                            size={TEXT_SIZES.xl}
+                            color={COLORS.black}
+                            weight={TEXT_WEIGHTS.medium}
+                            mobileSize={TEXT_SIZES.s}
+                            textAlign="center"
+                        >
                             Can we help you with a similar project?
                         </Text>
                         <Button
@@ -250,7 +320,7 @@ const Project = () => {
                             }
                         />
                     </FlexColumn>
-                </>
+                </FlexColumn>
             )}
         </FlexColumn>
     );
