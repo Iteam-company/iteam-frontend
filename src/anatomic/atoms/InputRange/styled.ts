@@ -45,7 +45,7 @@ export const Input = styled.input<{ translateY: string }>`
     &::-webkit-slider-runnable-track {
         width: 100%;
         height: 2px;
-        background: ${COLORS.textThird};
+        background: ${COLORS.textPrimary};
         @media all and (max-width: 602px) {
             height: 1px;
         }

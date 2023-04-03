@@ -24,7 +24,7 @@ export const LogoAnimation = () => {
             }}
         >
             <FlexColumn
-                bg={COLORS.black}
+                bg={COLORS.dark}
                 h="100vh"
                 w="100%"
                 justifyContent="center"

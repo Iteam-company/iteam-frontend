@@ -67,17 +67,17 @@ const Team = () => {
             >
                 <FlexColumn justifyContent="center" alignItems="start">
                     <Text
-                        size={TEXT_SIZES.xxxs}
+                        size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         OUR TEAM
                     </Text>
                     <Title
-                        size={TEXT_SIZES.xxl}
-                        color={COLORS.black}
+                        size={TEXT_SIZES.large.m}
+                        color={COLORS.dark}
                         weight={TEXT_WEIGHTS.medium}
-                        mobileSize={TEXT_SIZES.m}
+                        mobileSize={TEXT_SIZES.medium.xs}
                     >
                         We are a group of brilliant minds and exceptional
                         talents who promote the values of effective
@@ -106,9 +106,9 @@ const Team = () => {
                                         variant={BUTTON_VARIANTS.gradient_link}
                                         label={
                                             <Text
-                                                color={COLORS.black}
+                                                color={COLORS.dark}
                                                 weight={TEXT_WEIGHTS.main}
-                                                size={TEXT_SIZES.xxs}
+                                                size={TEXT_SIZES.small.m}
                                             >
                                                 Contact us
                                             </Text>
@@ -139,9 +139,9 @@ const Team = () => {
                                         variant={BUTTON_VARIANTS.gradient_link}
                                         label={
                                             <Text
-                                                color={COLORS.black}
+                                                color={COLORS.dark}
                                                 weight={TEXT_WEIGHTS.main}
-                                                size={TEXT_SIZES.xxs}
+                                                size={TEXT_SIZES.small.m}
                                             >
                                                 Contact us
                                             </Text>

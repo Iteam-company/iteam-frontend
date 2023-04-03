@@ -20,21 +20,24 @@ export const TeamItemInfo: FC<{
                     <Avatar image={avatar} />
                     <Text
                         weight={TEXT_WEIGHTS.medium}
-                        color={COLORS.black}
-                        size={TEXT_SIZES.s}
+                        color={COLORS.dark}
+                        size={TEXT_SIZES.small.xl}
                         textTransform="uppercase"
                     >
                         {name}
                     </Text>
-                    <Text size={TEXT_SIZES.xs} color={COLORS.textSecondary}>
+                    <Text
+                        size={TEXT_SIZES.small.l}
+                        color={COLORS.textSecondary}
+                    >
                         {position}
                     </Text>
                     <FlexRow gap="10px" alignItems="center">
                         <img src={UpworkIcon.src} />
                         <Text
                             weight={TEXT_WEIGHTS.main}
-                            size={TEXT_SIZES.xxs}
-                            color={COLORS.black}
+                            size={TEXT_SIZES.small.m}
+                            color={COLORS.dark}
                         >
                             5.0
                         </Text>
@@ -45,8 +48,8 @@ export const TeamItemInfo: FC<{
                         <img src={TopIcon.src} />
                         <Text
                             weight={TEXT_WEIGHTS.main}
-                            color="#BFBFBF"
-                            size={TEXT_SIZES.xxxs}
+                            color={COLORS.textMinor}
+                            size={TEXT_SIZES.small.s}
                         >
                             TOP RATED PLUS
                         </Text>
@@ -64,14 +67,14 @@ export const TeamItemInfo: FC<{
                         <FlexColumn w="100%" gap="8px">
                             <Text
                                 weight={TEXT_WEIGHTS.medium}
-                                color={COLORS.black}
-                                size={TEXT_SIZES.xxs}
+                                color={COLORS.dark}
+                                size={TEXT_SIZES.small.m}
                                 textTransform="uppercase"
                             >
                                 {name}
                             </Text>
                             <Text
-                                size={TEXT_SIZES.xxxs}
+                                size={TEXT_SIZES.small.s}
                                 color={COLORS.textSecondary}
                             >
                                 {position}
@@ -86,8 +89,8 @@ export const TeamItemInfo: FC<{
                                 />
                                 <Text
                                     weight={TEXT_WEIGHTS.main}
-                                    size={TEXT_SIZES.xxs}
-                                    color={COLORS.black}
+                                    size={TEXT_SIZES.small.m}
+                                    color={COLORS.dark}
                                 >
                                     5.0
                                 </Text>
@@ -98,8 +101,8 @@ export const TeamItemInfo: FC<{
                                 <img src={TopIcon.src} />
                                 <Text
                                     weight={TEXT_WEIGHTS.main}
-                                    color="#BFBFBF"
-                                    size={TEXT_SIZES.xxxs}
+                                    color={COLORS.textMinor}
+                                    size={TEXT_SIZES.small.s}
                                 >
                                     TOP RATED PLUS
                                 </Text>

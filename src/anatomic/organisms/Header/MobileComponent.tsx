@@ -22,21 +22,21 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
             <FlexRow
                 p="0 20px"
                 mh="70px"
-                bg={open ? COLORS.black : COLORS.white}
+                bg={open ? COLORS.dark : COLORS.white}
                 alignItems="center"
                 justifyContent="space-between"
             >
-                <Logo color={open ? COLORS.white : COLORS.black} />
+                <Logo color={open ? COLORS.white : COLORS.dark} />
                 <RxHamburgerMenu
                     onClick={() => setOpen(!open)}
-                    color={open ? COLORS.white : COLORS.black}
+                    color={open ? COLORS.white : COLORS.dark}
                 />
             </FlexRow>
             {open && (
                 <FlexColumn
                     alignItems="center"
                     h="calc(100vh - 70px)"
-                    bg={COLORS.black}
+                    bg={COLORS.dark}
                     gap="50px"
                 >
                     {NAV_LINKS.map((item) =>
@@ -60,7 +60,7 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                         color: COLORS.white,
                                         textTransform: "uppercase",
                                         weight: TEXT_WEIGHTS.main,
-                                        size: TEXT_SIZES.s,
+                                        size: TEXT_SIZES.small.xl,
                                         letterSpacing: LETTER_SPACING.l,
                                     }}
                                     active={item.href === activeRoute}

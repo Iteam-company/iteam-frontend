@@ -27,14 +27,14 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
         >
             <FlexColumn gap="50px" w="100%">
                 <Text
-                    color={COLORS.black}
-                    size="36px"
+                    color={COLORS.dark}
+                    size={TEXT_SIZES.large.s}
                     weight={TEXT_WEIGHTS.medium}
                 >
                     {title}
                 </Text>
                 <Text
-                    color={COLORS.black}
+                    color={COLORS.dark}
                     size="18px"
                     weight={TEXT_WEIGHTS.main}
                 >
@@ -44,8 +44,8 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                     <FlexRow alignItems="center" gap="5px">
                         <SlLocationPin />
                         <Text
-                            color={COLORS.black}
-                            size={TEXT_SIZES.s}
+                            color={COLORS.dark}
+                            size={TEXT_SIZES.small.xl}
                             weight={TEXT_WEIGHTS.main}
                         >
                             {location}
@@ -56,14 +56,14 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                         alignItems="center"
                         gap="5px"
                         style={{
-                            borderLeft: "1px solid black",
+                            borderLeft: "1px solid dark",
                         }}
                         p="0 0 0 20px"
                     >
                         <FiDollarSign />
                         <Text
-                            color={COLORS.black}
-                            size={TEXT_SIZES.s}
+                            color={COLORS.dark}
+                            size={TEXT_SIZES.small.xl}
                             weight={TEXT_WEIGHTS.main}
                         >
                             {budget}
@@ -81,9 +81,9 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                         >
                             <>{icons[el.icon]}</>
                             <Text
-                                size={TEXT_SIZES.xxs}
+                                size={TEXT_SIZES.small.m}
                                 weight={TEXT_WEIGHTS.main}
-                                color="#818181"
+                                color={COLORS.warmGray}
                             >
                                 {el.name}
                             </Text>
@@ -97,7 +97,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     label={
-                        <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
+                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
                             View Case
                         </Text>
                     }

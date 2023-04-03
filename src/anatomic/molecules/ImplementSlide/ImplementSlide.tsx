@@ -27,8 +27,8 @@ export const ImplementSlide: FC<Props> = ({ title, step, text }) => {
                     position="relative"
                 >
                     <Text
-                        size={TEXT_SIZES.l}
-                        color={COLORS.textThird}
+                        size={TEXT_SIZES.medium.m}
+                        color={COLORS.textPrimary}
                         weight={TEXT_WEIGHTS.main}
                         w="70%"
                     >
@@ -46,7 +46,7 @@ export const ImplementSlide: FC<Props> = ({ title, step, text }) => {
                     {step}
                 </GradientTitleElem>
             </FlexRow>
-            <Text w="70%" size={TEXT_SIZES.xxs} color={COLORS.textMinor}>
+            <Text w="70%" size={TEXT_SIZES.small.m} color={COLORS.textThird}>
                 {text}
             </Text>
         </FlexColumn>
@@ -58,7 +58,7 @@ const Divider = styled.div`
     bottom: -33px;
     width: 100%;
     height: 1px;
-    background: #5a5a5a;
+    background: ${COLORS.textThird};
 `;
 const GradientTitleElem = styled(GradientTitle)`
     @media all and (max-width: 603px) {

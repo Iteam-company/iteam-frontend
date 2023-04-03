@@ -10,8 +10,8 @@ export const Info = () => {
         <Flex gap="24px" p="24px" w="40%">
             <Text
                 weight={TEXT_WEIGHTS.medium}
-                color={COLORS.text}
-                size={TEXT_SIZES.m}
+                color={COLORS.textPrimary}
+                size={TEXT_SIZES.medium.xs}
             >
                 Lets talk
             </Text>
@@ -26,11 +26,11 @@ export const Info = () => {
                         <FlexColumn>
                             <Text
                                 weight={TEXT_WEIGHTS.main}
-                                color={COLORS.text}
+                                color={COLORS.textPrimary}
                             >
                                 {item.title}
                             </Text>
-                            <Text color="#222f3e">{item.text}</Text>
+                            <Text color={COLORS.buttonDark}>{item.text}</Text>
                         </FlexColumn>
                     </FlexRow>
                 ))}

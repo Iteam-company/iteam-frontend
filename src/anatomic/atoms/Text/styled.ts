@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { TEXT_SIZES, TEXT_WEIGHTS, Props } from "./util";
 
 export const StyledTitle = styled.h2<Props>`
-    font-size: ${({ size }) => size || TEXT_SIZES.xl};
-    color: ${({ color }) => color || COLORS.black};
+    font-size: ${({ size }) => size || TEXT_SIZES.medium.l};
+    color: ${({ color }) => color || COLORS.dark};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.medium};
     text-align: ${({ textAlign }) => textAlign || "start"};
     z-index: 2;
@@ -21,7 +21,7 @@ export const StyledTitle = styled.h2<Props>`
 `;
 
 export const StyledText = styled.span<Props>`
-    font-size: ${({ size }) => size || TEXT_SIZES.xs};
+    font-size: ${({ size }) => size || TEXT_SIZES.small.l};
     color: ${({ color }) => color || COLORS.gray};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};
     text-align: ${({ textAlign }) => textAlign || "start"};
@@ -39,7 +39,7 @@ export const StyledText = styled.span<Props>`
 `;
 
 export const StyledBlockText = styled.p<Props>`
-    font-size: ${({ size }) => size || TEXT_SIZES.xs};
+    font-size: ${({ size }) => size || TEXT_SIZES.small.l};
     color: ${({ color }) => color || COLORS.gray};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};
     text-align: ${({ textAlign }) => textAlign || "start"};

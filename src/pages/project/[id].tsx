@@ -62,9 +62,9 @@ const Project = () => {
                     href="/projects"
                     linkText="Back"
                     textStyles={{
-                        color: "#6E6E6E",
-                        size: TEXT_SIZES.xs,
-                        mobileSize: TEXT_SIZES.xxxs,
+                        color: COLORS.textThird,
+                        size: TEXT_SIZES.small.l,
+                        mobileSize: TEXT_SIZES.small.s,
                     }}
                     icon={
                         <img
@@ -99,10 +99,10 @@ const Project = () => {
                             alignItems="start"
                         >
                             <Text
-                                size="36px"
+                                size={TEXT_SIZES.large.s}
                                 weight={TEXT_WEIGHTS.medium}
-                                color={COLORS.black}
-                                mobileSize={TEXT_SIZES.s}
+                                color={COLORS.dark}
+                                mobileSize={TEXT_SIZES.small.xl}
                             >
                                 Solution
                             </Text>
@@ -129,8 +129,8 @@ const Project = () => {
                                             >
                                                 <Text
                                                     textDecoration="underline"
-                                                    size={TEXT_SIZES.m}
-                                                    color={COLORS.textThird}
+                                                    size={TEXT_SIZES.medium.xs}
+                                                    color={COLORS.textPrimary}
                                                 >
                                                     {item.title}
                                                 </Text>
@@ -141,7 +141,7 @@ const Project = () => {
                                                         <Text
                                                             key={index}
                                                             color={
-                                                                COLORS.textThird
+                                                                COLORS.textPrimary
                                                             }
                                                         >
                                                             • {elem}
@@ -197,8 +197,12 @@ const Project = () => {
                                                 >
                                                     <Text
                                                         textDecoration="underline"
-                                                        size={TEXT_SIZES.m}
-                                                        color={COLORS.textThird}
+                                                        size={
+                                                            TEXT_SIZES.medium.xs
+                                                        }
+                                                        color={
+                                                            COLORS.textPrimary
+                                                        }
                                                     >
                                                         {item.title}
                                                     </Text>
@@ -209,7 +213,7 @@ const Project = () => {
                                                             <Text
                                                                 key={index}
                                                                 color={
-                                                                    COLORS.textThird
+                                                                    COLORS.textPrimary
                                                                 }
                                                             >
                                                                 • {elem}
@@ -237,20 +241,20 @@ const Project = () => {
                                 gap="15px"
                             >
                                 <Text
-                                    size="36px"
+                                    size={TEXT_SIZES.large.s}
                                     weight={TEXT_WEIGHTS.medium}
-                                    color={COLORS.black}
-                                    mobileSize={TEXT_SIZES.s}
+                                    color={COLORS.dark}
+                                    mobileSize={TEXT_SIZES.small.xl}
                                 >
                                     Result
                                 </Text>
                                 <FlexColumn gap="20px">
                                     <Text
                                         textDecoration="underline"
-                                        size={TEXT_SIZES.s}
-                                        color={COLORS.black}
+                                        size={TEXT_SIZES.small.xl}
+                                        color={COLORS.dark}
                                         weight={TEXT_WEIGHTS.medium}
-                                        mobileSize={TEXT_SIZES.xs}
+                                        mobileSize={TEXT_SIZES.small.l}
                                     >
                                         {project.result.title}
                                     </Text>
@@ -258,9 +262,9 @@ const Project = () => {
                                         {project.result.text.map(
                                             (elem, index) => (
                                                 <Text
-                                                    size={TEXT_SIZES.xxs}
+                                                    size={TEXT_SIZES.small.m}
                                                     key={index}
-                                                    color={COLORS.textMinor}
+                                                    color={COLORS.textThird}
                                                 >
                                                     • {elem}
                                                 </Text>
@@ -298,10 +302,10 @@ const Project = () => {
                     >
                         <Divider />
                         <Text
-                            size={TEXT_SIZES.xl}
-                            color={COLORS.black}
+                            size={TEXT_SIZES.medium.l}
+                            color={COLORS.dark}
                             weight={TEXT_WEIGHTS.medium}
-                            mobileSize={TEXT_SIZES.s}
+                            mobileSize={TEXT_SIZES.small.xl}
                             textAlign="center"
                         >
                             Can we help you with a similar project?
@@ -312,7 +316,7 @@ const Project = () => {
                             variant={BUTTON_VARIANTS.gradient_link}
                             label={
                                 <Text
-                                    color={COLORS.black}
+                                    color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
                                     Contacu Us

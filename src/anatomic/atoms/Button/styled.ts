@@ -67,7 +67,7 @@ export const GradientButton = styled.button<{ gradient: string }>`
 `;
 
 export const GradientButtonContent = styled(FlexRow)`
-    background: white;
+    background: ${COLORS.white};
     border-radius: 50px;
     width: 100%;
     height: 100%;

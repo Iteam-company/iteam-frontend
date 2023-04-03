@@ -27,7 +27,7 @@ export const CommentSlider: FC<{ comments?: string[]; width?: string }> = ({
                     <SwiperSlide
                         key={index}
                         style={{
-                            background: "#FFFFFF",
+                            background: COLORS.white,
                             height: "20vh",
                         }}
                     >
@@ -45,7 +45,7 @@ export const CommentSlider: FC<{ comments?: string[]; width?: string }> = ({
                             >
                                 <ItalicText
                                     weight="300"
-                                    size={TEXT_SIZES.s}
+                                    size={TEXT_SIZES.small.xl}
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem}&quot;
@@ -66,8 +66,8 @@ export const CommentSlider: FC<{ comments?: string[]; width?: string }> = ({
                             >
                                 <ItalicText
                                     weight="300"
-                                    size={TEXT_SIZES.s}
-                                    mobileSize={TEXT_SIZES.xxxs}
+                                    size={TEXT_SIZES.small.xl}
+                                    mobileSize={TEXT_SIZES.small.s}
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem}&quot;

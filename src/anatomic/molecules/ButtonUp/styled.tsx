@@ -29,7 +29,7 @@ export const ButtonWrapper = styled(FlexColumn)<{ visible: boolean }>`
     svg {
         position: absolute;
         z-index: 10;
-        color: white;
+        color: ${COLORS.white};
         cursor: pointer;
     }
     :hover {

@@ -47,9 +47,9 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                         active={item.href === activeRoute}
                                         textStyles={{
                                             textAlign: "center",
-                                            color: COLORS.black,
+                                            color: COLORS.dark,
                                             weight: TEXT_WEIGHTS.main,
-                                            size: TEXT_SIZES.xxs,
+                                            size: TEXT_SIZES.small.m,
                                         }}
                                     />
                                 ) : "/contact_us" === activeRoute ? (
@@ -60,9 +60,9 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                             active={item.href === activeRoute}
                                             textStyles={{
                                                 textAlign: "center",
-                                                color: COLORS.black,
+                                                color: COLORS.dark,
                                                 weight: TEXT_WEIGHTS.main,
-                                                size: TEXT_SIZES.xxs,
+                                                size: TEXT_SIZES.small.m,
                                             }}
                                         />
                                     </FlexRow>
@@ -73,9 +73,9 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                             linkText={item.title}
                                             textStyles={{
                                                 textAlign: "center",
-                                                color: COLORS.black,
+                                                color: COLORS.dark,
                                                 weight: TEXT_WEIGHTS.main,
-                                                size: TEXT_SIZES.xxs,
+                                                size: TEXT_SIZES.small.m,
                                             }}
                                         />
                                     </Button>

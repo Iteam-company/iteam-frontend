@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export const StyledTextArea = styled(Field)`
     resize: vertical;
-    border: 1px solid #dee2e6;
+    border: 1px solid ${COLORS.lightGray};
     border-radius: 6px;
     box-sizing: border-box;
     padding: 6px 12px 6px 40px;
@@ -14,14 +14,14 @@ export const StyledTextArea = styled(Field)`
     outline: none;
     font-family: "Poppins", sans-serif;
     line-height: 32px;
-    font-size: ${TEXT_SIZES.xxs};
+    font-size: ${TEXT_SIZES.small.m};
 
     ::placeholder {
-        font-size: ${TEXT_SIZES.xxs};
+        font-size: ${TEXT_SIZES.small.m};
     }
 
     :focus-within {
-        border: 1px solid ${COLORS.black};
+        border: 1px solid ${COLORS.dark};
         transition: border 0.5s;
     }
 `;

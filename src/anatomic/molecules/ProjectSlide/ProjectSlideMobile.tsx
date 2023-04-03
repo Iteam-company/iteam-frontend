@@ -32,15 +32,15 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                     style={{ boxSizing: "border-box" }}
                 >
                     <Text
-                        color={COLORS.black}
-                        size={TEXT_SIZES.m}
+                        color={COLORS.dark}
+                        size={TEXT_SIZES.medium.xs}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         {title}
                     </Text>
                     <Text
-                        color={COLORS.black}
-                        size={TEXT_SIZES.xxs}
+                        color={COLORS.dark}
+                        size={TEXT_SIZES.small.m}
                         weight={TEXT_WEIGHTS.main}
                     >
                         {description}
@@ -56,9 +56,9 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                             >
                                 <>{iconsMobile[el.icon]}</>
                                 <Text
-                                    size={TEXT_SIZES.xxxs}
+                                    size={TEXT_SIZES.small.s}
                                     weight={TEXT_WEIGHTS.main}
-                                    color="#818181"
+                                    color={COLORS.warmGray}
                                 >
                                     {el.name}
                                 </Text>
@@ -91,7 +91,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     label={
-                        <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
+                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
                             View Case
                         </Text>
                     }

@@ -2,6 +2,7 @@ import { Swiper as SwiperComponent } from "swiper/react";
 import styled from "styled-components";
 import ArrowLeft from "@/assets/icon/arrowLeft.svg";
 import ArrowRight from "@/assets/icon/arrowRight.svg";
+import { COLORS } from "@/lib/theme/color";
 
 export const StyledSwiper = styled(SwiperComponent)<{
     mh?: string;
@@ -40,7 +41,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
         border-radius: 50%;
         background-image: linear-gradient(
             109.75deg,
-            #ffffff -1.04%,
+            ${COLORS.white} -1.04%,
             rgba(206, 188, 255, 0.19) 26.21%,
             rgba(182, 124, 255, 0.18) 52.65%,
             rgba(141, 71, 255, 0.43) 74.36%
@@ -48,7 +49,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
         box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.2);
 
         ::after {
-            background-color: #f6eefc;
+            background-color: ${COLORS.lightPurple};
             border-radius: 50%;
             height: 34px;
             width: 34px;
@@ -64,7 +65,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
         border-radius: 50%;
         background-image: linear-gradient(
             109.75deg,
-            #ffffff -1.04%,
+            ${COLORS.white} -1.04%,
             rgba(206, 188, 255, 0.19) 26.21%,
             rgba(182, 124, 255, 0.18) 52.65%,
             rgba(141, 71, 255, 0.43) 74.36%
@@ -72,7 +73,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
         box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.2);
 
         ::after {
-            background-color: #f6eefc;
+            background-color: ${COLORS.lightPurple};
             border-radius: 50%;
             height: 34px;
             width: 34px;
@@ -86,12 +87,12 @@ export const StyledSwiper = styled(SwiperComponent)<{
         .swiper-pagination-bullet {
             height: 4px;
             width: 4px;
-            border: 1.5px solid black;
+            border: 1.5px solid ${COLORS.black};
             background-color: transparent;
             opacity: 1;
         }
         .swiper-pagination-bullet-active {
-            background-color: black;
+            background-color: ${COLORS.black};
         }
     }
 `;

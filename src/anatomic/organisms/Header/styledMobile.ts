@@ -1,3 +1,4 @@
+import { COLORS } from "@/lib/theme/color";
 import { Link } from "@/anatomic/atoms/Link";
 import styled from "styled-components";
 
@@ -8,7 +9,7 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
         position: absolute;
         bottom: 7px;
         width: ${({ active }) => (active ? "100%" : "0")};
-        background-color: #fff;
+        background-color: ${COLORS.white};
         height: 2px;
         transition: width 0.5s ease;
         left: 0;

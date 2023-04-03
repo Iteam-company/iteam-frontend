@@ -27,9 +27,9 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
             <Title active={options.find(({ href }) => href === activeRoute)}>
                 <Text
                     type={TEXT_TYPES.text_block}
-                    color={COLORS.black}
+                    color={COLORS.dark}
                     weight={TEXT_WEIGHTS.main}
-                    size={TEXT_SIZES.xxs}
+                    size={TEXT_SIZES.small.m}
                     textAlign="center"
                 >
                     {title}
@@ -46,7 +46,7 @@ export const Dropdown: FC<Props> = ({ title, options, activeRoute }) => {
                         linkText={item.option}
                         textStyles={{
                             weight: TEXT_WEIGHTS.medium,
-                            size: TEXT_SIZES.xxxs,
+                            size: TEXT_SIZES.small.s,
                             color: COLORS.dropdown,
                             letterSpacing: LETTER_SPACING.xs,
                         }}

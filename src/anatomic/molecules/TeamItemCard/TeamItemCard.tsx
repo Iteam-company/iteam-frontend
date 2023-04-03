@@ -33,15 +33,15 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                     <Card justifyContent="space-between">
                         <FlexColumn gap="10px">
                             <Text
-                                color="#433c5c"
+                                color={COLORS.purple}
                                 textTransform="uppercase"
                                 textDecoration="underline"
                                 weight={TEXT_WEIGHTS.medium}
-                                size={TEXT_SIZES.xxs}
+                                size={TEXT_SIZES.small.m}
                             >
                                 Experience
                             </Text>
-                            <Text color={COLORS.black} size={TEXT_SIZES.xxs}>
+                            <Text color={COLORS.dark} size={TEXT_SIZES.small.m}>
                                 {experience.position}
                             </Text>
                         </FlexColumn>
@@ -59,7 +59,10 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                     width={experience.year}
                                 >
                                     <div style={{ paddingBottom: "10px" }}>
-                                        <Text color={COLORS.black} size="10px">
+                                        <Text
+                                            color={COLORS.dark}
+                                            size={TEXT_SIZES.small.xs}
+                                        >
                                             {experience.year} ysr
                                         </Text>
                                     </div>
@@ -73,11 +76,11 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                     </Card>
                     <Card gap="20px" alignItems="space-between">
                         <Text
-                            color="#433c5c"
+                            color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size={TEXT_SIZES.xxs}
+                            size={TEXT_SIZES.small.m}
                         >
                             Expertise
                         </Text>
@@ -101,14 +104,14 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                             <Text
                                                 color={COLORS.textSecondary}
                                                 weight={TEXT_WEIGHTS.medium}
-                                                size={TEXT_SIZES.xs}
+                                                size={TEXT_SIZES.small.l}
                                             >
                                                 {elem.short}
                                             </Text>
                                             <Text
                                                 weight={TEXT_WEIGHTS.main}
                                                 color={COLORS.textSecondary}
-                                                size="10px"
+                                                size={TEXT_SIZES.small.xs}
                                             >
                                                 {elem.text}
                                             </Text>
@@ -119,11 +122,11 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                     </Card>
                     <Card>
                         <Text
-                            color="#433c5c"
+                            color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size={TEXT_SIZES.xxs}
+                            size={TEXT_SIZES.small.m}
                         >
                             Rate
                         </Text>
@@ -131,7 +134,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             <FlexRow alignItems="end" w="100%" h="100%">
                                 <Text
                                     color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.xxs}
+                                    size={TEXT_SIZES.small.m}
                                 >
                                     Hourly developer’s rate
                                 </Text>
@@ -164,7 +167,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                 <FlexRow justifyContent="space-between" w="100%" gap="20px">
                     <FlexColumn gap="10px" w="100%" alignItems="center">
                         <Text
-                            color="#433c5c"
+                            color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
@@ -173,20 +176,20 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             Experience
                         </Text>
                         <Text
-                            color={COLORS.black}
-                            size={TEXT_SIZES.xxxs}
+                            color={COLORS.dark}
+                            size={TEXT_SIZES.small.s}
                             textAlign="center"
                         >
                             {experience.position}
                         </Text>
-                        <Text color={COLORS.black} size={TEXT_SIZES.xxxs}>
+                        <Text color={COLORS.dark} size={TEXT_SIZES.small.s}>
                             {experience.year} year
                         </Text>
                     </FlexColumn>
 
                     <FlexColumn gap="10px" w="100%" alignItems="center">
                         <Text
-                            color="#433c5c"
+                            color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
@@ -207,7 +210,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
 
                     <FlexColumn gap="10px" w="100%" alignItems="center">
                         <Text
-                            color="#433c5c"
+                            color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}

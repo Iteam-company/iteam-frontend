@@ -28,9 +28,9 @@ export const ApproachSlideMobile: FC<ApproachInterface> = ({
 }) => (
     <FlexColumn alignItems="center" gap="30px" p="20px" position="relative">
         <Text
-            color={COLORS.textThird}
+            color={COLORS.textPrimary}
             weight={TEXT_WEIGHTS.medium}
-            size={TEXT_SIZES.l}
+            size={TEXT_SIZES.medium.m}
         >
             Our approach
         </Text>
@@ -51,9 +51,9 @@ export const ApproachSlideMobile: FC<ApproachInterface> = ({
                     {step}
                 </GradientTitle>
                 <StepTitle
-                    color={COLORS.textThird}
+                    color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
-                    size={TEXT_SIZES.s}
+                    size={TEXT_SIZES.small.xl}
                 >
                     {title}
                 </StepTitle>
@@ -90,7 +90,11 @@ export const ApproachSlideMobile: FC<ApproachInterface> = ({
             </FlexColumn>
         </FlexRow>
 
-        <Text size={TEXT_SIZES.xxs} color={COLORS.textMinor} lineHeight="22px">
+        <Text
+            size={TEXT_SIZES.small.m}
+            color={COLORS.textThird}
+            lineHeight="22px"
+        >
             {text}
         </Text>
     </FlexColumn>
