@@ -44,7 +44,7 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
         width: ${({ active }) => (active ? "80%" : "0")};
         right: 10%;
         background-color: ${COLORS.white};
-        height: 2px;
+        height: 1px;
         transition: width 0.5s ease;
     }
 `;

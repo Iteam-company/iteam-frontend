@@ -44,7 +44,7 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             href={item.href}
                             key={item.href}
                             textStyles={{
-                                size: TEXT_SIZES.medium.s,
+                                size: TEXT_SIZES.medium.xs,
                                 color: COLORS.white,
                                 weight: TEXT_WEIGHTS.main,
                                 letterSpacing: LETTER_SPACING.xs,
