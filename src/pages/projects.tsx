@@ -66,15 +66,15 @@ const Projects = () => {
             >
                 <FlexColumn justifyContent="center" alignItems="start">
                     <Text
-                        size={TEXT_SIZES.xxxs}
+                        size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         OUR WORK
                     </Text>
                     <Title
-                        size={TEXT_SIZES.xxxl}
-                        color={COLORS.black}
+                        size={TEXT_SIZES.large.l}
+                        color={COLORS.dark}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         Creating digital products your clients fall in love

@@ -14,7 +14,7 @@ import { Divider } from "./styled";
 export const Footer = () => {
     return (
         <footer>
-            <FlexRow justifyContent="center" bg={COLORS.black} p="45px 0">
+            <FlexRow justifyContent="center" bg={COLORS.dark} p="45px 0">
                 <Adaptive
                     justifyContent="space-between"
                     flexWrap="wrap"
@@ -24,7 +24,7 @@ export const Footer = () => {
                     <FlexColumn gap="20px">
                         <Text
                             color={COLORS.white}
-                            size={TEXT_SIZES.m}
+                            size={TEXT_SIZES.medium.xs}
                             weight={TEXT_WEIGHTS.main}
                         >
                             {TITLES.office}
@@ -32,21 +32,21 @@ export const Footer = () => {
                         <FlexColumn justifyContent="space-between" gap="8px">
                             <Text
                                 color={COLORS.white}
-                                size={TEXT_SIZES.xs}
+                                size={TEXT_SIZES.small.l}
                                 weight={TEXT_WEIGHTS.main}
                             >
                                 {FOOTER_TEXT.address}
                             </Text>
                             <Text
                                 color={COLORS.white}
-                                size={TEXT_SIZES.xs}
+                                size={TEXT_SIZES.small.l}
                                 weight={TEXT_WEIGHTS.main}
                             >
                                 {FOOTER_TEXT.tel}
                             </Text>
                             <Text
                                 color={COLORS.white}
-                                size={TEXT_SIZES.xs}
+                                size={TEXT_SIZES.small.l}
                                 weight={TEXT_WEIGHTS.main}
                             >
                                 {FOOTER_TEXT.hours}
@@ -57,7 +57,7 @@ export const Footer = () => {
                         <FlexColumn gap="20px" key={item.id}>
                             <Text
                                 color={COLORS.white}
-                                size={TEXT_SIZES.m}
+                                size={TEXT_SIZES.medium.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
                                 {item.title}
@@ -69,7 +69,7 @@ export const Footer = () => {
                                         linkPosition={LINK_POSITION.footer}
                                         textStyles={{
                                             color: COLORS.link,
-                                            size: TEXT_SIZES.xs,
+                                            size: TEXT_SIZES.small.l,
                                             weight: TEXT_WEIGHTS.normal,
                                         }}
                                         linkText={option.option}
@@ -91,7 +91,7 @@ export const Footer = () => {
                     <FlexColumn gap="20px">
                         <Text
                             color={COLORS.white}
-                            size={TEXT_SIZES.m}
+                            size={TEXT_SIZES.medium.xs}
                             weight={TEXT_WEIGHTS.main}
                         >
                             {TITLES.socil_media}
@@ -111,9 +111,9 @@ export const Footer = () => {
                 </Adaptive>
             </FlexRow>
             <Divider />
-            <FlexRow justifyContent="center" bg={COLORS.black} p="30px 0">
+            <FlexRow justifyContent="center" bg={COLORS.dark} p="30px 0">
                 <Adaptive>
-                    <Text color={COLORS.white} size={TEXT_SIZES.m}>
+                    <Text color={COLORS.white} size={TEXT_SIZES.medium.xs}>
                         {FOOTER_TEXT.rights}
                     </Text>
                 </Adaptive>

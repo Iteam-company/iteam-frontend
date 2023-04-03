@@ -8,6 +8,7 @@ import { ApproachInterface } from "@/pages/api/outstaffing";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 import { SwiperRange } from "../SwiperRange";
+import { COLORS } from "@/lib/theme/color";
 
 interface Props {
     approaches: ApproachInterface[];
@@ -29,7 +30,7 @@ export const OurApproach: FC<Props> = ({ approaches }) => {
                                 boxSizing: "border-box",
                                 borderRadius: "16px",
                                 minHeight: "400px",
-                                background: "#FFFFFF",
+                                background: COLORS.white,
                                 boxShadow: "0px 4px 20px rgba(37, 7, 67, 0.37)",
                             }}
                         >

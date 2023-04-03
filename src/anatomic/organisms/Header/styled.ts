@@ -18,7 +18,7 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
         position: absolute;
         bottom: -8px;
         width: ${({ active }) => (active ? "100%" : "0")};
-        background-color: ${COLORS.black};
+        background-color: ${COLORS.dark};
         height: 2px;
         transition: width 0.5s ease;
         right: 0;
@@ -26,15 +26,15 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
 `;
 
 export const Button = styled.button`
-    background-color: ${COLORS.black};
-    border: 1px solid ${COLORS.black};
+    background-color: ${COLORS.dark};
+    border: 1px solid ${COLORS.dark};
     border-radius: 8px;
 
     &:hover {
         background-color: ${COLORS.white};
-        border: 1px solid ${COLORS.black};
+        border: 1px solid ${COLORS.dark};
         & > * > * {
-            color: ${COLORS.black};
+            color: ${COLORS.dark};
         }
     }
     & > * > * {

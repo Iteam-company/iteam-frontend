@@ -1,3 +1,4 @@
+import { COLORS } from "@/lib/theme/color";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import { Text } from "@/anatomic/atoms/Text";
@@ -53,7 +54,7 @@ export const RepeatButton = styled.button`
     border-radius: 50%;
     background-image: linear-gradient(
         109.75deg,
-        #ffffff -1.04%,
+        ${COLORS.white} -1.04%,
         rgba(206, 188, 255, 0.19) 26.21%,
         rgba(182, 124, 255, 0.18) 52.65%,
         rgba(141, 71, 255, 0.43) 74.36%
@@ -68,7 +69,7 @@ export const RepeatButton = styled.button`
     &:after {
         padding-top: 8px;
         content: url(${repeatIcon.src});
-        background-color: #f6eefc;
+        background-color: ${COLORS.lightPurple};
         border-radius: 50%;
         height: 34px;
         width: 34px;

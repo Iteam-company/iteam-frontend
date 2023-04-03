@@ -5,6 +5,7 @@ import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { ImplementSlide } from "@/anatomic/molecules/ImplementSlide";
 import { SwiperSlide } from "swiper/react";
 import { AppsInterface } from "@/pages/api/outsourcing";
+import { COLORS } from "@/lib/theme/color";
 
 interface Props {
     apps: AppsInterface[];
@@ -35,7 +36,7 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                                     style={{
                                         borderRadius: "16px",
                                         minHeight: "300px",
-                                        background: "#FFFFFF",
+                                        background: COLORS.white,
                                         boxShadow:
                                             "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}
@@ -75,7 +76,7 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                                     style={{
                                         borderRadius: "16px",
                                         minHeight: "300px",
-                                        background: "#FFFFFF",
+                                        background: COLORS.white,
                                         boxShadow:
                                             "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}

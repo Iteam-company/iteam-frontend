@@ -26,7 +26,7 @@ export const Title = styled.div<{ active?: any }>`
         bottom: 7px;
         width: ${({ active }) => (active ? "75%" : "0")};
         left: 20px;
-        background-color: #ffffff;
+        background-color: ${COLORS.white};
         height: 2px;
         transition: width 0.5s ease;
     }
@@ -35,7 +35,7 @@ export const Title = styled.div<{ active?: any }>`
 export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
     :hover {
-        color: ${({ active }) => !active && COLORS.black};
+        color: ${({ active }) => !active && COLORS.dark};
     }
 `;
 

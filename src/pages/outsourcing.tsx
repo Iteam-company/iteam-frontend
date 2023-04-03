@@ -69,15 +69,15 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <Text
-                    color={COLORS.textThird}
+                    color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
-                    size="34px"
+                    size={TEXT_SIZES.large.xs}
                 >
                     Outsourcing with iTeam.
                 </Text>
                 <Text
-                    size={TEXT_SIZES.s}
-                    color={COLORS.textMinor}
+                    size={TEXT_SIZES.small.xl}
+                    color={COLORS.textThird}
                     lineHeight="27px"
                 >
                     Establish world-class agility, scalability and security in
@@ -103,8 +103,8 @@ const Outsourcing = () => {
                         <FlexColumn gap="36px" w="100%">
                             <Text
                                 weight={TEXT_WEIGHTS.medium}
-                                size={TEXT_SIZES.xl}
-                                color={COLORS.textThird}
+                                size={TEXT_SIZES.medium.l}
+                                color={COLORS.textPrimary}
                             >
                                 Software Development Services We Provide
                             </Text>
@@ -152,8 +152,8 @@ const Outsourcing = () => {
                 <WhiteSection>
                     <Text
                         weight={TEXT_WEIGHTS.medium}
-                        color={COLORS.textThird}
-                        size={TEXT_SIZES.xl}
+                        color={COLORS.textPrimary}
+                        size={TEXT_SIZES.medium.l}
                         textAlign="center"
                     >
                         Why Businesses Trust Us
@@ -215,7 +215,7 @@ const Outsourcing = () => {
                                     style={{
                                         borderRadius: "16px",
                                         minHeight: "400px",
-                                        background: "#FFFFFF",
+                                        background: COLORS.white,
                                         boxShadow:
                                             "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}
@@ -232,13 +232,16 @@ const Outsourcing = () => {
                 <FlexColumn w="100%" h="100%" position="relative" p="150px 0 0">
                     <WhiteSection>
                         <Text
-                            color={COLORS.textThird}
+                            color={COLORS.textPrimary}
                             weight={TEXT_WEIGHTS.medium}
-                            size="32px"
+                            size={TEXT_SIZES.medium.xl}
                         >
                             Book an initial 30-min call
                         </Text>
-                        <Text size={TEXT_SIZES.xxxs} color={COLORS.textMinor}>
+                        <Text
+                            size={TEXT_SIZES.small.s}
+                            color={COLORS.textThird}
+                        >
                             Let`s discuss your needs. And we will tell you how
                             we can help. Without obligations.
                         </Text>
@@ -259,9 +262,9 @@ const Outsourcing = () => {
                 <BgImage src={BgImage5.src} top={400} left={-250} />
 
                 <Text
-                    color={COLORS.textThird}
+                    color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
-                    size="32px"
+                    size={TEXT_SIZES.medium.xl}
                 >
                     What We Can Implement
                 </Text>

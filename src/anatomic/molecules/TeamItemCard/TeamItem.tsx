@@ -41,7 +41,7 @@ export const TeamItem: FC<TeamInterface> = ({
                         >
                             <Text
                                 color={COLORS.textSecondary}
-                                size={TEXT_SIZES.xxxs}
+                                size={TEXT_SIZES.small.s}
                             >
                                 Follow the link to see more
                             </Text>
@@ -78,7 +78,7 @@ export const TeamItem: FC<TeamInterface> = ({
                         >
                             <Text
                                 color={COLORS.textSecondary}
-                                size={TEXT_SIZES.xxxs}
+                                size={TEXT_SIZES.small.s}
                             >
                                 Follow the link to see more
                             </Text>

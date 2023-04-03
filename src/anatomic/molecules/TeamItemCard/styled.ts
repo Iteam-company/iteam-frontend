@@ -61,7 +61,7 @@ export const GradientElem = styled.div<{ gradient: string }>`
 `;
 
 export const GradientElemContent = styled(FlexRow)`
-    background: white;
+    background: ${COLORS.white};
     border-radius: 50px;
     width: 100%;
     height: 100%;

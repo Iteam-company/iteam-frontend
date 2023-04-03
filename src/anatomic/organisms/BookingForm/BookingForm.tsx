@@ -56,9 +56,9 @@ export const BookingForm = () => {
                                 variant={BUTTON_VARIANTS.gradient_button}
                                 label={
                                     <Text
-                                        color={COLORS.black}
+                                        color={COLORS.dark}
                                         weight={TEXT_WEIGHTS.main}
-                                        size={TEXT_SIZES.xxxs}
+                                        size={TEXT_SIZES.small.s}
                                     >
                                         Book a call
                                     </Text>

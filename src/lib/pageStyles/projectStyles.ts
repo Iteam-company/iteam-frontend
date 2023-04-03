@@ -9,6 +9,6 @@ export const Divider = styled.div`
 export const Title = styled(Text)`
     max-width: 1000px;
     @media all and (max-width: 899px) {
-        font-size: ${TEXT_SIZES.xxl};
+        font-size: ${TEXT_SIZES.large.m};
     }
 `;

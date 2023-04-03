@@ -90,9 +90,9 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
             borderRadius="16px"
         >
             <Text
-                color={COLORS.textThird}
+                color={COLORS.textPrimary}
                 weight={TEXT_WEIGHTS.medium}
-                size={TEXT_SIZES.xl}
+                size={TEXT_SIZES.medium.l}
             >
                 Our approach
             </Text>
@@ -108,16 +108,16 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
                             {currentApproach?.step}
                         </GradientTitle>
                         <StepTitle
-                            color={COLORS.textThird}
+                            color={COLORS.textPrimary}
                             weight={TEXT_WEIGHTS.medium}
-                            size={TEXT_SIZES.xl}
+                            size={TEXT_SIZES.medium.l}
                         >
                             {currentApproach?.title}
                         </StepTitle>
                     </FlexColumn>
                     <Text
-                        size={TEXT_SIZES.s}
-                        color={COLORS.textMinor}
+                        size={TEXT_SIZES.small.xl}
+                        color={COLORS.textThird}
                         lineHeight="38px"
                     >
                         {currentApproach?.text}

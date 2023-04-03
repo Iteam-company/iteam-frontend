@@ -30,7 +30,7 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                     color={COLORS.white}
                     textTransform="uppercase"
                     weight={TEXT_WEIGHTS.main}
-                    size={TEXT_SIZES.s}
+                    size={TEXT_SIZES.small.xl}
                     letterSpacing={LETTER_SPACING.l}
                 >
                     {title}
@@ -46,7 +46,7 @@ export const DropdownMobile: FC<Props> = ({ title, options, activeRoute }) => {
                             href={item.href}
                             key={item.href}
                             textStyles={{
-                                size: TEXT_SIZES.xxxs,
+                                size: TEXT_SIZES.small.s,
                                 color: COLORS.white,
                                 textTransform: "uppercase",
                                 weight: TEXT_WEIGHTS.main,

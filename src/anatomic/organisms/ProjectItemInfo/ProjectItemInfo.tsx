@@ -19,22 +19,22 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                     <FlexRow w="100%" mh="80vh" alignItems="center" gap="20px">
                         <FlexColumn w="100%" gap="20px">
                             <GradientTitle
-                                size={TEXT_SIZES.xl}
+                                size={TEXT_SIZES.medium.l}
                                 weight={TEXT_WEIGHTS.main}
                                 color={color}
-                                mobileSize={TEXT_SIZES.m}
+                                mobileSize={TEXT_SIZES.medium.xs}
                             >
                                 {title}
                             </GradientTitle>
                             <FlexColumn gap="10px">
                                 <Text
-                                    color={COLORS.black}
+                                    color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
                                     Developed responsive app, created new
                                     features.
                                 </Text>
-                                <Text size={TEXT_SIZES.xs}>
+                                <Text size={TEXT_SIZES.small.l}>
                                     Design and development of a Angular app for
                                     the users to deploy media content on
                                     different platforms such as Apple Music,
@@ -43,12 +43,12 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                             </FlexColumn>
                             <FlexColumn gap="10px">
                                 <Text
-                                    color={COLORS.black}
+                                    color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
                                     Client’s request
                                 </Text>
-                                <Text size={TEXT_SIZES.xs}>
+                                <Text size={TEXT_SIZES.small.l}>
                                     Design and development of a Angular app for
                                     the users to deploy media content on
                                     different platforms such as Apple Music,
@@ -57,12 +57,12 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                             </FlexColumn>
                             <FlexColumn gap="10px">
                                 <Text
-                                    color={COLORS.black}
+                                    color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
                                     Our approach
                                 </Text>
-                                <Text size={TEXT_SIZES.xs}>
+                                <Text size={TEXT_SIZES.small.l}>
                                     Design and development of a Angular app for
                                     the users to deploy media content on
                                     different platforms such as Apple Music,
@@ -113,10 +113,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                 style={{ boxSizing: "border-box" }}
             >
                 <GradientTitle
-                    size={TEXT_SIZES.xxl}
+                    size={TEXT_SIZES.large.m}
                     weight={TEXT_WEIGHTS.main}
                     color={color}
-                    mobileSize={TEXT_SIZES.m}
+                    mobileSize={TEXT_SIZES.medium.xs}
                 >
                     {title}
                 </GradientTitle>
@@ -153,30 +153,30 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                 </HorizontalSwiperElem>
 
                 <FlexColumn gap="10px">
-                    <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
+                    <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
                         Developed responsive app, created new features.
                     </Text>
-                    <Text size={TEXT_SIZES.xs}>
+                    <Text size={TEXT_SIZES.small.l}>
                         Design and development of a Angular app for the users to
                         deploy media content on different platforms such as
                         Apple Music, Spotify, etc.
                     </Text>
 
                     <FlexColumn gap="10px">
-                        <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
+                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
                             Client’s request
                         </Text>
-                        <Text size={TEXT_SIZES.xs}>
+                        <Text size={TEXT_SIZES.small.l}>
                             Design and development of a Angular app for the
                             users to deploy media content on different platforms
                             such as Apple Music, Spotify, etc.
                         </Text>
                     </FlexColumn>
                     <FlexColumn gap="10px">
-                        <Text color={COLORS.black} weight={TEXT_WEIGHTS.main}>
+                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
                             Our approach
                         </Text>
-                        <Text size={TEXT_SIZES.xs}>
+                        <Text size={TEXT_SIZES.small.l}>
                             Design and development of a Angular app for the
                             users to deploy media content on different platforms
                             such as Apple Music, Spotify, etc.

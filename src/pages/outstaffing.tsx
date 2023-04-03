@@ -56,15 +56,15 @@ const Outstaffing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <Text
-                    color={COLORS.textThird}
+                    color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
-                    size="34px"
+                    size={TEXT_SIZES.large.xs}
                 >
                     Out-staffing with iTeam.
                 </Text>
                 <Text
-                    size={TEXT_SIZES.s}
-                    color={COLORS.textMinor}
+                    size={TEXT_SIZES.small.xl}
+                    color={COLORS.textThird}
                     lineHeight="27px"
                 >
                     Mobil-unity out-staffing solutions in Ukraine provide
@@ -95,13 +95,13 @@ const Outstaffing = () => {
                 />
                 <WhiteSection>
                     <Text
-                        color={COLORS.textThird}
+                        color={COLORS.textPrimary}
                         weight={TEXT_WEIGHTS.medium}
-                        size="32px"
+                        size={TEXT_SIZES.medium.xl}
                     >
                         Book an initial 30-min call
                     </Text>
-                    <Text size={TEXT_SIZES.xxxs} color={COLORS.textMinor}>
+                    <Text size={TEXT_SIZES.small.s} color={COLORS.textThird}>
                         Let`s discuss your needs. And we will tell you how we
                         can help. Without obligations.
                     </Text>
@@ -127,7 +127,7 @@ const Outstaffing = () => {
                 >
                     <GradientTitle
                         w="550px"
-                        size="34px"
+                        size={TEXT_SIZES.large.xs}
                         weight={TEXT_WEIGHTS.main}
                         color="272.07deg, #17092D 35.9%, #7232E0 100%"
                     >
@@ -146,7 +146,7 @@ const Outstaffing = () => {
                                     style={{
                                         borderRadius: "16px",
                                         minHeight: "400px",
-                                        background: "#FFFFFF",
+                                        background: COLORS.white,
                                         boxShadow:
                                             "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}
@@ -164,9 +164,9 @@ const Outstaffing = () => {
                 <FlexColumn w="100%" h="100%" position="relative" p="50px 0 0">
                     <WhiteSection>
                         <Text
-                            color={COLORS.textThird}
+                            color={COLORS.textPrimary}
                             weight={TEXT_WEIGHTS.medium}
-                            size="32px"
+                            size={TEXT_SIZES.medium.xl}
                         >
                             How We Helped Our Clients
                         </Text>
@@ -176,9 +176,9 @@ const Outstaffing = () => {
                             variant={BUTTON_VARIANTS.gradient_link}
                             label={
                                 <Text
-                                    color={COLORS.black}
+                                    color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
-                                    size={TEXT_SIZES.xs}
+                                    size={TEXT_SIZES.small.l}
                                 >
                                     Visit Portfolio
                                 </Text>
@@ -198,9 +198,9 @@ const Outstaffing = () => {
             >
                 <BgImage src={BgImage4.src} top={-300} right={-500} />
                 <Text
-                    color={COLORS.textThird}
+                    color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
-                    size="32px"
+                    size={TEXT_SIZES.medium.xl}
                 >
                     Check out our dedicated teams
                 </Text>
@@ -229,8 +229,8 @@ const Outstaffing = () => {
                                     ].map((item, index) => (
                                         <Text
                                             key={index}
-                                            color={COLORS.textMinor}
-                                            size={TEXT_SIZES.m}
+                                            color={COLORS.textThird}
+                                            size={TEXT_SIZES.medium.xs}
                                         >
                                             • {item}
                                         </Text>
@@ -242,9 +242,9 @@ const Outstaffing = () => {
                                     variant={BUTTON_VARIANTS.gradient_link}
                                     label={
                                         <Text
-                                            color={COLORS.black}
+                                            color={COLORS.dark}
                                             weight={TEXT_WEIGHTS.main}
-                                            size={TEXT_SIZES.xs}
+                                            size={TEXT_SIZES.small.l}
                                         >
                                             View our team
                                         </Text>

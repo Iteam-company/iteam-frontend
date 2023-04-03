@@ -31,7 +31,7 @@ export const Title = styled.div<{ active: any }>`
         bottom: 7px;
         width: ${({ active }) => (active ? "78%" : "0")};
         left: ${({ active }) => active && "0"};
-        background-color: #111;
+        background-color: ${COLORS.dark};
         height: 2px;
         transition: width 0.5s ease;
         right: 20px;
@@ -42,7 +42,7 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
     cursor: pointer;
     & > * {
         :hover {
-            border-bottom: 1px solid white;
+            border-bottom: 1px solid ${COLORS.white};
         }
     }
 `;
@@ -60,7 +60,7 @@ export const Menu = styled.div`
     flex-direction: column;
     position: absolute;
     border-radius: 6px;
-    background-color: ${COLORS.black};
+    background-color: ${COLORS.dark};
     box-shadow: 0 0 3px rgb(60 72 88 / 15%);
 `;
 

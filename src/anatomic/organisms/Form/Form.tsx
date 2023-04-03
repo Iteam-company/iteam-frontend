@@ -104,10 +104,10 @@ export const FormElem = () => {
                             <Button
                                 type="submit"
                                 variant={BUTTON_VARIANTS.color}
-                                color={COLORS.black}
+                                color={COLORS.dark}
                                 label={
                                     <Text
-                                        size={TEXT_SIZES.xxs}
+                                        size={TEXT_SIZES.small.m}
                                         color={COLORS.white}
                                         weight={TEXT_WEIGHTS.medium}
                                         letterSpacing={LETTER_SPACING.s}
@@ -128,8 +128,8 @@ export const FormElem = () => {
                                 <Icon src={successIcon.src} />
                                 <Text
                                     type={TEXT_TYPES.title}
-                                    size={TEXT_SIZES.m}
-                                    color={COLORS.text}
+                                    size={TEXT_SIZES.medium.xs}
+                                    color={COLORS.textPrimary}
                                     textAlign="center"
                                 >
                                     The form has been sent

@@ -1,4 +1,5 @@
 import LogoImg from "@/assets/icon/logoiteam.svg";
+import { COLORS } from "@/lib/theme/color";
 import styled from "styled-components";
 import { FlexColumn } from "../Flex";
 
@@ -7,7 +8,7 @@ export const Triangle = styled.div`
     height: 0;
     border-left: 100px solid transparent;
     border-right: 100px solid transparent;
-    border-bottom: 600px solid white;
+    border-bottom: 600px solid ${COLORS.white};
 
     animation: spin 4s linear infinite;
     transform-origin: top center;
@@ -60,7 +61,7 @@ export const Circle = styled.div`
     position: absolute;
     left: 0;
     top: 20%;
-    background: white;
+    background: ${COLORS.white};
 `;
 
 export const Mask = styled(FlexColumn)`

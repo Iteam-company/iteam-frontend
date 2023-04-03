@@ -1,9 +1,15 @@
 import { COLORS } from "@/lib/theme/color";
 import { ReactNode } from "react";
 
+export const TEXT_SIZES = {
+    small: { xs: "10px", s: "12px", m: "14px", l: "16px", xl: "18px" },
+    medium: { xs: "20px", s: "22px", m: "24px", l: "30px", xl: "32px" },
+    large: { xs: "34px", s: "36px", m: "42px", l: "50px", xl: "54px" },
+};
+
 export interface Props {
     type?: TEXT_TYPES;
-    size?: TEXT_SIZES | string;
+    size?: keyof typeof TEXT_SIZES | string;
     weight?: TEXT_WEIGHTS | string;
     lineHeight?: string;
     color?: COLORS | string;
@@ -16,18 +22,7 @@ export interface Props {
     textDecoration?: string;
     whiteSpace?: string;
     letterSpacing?: string;
-    mobileSize?: TEXT_SIZES | string;
-}
-export const enum TEXT_SIZES {
-    xxxs = "12px",
-    xxs = "14px",
-    xs = "16px",
-    s = "18px",
-    m = "20px",
-    l = "24px",
-    xl = "30px",
-    xxl = "42px",
-    xxxl = "50px",
+    mobileSize?: keyof typeof TEXT_SIZES | string;
 }
 
 export const enum LETTER_SPACING {

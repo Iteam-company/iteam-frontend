@@ -30,8 +30,8 @@ export const TextArea: FC<Props> = ({
             <FlexRow gap="4px">
                 <Text
                     weight={TEXT_WEIGHTS.medium}
-                    size={TEXT_SIZES.xxs}
-                    color={COLORS.black}
+                    size={TEXT_SIZES.small.m}
+                    color={COLORS.dark}
                     letterSpacing={LETTER_SPACING.xs}
                     textTransform="capitalize"
                 >
@@ -53,7 +53,7 @@ export const TextArea: FC<Props> = ({
                     value={value}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.xxs}>{error}</Text>}
+            {error && <Text size={TEXT_SIZES.small.m}>{error}</Text>}
         </FlexColumn>
     );
 };

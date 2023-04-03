@@ -42,8 +42,8 @@ const Development = () => {
                 <Text
                     textAlign="center"
                     type={TEXT_TYPES.title}
-                    color={COLORS.text}
-                    size={TEXT_SIZES.l}
+                    color={COLORS.textPrimary}
+                    size={TEXT_SIZES.medium.m}
                     letterSpacing={LETTER_SPACING.s}
                     weight={TEXT_WEIGHTS.main}
                 >
@@ -57,8 +57,8 @@ const Development = () => {
                         <Text
                             textAlign="center"
                             type={TEXT_TYPES.title}
-                            color={COLORS.text}
-                            size={TEXT_SIZES.l}
+                            color={COLORS.textPrimary}
+                            size={TEXT_SIZES.medium.m}
                         >
                             {item.title}
                         </Text>
@@ -89,15 +89,15 @@ const Development = () => {
                                         h="100%"
                                     >
                                         <Text
-                                            size={TEXT_SIZES.xs}
+                                            size={TEXT_SIZES.small.l}
                                             type={TEXT_TYPES.text_block}
                                             weight={TEXT_WEIGHTS.main}
-                                            color={COLORS.text}
+                                            color={COLORS.textPrimary}
                                         >
                                             {elem.title}
                                         </Text>
                                         <Text
-                                            size={TEXT_SIZES.xxs}
+                                            size={TEXT_SIZES.small.m}
                                             type={TEXT_TYPES.text_block}
                                         >
                                             {elem.description}

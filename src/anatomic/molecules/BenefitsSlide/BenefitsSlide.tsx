@@ -9,13 +9,16 @@ export const BenefitsSlide: FC<BenefitsInterface> = ({ title, text }) => {
     return (
         <FlexContainer h="100%">
             <Text
-                size={TEXT_SIZES.l}
-                color={COLORS.textThird}
+                size={TEXT_SIZES.medium.m}
+                color={COLORS.textPrimary}
                 weight={TEXT_WEIGHTS.medium}
             >
                 {title}
             </Text>
-            <TextDefinition size={TEXT_SIZES.m} color={COLORS.textMinor}>
+            <TextDefinition
+                size={TEXT_SIZES.medium.xs}
+                color={COLORS.textThird}
+            >
                 {text}
             </TextDefinition>
         </FlexContainer>
@@ -33,6 +36,6 @@ const FlexContainer = styled(FlexColumn)`
 
 const TextDefinition = styled(Text)`
     @media all and (max-width: 500px) {
-        font-size: ${TEXT_SIZES.xs} !important;
+        font-size: ${TEXT_SIZES.small.l} !important;
     }
 `;

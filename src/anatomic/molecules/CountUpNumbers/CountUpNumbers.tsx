@@ -26,16 +26,16 @@ export const CountUpNumbers: FC<Props> = ({
         >
             <Text
                 weight={TEXT_WEIGHTS.medium}
-                size={TEXT_SIZES.xxl}
-                color={COLORS.textThird}
+                size={TEXT_SIZES.large.m}
+                color={COLORS.textPrimary}
             >
                 {isNumbersInView && <CountUp end={title} duration={3} />}
                 {subTitle}
             </Text>
             <Text
                 weight={TEXT_WEIGHTS.main}
-                size={TEXT_SIZES.xs}
-                color={COLORS.textMinor}
+                size={TEXT_SIZES.small.l}
+                color={COLORS.textThird}
                 textAlign="center"
             >
                 {text}

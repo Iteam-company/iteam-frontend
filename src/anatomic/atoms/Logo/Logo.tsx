@@ -4,7 +4,7 @@ import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 import { TEXT_CONTENT } from "@/lib/lang";
 import Link from "next/link";
 
-export const Logo: FC<{ color?: string }> = ({ color = COLORS.black }) => {
+export const Logo: FC<{ color?: string }> = ({ color = COLORS.dark }) => {
     return (
         <Link
             href="/"
@@ -12,7 +12,11 @@ export const Logo: FC<{ color?: string }> = ({ color = COLORS.black }) => {
                 textDecoration: "none",
             }}
         >
-            <Text size={TEXT_SIZES.s} weight={TEXT_WEIGHTS.main} color={color}>
+            <Text
+                size={TEXT_SIZES.small.xl}
+                weight={TEXT_WEIGHTS.main}
+                color={color}
+            >
                 {TEXT_CONTENT.logo}
             </Text>
         </Link>
