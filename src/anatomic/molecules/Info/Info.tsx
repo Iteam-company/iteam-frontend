@@ -7,30 +7,35 @@ import { INFO } from "./utils";
 
 export const Info = () => {
     return (
-        <Flex gap="24px" p="24px" w="40%">
+        <Flex gap="24px" p="20px" w="40%">
             <Text
-                weight={TEXT_WEIGHTS.medium}
+                weight={TEXT_WEIGHTS.main}
                 color={COLORS.textPrimary}
-                size={TEXT_SIZES.medium.xs}
+                size={TEXT_SIZES.medium.s}
             >
                 Lets talk
             </Text>
-            <FlexColumn gap="16px">
-                <Text>
+            <FlexColumn gap="30px">
+                <Text color={COLORS.warmGray} size={TEXT_SIZES.small.xl}>
                     Feel free to send us an enquiry using the contact form. We
                     will replay within 24 hour
                 </Text>
                 {INFO.map((item) => (
-                    <FlexRow alignItems="center" gap="16px" key={item.title}>
+                    <FlexRow alignItems="center" gap="10px" key={item.title}>
                         {item.icon}
                         <FlexColumn>
                             <Text
-                                weight={TEXT_WEIGHTS.main}
-                                color={COLORS.textPrimary}
+                                size={TEXT_SIZES.small.xl}
+                                color={COLORS.black}
                             >
                                 {item.title}
                             </Text>
-                            <Text color={COLORS.buttonDark}>{item.text}</Text>
+                            <Text
+                                size={TEXT_SIZES.small.xl}
+                                color={COLORS.black}
+                            >
+                                {item.text}
+                            </Text>
                         </FlexColumn>
                     </FlexRow>
                 ))}

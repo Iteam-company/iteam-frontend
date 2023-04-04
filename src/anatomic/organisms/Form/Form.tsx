@@ -51,7 +51,7 @@ export const FormElem = () => {
                                     id="name"
                                     name="name"
                                     placeholder="Name"
-                                    icon={<BiUser size={16} />}
+                                    icon={<BiUser size={20} />}
                                     label="Your Name"
                                     error={
                                         errors.name && touched.name
@@ -64,7 +64,7 @@ export const FormElem = () => {
                                     id="email"
                                     name="email"
                                     placeholder="Email"
-                                    icon={<FiMail size={16} />}
+                                    icon={<FiMail size={20} />}
                                     label="Your Email"
                                     error={
                                         errors.email && touched.email
@@ -77,7 +77,7 @@ export const FormElem = () => {
                                 id="subject"
                                 name="subject"
                                 placeholder="Subject"
-                                icon={<BsWindowDock size={16} />}
+                                icon={<BsWindowDock size={20} />}
                                 label="Subject"
                                 error={
                                     errors.subject && touched.subject
@@ -89,7 +89,7 @@ export const FormElem = () => {
                                 id="comments"
                                 name="comments"
                                 placeholder="Message"
-                                icon={<TbMessageCircle2 size={16} />}
+                                icon={<TbMessageCircle2 size={20} />}
                                 label="Comments"
                                 value={values.comments}
                                 onChange={(e: any) =>

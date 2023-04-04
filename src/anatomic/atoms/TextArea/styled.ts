@@ -5,12 +5,12 @@ import styled from "styled-components";
 
 export const StyledTextArea = styled(Field)`
     resize: vertical;
-    border: 1px solid ${COLORS.lightGray};
-    border-radius: 6px;
+    border: 1px solid ${COLORS.inputBorder};
+    border-radius: 12px;
     box-sizing: border-box;
-    padding: 6px 12px 6px 40px;
+    padding: 8px 12px 8px 40px;
     width: 100%;
-    min-height: 143px;
+    min-height: 121px;
     outline: none;
     font-family: "Poppins", sans-serif;
     line-height: 32px;
@@ -25,11 +25,13 @@ export const StyledTextArea = styled(Field)`
         transition: border 0.5s;
     }
 `;
+
 export const Icon = styled.div`
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 14px;
+    left: 10px;
 `;
+
 export const Container = styled.div`
     position: relative;
     width: 100%;

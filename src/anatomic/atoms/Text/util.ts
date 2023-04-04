@@ -1,10 +1,39 @@
 import { COLORS } from "@/lib/theme/color";
 import { ReactNode } from "react";
 
-export const TEXT_SIZES = {
-    small: { xs: "10px", s: "12px", m: "14px", l: "16px", xl: "18px" },
-    medium: { xs: "20px", s: "22px", m: "24px", l: "30px", xl: "32px" },
-    large: { xs: "34px", s: "36px", m: "42px", l: "50px", xl: "54px" },
+interface TextSizesInterface {
+    small: typeof SMALL_TEXT_SIZES;
+    medium: typeof MEDIUM_TEXT_SIZES;
+    large: typeof LARGE_TEXT_SIZES;
+}
+
+enum SMALL_TEXT_SIZES {
+    xs = "10px",
+    s = "12px",
+    m = "14px",
+    l = "16px",
+    xl = "18px",
+}
+
+enum MEDIUM_TEXT_SIZES {
+    xs = "20px",
+    s = "22px",
+    m = "24px",
+    l = "30px",
+    xl = "32px",
+}
+enum LARGE_TEXT_SIZES {
+    xs = "34px",
+    s = "36px",
+    m = "42px",
+    l = "50px",
+    xl = "54px",
+}
+
+export const TEXT_SIZES: TextSizesInterface = {
+    small: SMALL_TEXT_SIZES,
+    medium: MEDIUM_TEXT_SIZES,
+    large: LARGE_TEXT_SIZES,
 };
 
 export interface Props {

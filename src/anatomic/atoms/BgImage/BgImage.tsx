@@ -60,5 +60,4 @@ const BGImageStyled = styled.img<BgImageI>`
     left: ${({ left }) => left}px;
     transform: ${({ rotateZ }) => rotateZ && `rotateZ(${rotateZ}deg)`};
     transition: 0.3s all;
-    /* max-height: 500px; */
 `;

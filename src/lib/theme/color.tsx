@@ -8,7 +8,7 @@ export const enum COLORS {
     dropdown = "white",
     link = "#ADB5BD",
     blue = "#283353",
-    red = "#e43f52",
+    red = "#D11616",
     purple = "#433C5C",
     textPrimary = "#17092D",
     textSecondary = "#250743",
@@ -23,5 +23,6 @@ export const enum COLORS {
     transparentPurple = "#3E314EB8",
     brightPurple = "#792b6a",
     textMinor = "#BFBFBF",
+    inputBorder = "#B8B8B8",
     technologyGradient = "105.85deg, #6b18be 8.7%, #c6b8fc 95.24%",
 }
