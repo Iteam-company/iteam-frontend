@@ -41,7 +41,6 @@ export const BookingForm = () => {
                                 name="email"
                                 placeholder="Your Email"
                                 padding="8px 12px"
-                                height="40px"
                                 error={
                                     errors.email && touched.email
                                         ? errors.email

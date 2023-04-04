@@ -1,7 +1,7 @@
 import { COLORS } from "@/lib/theme/color";
 import React, { FC, ReactNode } from "react";
 import { FlexColumn, FlexRow } from "../Flex";
-import { LETTER_SPACING, Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { LETTER_SPACING, Text, TEXT_SIZES } from "../Text";
 import { Container, Icon, StyledTextArea } from "./styled";
 
 interface Props {
@@ -29,7 +29,6 @@ export const TextArea: FC<Props> = ({
         <FlexColumn w="100%" gap="4px">
             <FlexRow gap="4px">
                 <Text
-                    weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.small.m}
                     color={COLORS.dark}
                     letterSpacing={LETTER_SPACING.xs}

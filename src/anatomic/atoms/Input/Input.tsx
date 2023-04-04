@@ -1,7 +1,7 @@
 import { COLORS } from "@/lib/theme/color";
 import React, { FC, ReactNode } from "react";
 import { FlexColumn, FlexRow } from "../Flex";
-import { LETTER_SPACING, Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
+import { LETTER_SPACING, Text, TEXT_SIZES } from "../Text";
 import { Container, Icon, StyledInput } from "./styled";
 
 interface Props {
@@ -25,16 +25,13 @@ export const Input: FC<Props> = ({
     label,
     validate,
     error,
-    borderRadius,
     padding,
-    height,
 }) => {
     return (
         <FlexColumn w="100%" gap="4px">
             {label && (
                 <FlexRow gap="4px">
                     <Text
-                        weight={TEXT_WEIGHTS.medium}
                         size={TEXT_SIZES.small.m}
                         color={COLORS.textPrimary}
                         letterSpacing={LETTER_SPACING.xs}
@@ -55,9 +52,7 @@ export const Input: FC<Props> = ({
                     name={name}
                     placeholder={placeholder}
                     validate={validate}
-                    radius={borderRadius}
                     padding={padding}
-                    height={height}
                 />
             </Container>
             {error && <Text size={TEXT_SIZES.small.s}>{error}</Text>}

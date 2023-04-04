@@ -4,11 +4,11 @@ import { FlexRow } from "../Flex";
 import { Props } from "./util";
 
 export const ColorButton = styled.button<Props>`
-    height: 43px;
+    height: 50px;
     width: 100%;
     padding: 8px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 12px;
     background-color: ${({ color }) => color || COLORS.buttonDark};
     cursor: pointer;
     box-shadow: 0 3px 5px 0 rgb(173 197 255 / 30%);
