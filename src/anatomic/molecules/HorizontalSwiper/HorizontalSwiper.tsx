@@ -3,7 +3,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/mousewheel";
-import { A11y, Navigation, Pagination } from "swiper";
+import "swiper/css/grid";
+
+import { A11y, Navigation, Pagination, Grid } from "swiper";
 import { StyledSwiper } from "./styled";
 import "swiper/swiper-bundle.css";
 
@@ -17,11 +19,15 @@ interface Props {
     swiperRef?: any;
     navigation?: boolean;
     slidesPerView?: number;
+    slidesPerGroup?: number;
     spaceBetween?: number;
     freeMode?: boolean;
     loop?: boolean;
     loopedSlides?: number;
     pagination?: boolean;
+    className?: string;
+    breakpoints?: any;
+    grid?: any;
 }
 
 export const HorizontalSwiperElem: FC<Props> = ({
@@ -39,6 +45,10 @@ export const HorizontalSwiperElem: FC<Props> = ({
     loop,
     loopedSlides,
     pagination,
+    className,
+    slidesPerGroup = 1,
+    breakpoints,
+    grid,
 }) => {
     const onSwiperHandler = (e: any) => {
         onSwiper && onSwiper(e);
@@ -48,22 +58,25 @@ export const HorizontalSwiperElem: FC<Props> = ({
     };
     return (
         <StyledSwiper
+            className={className}
             ref={swiperRef}
             w={width}
             mh={minHeight}
             mw={maxWidth}
-            modules={[Navigation, Pagination, A11y]}
+            modules={[A11y, Grid, Navigation, Pagination]}
             navigation={navigation}
             pagination={pagination}
             mousewheel={true}
             slidesPerView={slidesPerView}
-            slidesPerGroup={1}
+            slidesPerGroup={slidesPerGroup}
             loop={loop}
             loopedSlides={loopedSlides}
             spaceBetween={spaceBetween}
             freeMode={freeMode}
             onSwiper={(e: any) => onSwiperHandler(e)}
             onSlideChange={onChangeSlideHandler}
+            breakpoints={breakpoints}
+            grid={grid}
         >
             {children}
         </StyledSwiper>

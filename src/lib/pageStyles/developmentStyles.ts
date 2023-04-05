@@ -17,8 +17,8 @@ export const Card = styled.div`
 `;
 
 export const Icon = styled.img`
-    width: 25px;
-    height: 25px;
+    width: 60px;
+    height: 60px;
 `;
 export const GridElem = styled(Grid)`
     @media all and (max-width: 1400px) and (min-width: 1200px) {

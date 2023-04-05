@@ -1,4 +1,3 @@
-import { GridItem } from "@/anatomic/atoms/Grid/grid";
 import {
     LETTER_SPACING,
     Text,
@@ -8,19 +7,21 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { useCallback, useEffect, useState } from "react";
-import { Adaptive } from "@/anatomic/molecules/Adaptive";
-import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
+import { FlexColumn } from "@/anatomic/atoms/Flex";
 import client from "@/axios";
-import { InfoInterface } from "./api/technologes";
-import { motion } from "framer-motion";
-import { Card, Icon, GridElem } from "@/lib/pageStyles/developmentStyles";
+import BgImage1 from "@/assets/bgImage/development/bgImage1.svg";
+import BgImage2 from "@/assets/bgImage/development/bgImage2.svg";
+import BgImage3 from "@/assets/bgImage/development/bgImage3.svg";
+import { BgImage } from "@/anatomic/atoms/BgImage";
+import { DevelopmentInterface } from "./api/technologies";
+import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
 
 const Development = () => {
-    const [info, setInfo] = useState<InfoInterface[]>([]);
+    const [info, setInfo] = useState<DevelopmentInterface[]>([]);
 
     const getInfo = useCallback(async () => {
         try {
-            const { data } = await client.get("/api/technologes");
+            const { data } = await client.get("/api/technologies");
             setInfo(data);
         } catch (err) {
             console.log(err);
@@ -32,84 +33,73 @@ const Development = () => {
     }, []);
 
     return (
-        <Adaptive type="column">
-            <FlexRow
+        <FlexColumn
+            h="100%"
+            w="100%"
+            p="0 0 200px"
+            position="relative"
+            justifyContent="center"
+            alignItems="center"
+            style={{ overflow: "hidden" }}
+        >
+            <BgImage src={BgImage1.src} top={-60} left={-20} />
+            <FlexColumn
                 justifyContent="center"
-                w="100%"
+                w="60%"
                 alignItems="center"
                 p="100px 0 120px"
+                gap="30px"
             >
                 <Text
                     textAlign="center"
                     type={TEXT_TYPES.title}
                     color={COLORS.textPrimary}
-                    size={TEXT_SIZES.medium.m}
-                    letterSpacing={LETTER_SPACING.s}
-                    weight={TEXT_WEIGHTS.main}
+                    size={TEXT_SIZES.large.xs}
+                    weight={TEXT_WEIGHTS.medium}
+                    mobileSize={TEXT_SIZES.small.xl}
                 >
                     Technology we use
                 </Text>
-            </FlexRow>
 
-            {info.map((item) => (
-                <FlexColumn justifyContent="center" w="100%" key={item.title}>
-                    <FlexRow justifyContent="center" w="100%">
-                        <Text
-                            textAlign="center"
-                            type={TEXT_TYPES.title}
-                            color={COLORS.textPrimary}
-                            size={TEXT_SIZES.medium.m}
-                        >
-                            {item.title}
-                        </Text>
-                    </FlexRow>
-                    <GridElem
-                        mobileColumnsCount="1"
-                        tabletColumnsCount="2"
-                        desktopColumnsCount="4"
-                        desktopGridGap="20px"
-                        tabletGridGap="20px"
-                        mobileGridGap="20px"
+                <Text
+                    textAlign="center"
+                    type={TEXT_TYPES.title}
+                    color={COLORS.textThird}
+                    size={TEXT_SIZES.medium.xs}
+                    letterSpacing={LETTER_SPACING.s}
+                    mobileSize={TEXT_SIZES.small.l}
+                >
+                    Our team uses a wide range of technologies to ensure and
+                    accelerate your business growth
+                </Text>
+            </FlexColumn>
+
+            <BgImage src={BgImage2.src} right={-400} bottom={350} />
+            {info.map((item, index) => (
+                <FlexColumn
+                    justifyContent="center"
+                    alignItems="center"
+                    w="100%"
+                    p="40px 0 80px"
+                    gap="50px"
+                    key={index}
+                    zIndex="2"
+                    bg={index == 1 ? COLORS.white : ""}
+                >
+                    <Text
+                        textAlign="center"
+                        type={TEXT_TYPES.title}
+                        color={COLORS.textPrimary}
+                        size={TEXT_SIZES.large.xs}
+                        mobileSize={TEXT_SIZES.small.xl}
                     >
-                        {item.info.map((elem) => (
-                            <GridItem key={elem.title}>
-                                <Card
-                                    as={motion.a}
-                                    href={elem.href}
-                                    whileHover={{
-                                        scale: 1.05,
-                                        boxShadow:
-                                            "0 5px 13px rgba(60 72 70 0.2)",
-                                    }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <Icon src={elem.icon.src} />
-                                    <FlexColumn
-                                        alignItems="flex-start"
-                                        h="100%"
-                                    >
-                                        <Text
-                                            size={TEXT_SIZES.small.l}
-                                            type={TEXT_TYPES.text_block}
-                                            weight={TEXT_WEIGHTS.main}
-                                            color={COLORS.textPrimary}
-                                        >
-                                            {elem.title}
-                                        </Text>
-                                        <Text
-                                            size={TEXT_SIZES.small.m}
-                                            type={TEXT_TYPES.text_block}
-                                        >
-                                            {elem.description}
-                                        </Text>
-                                    </FlexColumn>
-                                </Card>
-                            </GridItem>
-                        ))}
-                    </GridElem>
+                        {item.title}
+                    </Text>
+                    <DevelopmentSwiper technologies={item.info} />
                 </FlexColumn>
             ))}
-        </Adaptive>
+            <BgImage src={BgImage3.src} left={-500} bottom={-650} />
+        </FlexColumn>
     );
 };
 
