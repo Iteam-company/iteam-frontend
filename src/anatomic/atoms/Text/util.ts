@@ -74,6 +74,7 @@ export const enum TEXT_TYPES {
 }
 
 export const enum TEXT_WEIGHTS {
+    thin = "300",
     normal = "400",
     main = "500",
     medium = "600",

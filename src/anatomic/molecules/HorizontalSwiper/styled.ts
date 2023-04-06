@@ -38,6 +38,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
     .swiper-button-prev {
         height: 40px;
         width: 40px;
+        z-index: 2;
         border-radius: 50%;
         background-image: linear-gradient(
             109.75deg,

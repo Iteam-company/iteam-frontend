@@ -15,14 +15,15 @@ import FirebaseIcon from "@/assets/icon/firebase.png";
 
 import { StaticImageData } from "next/image";
 
+export interface DevelopmentInterface {
+    title: string;
+    info: InfoInterface[];
+}
 export interface InfoInterface {
     title: string;
-    info: {
-        title: string;
-        description: string;
-        icon: StaticImageData;
-        href: string;
-    }[];
+    description: string;
+    icon: StaticImageData;
+    href: string;
 }
 
 const INFO = [
