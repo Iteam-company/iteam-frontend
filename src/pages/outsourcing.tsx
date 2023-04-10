@@ -230,23 +230,7 @@ const Outsourcing = () => {
                 </FlexColumn>
 
                 <FlexColumn w="100%" h="100%" position="relative" p="150px 0 0">
-                    <WhiteSection>
-                        <Text
-                            color={COLORS.textPrimary}
-                            weight={TEXT_WEIGHTS.medium}
-                            size={TEXT_SIZES.medium.xl}
-                        >
-                            Book an initial 30-min call
-                        </Text>
-                        <Text
-                            size={TEXT_SIZES.small.s}
-                            color={COLORS.textThird}
-                        >
-                            Let`s discuss your needs. And we will tell you how
-                            we can help. Without obligations.
-                        </Text>
-                        <BookingForm />
-                    </WhiteSection>
+                    <BookingForm />
                 </FlexColumn>
             </FlexColumn>
             <FlexColumn

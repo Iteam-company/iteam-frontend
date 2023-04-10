@@ -2,19 +2,24 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/bgImage1.svg";
+import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import client from "@/axios";
 import { useState, useCallback, useEffect } from "react";
-import { HomeInterface } from "./api/home";
+import { CoreValueInterface, HomeInterface } from "./api/home";
+import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
+import { BookingForm } from "@/anatomic/organisms/BookingForm";
 
 const Home = () => {
     const [data, setData] = useState<HomeInterface[]>([]);
+    const [info, setInfo] = useState<CoreValueInterface[]>([]);
 
     const getData = useCallback(async () => {
         try {
             const { data } = await client.get("/api/home");
-            setData(data);
+            setData(data.data);
+            setInfo(data.info);
         } catch (err) {
             console.log(err);
         }
@@ -29,7 +34,7 @@ const Home = () => {
             alignItems="center"
             w="100%"
             h="100%"
-            style={{ overflowX: "hidden" }}
+            style={{ overflow: "hidden" }}
         >
             <LogoAnimation />
             <FlexColumn
@@ -46,6 +51,13 @@ const Home = () => {
             </FlexColumn>
 
             <HowWeWork data={data} />
+
+            <OurCoreValues info={info} />
+
+            <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
+                <BookingForm />
+                <BgImage src={BgImage2.src} bottom={-300} right={-100} />
+            </FlexColumn>
         </FlexColumn>
     );
 };

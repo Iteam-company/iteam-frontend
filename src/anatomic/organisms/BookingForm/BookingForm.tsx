@@ -9,6 +9,7 @@ import { Button } from "@/anatomic/atoms/Button";
 import { FlexContainer } from "./styled";
 import { FormSchema, FormikValues, initialValues } from "./util";
 import { useRouter } from "next/router";
+import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 
 export const BookingForm = () => {
     const router = useRouter();
@@ -21,52 +22,65 @@ export const BookingForm = () => {
     };
 
     return (
-        <Formik
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validationSchema={FormSchema}
-        >
-            {({ values, setFieldValue, errors, touched }) => (
-                <Form style={{ minWidth: "auto", width: "500px" }}>
-                    <FlexContainer
-                        gap="45px"
-                        alignItems="start"
-                        justifyContent="center"
-                        w="100%"
-                        style={{ boxSizing: "border-box" }}
-                    >
-                        <FlexColumn w="65%">
-                            <Input
-                                id="email"
-                                name="email"
-                                placeholder="Your Email"
-                                padding="8px 12px"
-                                error={
-                                    errors.email && touched.email
-                                        ? errors.email
-                                        : null
-                                }
-                            />
-                        </FlexColumn>
-                        <FlexColumn w="auto">
-                            <Button
-                                type="submit"
-                                gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
-                                variant={BUTTON_VARIANTS.gradient_button}
-                                label={
-                                    <Text
-                                        color={COLORS.dark}
-                                        weight={TEXT_WEIGHTS.main}
-                                        size={TEXT_SIZES.small.s}
-                                    >
-                                        Book a call
-                                    </Text>
-                                }
-                            />
-                        </FlexColumn>
-                    </FlexContainer>
-                </Form>
-            )}
-        </Formik>
+        <WhiteSection>
+            <Text
+                color={COLORS.textPrimary}
+                weight={TEXT_WEIGHTS.medium}
+                size={TEXT_SIZES.medium.xl}
+            >
+                Book an initial 30-min call
+            </Text>
+            <Text size={TEXT_SIZES.small.s} color={COLORS.textThird}>
+                Let`s discuss your needs. And we will tell you how we can help.
+                Without obligations.
+            </Text>
+            <Formik
+                initialValues={initialValues}
+                onSubmit={onSubmit}
+                validationSchema={FormSchema}
+            >
+                {({ values, setFieldValue, errors, touched }) => (
+                    <Form style={{ minWidth: "auto", width: "500px" }}>
+                        <FlexContainer
+                            gap="45px"
+                            alignItems="start"
+                            justifyContent="center"
+                            w="100%"
+                            style={{ boxSizing: "border-box" }}
+                        >
+                            <FlexColumn w="65%">
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    padding="8px 12px"
+                                    error={
+                                        errors.email && touched.email
+                                            ? errors.email
+                                            : null
+                                    }
+                                />
+                            </FlexColumn>
+                            <FlexColumn w="auto">
+                                <Button
+                                    type="submit"
+                                    gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
+                                    variant={BUTTON_VARIANTS.gradient_button}
+                                    label={
+                                        <Text
+                                            color={COLORS.dark}
+                                            weight={TEXT_WEIGHTS.main}
+                                            size={TEXT_SIZES.small.s}
+                                        >
+                                            Book a call
+                                        </Text>
+                                    }
+                                />
+                            </FlexColumn>
+                        </FlexContainer>
+                    </Form>
+                )}
+            </Formik>
+        </WhiteSection>
     );
 };
