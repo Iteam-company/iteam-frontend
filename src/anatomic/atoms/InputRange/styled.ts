@@ -2,9 +2,9 @@ import inputThumbIcon from "@/assets/bgImage/outsourcing/input-thumb.svg";
 import styled from "styled-components";
 import { COLORS } from "../../../lib/theme/color";
 
-export const Input = styled.input<{ translateY: string }>`
+export const Input = styled.input<{ translateY?: string }>`
     z-index: 6;
-    transform: translateY(${({ translateY }) => translateY && translateY});
+    transform: translateY(${({ translateY }) => translateY});
     -webkit-appearance: none;
     background: transparent;
     width: 84%;

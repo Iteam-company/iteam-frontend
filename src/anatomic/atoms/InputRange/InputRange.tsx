@@ -1,13 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, Ref } from "react";
 import { Input } from "./styled";
 
 interface Props {
     max: number;
     min: number;
     step: number;
-    value: string;
+    value?: string;
     onChange: any;
-    translateY: string;
+    translateY?: string;
+    inputRef?: Ref<HTMLInputElement>;
+    id?: string;
 }
 
 export const InputRange: FC<Props> = ({
@@ -16,6 +18,8 @@ export const InputRange: FC<Props> = ({
     step,
     value,
     onChange,
+    inputRef,
+    id,
     translateY = "-130px",
 }) => {
     return (
@@ -26,6 +30,8 @@ export const InputRange: FC<Props> = ({
             step={step}
             value={value}
             onChange={(e) => onChange(e)}
+            ref={inputRef}
+            id={id}
             translateY={translateY}
         />
     );

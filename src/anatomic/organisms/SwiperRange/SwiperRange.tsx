@@ -1,49 +1,68 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { InputRange } from "@/anatomic/atoms/InputRange";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
-import React, { FC, ReactNode, useRef, useState } from "react";
+import React, { FC, ReactNode, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import styled from "styled-components";
+import { COLORS } from "@/lib/theme/color";
 
 export const SwiperRange: FC<{ children: ReactNode; maxValue: number }> = ({
     children,
     maxValue,
 }) => {
-    const [value, setValue] = useState("0");
     const swiperRef = useRef<any>(null);
-
+    const inputRef = useRef<any>(null);
     const handleSlideTo = (index: number) => {
-        swiperRef.current != null &&
-            swiperRef.current.swiper.slideTo(index.toString());
+        swiperRef.current && swiperRef.current.swiper.slideTo(index.toString());
     };
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.value = "0";
+        }
+    }, [inputRef.current]);
 
     return (
         <FlexColumn w="100%" justifyContent="center" alignItems="center">
-            <HorizontalSwiperElem
+            <Swiper
                 swiperRef={swiperRef}
-                minHeight="500px"
+                minHeight="350px"
                 width="100%"
+                speed={1500}
                 maxWidth="975px"
                 navigation={false}
                 onChangeSlide={() => {
-                    if (swiperRef.current != null) {
-                        setValue(
-                            swiperRef.current.swiper.activeIndex.toString(),
+                    if (inputRef.current) {
+                        gsap.fromTo(
+                            "#range-input",
+                            { value: inputRef.current.value },
+                            {
+                                value: swiperRef.current.swiper.activeIndex,
+                                duration: 1,
+                            },
                         );
                     }
                 }}
             >
                 {children}
-            </HorizontalSwiperElem>
+            </Swiper>
             <InputRange
+                id="range-input"
+                inputRef={inputRef}
                 max={maxValue}
                 min={0}
-                step={0.1}
-                value={value}
-                translateY="-130px"
+                step={0.0001}
+                translateY="-60px"
                 onChange={(e: any) => {
-                    setValue(Math.ceil(+e.target.value).toString());
-                    handleSlideTo(Math.ceil(+e.target.value));
+                    handleSlideTo(Math.round(+e.target.value));
                 }}
             />
         </FlexColumn>
     );
 };
+const Swiper = styled(HorizontalSwiperElem)`
+    background: ${COLORS.white};
+    box-shadow: 0px 4px 20px rgba(37, 7, 67, 0.37);
+    border-radius: 16px;
+    padding: 0;
+`;

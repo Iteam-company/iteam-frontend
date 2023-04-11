@@ -7,6 +7,7 @@ import BgImage2 from "@/assets/bgImage/outsourcing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outsourcing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outsourcing/bgImage4.svg";
 import BgImage5 from "@/assets/bgImage/outsourcing/bgImage5.svg";
+import BgImage6 from "@/assets/bgImage/outsourcing/bgImage6.svg";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 import { Card, FlexContainer, Img } from "@/lib/pageStyles/outstaffing";
@@ -84,6 +85,7 @@ const Outsourcing = () => {
                     your organisation.
                 </Text>
             </FlexColumn>
+
             <FlexColumn
                 w="100%"
                 h="100%"
@@ -93,7 +95,9 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <BgImage src={BgImage1.src} top={-150} left={-300} />
-                <Card>
+                <Card position="relative" style={{ overflow: "hidden" }}>
+                    <BgImage src={BgImage6.src} top={0} right={-20} />
+
                     <FlexContainer
                         alignItems="center"
                         justifyContent="center"
@@ -207,22 +211,15 @@ const Outsourcing = () => {
                             Our Process
                         </GradientTitle>
                     </FlexColumn>
+
                     <SwiperRange maxValue={process.length - 1}>
                         {process &&
                             process.map((item: BenefitsInterface) => (
-                                <SwiperSlide
-                                    key={item.id}
-                                    style={{
-                                        borderRadius: "16px",
-                                        minHeight: "400px",
-                                        background: COLORS.white,
-                                        boxShadow:
-                                            "0px 4px 20px rgba(37, 7, 67, 0.37)",
-                                    }}
-                                >
+                                <SwiperSlide key={item.id}>
                                     <BenefitsSlide
                                         title={item.title}
                                         text={item.text}
+                                        id={item.id}
                                     />
                                 </SwiperSlide>
                             ))}

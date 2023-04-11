@@ -4,9 +4,6 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Dot } from "./styled";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
-import BgImage1 from "@/assets/projects/bgImage1.svg";
-import { BgImage } from "@/anatomic/atoms/BgImage";
-import { FlexColumn } from "@/anatomic/atoms/Flex";
 
 export interface SlidesInterface {
     slides: SlideInterface[];

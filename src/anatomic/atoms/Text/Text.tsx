@@ -18,6 +18,7 @@ export const Text: FC<Props> = ({
     lineHeight,
     font,
     mobileSize,
+    mobileLineHeight,
 }) => {
     if (type === TEXT_TYPES.title) {
         return (
@@ -35,6 +36,7 @@ export const Text: FC<Props> = ({
                 lineHeight={lineHeight}
                 font={font}
                 mobileSize={mobileSize}
+                mobileLineHeight={mobileLineHeight}
             >
                 {children}
             </StyledTitle>
@@ -57,6 +59,7 @@ export const Text: FC<Props> = ({
                 lineHeight={lineHeight}
                 font={font}
                 mobileSize={mobileSize}
+                mobileLineHeight={mobileLineHeight}
             >
                 {children}
             </StyledText>
@@ -78,6 +81,7 @@ export const Text: FC<Props> = ({
                 lineHeight={lineHeight}
                 font={font}
                 mobileSize={mobileSize}
+                mobileLineHeight={mobileLineHeight}
             >
                 {children}
             </StyledBlockText>
