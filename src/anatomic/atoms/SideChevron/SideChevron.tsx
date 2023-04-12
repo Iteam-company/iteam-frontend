@@ -14,7 +14,11 @@ const slideOut = {
     transition: { duration: 0.8 },
 };
 
-export const SideChevron: FC<{ children: ReactNode }> = ({ children }) => {
+interface Props {
+    children: ReactNode;
+}
+
+export const SideChevron: FC<Props> = ({ children }) => {
     const [open, setOpen] = useState(false);
 
     return (
