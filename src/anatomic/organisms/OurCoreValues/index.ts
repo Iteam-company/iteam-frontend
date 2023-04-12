@@ -1,0 +1,1 @@
+export { OurCoreValues } from "./OurCoreValues";
