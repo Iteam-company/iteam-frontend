@@ -17,9 +17,14 @@ import { TeamItem } from "@/anatomic/molecules/TeamItemCard";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
+import { BgImage } from "@/anatomic/atoms/BgImage";
+import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
+import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 
 const Team = () => {
     const [team, setTeam] = useState<SlideInterface[]>([]);
+    useDelayedScroll();
+
     const getTeam = useCallback(async () => {
         try {
             const { data } = await client.get("/api/team");
@@ -54,16 +59,16 @@ const Team = () => {
             mw="100%"
             justifyContent="center"
             alignItems="center"
-            p="50px 0"
+            p="0 0 50px"
             style={{
                 overflow: "hidden",
             }}
         >
+            <BgImage src={BgImage1.src} right={-100} top={50} />
             <Adaptive
-                h="500px"
-                justifyContent="start"
+                h="calc(100vh - 100px)"
+                justifyContent="center"
                 alignItems="center"
-                p="20px 50px"
             >
                 <FlexColumn justifyContent="center" alignItems="start">
                     <Text

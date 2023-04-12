@@ -18,7 +18,7 @@ interface Props {
     onChangeSlide?: any;
     swiperRef?: any;
     navigation?: boolean;
-    slidesPerView?: number;
+    slidesPerView?: number | "auto";
     slidesPerGroup?: number;
     spaceBetween?: number;
     freeMode?: boolean;
@@ -28,6 +28,9 @@ interface Props {
     className?: string;
     breakpoints?: any;
     grid?: any;
+    speed?: any;
+    onSlideNext?: any;
+    onSlidePrev?: any;
 }
 
 export const HorizontalSwiperElem: FC<Props> = ({
@@ -43,12 +46,15 @@ export const HorizontalSwiperElem: FC<Props> = ({
     spaceBetween = 50,
     freeMode = false,
     loop,
-    loopedSlides,
+    loopedSlides = 1,
     pagination,
     className,
     slidesPerGroup = 1,
     breakpoints,
     grid,
+    speed,
+    onSlideNext,
+    onSlidePrev,
 }) => {
     const onSwiperHandler = (e: any) => {
         onSwiper && onSwiper(e);
@@ -56,10 +62,19 @@ export const HorizontalSwiperElem: FC<Props> = ({
     const onChangeSlideHandler = (e: any) => {
         onChangeSlide && onChangeSlide(e);
     };
+
+    const onSlideNextTransitionEnd = (e: any) => {
+        onSlideNext && onSlideNext(e);
+    };
+    const onSlidePrevTransitionEnd = (e: any) => {
+        onSlidePrev && onSlidePrev(e);
+    };
+
     return (
         <StyledSwiper
             className={className}
             ref={swiperRef}
+            centeredSlides={true}
             w={width}
             mh={minHeight}
             mw={maxWidth}
@@ -77,6 +92,10 @@ export const HorizontalSwiperElem: FC<Props> = ({
             onSlideChange={onChangeSlideHandler}
             breakpoints={breakpoints}
             grid={grid}
+            speed={speed}
+            initialSlide={0}
+            onSlideNextTransitionEnd={onSlideNextTransitionEnd}
+            onSlidePrevTransitionEnd={onSlidePrevTransitionEnd}
         >
             {children}
         </StyledSwiper>

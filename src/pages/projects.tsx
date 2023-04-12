@@ -15,9 +15,13 @@ import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
+import { BgImage } from "@/anatomic/atoms/BgImage";
+import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
+import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
+    useDelayedScroll();
 
     const getProject = useCallback(async () => {
         try {
@@ -50,21 +54,30 @@ const Projects = () => {
 
     return (
         <FlexColumn
-            mw="100%"
+            w="100%"
             justifyContent="center"
             alignItems="center"
+            position="relative"
             style={{
                 paddingBottom: "100px",
                 overflow: "hidden",
             }}
         >
+            <BgImage src={BgImage1.src} left={-200} top={0} />
             <Adaptive
-                h="500px"
-                justifyContent="start"
+                h="calc(100vh - 100px)"
+                justifyContent="center"
                 alignItems="center"
                 p="20px 50px"
+                style={{
+                    overflow: "hidden",
+                }}
             >
-                <FlexColumn justifyContent="center" alignItems="start">
+                <FlexColumn
+                    mw="750px"
+                    justifyContent="center"
+                    alignItems="start"
+                >
                     <Text
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}

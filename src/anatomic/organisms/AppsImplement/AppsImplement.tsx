@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useRef, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
@@ -12,6 +12,9 @@ interface Props {
 }
 
 export const AppsImplement: FC<Props> = ({ apps }) => {
+    const swiperRef = useRef<any>(null);
+    const [activeIndex, setActiveIndex] = useState(1);
+
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
             <Desktop>
@@ -28,23 +31,48 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                         spaceBetween={60}
                         loop={true}
                         loopedSlides={1.1}
+                        swiperRef={swiperRef}
+                        onSlideNext={() => {
+                            activeIndex < apps.length
+                                ? setActiveIndex(activeIndex + 1)
+                                : setActiveIndex(1);
+                        }}
+                        onSlidePrev={() => {
+                            activeIndex == 1
+                                ? setActiveIndex(apps.length)
+                                : setActiveIndex(activeIndex - 1);
+                        }}
+                        onChangeSlide={console.log(activeIndex)}
                     >
                         {apps &&
-                            apps.map((item: any) => (
+                            apps.map((item: any, index) => (
                                 <SwiperSlide
                                     key={item.step}
                                     style={{
+                                        transition: "0.3s all",
                                         borderRadius: "16px",
                                         minHeight: "300px",
                                         background: COLORS.white,
+                                        transform:
+                                            activeIndex == index + 1
+                                                ? "scale(1)"
+                                                : "scale(0.9)",
+                                        height:
+                                            activeIndex == index + 1
+                                                ? "400px"
+                                                : "200px",
+                                        boxSizing: "content-box",
                                         boxShadow:
-                                            "0px 4px 20px rgba(37, 7, 67, 0.37)",
+                                            activeIndex == index + 1
+                                                ? "0px 4px 20px 0px #904FD1"
+                                                : "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}
                                 >
                                     <ImplementSlide
                                         title={item.title}
                                         text={item.text}
                                         step={item.step}
+                                        isActive={activeIndex == index + 1}
                                     />
                                 </SwiperSlide>
                             ))}
@@ -52,7 +80,7 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                 </FlexColumn>
             </Desktop>
 
-            <Mobile w="100%" alignItems="center">
+            <Mobile h="100%" w="100%" alignItems="center">
                 <FlexColumn
                     mw="975px"
                     h="100%"
@@ -60,7 +88,6 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                     zIndex="3"
                     gap="20px"
                     style={{ boxSizing: "border-box" }}
-                    p="0 20px"
                 >
                     <HorizontalSwiperElem
                         minHeight="500px"
@@ -95,13 +122,13 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
     );
 };
 
-const Mobile = styled(FlexColumn)`
+export const Mobile = styled(FlexColumn)`
     @media all and (min-width: 903px) {
         padding: 0 20px;
         display: none;
     }
 `;
-const Desktop = styled(FlexColumn)`
+export const Desktop = styled(FlexColumn)`
     @media all and (max-width: 902px) {
         display: none;
     }

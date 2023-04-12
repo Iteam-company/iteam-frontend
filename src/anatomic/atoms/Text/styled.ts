@@ -17,6 +17,7 @@ export const StyledTitle = styled.h2<Props>`
     font: ${({ font }) => font || "auto"};
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
+        line-height: ${({ mobileLineHeight }) => mobileLineHeight};
     }
 `;
 
@@ -35,6 +36,7 @@ export const StyledText = styled.span<Props>`
     font: ${({ font }) => font || "auto"};
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
+        line-height: ${({ mobileLineHeight }) => mobileLineHeight};
     }
 `;
 
@@ -53,5 +55,6 @@ export const StyledBlockText = styled.p<Props>`
     font: ${({ font }) => font || "auto"};
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
+        line-height: ${({ mobileLineHeight }) => mobileLineHeight};
     }
 `;
