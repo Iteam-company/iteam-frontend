@@ -40,7 +40,7 @@ export const BookingForm = () => {
                 validationSchema={FormSchema}
             >
                 {({ values, setFieldValue, errors, touched }) => (
-                    <Form style={{ minWidth: "auto", width: "500px" }}>
+                    <Form style={{ width: "500px" }}>
                         <FlexContainer
                             gap="45px"
                             alignItems="start"
