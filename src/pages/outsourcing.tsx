@@ -1,7 +1,7 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outsourcing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outsourcing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outsourcing/bgImage3.svg";
@@ -255,4 +255,4 @@ const Outsourcing = () => {
         </FlexColumn>
     );
 };
-export default Outsourcing;
+export default memo(Outsourcing);

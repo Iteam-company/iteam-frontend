@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from "react";
+import React, { FC, memo, useRef, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
@@ -11,7 +11,7 @@ interface Props {
     apps: AppsInterface[];
 }
 
-export const AppsImplement: FC<Props> = ({ apps }) => {
+export const AppsImplement: FC<Props> = memo(({ apps }) => {
     const swiperRef = useRef<any>(null);
     const [activeIndex, setActiveIndex] = useState(1);
 
@@ -32,6 +32,7 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
                         loop={true}
                         loopedSlides={1.1}
                         swiperRef={swiperRef}
+                        centeredSlides={true}
                         onSlideNext={() => {
                             activeIndex < apps.length
                                 ? setActiveIndex(activeIndex + 1)
@@ -120,7 +121,9 @@ export const AppsImplement: FC<Props> = ({ apps }) => {
             </Mobile>
         </FlexColumn>
     );
-};
+});
+
+AppsImplement.displayName = "AppsImplement";
 
 export const Mobile = styled(FlexColumn)`
     @media all and (min-width: 903px) {

@@ -1,6 +1,6 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { TeamInterface } from "./api/team";
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import client from "@/axios";
 import {
     TEXT_SIZES,
@@ -56,10 +56,11 @@ const Team = () => {
 
     return (
         <FlexColumn
-            mw="100%"
+            w="100%"
             justifyContent="center"
             alignItems="center"
             p="0 0 50px"
+            position="relative"
             style={{
                 overflow: "hidden",
             }}
@@ -162,4 +163,4 @@ const Team = () => {
     );
 };
 
-export default Team;
+export default memo(Team);

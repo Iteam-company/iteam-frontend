@@ -1,7 +1,7 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
@@ -269,4 +269,4 @@ const Outstaffing = () => {
         </FlexColumn>
     );
 };
-export default Outstaffing;
+export default memo(Outstaffing);

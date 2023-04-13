@@ -1,5 +1,5 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import styled from "styled-components";
 import { InfoInterface } from "@/pages/api/technologies";
 import { DevelopmentDesktop } from "./DevelopmentDesktop";
@@ -9,21 +9,21 @@ export interface TechnologiesProps {
     technologies: InfoInterface[];
 }
 
-export const DevelopmentSwiper: FC<TechnologiesProps> = ({
-    technologies = [],
-}) => {
-    return (
-        <>
-            <Desktop>
-                <DevelopmentDesktop technologies={technologies} />
-            </Desktop>
+export const DevelopmentSwiper: FC<TechnologiesProps> = memo(
+    ({ technologies = [] }) => {
+        return (
+            <>
+                <Desktop>
+                    <DevelopmentDesktop technologies={technologies} />
+                </Desktop>
 
-            <Mobile>
-                <DevelopmentMobile technologies={technologies} />
-            </Mobile>
-        </>
-    );
-};
+                <Mobile>
+                    <DevelopmentMobile technologies={technologies} />
+                </Mobile>
+            </>
+        );
+    },
+);
 
 const Mobile = styled(FlexColumn)`
     @media all and (min-width: 900px) {
@@ -35,3 +35,4 @@ const Desktop = styled(FlexColumn)`
         display: none;
     }
 `;
+DevelopmentSwiper.displayName = "DevelopmentSwiper";
