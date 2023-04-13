@@ -35,3 +35,4 @@ const Desktop = styled(FlexColumn)`
         display: none;
     }
 `;
+DevelopmentSwiper.displayName = "DevelopmentSwiper";

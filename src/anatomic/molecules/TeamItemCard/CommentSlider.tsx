@@ -78,6 +78,8 @@ export const CommentSlider: FC<{ comments?: string[]; width?: string }> = memo(
         );
     },
 );
+CommentSlider.displayName = "CommentSlider";
+
 const ItalicText = styled(Text)`
     font-style: italic;
 `;

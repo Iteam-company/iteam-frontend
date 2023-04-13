@@ -49,3 +49,4 @@ const Desktop = styled(FlexColumn)`
         display: none;
     }
 `;
+OurApproach.displayName = "OurApproach";

@@ -89,3 +89,4 @@ export const TeamItem: FC<TeamInterface> = memo(
         );
     },
 );
+TeamItem.displayName = "TeamItem";

@@ -101,3 +101,4 @@ export const DevelopmentMobile: FC<TechnologiesProps> = memo(
         );
     },
 );
+DevelopmentMobile.displayName = "DevelopmentMobile";

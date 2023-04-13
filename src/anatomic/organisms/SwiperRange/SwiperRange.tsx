@@ -67,3 +67,4 @@ const Swiper = styled(HorizontalSwiperElem)`
     border-radius: 16px;
     padding: 0;
 `;
+SwiperRange.displayName = "SwiperRange";

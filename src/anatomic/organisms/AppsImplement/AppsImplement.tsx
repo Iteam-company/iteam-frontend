@@ -123,6 +123,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
     );
 });
 
+AppsImplement.displayName = "AppsImplement";
+
 export const Mobile = styled(FlexColumn)`
     @media all and (min-width: 903px) {
         padding: 0 20px;

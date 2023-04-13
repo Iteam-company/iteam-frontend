@@ -103,3 +103,5 @@ export const DevelopmentDesktop: FC<TechnologiesProps> = memo(
         );
     },
 );
+
+DevelopmentDesktop.displayName = "DevelopmentDesktop";

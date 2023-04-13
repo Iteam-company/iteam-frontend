@@ -38,3 +38,5 @@ export const InputRange: FC<Props> = memo(
         );
     },
 );
+
+InputRange.displayName = "InputRange";

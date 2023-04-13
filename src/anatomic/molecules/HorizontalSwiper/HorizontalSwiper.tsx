@@ -104,3 +104,4 @@ export const HorizontalSwiperElem: FC<Props> = memo(
         );
     },
 );
+HorizontalSwiperElem.displayName = "HorizontalSwiperElem";
