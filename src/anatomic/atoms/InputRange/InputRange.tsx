@@ -1,4 +1,4 @@
-import React, { FC, Ref } from "react";
+import React, { FC, Ref, memo } from "react";
 import { Input } from "./styled";
 
 interface Props {
@@ -12,27 +12,29 @@ interface Props {
     id?: string;
 }
 
-export const InputRange: FC<Props> = ({
-    max,
-    min,
-    step,
-    value,
-    onChange,
-    inputRef,
-    id,
-    translateY = "-130px",
-}) => {
-    return (
-        <Input
-            type="range"
-            max={max}
-            min={min}
-            step={step}
-            value={value}
-            onChange={(e) => onChange(e)}
-            ref={inputRef}
-            id={id}
-            translateY={translateY}
-        />
-    );
-};
+export const InputRange: FC<Props> = memo(
+    ({
+        max,
+        min,
+        step,
+        value,
+        onChange,
+        inputRef,
+        id,
+        translateY = "-130px",
+    }) => {
+        return (
+            <Input
+                type="range"
+                max={max}
+                min={min}
+                step={step}
+                value={value}
+                onChange={(e) => onChange(e)}
+                ref={inputRef}
+                id={id}
+                translateY={translateY}
+            />
+        );
+    },
+);

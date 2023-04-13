@@ -1,5 +1,5 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { SwiperSlide } from "swiper/react";
@@ -329,4 +329,4 @@ const Project = () => {
         </FlexColumn>
     );
 };
-export default Project;
+export default memo(Project);

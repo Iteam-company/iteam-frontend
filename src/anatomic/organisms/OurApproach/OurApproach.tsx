@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import {
     ApproachSlide,
@@ -13,7 +13,7 @@ interface Props {
     approaches: ApproachInterface[];
 }
 
-export const OurApproach: FC<Props> = ({ approaches }) => {
+export const OurApproach: FC<Props> = memo(({ approaches }) => {
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
             <Desktop>
@@ -36,7 +36,7 @@ export const OurApproach: FC<Props> = ({ approaches }) => {
             </Mobile>
         </FlexColumn>
     );
-};
+});
 
 const Mobile = styled(FlexColumn)`
     @media all and (min-width: 603px) {

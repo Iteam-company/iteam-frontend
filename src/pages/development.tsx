@@ -6,7 +6,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import client from "@/axios";
 import BgImage1 from "@/assets/bgImage/development/bgImage1.svg";
@@ -103,4 +103,4 @@ const Development = () => {
     );
 };
 
-export default Development;
+export default memo(Development);
