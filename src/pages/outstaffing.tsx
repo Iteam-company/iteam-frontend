@@ -11,6 +11,7 @@ import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
+import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.svg";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
@@ -87,16 +88,16 @@ const Outstaffing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BgImage src={BgImage1.src} top={0} left={-300} />
+                <BgImage src={BgImage1} top={-20} left={-40} />
 
                 <OurApproach approaches={approach} />
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BgImage src={BgImage2.src} top={0} right={-300} />
+                <BgImage src={BgImage2} top={0} right={-40} />
                 <BgImage
-                    src={ITeamIcon.src}
+                    src={ITeamIcon}
                     bottom={0}
-                    right={0}
+                    right={-28}
                     scrollable={false}
                 />
 
@@ -108,7 +109,7 @@ const Outstaffing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BgImage src={BgImage3.src} top={50} left={-700} />
+                <BgImage src={BgImage3} bottom={6} left={-42} />
 
                 <FlexColumn
                     mw="995px"
@@ -119,14 +120,15 @@ const Outstaffing = () => {
                     style={{ boxSizing: "border-box" }}
                     p="0 20px"
                 >
-                    <GradientTitle
-                        w="550px"
-                        size={TEXT_SIZES.large.xs}
-                        weight={TEXT_WEIGHTS.main}
-                        color="272.07deg, #17092D 35.9%, #7232E0 100%"
-                    >
-                        Benefits Of Having Dedicated Development Team
-                    </GradientTitle>
+                    <FlexColumn mw="600px" alignItems="center" p="0 20px 0 ">
+                        <GradientTitle
+                            size={TEXT_SIZES.large.xs}
+                            weight={TEXT_WEIGHTS.main}
+                            color="272.07deg, #17092D 35.9%, #7232E0 100%"
+                        >
+                            Benefits Of Having Dedicated Development Team
+                        </GradientTitle>
+                    </FlexColumn>
 
                     <FlexColumn w="100%">
                         <HorizontalSwiperElem
@@ -191,7 +193,9 @@ const Outstaffing = () => {
                 style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BgImage src={BgImage4.src} top={-300} right={-500} />
+                <BgImage src={BgImage4} top={-34} right={-50} />
+                <BgImage src={BgImage5} bottom={-54} right={50} />
+
                 <Text
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}

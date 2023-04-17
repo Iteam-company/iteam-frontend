@@ -23,7 +23,7 @@ const ContactUs = () => {
             position="relative"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1.src} top={0} left={-350} />
+            <BgImage src={BgImage1} top={-10} left={-50} />
 
             <FlexColumn
                 w="80%"
@@ -49,7 +49,7 @@ const ContactUs = () => {
                 <FormElem />
                 <Info />
             </AdaptiveElem>
-            <BgImage src={BgImage2.src} bottom={-250} right={-50} />
+            <BgImage src={BgImage2} bottom={-24} right={-20} />
         </FlexColumn>
     );
 };

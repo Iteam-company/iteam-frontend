@@ -42,7 +42,7 @@ const Development = () => {
             alignItems="center"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1.src} top={-60} left={-20} />
+            <BgImage src={BgImage1} top={-4} left={-40} />
             <FlexColumn
                 justifyContent="center"
                 w="60%"
@@ -72,31 +72,37 @@ const Development = () => {
                     accelerate your business growth
                 </Text>
             </FlexColumn>
-
-            <BgImage src={BgImage2.src} right={-400} bottom={350} />
-            {info.map((item, index) => (
-                <FlexColumn
-                    justifyContent="center"
-                    alignItems="center"
-                    w="100%"
-                    p="40px 0 80px"
-                    gap="50px"
-                    key={index}
-                    zIndex="2"
-                    bg={index == 1 ? COLORS.white : ""}
-                >
-                    <Text
-                        textAlign="center"
-                        color={COLORS.textPrimary}
-                        size={TEXT_SIZES.large.xs}
-                        mobileSize={TEXT_SIZES.small.xl}
+            <FlexColumn
+                w="100%"
+                position="relative"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <BgImage src={BgImage2} right={-54} bottom={5} />
+                <BgImage src={BgImage3} right={38} bottom={-60} />
+                {info.map((item, index) => (
+                    <FlexColumn
+                        justifyContent="center"
+                        alignItems="center"
+                        w="100%"
+                        p="40px 0 80px"
+                        gap="50px"
+                        key={index}
+                        zIndex="2"
+                        bg={index == 1 ? COLORS.white : ""}
                     >
-                        {item.title}
-                    </Text>
-                    <DevelopmentSwiper technologies={item.info} />
-                </FlexColumn>
-            ))}
-            <BgImage src={BgImage3.src} left={-500} bottom={-650} />
+                        <Text
+                            textAlign="center"
+                            color={COLORS.textPrimary}
+                            size={TEXT_SIZES.large.xs}
+                            mobileSize={TEXT_SIZES.small.xl}
+                        >
+                            {item.title}
+                        </Text>
+                        <DevelopmentSwiper technologies={item.info} />
+                    </FlexColumn>
+                ))}
+            </FlexColumn>
         </FlexColumn>
     );
 };

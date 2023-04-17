@@ -42,7 +42,7 @@ const Home = () => {
                 position="relative"
                 style={{ overflow: "hidden" }}
             >
-                <BgImage top={-50} right={-250} src={BgImage1.src} />
+                <BgImage top={-10} left={40} src={BgImage1} />
                 <FlexColumn h="90vh" w="80%" justifyContent="center">
                     <Banner />
                 </FlexColumn>
@@ -54,7 +54,7 @@ const Home = () => {
 
             <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
                 <BookingForm />
-                <BgImage src={BgImage2.src} bottom={-300} right={-100} />
+                <BgImage src={BgImage2} bottom={-80} left={30} />
             </FlexColumn>
         </FlexColumn>
     );

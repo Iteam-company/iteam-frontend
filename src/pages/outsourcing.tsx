@@ -100,9 +100,9 @@ const Outsourcing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BgImage src={BgImage1.src} top={-150} left={-300} />
+                <BgImage src={BgImage1} top={-40} left={-40} />
                 <Card position="relative" style={{ overflow: "hidden" }}>
-                    <BgImage src={BgImage6.src} top={0} right={-20} />
+                    <BgImage src={BgImage6} bottom={5} right={-40} />
 
                     <FlexContainer
                         alignItems="center"
@@ -152,11 +152,11 @@ const Outsourcing = () => {
             </FlexColumn>
 
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BgImage src={BgImage2.src} top={20} right={-200} />
+                <BgImage src={BgImage2} top={0} right={-44} />
                 <BgImage
-                    src={ITeamIcon.src}
+                    src={ITeamIcon}
                     bottom={0}
-                    right={0}
+                    left={26}
                     scrollable={false}
                 />
                 <WhiteSection>
@@ -196,7 +196,7 @@ const Outsourcing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BgImage src={BgImage3.src} top={0} left={-800} />
+                <BgImage src={BgImage3} bottom={5} left={-60} />
 
                 <FlexColumn
                     mw="975px"
@@ -245,8 +245,8 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BgImage src={BgImage4.src} top={-300} right={-600} />
-                <BgImage src={BgImage5.src} top={400} left={-250} />
+                <BgImage src={BgImage4} top={-30} right={-40} />
+                <BgImage src={BgImage5} bottom={-50} left={-40} />
 
                 <Text
                     color={COLORS.textPrimary}

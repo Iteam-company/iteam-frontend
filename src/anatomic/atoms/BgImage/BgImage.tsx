@@ -1,5 +1,5 @@
 import useScrollUp from "@/hooks/useScrollUp";
-import { useInView } from "framer-motion";
+import Image from "next/image";
 import React, { FC, useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -25,7 +25,6 @@ export const BgImage: FC<BgImageI> = ({
 }) => {
     const [rotateZ, setRotateZ] = useState(0);
     const ref = useRef(null);
-    const isInView = useInView(ref);
 
     const rotatableFunction = () => {
         if (ref.current && scrollable) {
@@ -46,18 +45,24 @@ export const BgImage: FC<BgImageI> = ({
                 height={height}
                 scrollable={scrollable}
                 rotateZ={rotateZ}
+                alt="Background image"
             />
         </div>
     );
 };
-const BGImageStyled = styled.img<BgImageI>`
+const BGImageStyled = styled(Image)<BgImageI>`
     position: absolute;
     z-index: 0 !important;
     height: ${({ height }) => height}px;
-    top: ${({ top }) => top}px;
-    bottom: ${({ bottom }) => bottom}px;
-    right: ${({ right }) => right}px;
-    left: ${({ left }) => left}px;
+    top: ${({ top }) => top}%;
+    bottom: ${({ bottom }) => bottom}%;
+    right: ${({ right }) => right}%;
+    left: ${({ left }) => left}%;
     transform: ${({ rotateZ }) => rotateZ && `rotateZ(${rotateZ}deg)`};
     transition: 0.3s all;
+
+    object-fit: contain;
+    width: 100% !important;
+    /* position: relative !important; */
+    /* height: unset !important; */
 `;

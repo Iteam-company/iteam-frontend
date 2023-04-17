@@ -64,15 +64,12 @@ const Projects = () => {
                 overflow: "hidden",
             }}
         >
-            <BgImage src={BgImage1.src} left={-200} top={0} />
             <Adaptive
                 h="calc(100vh - 100px)"
                 justifyContent="center"
                 alignItems="center"
                 p="20px 50px"
-                style={{
-                    overflow: "hidden",
-                }}
+                position="relative"
             >
                 <FlexColumn
                     mw="750px"
@@ -97,6 +94,7 @@ const Projects = () => {
                         with.
                     </Title>
                 </FlexColumn>
+                <BgImage src={BgImage1} right={70} top={10} />
             </Adaptive>
 
             {slides.length && (

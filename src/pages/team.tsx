@@ -66,12 +66,13 @@ const Team = () => {
                 overflow: "hidden",
             }}
         >
-            <BgImage src={BgImage1.src} right={-100} top={50} />
             <Adaptive
                 h="calc(100vh - 100px)"
                 justifyContent="center"
                 alignItems="center"
+                position="relative"
             >
+                <BgImage src={BgImage1} left={55} bottom={-30} />
                 <FlexColumn justifyContent="center" alignItems="start">
                     <Text
                         size={TEXT_SIZES.small.s}
