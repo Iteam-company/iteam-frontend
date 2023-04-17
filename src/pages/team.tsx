@@ -7,6 +7,7 @@ import {
     LETTER_SPACING,
     TEXT_WEIGHTS,
     Text,
+    TEXT_TYPES,
 } from "@/anatomic/atoms/Text";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { COLORS } from "@/lib/theme/color";
@@ -76,6 +77,8 @@ const Team = () => {
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
                         weight={TEXT_WEIGHTS.medium}
+                        type={TEXT_TYPES.title}
+                        color={COLORS.warmGray}
                     >
                         OUR TEAM
                     </Text>

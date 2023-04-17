@@ -1,5 +1,10 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outsourcing/bgImage1.svg";
@@ -73,6 +78,7 @@ const Outsourcing = () => {
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.large.xs}
+                    type={TEXT_TYPES.title}
                 >
                     Outsourcing with iTeam.
                 </Text>

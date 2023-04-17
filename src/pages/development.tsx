@@ -52,18 +52,17 @@ const Development = () => {
             >
                 <Text
                     textAlign="center"
-                    type={TEXT_TYPES.title}
                     color={COLORS.textPrimary}
                     size={TEXT_SIZES.large.xs}
                     weight={TEXT_WEIGHTS.medium}
                     mobileSize={TEXT_SIZES.small.xl}
+                    type={TEXT_TYPES.title}
                 >
                     Technology we use
                 </Text>
 
                 <Text
                     textAlign="center"
-                    type={TEXT_TYPES.title}
                     color={COLORS.textThird}
                     size={TEXT_SIZES.medium.xs}
                     letterSpacing={LETTER_SPACING.s}
@@ -88,7 +87,6 @@ const Development = () => {
                 >
                     <Text
                         textAlign="center"
-                        type={TEXT_TYPES.title}
                         color={COLORS.textPrimary}
                         size={TEXT_SIZES.large.xs}
                         mobileSize={TEXT_SIZES.small.xl}

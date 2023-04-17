@@ -6,6 +6,7 @@ import {
     LETTER_SPACING,
     Text,
     TEXT_SIZES,
+    TEXT_TYPES,
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
@@ -82,6 +83,8 @@ const Projects = () => {
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
                         weight={TEXT_WEIGHTS.medium}
+                        type={TEXT_TYPES.title}
+                        color={COLORS.warmGray}
                     >
                         OUR WORK
                     </Text>

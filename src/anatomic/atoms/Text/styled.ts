@@ -2,7 +2,7 @@ import { COLORS } from "@/lib/theme/color";
 import styled from "styled-components";
 import { TEXT_SIZES, TEXT_WEIGHTS, Props } from "./util";
 
-export const StyledTitle = styled.h2<Props>`
+export const StyledTitle = styled.h1<Props>`
     font-size: ${({ size }) => size || TEXT_SIZES.medium.l};
     color: ${({ color }) => color || COLORS.dark};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.medium};

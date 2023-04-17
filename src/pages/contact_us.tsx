@@ -3,7 +3,12 @@ import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { Info } from "@/anatomic/molecules/Info";
 import { AdaptiveElem } from "@/lib/pageStyles/contactUsStyles";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
@@ -31,6 +36,7 @@ const ContactUs = () => {
                     color={COLORS.textPrimary}
                     size={TEXT_SIZES.large.xs}
                     weight={TEXT_WEIGHTS.medium}
+                    type={TEXT_TYPES.title}
                 >
                     Contact Us
                 </Text>

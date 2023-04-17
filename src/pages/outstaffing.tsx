@@ -1,5 +1,10 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
@@ -59,6 +64,7 @@ const Outstaffing = () => {
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.large.xs}
+                    type={TEXT_TYPES.title}
                 >
                     Out-staffing with iTeam.
                 </Text>

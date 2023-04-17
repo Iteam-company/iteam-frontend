@@ -2,11 +2,10 @@ import React, { FC } from "react";
 import { COLORS } from "@/lib/theme/color";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "../Text";
 import { TEXT_CONTENT } from "@/lib/lang";
-import Link from "next/link";
 
 export const Logo: FC<{ color?: string }> = ({ color = COLORS.dark }) => {
     return (
-        <Link
+        <a
             href="/"
             style={{
                 textDecoration: "none",
@@ -19,6 +18,6 @@ export const Logo: FC<{ color?: string }> = ({ color = COLORS.dark }) => {
             >
                 {TEXT_CONTENT.logo}
             </Text>
-        </Link>
+        </a>
     );
 };
