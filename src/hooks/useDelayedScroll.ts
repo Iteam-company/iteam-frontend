@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export const useDelayedScroll = (delay: number = 2000) => {
+export const useDelayedScroll = (delay: number = 4000) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             window.scrollY === 0 &&

@@ -6,6 +6,8 @@ import { Mask, Triangle, Circle } from "./styled";
 
 export const LogoAnimation = () => {
     const [display, setDisplay] = useState<"block" | "none">("block");
+    display == "none" && document.body.classList.remove("no-scroll");
+
     return (
         <motion.div
             initial={{ y: 0 }}
@@ -18,7 +20,7 @@ export const LogoAnimation = () => {
             style={{
                 height: "100vh",
                 width: "100%",
-                zIndex: 20,
+                zIndex: 200,
                 position: "absolute",
                 top: 0,
             }}

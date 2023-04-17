@@ -5,6 +5,7 @@ import { COLORS } from "@/lib/theme/color";
 import React, { FC, ReactNode } from "react";
 import { ButtonUp } from "../ButtonUp";
 import { StyledLayout } from "./styled";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 interface Props {
     children: ReactNode;
@@ -13,6 +14,7 @@ interface Props {
 export const Layout: FC<Props> = ({ children }) => {
     return (
         <StyledLayout>
+            <LogoAnimation />
             <Header />
             <main>
                 <FlexColumn

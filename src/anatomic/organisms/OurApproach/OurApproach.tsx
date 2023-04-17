@@ -15,8 +15,8 @@ interface Props {
 
 export const OurApproach: FC<Props> = memo(({ approaches }) => {
     return (
-        <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
-            <Desktop>
+        <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5" mw="934px">
+            <Desktop w="100%" alignItems="center">
                 <ApproachSlide approaches={approaches} />
             </Desktop>
 
