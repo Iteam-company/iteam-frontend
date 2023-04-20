@@ -30,7 +30,7 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                 alignItems="center"
                 justifyContent="space-between"
                 style={{ boxSizing: "border-box" }}
-                zIndex="1000"
+                zIndex="100"
             >
                 <Logo color={open ? COLORS.white : COLORS.dark} />
                 <RxHamburgerMenu

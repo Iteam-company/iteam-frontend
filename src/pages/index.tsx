@@ -1,5 +1,4 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
@@ -36,7 +35,6 @@ const Home = () => {
             h="100%"
             style={{ overflow: "hidden" }}
         >
-            <LogoAnimation />
             <FlexColumn
                 alignItems="center"
                 w="100%"

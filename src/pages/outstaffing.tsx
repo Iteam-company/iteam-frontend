@@ -105,7 +105,7 @@ const Outstaffing = () => {
                 <BgImage src={BgImage3.src} top={50} left={-700} />
 
                 <FlexColumn
-                    mw="975px"
+                    mw="995px"
                     h="100%"
                     w="100%"
                     zIndex="3"
@@ -135,6 +135,7 @@ const Outstaffing = () => {
                                         borderRadius: "16px",
                                         minHeight: "400px",
                                         background: COLORS.white,
+                                        maxWidth: "975px",
                                         boxShadow:
                                             "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                     }}

@@ -61,14 +61,13 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
             }
 
             if (percents >= 100) clearInterval(interval);
-        }, 150);
+        }, 100);
 
         return interval;
     }, [approaches, isCircleInView, percents]);
 
     useEffect(() => {
         const interval = animationOfPercents();
-
         return () => clearInterval(interval);
     }, [animationOfPercents, approaches, isCircleInView, percents]);
 
@@ -88,6 +87,8 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
             boxShadow="0px 4px 20px rgba(37, 7, 67, 0.37)"
             bg={COLORS.white}
             borderRadius="16px"
+            w="100%"
+            style={{ boxSizing: "border-box" }}
         >
             <Text
                 color={COLORS.textPrimary}
