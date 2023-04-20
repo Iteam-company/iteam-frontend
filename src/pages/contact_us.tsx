@@ -23,8 +23,6 @@ const ContactUs = () => {
             position="relative"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1} top={-10} left={-50} />
-
             <FlexColumn
                 w="80%"
                 h="100%"
@@ -45,11 +43,35 @@ const ContactUs = () => {
                     communicate with our clients.
                 </Text>
             </FlexColumn>
-            <AdaptiveElem gap="80px" justifyContent="center">
-                <FormElem />
-                <Info />
-            </AdaptiveElem>
-            <BgImage src={BgImage2} bottom={-24} right={-20} />
+            <FlexColumn
+                w="100%"
+                h="100%"
+                alignItems="center"
+                position="relative"
+            >
+                <AdaptiveElem gap="80px" justifyContent="center">
+                    <FormElem />
+                    <Info />
+                </AdaptiveElem>
+
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={520}
+                    bottom={70}
+                    left={-12}
+                    mobileBottom={40}
+                    mobileLeft={50}
+                    priority
+                />
+            </FlexColumn>
+            <BgImage
+                src={BgImage2}
+                maxWidth={1420}
+                bottom={-40}
+                right={-4}
+                mobileBottom={-6}
+                loading="lazy"
+            />
         </FlexColumn>
     );
 };

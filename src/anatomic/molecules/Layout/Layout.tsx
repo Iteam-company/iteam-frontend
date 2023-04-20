@@ -6,12 +6,15 @@ import React, { FC, ReactNode } from "react";
 import { ButtonUp } from "../ButtonUp";
 import { StyledLayout } from "./styled";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 
 interface Props {
     children: ReactNode;
 }
 
 export const Layout: FC<Props> = ({ children }) => {
+    useDelayedScroll();
+
     return (
         <StyledLayout>
             <LogoAnimation />

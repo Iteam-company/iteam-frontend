@@ -100,9 +100,25 @@ const Outsourcing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BgImage src={BgImage1} top={-40} left={-40} />
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={800}
+                    top={-40}
+                    left={-20}
+                    mobileTop={-14}
+                    mobileLeft={-40}
+                    priority
+                />
                 <Card position="relative" style={{ overflow: "hidden" }}>
-                    <BgImage src={BgImage6} bottom={5} right={-40} />
+                    <BgImage
+                        src={BgImage6}
+                        maxWidth={500}
+                        bottom={-6}
+                        right={-24}
+                        mobileRight={-36}
+                        mobileBottom={-12}
+                        loading="lazy"
+                    />
 
                     <FlexContainer
                         alignItems="center"
@@ -152,12 +168,23 @@ const Outsourcing = () => {
             </FlexColumn>
 
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BgImage src={BgImage2} top={0} right={-44} />
+                <BgImage
+                    src={BgImage2}
+                    maxWidth={600}
+                    top={10}
+                    right={-15}
+                    mobileRight={-30}
+                    mobileTop={60}
+                    loading="lazy"
+                />
                 <BgImage
                     src={ITeamIcon}
-                    bottom={0}
-                    left={26}
+                    maxWidth={660}
+                    bottom={5}
+                    right={2}
+                    mobileBottom={5}
                     scrollable={false}
+                    loading="lazy"
                 />
                 <WhiteSection>
                     <Text
@@ -196,7 +223,15 @@ const Outsourcing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BgImage src={BgImage3} bottom={5} left={-60} />
+                <BgImage
+                    src={BgImage3}
+                    maxWidth={1000}
+                    bottom={10}
+                    left={-30}
+                    mobileBottom={12}
+                    mobileLeft={-40}
+                    loading="lazy"
+                />
 
                 <FlexColumn
                     mw="975px"
@@ -245,8 +280,24 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BgImage src={BgImage4} top={-30} right={-40} />
-                <BgImage src={BgImage5} bottom={-50} left={-40} />
+                <BgImage
+                    src={BgImage4}
+                    maxWidth={850}
+                    top={-25}
+                    right={-20}
+                    mobileRight={-50}
+                    mobileTop={-30}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={BgImage5}
+                    maxWidth={700}
+                    bottom={-50}
+                    left={-10}
+                    mobileLeft={-30}
+                    mobileBottom={-40}
+                    loading="lazy"
+                />
 
                 <Text
                     color={COLORS.textPrimary}

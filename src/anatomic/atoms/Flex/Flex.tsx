@@ -30,9 +30,9 @@ export const Flex = styled.div<FlexProps & DefaultElementProps>`
     display: flex;
     width: ${(props) => props.w || "auto"};
     max-width: ${(props) => props.mw || "auto"};
+    min-height: ${(props) => props.mh || "auto"};
     height: ${(props) => props.h || "auto"};
     margin: ${(props) => props.m || "0"};
-    min-height: ${(props) => props.mh || "auto"};
     padding: ${(props) => props.p || "0"};
     align-items: ${(props) => props.alignItems || "flex-start"};
     justify-content: ${(props) => props.justifyContent || "flex-start"};

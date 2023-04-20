@@ -42,7 +42,15 @@ const Development = () => {
             alignItems="center"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1} top={-4} left={-40} />
+            <BgImage
+                src={BgImage1}
+                maxWidth={500}
+                top={1}
+                right={74}
+                mobileRight={60}
+                mobileTop={6}
+                priority
+            />
             <FlexColumn
                 justifyContent="center"
                 w="60%"
@@ -78,8 +86,24 @@ const Development = () => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <BgImage src={BgImage2} right={-54} bottom={5} />
-                <BgImage src={BgImage3} right={38} bottom={-60} />
+                <BgImage
+                    src={BgImage2}
+                    maxWidth={550}
+                    right={-20}
+                    bottom={20}
+                    mobileRight={-50}
+                    mobileBottom={20}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={BgImage3}
+                    maxWidth={1300}
+                    left={-30}
+                    top={88}
+                    mobileTop={100}
+                    mobileLeft={-25}
+                    loading="lazy"
+                />
                 {info.map((item, index) => (
                     <FlexColumn
                         justifyContent="center"

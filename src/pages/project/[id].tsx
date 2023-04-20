@@ -75,7 +75,15 @@ const Project = () => {
                     }
                 />
             </FlexRow>
-            <BgImage src={BgImage1} top={-4} left={-26} />
+            <BgImage
+                src={BgImage1}
+                maxWidth={600}
+                top={-2}
+                left={-18}
+                mobileLeft={-50}
+                mobileTop={1}
+                priority
+            />
 
             {project && (
                 <FlexColumn
@@ -94,7 +102,14 @@ const Project = () => {
                         alignItems="center"
                         position="relative"
                     >
-                        <BgImage src={BgImage2} bottom={0} right={-54} />
+                        <BgImage
+                            src={BgImage2}
+                            maxWidth={700}
+                            bottom={0}
+                            right={-20}
+                            mobileRight={-30}
+                            loading="lazy"
+                        />
                         <FlexColumn
                             mw="1068px"
                             w="100%"

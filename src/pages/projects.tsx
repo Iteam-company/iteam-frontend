@@ -18,11 +18,9 @@ import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
-import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
-    useDelayedScroll();
 
     const getProject = useCallback(async () => {
         try {
@@ -94,7 +92,15 @@ const Projects = () => {
                         with.
                     </Title>
                 </FlexColumn>
-                <BgImage src={BgImage1} right={70} top={10} />
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={710}
+                    top={-15}
+                    left={-54}
+                    priority
+                    mobileTop={60}
+                    mobileLeft={-50}
+                />
             </Adaptive>
 
             {slides.length && (

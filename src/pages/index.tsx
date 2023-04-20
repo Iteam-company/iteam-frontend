@@ -42,19 +42,33 @@ const Home = () => {
                 position="relative"
                 style={{ overflow: "hidden" }}
             >
-                <BgImage top={-10} left={40} src={BgImage1} />
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={740}
+                    right={-10}
+                    mobileRight={-30}
+                    mobileTop={24}
+                    priority
+                />
                 <FlexColumn h="90vh" w="80%" justifyContent="center">
                     <Banner />
                 </FlexColumn>
-            </FlexColumn>
 
-            <HowWeWork data={data} />
+                <HowWeWork data={data} />
+            </FlexColumn>
 
             <OurCoreValues info={info} />
 
             <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
                 <BookingForm />
-                <BgImage src={BgImage2} bottom={-80} left={30} />
+                <BgImage
+                    src={BgImage2}
+                    maxWidth={740}
+                    right={-5}
+                    mobileRight={-10}
+                    mobileTop={35}
+                    loading="lazy"
+                />
             </FlexColumn>
         </FlexColumn>
     );
