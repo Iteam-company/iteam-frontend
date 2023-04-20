@@ -1,5 +1,10 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outsourcing/bgImage1.svg";
@@ -73,6 +78,7 @@ const Outsourcing = () => {
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.large.xs}
+                    type={TEXT_TYPES.title}
                 >
                     Outsourcing with iTeam.
                 </Text>
@@ -94,9 +100,25 @@ const Outsourcing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BgImage src={BgImage1.src} top={-150} left={-300} />
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={800}
+                    top={-40}
+                    left={-20}
+                    mobileTop={-14}
+                    mobileLeft={-40}
+                    priority
+                />
                 <Card position="relative" style={{ overflow: "hidden" }}>
-                    <BgImage src={BgImage6.src} top={0} right={-20} />
+                    <BgImage
+                        src={BgImage6}
+                        maxWidth={500}
+                        bottom={-6}
+                        right={-24}
+                        mobileRight={-36}
+                        mobileBottom={-12}
+                        loading="lazy"
+                    />
 
                     <FlexContainer
                         alignItems="center"
@@ -146,12 +168,23 @@ const Outsourcing = () => {
             </FlexColumn>
 
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BgImage src={BgImage2.src} top={20} right={-200} />
                 <BgImage
-                    src={ITeamIcon.src}
-                    bottom={0}
-                    right={0}
+                    src={BgImage2}
+                    maxWidth={600}
+                    top={10}
+                    right={-15}
+                    mobileRight={-30}
+                    mobileTop={60}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={ITeamIcon}
+                    maxWidth={660}
+                    bottom={5}
+                    right={2}
+                    mobileBottom={5}
                     scrollable={false}
+                    loading="lazy"
                 />
                 <WhiteSection>
                     <Text
@@ -190,7 +223,15 @@ const Outsourcing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BgImage src={BgImage3.src} top={0} left={-800} />
+                <BgImage
+                    src={BgImage3}
+                    maxWidth={1000}
+                    bottom={10}
+                    left={-30}
+                    mobileBottom={12}
+                    mobileLeft={-40}
+                    loading="lazy"
+                />
 
                 <FlexColumn
                     mw="975px"
@@ -239,8 +280,24 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BgImage src={BgImage4.src} top={-300} right={-600} />
-                <BgImage src={BgImage5.src} top={400} left={-250} />
+                <BgImage
+                    src={BgImage4}
+                    maxWidth={850}
+                    top={-25}
+                    right={-20}
+                    mobileRight={-50}
+                    mobileTop={-30}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={BgImage5}
+                    maxWidth={700}
+                    bottom={-50}
+                    left={-10}
+                    mobileLeft={-30}
+                    mobileBottom={-40}
+                    loading="lazy"
+                />
 
                 <Text
                     color={COLORS.textPrimary}

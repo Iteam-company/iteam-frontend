@@ -6,6 +6,7 @@ import {
     LETTER_SPACING,
     Text,
     TEXT_SIZES,
+    TEXT_TYPES,
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
@@ -17,11 +18,9 @@ import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
-import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
-    useDelayedScroll();
 
     const getProject = useCallback(async () => {
         try {
@@ -63,15 +62,12 @@ const Projects = () => {
                 overflow: "hidden",
             }}
         >
-            <BgImage src={BgImage1.src} left={-200} top={0} />
             <Adaptive
                 h="calc(100vh - 100px)"
                 justifyContent="center"
                 alignItems="center"
                 p="20px 50px"
-                style={{
-                    overflow: "hidden",
-                }}
+                position="relative"
             >
                 <FlexColumn
                     mw="750px"
@@ -82,6 +78,8 @@ const Projects = () => {
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
                         weight={TEXT_WEIGHTS.medium}
+                        type={TEXT_TYPES.title}
+                        color={COLORS.warmGray}
                     >
                         OUR WORK
                     </Text>
@@ -94,6 +92,15 @@ const Projects = () => {
                         with.
                     </Title>
                 </FlexColumn>
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={710}
+                    top={-15}
+                    left={-54}
+                    priority
+                    mobileTop={60}
+                    mobileLeft={-50}
+                />
             </Adaptive>
 
             {slides.length && (

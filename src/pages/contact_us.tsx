@@ -3,7 +3,12 @@ import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { Info } from "@/anatomic/molecules/Info";
 import { AdaptiveElem } from "@/lib/pageStyles/contactUsStyles";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
@@ -18,8 +23,6 @@ const ContactUs = () => {
             position="relative"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1.src} top={0} left={-350} />
-
             <FlexColumn
                 w="80%"
                 h="100%"
@@ -31,6 +34,7 @@ const ContactUs = () => {
                     color={COLORS.textPrimary}
                     size={TEXT_SIZES.large.xs}
                     weight={TEXT_WEIGHTS.medium}
+                    type={TEXT_TYPES.title}
                 >
                     Contact Us
                 </Text>
@@ -39,11 +43,35 @@ const ContactUs = () => {
                     communicate with our clients.
                 </Text>
             </FlexColumn>
-            <AdaptiveElem gap="80px" justifyContent="center">
-                <FormElem />
-                <Info />
-            </AdaptiveElem>
-            <BgImage src={BgImage2.src} bottom={-250} right={-50} />
+            <FlexColumn
+                w="100%"
+                h="100%"
+                alignItems="center"
+                position="relative"
+            >
+                <AdaptiveElem gap="80px" justifyContent="center">
+                    <FormElem />
+                    <Info />
+                </AdaptiveElem>
+
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={520}
+                    bottom={70}
+                    left={-12}
+                    mobileBottom={40}
+                    mobileLeft={50}
+                    priority
+                />
+            </FlexColumn>
+            <BgImage
+                src={BgImage2}
+                maxWidth={1420}
+                bottom={-40}
+                right={-4}
+                mobileBottom={-6}
+                loading="lazy"
+            />
         </FlexColumn>
     );
 };

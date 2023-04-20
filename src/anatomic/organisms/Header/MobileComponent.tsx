@@ -11,14 +11,20 @@ import { COLORS } from "@/lib/theme/color";
 import { NAV_LINKS } from "./util";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { LinkElem } from "./styledMobile";
+import { useRouter } from "next/router";
 
 export const MobileComponent: FC<{ activeRoute: string }> = ({
     activeRoute,
 }) => {
     const [open, setOpen] = useState(false);
+    const { asPath } = useRouter();
+
     useEffect(() => {
         document.body.style.overflow = open ? "hidden" : "auto";
     }, [open]);
+    useEffect(() => {
+        setOpen(false);
+    }, [asPath]);
 
     return (
         <FlexColumn position="relative" w="100%">

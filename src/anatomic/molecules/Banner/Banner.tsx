@@ -4,6 +4,7 @@ import {
     LETTER_SPACING,
     Text,
     TEXT_SIZES,
+    TEXT_TYPES,
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { TEXT_CONTENT } from "@/lib/lang";
@@ -18,6 +19,7 @@ export const Banner = () => {
                 letterSpacing={LETTER_SPACING.xl}
                 color={COLORS.dark}
                 weight={TEXT_WEIGHTS.bold}
+                type={TEXT_TYPES.title}
             >
                 {TEXT_CONTENT.banner.text}
             </Text>

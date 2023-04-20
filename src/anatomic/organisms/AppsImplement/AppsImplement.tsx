@@ -43,7 +43,6 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                 ? setActiveIndex(apps.length)
                                 : setActiveIndex(activeIndex - 1);
                         }}
-                        onChangeSlide={console.log(activeIndex)}
                     >
                         {apps &&
                             apps.map((item: any, index) => (

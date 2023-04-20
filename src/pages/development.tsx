@@ -42,7 +42,15 @@ const Development = () => {
             alignItems="center"
             style={{ overflow: "hidden" }}
         >
-            <BgImage src={BgImage1.src} top={-60} left={-20} />
+            <BgImage
+                src={BgImage1}
+                maxWidth={500}
+                top={1}
+                right={74}
+                mobileRight={60}
+                mobileTop={6}
+                priority
+            />
             <FlexColumn
                 justifyContent="center"
                 w="60%"
@@ -52,18 +60,17 @@ const Development = () => {
             >
                 <Text
                     textAlign="center"
-                    type={TEXT_TYPES.title}
                     color={COLORS.textPrimary}
                     size={TEXT_SIZES.large.xs}
                     weight={TEXT_WEIGHTS.medium}
                     mobileSize={TEXT_SIZES.small.xl}
+                    type={TEXT_TYPES.title}
                 >
                     Technology we use
                 </Text>
 
                 <Text
                     textAlign="center"
-                    type={TEXT_TYPES.title}
                     color={COLORS.textThird}
                     size={TEXT_SIZES.medium.xs}
                     letterSpacing={LETTER_SPACING.s}
@@ -73,32 +80,53 @@ const Development = () => {
                     accelerate your business growth
                 </Text>
             </FlexColumn>
-
-            <BgImage src={BgImage2.src} right={-400} bottom={350} />
-            {info.map((item, index) => (
-                <FlexColumn
-                    justifyContent="center"
-                    alignItems="center"
-                    w="100%"
-                    p="40px 0 80px"
-                    gap="50px"
-                    key={index}
-                    zIndex="2"
-                    bg={index == 1 ? COLORS.white : ""}
-                >
-                    <Text
-                        textAlign="center"
-                        type={TEXT_TYPES.title}
-                        color={COLORS.textPrimary}
-                        size={TEXT_SIZES.large.xs}
-                        mobileSize={TEXT_SIZES.small.xl}
+            <FlexColumn
+                w="100%"
+                position="relative"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <BgImage
+                    src={BgImage2}
+                    maxWidth={550}
+                    right={-20}
+                    bottom={20}
+                    mobileRight={-50}
+                    mobileBottom={20}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={BgImage3}
+                    maxWidth={1300}
+                    left={-30}
+                    top={88}
+                    mobileTop={100}
+                    mobileLeft={-25}
+                    loading="lazy"
+                />
+                {info.map((item, index) => (
+                    <FlexColumn
+                        justifyContent="center"
+                        alignItems="center"
+                        w="100%"
+                        p="40px 0 80px"
+                        gap="50px"
+                        key={index}
+                        zIndex="2"
+                        bg={index == 1 ? COLORS.white : ""}
                     >
-                        {item.title}
-                    </Text>
-                    <DevelopmentSwiper technologies={item.info} />
-                </FlexColumn>
-            ))}
-            <BgImage src={BgImage3.src} left={-500} bottom={-650} />
+                        <Text
+                            textAlign="center"
+                            color={COLORS.textPrimary}
+                            size={TEXT_SIZES.large.xs}
+                            mobileSize={TEXT_SIZES.small.xl}
+                        >
+                            {item.title}
+                        </Text>
+                        <DevelopmentSwiper technologies={item.info} />
+                    </FlexColumn>
+                ))}
+            </FlexColumn>
         </FlexColumn>
     );
 };

@@ -1,31 +1,47 @@
 import useScrollUp from "@/hooks/useScrollUp";
-import { useInView } from "framer-motion";
+import Image from "next/image";
 import React, { FC, useRef, useState } from "react";
 import styled from "styled-components";
 
 interface BgImageI {
-    src: string;
+    src: any;
+    rotateZ?: number;
+    scrollable?: boolean;
+    priority?: boolean;
+    loading?: "lazy";
+}
+
+interface ImagePosition {
     top?: number;
     bottom?: number;
     left?: number;
     right?: number;
-    height?: number;
-    rotateZ?: number;
-    scrollable?: boolean;
+    mobileTop?: number;
+    mobileBottom?: number;
+    mobileLeft?: number;
+    mobileRight?: number;
+}
+interface ImageSize {
+    maxWidth?: number;
 }
 
-export const BgImage: FC<BgImageI> = ({
+export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     src,
     top,
     bottom,
     left,
     right,
-    height,
     scrollable = true,
+    priority = false,
+    loading,
+    maxWidth,
+    mobileTop,
+    mobileBottom,
+    mobileLeft,
+    mobileRight,
 }) => {
-    const [rotateZ, setRotateZ] = useState(0);
+    const [rotateZ, setRotateZ] = useState<number>(0);
     const ref = useRef(null);
-    const isInView = useInView(ref);
 
     const rotatableFunction = () => {
         if (ref.current && scrollable) {
@@ -36,28 +52,53 @@ export const BgImage: FC<BgImageI> = ({
     useScrollUp({ onScroll: rotatableFunction });
 
     return (
-        <div ref={ref}>
-            <BGImageStyled
-                src={src}
-                top={top}
-                bottom={bottom}
-                left={left}
-                right={right}
-                height={height}
-                scrollable={scrollable}
-                rotateZ={rotateZ}
-            />
-        </div>
+        <BGImageStyled
+            ref={ref}
+            src={src}
+            scrollable={scrollable}
+            rotateZ={rotateZ}
+            maxWidth={maxWidth}
+            blurDataURL={src.src}
+            top={top}
+            bottom={bottom}
+            left={left}
+            right={right}
+            mobileTop={mobileTop}
+            mobileBottom={mobileBottom}
+            mobileLeft={mobileLeft}
+            mobileRight={mobileRight}
+            alt="Background image"
+            placeholder="blur"
+            priority={priority}
+            loading={loading}
+        />
     );
 };
-const BGImageStyled = styled.img<BgImageI>`
+const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
+    ({ rotateZ }) => ({
+        style: {
+            transform: `rotateZ(${rotateZ}deg)`,
+        },
+    }),
+)<BgImageI & ImageSize & ImagePosition>`
+    height: auto;
+    width: 100%;
+    object-fit: contain;
     position: absolute;
-    z-index: 0 !important;
-    height: ${({ height }) => height}px;
-    top: ${({ top }) => top}px;
-    bottom: ${({ bottom }) => bottom}px;
-    right: ${({ right }) => right}px;
-    left: ${({ left }) => left}px;
-    transform: ${({ rotateZ }) => rotateZ && `rotateZ(${rotateZ}deg)`};
     transition: 0.3s all;
+    z-index: 0 !important;
+
+    max-width: ${({ maxWidth }) => maxWidth}px;
+
+    ${({ top }) => top && `top: ${top}%`};
+    ${({ bottom }) => bottom && `bottom: ${bottom}%`};
+    ${({ right }) => right && `right: ${right}%`};
+    ${({ left }) => left && `left: ${left}%`};
+
+    @media all and (max-width: 850px) {
+        ${({ mobileTop }) => mobileTop && `top: ${mobileTop}%`};
+        ${({ mobileBottom }) => mobileBottom && `bottom: ${mobileBottom}%`};
+        ${({ mobileRight }) => mobileRight && `right: ${mobileRight}%`};
+        ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`};
+    }
 `;

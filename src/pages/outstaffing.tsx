@@ -1,11 +1,17 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
+import {
+    Text,
+    TEXT_SIZES,
+    TEXT_TYPES,
+    TEXT_WEIGHTS,
+} from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
+import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.svg";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
@@ -59,6 +65,7 @@ const Outstaffing = () => {
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.large.xs}
+                    type={TEXT_TYPES.title}
                 >
                     Out-staffing with iTeam.
                 </Text>
@@ -81,17 +88,35 @@ const Outstaffing = () => {
                 p="100px 20px 0px"
                 style={{ boxSizing: "border-box" }}
             >
-                <BgImage src={BgImage1.src} top={0} left={-300} />
+                <BgImage
+                    src={BgImage1}
+                    maxWidth={750}
+                    top={-20}
+                    left={-12}
+                    mobileTop={-14}
+                    mobileLeft={-40}
+                    priority
+                />
 
                 <OurApproach approaches={approach} />
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
-                <BgImage src={BgImage2.src} top={0} right={-300} />
                 <BgImage
-                    src={ITeamIcon.src}
-                    bottom={0}
-                    right={0}
+                    src={BgImage2}
+                    maxWidth={710}
+                    top={1}
+                    right={-20}
+                    mobileRight={-36}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={ITeamIcon}
+                    maxWidth={660}
+                    bottom={5}
+                    right={2}
+                    mobileBottom={10}
                     scrollable={false}
+                    loading="lazy"
                 />
 
                 <BookingForm />
@@ -102,7 +127,15 @@ const Outstaffing = () => {
                 position="relative"
                 alignItems="center"
             >
-                <BgImage src={BgImage3.src} top={50} left={-700} />
+                <BgImage
+                    src={BgImage3}
+                    maxWidth={1200}
+                    bottom={5}
+                    left={-30}
+                    mobileBottom={12}
+                    mobileLeft={-40}
+                    loading="lazy"
+                />
 
                 <FlexColumn
                     mw="995px"
@@ -113,14 +146,15 @@ const Outstaffing = () => {
                     style={{ boxSizing: "border-box" }}
                     p="0 20px"
                 >
-                    <GradientTitle
-                        w="550px"
-                        size={TEXT_SIZES.large.xs}
-                        weight={TEXT_WEIGHTS.main}
-                        color="272.07deg, #17092D 35.9%, #7232E0 100%"
-                    >
-                        Benefits Of Having Dedicated Development Team
-                    </GradientTitle>
+                    <FlexColumn mw="600px" alignItems="center" p="0 20px 0 ">
+                        <GradientTitle
+                            size={TEXT_SIZES.large.xs}
+                            weight={TEXT_WEIGHTS.main}
+                            color="272.07deg, #17092D 35.9%, #7232E0 100%"
+                        >
+                            Benefits Of Having Dedicated Development Team
+                        </GradientTitle>
+                    </FlexColumn>
 
                     <FlexColumn w="100%">
                         <HorizontalSwiperElem
@@ -185,7 +219,25 @@ const Outstaffing = () => {
                 style={{ boxSizing: "border-box", overflow: "hidden" }}
                 gap="50px"
             >
-                <BgImage src={BgImage4.src} top={-300} right={-500} />
+                <BgImage
+                    src={BgImage4}
+                    maxWidth={850}
+                    top={-25}
+                    right={-20}
+                    mobileRight={-50}
+                    mobileTop={-10}
+                    loading="lazy"
+                />
+                <BgImage
+                    src={BgImage5}
+                    maxWidth={700}
+                    bottom={-50}
+                    left={-14}
+                    mobileLeft={-50}
+                    mobileBottom={-30}
+                    loading="lazy"
+                />
+
                 <Text
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}

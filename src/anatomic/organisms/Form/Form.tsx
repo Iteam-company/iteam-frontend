@@ -127,7 +127,6 @@ export const FormElem = () => {
                             <FlexColumn alignItems="center" gap="20px">
                                 <Icon src={successIcon.src} />
                                 <Text
-                                    type={TEXT_TYPES.title}
                                     size={TEXT_SIZES.medium.xs}
                                     color={COLORS.textPrimary}
                                     textAlign="center"

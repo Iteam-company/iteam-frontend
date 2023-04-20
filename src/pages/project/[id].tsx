@@ -18,6 +18,7 @@ import { ProjectItemInfo } from "@/anatomic/organisms/ProjectItemInfo";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.svg";
+import styled from "styled-components";
 
 const Project = () => {
     const router = useRouter();
@@ -43,14 +44,14 @@ const Project = () => {
     }, [id]);
 
     return (
-        <FlexColumn
+        <Container
             w="100%"
             h="100%"
             alignItems="center"
             style={{ overflowX: "hidden" }}
+            position="relative"
             gap="40px"
         >
-            <BgImage src={BgImage1.src} top={0} left={-350} />
             <FlexRow
                 mw="1068px"
                 w="100%"
@@ -74,6 +75,16 @@ const Project = () => {
                     }
                 />
             </FlexRow>
+            <BgImage
+                src={BgImage1}
+                maxWidth={600}
+                top={-2}
+                left={-18}
+                mobileLeft={-50}
+                mobileTop={1}
+                priority
+            />
+
             {project && (
                 <FlexColumn
                     w="100%"
@@ -91,7 +102,14 @@ const Project = () => {
                         alignItems="center"
                         position="relative"
                     >
-                        <BgImage src={BgImage2.src} bottom={-50} right={-400} />
+                        <BgImage
+                            src={BgImage2}
+                            maxWidth={700}
+                            bottom={0}
+                            right={-20}
+                            mobileRight={-30}
+                            loading="lazy"
+                        />
                         <FlexColumn
                             mw="1068px"
                             w="100%"
@@ -326,7 +344,13 @@ const Project = () => {
                     </FlexColumn>
                 </FlexColumn>
             )}
-        </FlexColumn>
+        </Container>
     );
 };
 export default memo(Project);
+
+const Container = styled(FlexColumn)`
+    @media all and (max-width: 799px) {
+        gap: 10px;
+    }
+`;
