@@ -31,17 +31,10 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                         justifyContent="space-between"
                     >
                         {NAV_LINKS.slice(0, 5).map((item) =>
-                            item.options ? (
-                                <Dropdown
-                                    title={item.title}
-                                    activeRoute={activeRoute}
-                                    options={item.options}
-                                    key={item.id}
-                                />
-                            ) : (
+                            item.href ? (
                                 <FlexRow position="relative" key={item.id}>
                                     <LinkElem
-                                        href={item.href!}
+                                        href={item.href}
                                         linkText={item.title}
                                         active={item.href === activeRoute}
                                         textStyles={{
@@ -52,6 +45,15 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                         }}
                                     />
                                 </FlexRow>
+                            ) : (
+                                item.options && (
+                                    <Dropdown
+                                        title={item.title}
+                                        activeRoute={activeRoute}
+                                        options={item.options}
+                                        key={item.id}
+                                    />
+                                )
                             ),
                         )}
                     </FlexRow>
