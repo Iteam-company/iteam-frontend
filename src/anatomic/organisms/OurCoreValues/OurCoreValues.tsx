@@ -12,7 +12,8 @@ import {
     Dot,
     Mobile,
 } from "./styled";
-
+import coreValueIcon from "@/assets/icon/coreValue.svg";
+import Image from "next/image";
 interface Props {
     info: CoreValueInterface[];
 }
@@ -34,10 +35,19 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
             >
                 Our Core Values
             </Text>
-            <Desktop>
+            <Desktop w="100%" alignItems="center" gap="32px" mw="1200px">
+                <Image
+                    src={coreValueIcon}
+                    alt="iteam"
+                    style={{
+                        height: "auto",
+                        width: "90%",
+                        paddingTop: "40px",
+                    }}
+                />
+
                 <FlexRow
                     w="100%"
-                    mw="926px"
                     p="0 20px"
                     style={{ boxSizing: "border-box" }}
                 >
@@ -49,14 +59,6 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
                             w="50%"
                             gap="20px"
                         >
-                            <GradientText
-                                weight={TEXT_WEIGHTS.medium}
-                                size="200px"
-                                lineHeight="200px"
-                                color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
-                            >
-                                {item.letter}
-                            </GradientText>
                             <FlexColumn
                                 w="100%"
                                 position="relative"

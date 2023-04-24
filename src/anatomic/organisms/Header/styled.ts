@@ -2,6 +2,7 @@ import { Link } from "@/anatomic/atoms/Link";
 import { COLORS } from "@/lib/theme/color";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import styled from "styled-components";
+import { TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 
 export const AdaptiveElem = styled(Adaptive)`
     max-width: none;
@@ -29,6 +30,7 @@ export const Button = styled.button`
     background-color: ${COLORS.dark};
     border: 1px solid ${COLORS.dark};
     border-radius: 8px;
+    height: 40px;
 
     &:hover {
         background-color: ${COLORS.white};
@@ -39,6 +41,7 @@ export const Button = styled.button`
     }
     & > * > * {
         color: ${COLORS.white};
-        padding: 10px 38px;
+        font-weight: ${TEXT_WEIGHTS.medium};
+        padding: 0 30px;
     }
 `;
