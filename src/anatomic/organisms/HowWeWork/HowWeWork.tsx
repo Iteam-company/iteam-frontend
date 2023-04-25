@@ -11,12 +11,16 @@ import {
     Circle,
     StepNumber,
 } from "./styled";
+import { HowWeWorkInterface } from "@/pages";
 
-interface Props {
-    data: HomeInterface[];
-}
+// interface Props {
+//     howWeWork: HowWeWorkInterface;
+// }
 
-export const HowWeWork: FC<Props> = ({ data }) => {
+export const HowWeWork: FC<HowWeWorkInterface> = ({
+    title,
+    explanationWork,
+}) => {
     return (
         <FlexColumn w="100%" justifyContent="center" alignItems="center">
             <FlexColumn w="80%">
@@ -25,7 +29,7 @@ export const HowWeWork: FC<Props> = ({ data }) => {
                     weight={TEXT_WEIGHTS.main}
                     color={COLORS.dark}
                 >
-                    How we work:
+                    {title}
                 </Text>
             </FlexColumn>
             <Container
@@ -35,8 +39,8 @@ export const HowWeWork: FC<Props> = ({ data }) => {
                 alignItems="center"
                 justifyContent="center"
             >
-                {data &&
-                    data.map((item: HomeInterface) => (
+                {explanationWork &&
+                    explanationWork.map((item: HomeInterface) => (
                         <CircleBorder
                             key={item.step}
                             topColor={

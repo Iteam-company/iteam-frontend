@@ -19,7 +19,6 @@ import { Card, FlexContainer, Img } from "@/lib/pageStyles/outstaffing";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import monitorIcon from "@/assets/bgImage/outsourcing/monitor.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage/";
-import { BenefitsInterface } from "./api/outstaffing";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
 import { SwiperSlide } from "swiper/react";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
@@ -255,12 +254,12 @@ const Outsourcing = () => {
 
                     <SwiperRange maxValue={process.length - 1}>
                         {process &&
-                            process.map((item: BenefitsInterface) => (
-                                <SwiperSlide key={item.id}>
+                            process.map((item: ProcessInterface) => (
+                                <SwiperSlide key={item.step}>
                                     <BenefitsSlide
                                         title={item.title}
                                         text={item.text}
-                                        id={item.id}
+                                        id={item.step}
                                     />
                                 </SwiperSlide>
                             ))}

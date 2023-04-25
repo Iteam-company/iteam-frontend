@@ -10,15 +10,30 @@ import { CoreValueInterface, HomeInterface } from "./api/home";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
 
+export interface HowWeWorkInterface {
+    title: string;
+    explanationWork: ExplanationWork[];
+}
+interface ExplanationWork {
+    step: string;
+    title: string;
+    text: string;
+}
+
 const Home = () => {
-    const [data, setData] = useState<HomeInterface[]>([]);
+    const [howWeWork, setHowWeWork] = useState<HowWeWorkInterface[]>([]);
     const [info, setInfo] = useState<CoreValueInterface[]>([]);
 
     const getData = useCallback(async () => {
         try {
-            const { data } = await client.get("/api/home");
-            setData(data.data);
-            setInfo(data.info);
+            // const { data } = await client.get("/api/home");
+            const { data } = await client.get(
+                "http://localhost:1337/api/homepage?populate=deep",
+            );
+            console.log(data.data.attributes.howWeWork);
+
+            setHowWeWork(data.data.attributes.howWeWork);
+            // setInfo(data.info);
         } catch (err) {
             console.log(err);
         }
@@ -58,7 +73,7 @@ const Home = () => {
                     <Banner />
                 </FlexColumn>
 
-                <HowWeWork data={data} />
+                <HowWeWork howWeWork={howWeWork} />
             </FlexColumn>
 
             <OurCoreValues info={info} />

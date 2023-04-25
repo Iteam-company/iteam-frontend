@@ -13,7 +13,7 @@ export interface NumbersInterface {
     text: string;
 }
 export interface ProcessInterface {
-    id?: number;
+    step?: number;
     title: string;
     text: string;
 }
@@ -49,27 +49,27 @@ const OUTSOURCING = {
     ],
     process: [
         {
-            id: 1,
+            step: 1,
             title: "Requirements",
             text: "Our outsource web development company gathers requirements that describe the business needs of your project. We decompose the specification into small tasks to estimate the scope precisely and prepare a strict delivery plan for your approval.",
         },
         {
-            id: 2,
+            step: 2,
             title: "Design",
             text: "At this stage, you will get two prototypes. The first one is wireframes that allow visualizing project functionality and user flow. The next step is to create an interactive UI prototype that looks almost like the real product.",
         },
         {
-            id: 3,
+            step: 3,
             title: "Development",
             text: "There are no two similar projects. We always develop a personal approach to each project we take. Our practices like Continuous integration, code reviews, and pair programming let the team combine speed and agility with a focus on quality.",
         },
         {
-            id: 4,
+            step: 4,
             title: "Testing",
             text: "Software development can`t do without quality assurance. Each project we deliver is precisely tested either manually or automatically. Quality assurance is one of our main values since it`s the basis of our client`s reputation.",
         },
         {
-            id: 5,
+            step: 5,
             title: "Delivery",
             text: "Software development can`t do without quality assurance. Each project we deliver is precisely tested either manually or automatically. Quality assurance is one of our main values since it`s the basis of our client`s reputation.",
         },
