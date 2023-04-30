@@ -2,11 +2,20 @@ import React, { FC } from "react";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { BenefitsInterface } from "@/pages/api/outstaffing";
 import styled from "styled-components";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 
-export const BenefitsSlide: FC<BenefitsInterface> = ({ title, text, id }) => {
+export interface BenefitsInterface {
+    id?: number;
+    title: string;
+    description: string;
+}
+
+export const BenefitsSlide: FC<BenefitsInterface> = ({
+    title,
+    description,
+    id,
+}) => {
     return (
         <FlexContainer gap="70px">
             <FlexColumn h="100%" gap="25px">
@@ -23,7 +32,7 @@ export const BenefitsSlide: FC<BenefitsInterface> = ({ title, text, id }) => {
                     color={COLORS.textThird}
                     mobileSize={TEXT_SIZES.small.m}
                 >
-                    {text}
+                    {description}
                 </Text>
             </FlexColumn>
             {id && (

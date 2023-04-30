@@ -4,45 +4,14 @@ import BgImage1 from "@/assets/bgImage/home/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
-import client from "@/axios";
-import { useState, useCallback, useEffect } from "react";
-import { CoreValueInterface, HomeInterface } from "./api/home";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-
-export interface HowWeWorkInterface {
-    title: string;
-    explanationWork: ExplanationWork[];
-}
-interface ExplanationWork {
-    step: string;
-    title: string;
-    text: string;
-}
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 
 const Home = () => {
-    const [howWeWork, setHowWeWork] = useState<HowWeWorkInterface[]>([]);
-    const [info, setInfo] = useState<CoreValueInterface[]>([]);
+    const [data, isLoading] = useStrapiData(Pages.homepage);
 
-    const getData = useCallback(async () => {
-        try {
-            // const { data } = await client.get("/api/home");
-            const { data } = await client.get(
-                "http://localhost:1337/api/homepage?populate=deep",
-            );
-            console.log(data.data.attributes.howWeWork);
-
-            setHowWeWork(data.data.attributes.howWeWork);
-            // setInfo(data.info);
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getData();
-    }, []);
-
+    if (!data) return null;
     return (
         <FlexColumn
             alignItems="center"
@@ -70,13 +39,13 @@ const Home = () => {
                     w="90%"
                     justifyContent="center"
                 >
-                    <Banner />
+                    <Banner main={data?.main} />
                 </FlexColumn>
 
-                <HowWeWork howWeWork={howWeWork} />
+                <HowWeWork howWeWork={data?.howWeWork} />
             </FlexColumn>
 
-            <OurCoreValues info={info} />
+            <OurCoreValues coreValue={data?.coreValues} />
 
             <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
                 <BookingForm />

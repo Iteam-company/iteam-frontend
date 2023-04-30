@@ -3,11 +3,12 @@ import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { FC, memo, useRef, useState } from "react";
 import { SwiperSlide } from "swiper/react";
-import { Icon } from "@/lib/pageStyles/developmentStyles";
-import { InfoInterface } from "@/pages/api/technologies";
 import { motion } from "framer-motion";
 import { Dot, SwiperElem } from "./styled";
 import { TechnologiesProps } from "./DevelopmentSwiper";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { Icon } from "@/lib/pageStyles/developmentStyles";
+import { InfoInterface } from "@/pages/development";
 
 export const DevelopmentDesktop: FC<TechnologiesProps> = memo(
     ({ technologies = [] }) => {
@@ -53,7 +54,11 @@ export const DevelopmentDesktop: FC<TechnologiesProps> = memo(
                                 transition={{ duration: 0.3 }}
                                 style={{ textDecoration: "none" }}
                             >
-                                <Icon src={elem.icon.src} />
+                                <Icon
+                                    src={getStrapiImage(
+                                        elem.icon.data.attributes.url,
+                                    )}
+                                />
                                 <FlexColumn
                                     w="100%"
                                     justifyContent="center"

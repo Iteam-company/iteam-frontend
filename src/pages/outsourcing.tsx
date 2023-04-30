@@ -6,7 +6,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useRef } from "react";
 import BgImage1 from "@/assets/bgImage/outsourcing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outsourcing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outsourcing/bgImage3.svg";
@@ -22,42 +22,32 @@ import { BgImage } from "@/anatomic/atoms/BgImage/";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
 import { SwiperSlide } from "swiper/react";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-import {
-    AppsInterface,
-    NumbersInterface,
-    ProcessInterface,
-} from "./api/outsourcing";
-import client from "@/axios";
 import { useInView } from "framer-motion";
 import { FitToViewport } from "react-fit-to-viewport";
 import { SwiperRange } from "@/anatomic/organisms/SwiperRange";
 import { AppsImplement } from "@/anatomic/organisms/AppsImplement";
 import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 
+export interface ProcessInterface {
+    step?: number;
+    title: string;
+    text: string;
+}
+export interface ServicesInterface {
+    text: string;
+}
+export interface NumbersInterface {
+    id?: number;
+    title: number;
+    subTitle?: string;
+    text: string;
+}
 const Outsourcing = () => {
-    const [numbers, setNumbers] = useState<NumbersInterface[]>([]);
-    const [process, setProcess] = useState<ProcessInterface[]>([]);
-    const [services, setServices] = useState<string[]>([]);
-    const [apps, setApps] = useState<AppsInterface[]>([]);
-
     const numbersViewRef = useRef(null);
     const isNumbersInView = useInView(numbersViewRef);
 
-    const getData = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/outsourcing");
-            setNumbers(data.numbers);
-            setProcess(data.process);
-            setServices(data.services);
-            setApps(data.apps);
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getData();
-    }, []);
+    const [data, isLoading] = useStrapiData(Pages.outsourcing);
 
     return (
         <FlexColumn
@@ -79,15 +69,14 @@ const Outsourcing = () => {
                     size={TEXT_SIZES.large.xs}
                     type={TEXT_TYPES.title}
                 >
-                    Outsourcing with iTeam.
+                    {data?.main.title}
                 </Text>
                 <Text
                     size={TEXT_SIZES.small.xl}
                     color={COLORS.textThird}
                     lineHeight="27px"
                 >
-                    Establish world-class agility, scalability and security in
-                    your organisation.
+                    {data?.main.description}
                 </Text>
             </FlexColumn>
 
@@ -131,13 +120,20 @@ const Outsourcing = () => {
                                 size={TEXT_SIZES.medium.l}
                                 color={COLORS.textPrimary}
                             >
-                                Software Development Services We Provide
+                                {data?.servicesTitle}
                             </Text>
                             <FlexColumn gap="20px">
-                                {services &&
-                                    services.map((item, index) => (
-                                        <Text key={index}> • {item}</Text>
-                                    ))}
+                                {data?.services &&
+                                    data.services.map(
+                                        (
+                                            item: ServicesInterface,
+                                            index: number,
+                                        ) => (
+                                            <Text key={index}>
+                                                • {item.text}
+                                            </Text>
+                                        ),
+                                    )}
                             </FlexColumn>
                         </FlexColumn>
                         <FlexColumn
@@ -192,7 +188,7 @@ const Outsourcing = () => {
                         size={TEXT_SIZES.medium.l}
                         textAlign="center"
                     >
-                        Why Businesses Trust Us
+                        {data?.numbersTitle}
                     </Text>
                     <FlexContainer
                         w="60%"
@@ -202,16 +198,15 @@ const Outsourcing = () => {
                         gap="30px"
                         ref={numbersViewRef}
                     >
-                        {numbers &&
-                            numbers.map((item) => (
-                                <CountUpNumbers
-                                    key={item.id}
-                                    title={item.title}
-                                    subTitle={item.subTitle}
-                                    text={item.text}
-                                    isNumbersInView={isNumbersInView}
-                                />
-                            ))}
+                        {data?.numbers.map((item: NumbersInterface) => (
+                            <CountUpNumbers
+                                key={item.id}
+                                title={item.title}
+                                subTitle={item.subTitle}
+                                text={item.text}
+                                isNumbersInView={isNumbersInView}
+                            />
+                        ))}
                     </FlexContainer>
                 </WhiteSection>
             </FlexColumn>
@@ -248,17 +243,17 @@ const Outsourcing = () => {
                             weight={TEXT_WEIGHTS.main}
                             color="272.07deg, #17092D 35.9%, #7232E0 100%"
                         >
-                            Our Process
+                            {data?.processTitle}
                         </GradientTitle>
                     </FlexColumn>
 
-                    <SwiperRange maxValue={process.length - 1}>
-                        {process &&
-                            process.map((item: ProcessInterface) => (
+                    <SwiperRange maxValue={data?.process.length - 1}>
+                        {data?.process &&
+                            data.process.map((item: ProcessInterface) => (
                                 <SwiperSlide key={item.step}>
                                     <BenefitsSlide
                                         title={item.title}
-                                        text={item.text}
+                                        description={item.text}
                                         id={item.step}
                                     />
                                 </SwiperSlide>
@@ -303,10 +298,10 @@ const Outsourcing = () => {
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.medium.xl}
                 >
-                    What We Can Implement
+                    {data?.appsTitle}
                 </Text>
 
-                <AppsImplement apps={apps} />
+                {data?.apps && <AppsImplement apps={data.apps} />}
             </FlexColumn>
         </FlexColumn>
     );

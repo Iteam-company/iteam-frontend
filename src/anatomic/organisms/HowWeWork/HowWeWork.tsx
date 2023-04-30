@@ -1,7 +1,6 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { HomeInterface } from "@/pages/api/home";
 import React, { FC } from "react";
 import {
     Container,
@@ -11,16 +10,10 @@ import {
     Circle,
     StepNumber,
 } from "./styled";
-import { HowWeWorkInterface } from "@/pages";
+import { PropsI, HomeInterface } from "./utils";
 
-// interface Props {
-//     howWeWork: HowWeWorkInterface;
-// }
-
-export const HowWeWork: FC<HowWeWorkInterface> = ({
-    title,
-    explanationWork,
-}) => {
+export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
+    if (!howWeWork) return null;
     return (
         <FlexColumn w="100%" justifyContent="center" alignItems="center">
             <FlexColumn w="80%">
@@ -29,7 +22,7 @@ export const HowWeWork: FC<HowWeWorkInterface> = ({
                     weight={TEXT_WEIGHTS.main}
                     color={COLORS.dark}
                 >
-                    {title}
+                    {howWeWork.title}
                 </Text>
             </FlexColumn>
             <Container
@@ -39,8 +32,8 @@ export const HowWeWork: FC<HowWeWorkInterface> = ({
                 alignItems="center"
                 justifyContent="center"
             >
-                {explanationWork &&
-                    explanationWork.map((item: HomeInterface) => (
+                {howWeWork.explanationWork &&
+                    howWeWork.explanationWork.map((item: HomeInterface) => (
                         <CircleBorder
                             key={item.step}
                             topColor={

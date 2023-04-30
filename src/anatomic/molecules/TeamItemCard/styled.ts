@@ -1,10 +1,11 @@
 import { COLORS } from "@/lib/theme/color";
-import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import styled from "styled-components";
 import LabelIcon from "@/assets/icon/label.png";
 import { Swiper as SwiperComponent } from "swiper/react";
 import ArrowLeft from "@/assets/icon/leftvector.svg";
 import ArrowRight from "@/assets/icon/vector.svg";
+import { Text } from "@/anatomic/atoms/Text";
+import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 
 export const Avatar = styled.div<{ image: any }>`
     height: 122px;
@@ -87,4 +88,8 @@ export const StyledSwiper = styled(SwiperComponent)`
         }
         right: 0;
     }
+`;
+
+export const ItalicText = styled(Text)`
+    font-style: italic;
 `;
