@@ -38,8 +38,8 @@ export const Footer: FC<PropsI> = ({
                         </Text>
                         <FlexColumn justifyContent="space-between" gap="8px">
                             {footerText.companyInfo.map(
-                                (item: CompanyInfoI) => (
-                                    <FlexRow>
+                                (item: CompanyInfoI, index: number) => (
+                                    <FlexRow key={index}>
                                         <Text
                                             color={COLORS.white}
                                             size={TEXT_SIZES.small.l}
