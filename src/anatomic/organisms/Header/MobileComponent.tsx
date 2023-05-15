@@ -57,14 +57,7 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                     style={{ top: "70px", boxSizing: "border-box" }}
                 >
                     {NAV_LINKS.map((item) =>
-                        item.options ? (
-                            <DropdownMobile
-                                key={item.id}
-                                title={item.title}
-                                activeRoute={activeRoute}
-                                options={item.options}
-                            />
-                        ) : (
+                        item.href ? (
                             <FlexRow
                                 position="relative"
                                 alignItems="center"
@@ -83,6 +76,15 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                     active={item.href === activeRoute}
                                 />
                             </FlexRow>
+                        ) : (
+                            item.options && (
+                                <DropdownMobile
+                                    key={item.id}
+                                    title={item.title}
+                                    activeRoute={activeRoute}
+                                    options={item.options}
+                                />
+                            )
                         ),
                     )}
                 </FlexColumn>

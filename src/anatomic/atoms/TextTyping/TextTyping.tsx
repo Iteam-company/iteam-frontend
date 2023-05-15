@@ -1,27 +1,24 @@
 import React, { FC } from "react";
-import { Text } from "../Text/Text";
 import { StyledTypingEffect } from "./styled";
-import { Props as TextProps, TEXT_TYPES } from "@/anatomic/atoms/Text";
+import { Props as TextProps } from "@/anatomic/atoms/Text";
+import Typewriter from "typewriter-effect";
 
 interface Props {
-    text: string | string[];
+    text: any;
     textStyles?: TextProps;
 }
 
-export const TextTyping: FC<Props> = ({ text, textStyles }) => {
+export const TextTyping: FC<Props> = ({ text }) => {
     return (
-        <StyledTypingEffect
-            speed={200}
-            typingDelay={1500}
-            text={text}
-            cursorClassName="cursor"
-            displayTextRenderer={(text, i) => {
-                return (
-                    <Text type={TEXT_TYPES.text_block} {...textStyles}>
-                        {text}
-                    </Text>
-                );
-            }}
-        />
+        <StyledTypingEffect>
+            <Typewriter
+                options={{
+                    strings: text,
+                    autoStart: true,
+                    loop: true,
+                    delay: 100,
+                }}
+            />
+        </StyledTypingEffect>
     );
 };

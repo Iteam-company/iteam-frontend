@@ -26,11 +26,11 @@ export const BookingForm = () => {
             <Text
                 color={COLORS.textPrimary}
                 weight={TEXT_WEIGHTS.medium}
-                size={TEXT_SIZES.medium.xl}
+                size={TEXT_SIZES.large.xs}
             >
                 Book an initial 30-min call
             </Text>
-            <Text size={TEXT_SIZES.small.s} color={COLORS.textThird}>
+            <Text size={TEXT_SIZES.small.m} color={COLORS.textThird}>
                 Let`s discuss your needs. And we will tell you how we can help.
                 Without obligations.
             </Text>
@@ -70,7 +70,7 @@ export const BookingForm = () => {
                                         <Text
                                             color={COLORS.dark}
                                             weight={TEXT_WEIGHTS.main}
-                                            size={TEXT_SIZES.small.s}
+                                            size={TEXT_SIZES.small.m}
                                         >
                                             Book a call
                                         </Text>

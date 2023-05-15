@@ -16,22 +16,22 @@ const DATA = {
     data: [
         {
             step: "01",
-            title: "Strategic Analysis",
+            title: "Strategic  \n Analysis",
             text: "Lorem Ipsum has been the industry's standard dummy text",
         },
         {
             step: "02",
-            title: "Planning & Design",
+            title: "Planning & \n Design",
             text: "Lorem Ipsum has been the industry's standard dummy text",
         },
         {
             step: "03",
-            title: "Solution Delivery",
+            title: "Solution \n Delivery",
             text: "Lorem Ipsum has been the industry's standard dummy text",
         },
         {
             step: "04",
-            title: "Managing & Innovating",
+            title: "Managing & \n Innovating",
             text: "Lorem Ipsum has been the industry's standard dummy text",
         },
     ],

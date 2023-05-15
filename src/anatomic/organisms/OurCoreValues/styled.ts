@@ -16,9 +16,9 @@ export const Dot = styled.div`
     border-radius: 50%;
     background: linear-gradient(
         180deg,
-        #250743 0%,
-        #5f3bc7 63.54%,
-        #5f3bc7 97.92%
+        #240346 0%,
+        #4a20c0 63.54%,
+        #1e085e 97.92%
     );
 `;
 

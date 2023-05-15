@@ -50,7 +50,11 @@ const Home = () => {
                     mobileTop={24}
                     priority
                 />
-                <FlexColumn h="90vh" w="80%" justifyContent="center">
+                <FlexColumn
+                    h="calc(100vh - 100px)"
+                    w="90%"
+                    justifyContent="center"
+                >
                     <Banner />
                 </FlexColumn>
 

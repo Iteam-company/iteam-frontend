@@ -1,20 +1,25 @@
 import { TEXT_CONTENT } from "@/lib/lang";
+interface NavLinkI {
+    title: string;
+    href?: string;
+    options?: OptionI[];
+    id: number;
+}
+interface OptionI {
+    option: string;
+    href: string;
+}
 
-export const NAV_LINKS = [
+export const NAV_LINKS: NavLinkI[] = [
     { title: TEXT_CONTENT.header.home, href: "/", id: 0 },
     {
         title: TEXT_CONTENT.header.company.title,
-        options: [{ option: TEXT_CONTENT.header.company.team, href: "/team" }],
+        href: "/team",
         id: 1,
     },
     {
         title: TEXT_CONTENT.header.portfolio.title,
-        options: [
-            {
-                option: TEXT_CONTENT.header.portfolio.projects,
-                href: "/projects",
-            },
-        ],
+        href: "/projects",
         id: 2,
     },
     {

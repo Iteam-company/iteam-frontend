@@ -9,7 +9,6 @@ import {
     Text,
     TEXT_TYPES,
 } from "@/anatomic/atoms/Text";
-import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { COLORS } from "@/lib/theme/color";
 import { Title } from "@/lib/pageStyles/teamStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
@@ -64,19 +63,20 @@ const Team = () => {
                 overflow: "hidden",
             }}
         >
-            <Adaptive
+            <FlexColumn
                 h="calc(100vh - 100px)"
+                w="90%"
                 justifyContent="center"
-                alignItems="center"
+                alignItems="start"
                 position="relative"
             >
                 <BgImage
                     src={BgImage1}
                     maxWidth={710}
-                    right={-60}
+                    right={-30}
                     top={34}
-                    mobileTop={56}
-                    mobileRight={-60}
+                    mobileTop={60}
+                    mobileRight={-40}
                     priority
                 />
                 <FlexColumn justifyContent="center" alignItems="start">
@@ -100,7 +100,7 @@ const Team = () => {
                         communication and process transparency.
                     </Title>
                 </FlexColumn>
-            </Adaptive>
+            </FlexColumn>
             {team.length && (
                 <>
                     <Desktop>

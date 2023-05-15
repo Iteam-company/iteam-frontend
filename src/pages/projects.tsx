@@ -10,8 +10,6 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { Adaptive } from "@/anatomic/molecules/Adaptive";
-import { Title } from "@/lib/pageStyles/projectStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
 import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
@@ -62,46 +60,85 @@ const Projects = () => {
                 overflow: "hidden",
             }}
         >
-            <Adaptive
+            <FlexColumn
                 h="calc(100vh - 100px)"
                 justifyContent="center"
                 alignItems="center"
-                p="20px 50px"
+                w="100%"
+                p="20px 40px"
                 position="relative"
+                style={{ boxSizing: "border-box" }}
             >
-                <FlexColumn
-                    mw="750px"
-                    justifyContent="center"
-                    alignItems="start"
-                >
-                    <Text
-                        size={TEXT_SIZES.small.s}
-                        letterSpacing={LETTER_SPACING.s}
-                        weight={TEXT_WEIGHTS.medium}
-                        type={TEXT_TYPES.title}
-                        color={COLORS.warmGray}
+                <Desktop w="100%">
+                    <FlexColumn
+                        w="100%"
+                        justifyContent="center"
+                        position="relative"
                     >
-                        OUR WORK
-                    </Text>
-                    <Title
-                        size={TEXT_SIZES.large.l}
-                        color={COLORS.dark}
-                        weight={TEXT_WEIGHTS.medium}
+                        <FlexColumn
+                            mw="700px"
+                            justifyContent="center"
+                            alignItems="start"
+                            position="absolute"
+                            style={{ left: "28%" }}
+                        >
+                            <Text
+                                size={TEXT_SIZES.small.s}
+                                letterSpacing={LETTER_SPACING.s}
+                                weight={TEXT_WEIGHTS.medium}
+                                type={TEXT_TYPES.title}
+                                color={COLORS.warmGray}
+                            >
+                                OUR WORK
+                            </Text>
+                            <Text
+                                size={TEXT_SIZES.large.l}
+                                color={COLORS.dark}
+                                weight={TEXT_WEIGHTS.medium}
+                            >
+                                Creating digital products your clients fall in
+                                love with.
+                            </Text>
+                        </FlexColumn>
+                    </FlexColumn>
+                </Desktop>
+                <Mobile w="100%">
+                    <FlexColumn
+                        mw="700px"
+                        justifyContent="center"
+                        alignItems="start"
                     >
-                        Creating digital products your clients fall in love
-                        with.
-                    </Title>
-                </FlexColumn>
+                        <Text
+                            size={TEXT_SIZES.small.s}
+                            letterSpacing={LETTER_SPACING.s}
+                            weight={TEXT_WEIGHTS.medium}
+                            type={TEXT_TYPES.title}
+                            color={COLORS.warmGray}
+                        >
+                            OUR WORK
+                        </Text>
+                        <Text
+                            size={TEXT_SIZES.medium.xl}
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.medium}
+                            mobileSize={TEXT_SIZES.medium.s}
+                        >
+                            Creating digital products your clients fall in love
+                            with.
+                        </Text>
+                    </FlexColumn>
+                </Mobile>
+
                 <BgImage
                     src={BgImage1}
                     maxWidth={710}
                     top={-15}
-                    left={-54}
+                    right={70}
                     priority
-                    mobileTop={60}
-                    mobileLeft={-50}
+                    mobileTop={70}
+                    mobileLeft={-20}
                 />
-            </Adaptive>
+            </FlexColumn>
 
             {slides.length && (
                 <>

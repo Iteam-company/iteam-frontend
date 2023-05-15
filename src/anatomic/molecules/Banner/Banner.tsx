@@ -1,35 +1,14 @@
 import React from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import {
-    LETTER_SPACING,
-    Text,
-    TEXT_SIZES,
-    TEXT_TYPES,
-    TEXT_WEIGHTS,
-} from "@/anatomic/atoms/Text";
+import { TEXT_SIZES, Text } from "@/anatomic/atoms/Text";
 import { TEXT_CONTENT } from "@/lib/lang";
 import { TextTyping } from "@/anatomic/atoms/TextTyping";
 import { COLORS } from "@/lib/theme/color";
 
 export const Banner = () => {
     return (
-        <FlexColumn>
-            <Text
-                size={TEXT_SIZES.large.l}
-                letterSpacing={LETTER_SPACING.xl}
-                color={COLORS.dark}
-                weight={TEXT_WEIGHTS.bold}
-                type={TEXT_TYPES.title}
-            >
-                {TEXT_CONTENT.banner.text}
-            </Text>
+        <FlexColumn mw="778px" mh="200px" justifyContent="space-between">
             <TextTyping
-                textStyles={{
-                    size: TEXT_SIZES.large.l,
-                    letterSpacing: LETTER_SPACING.xl,
-                    color: COLORS.dark,
-                    weight: TEXT_WEIGHTS.bold,
-                }}
                 text={[
                     TEXT_CONTENT.banner.options[0],
                     TEXT_CONTENT.banner.options[1],
@@ -38,6 +17,11 @@ export const Banner = () => {
                     TEXT_CONTENT.banner.options[4],
                 ]}
             />
+            <Text size={TEXT_SIZES.medium.xs} color={COLORS.textThird}>
+                We offer a range of expert services to help you outsource your
+                IT needs, from single developer projects to complex multi-team
+                solutions.
+            </Text>
         </FlexColumn>
     );
 };
