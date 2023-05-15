@@ -54,7 +54,6 @@ export interface Props {
     letterSpacing?: string;
     mobileSize?: keyof typeof TEXT_SIZES | string;
     mobileLineHeight?: string;
-    boxShadow?: string;
 }
 
 export const enum LETTER_SPACING {

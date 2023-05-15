@@ -1,1 +1,1 @@
-export {ExploreWithIteam} from './ExploreWithIteam';
+export { ExploreWithIteam } from './ExploreWithIteam';

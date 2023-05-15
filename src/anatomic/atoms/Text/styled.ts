@@ -35,7 +35,6 @@ export const StyledText = styled.span<Props>`
     line-height: ${({ lineHeight }) => lineHeight || "auto"};
     font: ${({ font }) => font || "auto"};
     white-space: pre-line;
-   
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
         line-height: ${({ mobileLineHeight }) => mobileLineHeight};
@@ -55,7 +54,6 @@ export const StyledBlockText = styled.p<Props>`
     white-space: ${({ whiteSpace }) => whiteSpace || "auto"};
     line-height: ${({ lineHeight }) => lineHeight || "auto"};
     font: ${({ font }) => font || "auto"};
-    text-shadow: ${props => props.textShadow || 'none'}
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
         line-height: ${({ mobileLineHeight }) => mobileLineHeight};
