@@ -19,7 +19,6 @@ export const Text: FC<Props> = ({
     font,
     mobileSize,
     mobileLineHeight,
-    textShadow = 'none',
 }) => {
     if (type === TEXT_TYPES.title) {
         return (
@@ -84,7 +83,7 @@ export const Text: FC<Props> = ({
                 font={font}
                 mobileSize={mobileSize}
                 mobileLineHeight={mobileLineHeight}
-                textShadow={textShadow}
+               
             >
                 {children}
             </StyledBlockText>

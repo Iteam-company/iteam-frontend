@@ -45,7 +45,7 @@ const blocks = [
 
 export const ExploreWithIteam = () => {
     return (
-        <FlexColumn w="100%" justifyContent="center" alignItems="center" style={{cursor: 'pointer'}}>
+        <FlexColumn w="100%" justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
         <FlexColumn w="80%">
             <FlexColumn p='0 0 45px 0'>
             <Text
@@ -73,7 +73,6 @@ export const ExploreWithIteam = () => {
                                     size={TEXT_SIZES.medium.largeM}
                                     weight={TEXT_WEIGHTS.medium}
                                     color={COLORS.dark}
-                                    
                                     >
                                     {block.title}
                                 </Text>
