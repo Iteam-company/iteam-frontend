@@ -19,6 +19,7 @@ enum MEDIUM_TEXT_SIZES {
     xs = "20px",
     s = "22px",
     m = "24px",
+    largeM = '26px',
     l = "30px",
     xl = "32px",
 }
@@ -53,6 +54,7 @@ export interface Props {
     letterSpacing?: string;
     mobileSize?: keyof typeof TEXT_SIZES | string;
     mobileLineHeight?: string;
+    boxShadow?: string;
 }
 
 export const enum LETTER_SPACING {

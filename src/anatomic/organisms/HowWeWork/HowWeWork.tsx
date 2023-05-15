@@ -20,6 +20,7 @@ export const HowWeWork: FC<Props> = ({ data }) => {
     return (
         <FlexColumn w="100%" justifyContent="center" alignItems="center">
             <FlexColumn w="80%">
+          
                 <Text
                     size={TEXT_SIZES.medium.xs}
                     weight={TEXT_WEIGHTS.main}

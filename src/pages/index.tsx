@@ -9,6 +9,7 @@ import { useState, useCallback, useEffect } from "react";
 import { CoreValueInterface, HomeInterface } from "./api/home";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
+import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam";
 
 const Home = () => {
     const [data, setData] = useState<HomeInterface[]>([]);
@@ -53,11 +54,20 @@ const Home = () => {
                 <FlexColumn h="90vh" w="80%" justifyContent="center">
                     <Banner />
                 </FlexColumn>
-
+             
                 <HowWeWork data={data} />
+               
+                
             </FlexColumn>
-
+          
+           
+            <FlexColumn w='100%' style={{background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}}>
+            <ExploreWithIteam />
+            </FlexColumn>
+            
+          
             <OurCoreValues info={info} />
+            
 
             <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
                 <BookingForm />
