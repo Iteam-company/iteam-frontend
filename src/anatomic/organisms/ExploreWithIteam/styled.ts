@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { StaticImageData } from "next/image";
 import styled from "styled-components";
+import { StringLiteral } from "typescript";
 
 interface GridBoxProps {
     gridTemplateColumn?: string;
@@ -20,6 +22,11 @@ export const GridBox = styled.div<GridBoxProps>`
 interface BoxProps {
     bg?: string;
     backgroundImage?: string;
+}
+
+interface BoxForTextSpotProps {
+  t?: string;
+  l?: string;
 }
 
 export const Box = styled.div<BoxProps>`
@@ -44,13 +51,12 @@ export const Box = styled.div<BoxProps>`
   }
 }`
 
-export  const BoxForText = styled.div`
-  margin-top: 50px;
+export const BoxForText = styled.div`
+  margin-top: 28px;
   padding-left: 24px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 `
-
 
 export const BoxForPreview = styled.div`
   position: absolute;
@@ -58,13 +64,29 @@ export const BoxForPreview = styled.div`
   bottom: 30px;
   z-index: 2;
 `
-export const BoxForSpot = styled.div`
+
+export const BoxForSpot = styled.div<BoxForTextSpotProps>`
   background: rgba(241, 241, 241, 1);
   filter: blur(100px);
   width: 40%;
   height: 40%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: ${props => props.t || '30%'};
+  left: ${props => props.l || '30%'};
+  z-index: 2;
+`
+
+export const BoxHover = styled(motion.div)<BoxProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: ${props => props.backgroundImage || 'none'};
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  z-index: 3;
+  background-origin: context-box;
 `
