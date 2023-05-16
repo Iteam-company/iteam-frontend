@@ -97,10 +97,10 @@ export const ExploreWithIteam = () => {
                                     {block.link}
                                     </Link>
                                 </Text>
-                            <Image src={arrow} alt='arrow'/>
+                                <Image src={arrow} alt='arrow' style={{marginTop: '-10px'}}/>
                             </FlexColumn>
-                        </BoxForPreview>
-                        </FlexColumn>
+                                </BoxForPreview>
+                            </FlexColumn>
                         </BoxHover>
                         <BoxForSpot />
                         </Box>
