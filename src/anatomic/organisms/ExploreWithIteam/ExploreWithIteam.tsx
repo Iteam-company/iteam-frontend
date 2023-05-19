@@ -15,6 +15,7 @@ import exploreBackOnHover from '../../../assets/explore/backOnHover.png';
 import Image from "next/image";
 import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
+import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
 
 const blocks = [
     {
@@ -52,7 +53,7 @@ const blocks = [
 
 export const ExploreWithIteam = () => {
     return (
-        <FlexColumn w="100%" justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
+        <FlexColumn w="100%"  justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
             <FlexColumn w="80%">
                 <FlexColumn p='0 0 45px 0'>
                     <Text
@@ -74,7 +75,7 @@ export const ExploreWithIteam = () => {
                 {
                     blocks.map((block) => (
                         <Box key={block.title} backgroundImage={`url(${block.backgroundImg.src})`} bg='rgba(232, 186, 253, 0.55)'>
-                            <BoxHover  style={{opacity: 0}} whileHover={{opacity: 1, transition: {duration: 1}}}>
+                           <HoverBox>
                                 <FlexColumn justifyContent="space-between" h='100%'>
                                     <BoxForSpot t='10%' l='5%' />
                                         <BoxForText>
@@ -101,7 +102,7 @@ export const ExploreWithIteam = () => {
                             </FlexColumn>
                                 </BoxForPreview>
                             </FlexColumn>
-                        </BoxHover>
+                        </HoverBox>
                         <BoxForSpot />
                         </Box>
                     ))

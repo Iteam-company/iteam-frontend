@@ -21,6 +21,7 @@ export const GridBox = styled.div<GridBoxProps>`
     & {
       @media(max-width: 1024px) {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 525px);
       }
     }
 `
