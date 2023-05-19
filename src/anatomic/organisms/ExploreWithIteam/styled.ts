@@ -17,6 +17,12 @@ export const GridBox = styled.div<GridBoxProps>`
     grid-template-rows: ${props => props.gridTemplateRow || '1fr'};
     grid-column-gap: ${props => props.gridColumnGap || '0'};
     grid-row-gap: ${props => props.gridRowGap || '0'};
+
+    & {
+      @media(max-width: 1024px) {
+        grid-template-columns: 1fr;
+      }
+    }
 `
 
 interface BoxProps {

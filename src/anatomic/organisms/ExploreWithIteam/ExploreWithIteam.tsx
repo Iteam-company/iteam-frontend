@@ -74,7 +74,7 @@ export const ExploreWithIteam = () => {
                 {
                     blocks.map((block) => (
                         <Box key={block.title} backgroundImage={`url(${block.backgroundImg.src})`} bg='rgba(232, 186, 253, 0.55)'>
-                            <BoxHover backgroundImage={`url(${block.backgroundImageOnHover.src})`} style={{opacity: 0}} whileHover={{opacity: 1, transition: {duration: 1}}}>
+                            <BoxHover  style={{opacity: 0}} whileHover={{opacity: 1, transition: {duration: 1}}}>
                                 <FlexColumn justifyContent="space-between" h='100%'>
                                     <BoxForSpot t='10%' l='5%' />
                                         <BoxForText>
