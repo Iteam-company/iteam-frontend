@@ -71,7 +71,7 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                     justifyContent="center"
                                 >
                                     <LinkElem
-                                        href={data[5].href!}
+                                        href={data[5].href! || ''}
                                         linkText={data[5].title}
                                         active={data[5].href === activeRoute}
                                         textStyles={{
@@ -86,8 +86,8 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                         ) : (
                             <Button>
                                 <Link
-                                    href={data[5].href!}
-                                    linkText={data[5].title}
+                                    href={ ''}
+                                    linkText={''}
                                     textStyles={{
                                         textAlign: "center",
                                         color: COLORS.dark,
