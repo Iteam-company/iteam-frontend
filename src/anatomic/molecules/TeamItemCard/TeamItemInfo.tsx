@@ -7,17 +7,20 @@ import StarsIcon from "@/assets/icon/stars.svg";
 import TopIcon from "@/assets/icon/top.svg";
 import { Avatar } from "./styled";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
 
 export const TeamItemInfo: FC<{
-    avatar: string;
+    avatar: any;
     name: string;
     position: string;
 }> = ({ avatar, name, position }) => {
+    const { url } = avatar.data.attributes;
+
     return (
         <>
             <Desktop w="100%">
                 <FlexColumn gap="10px">
-                    <Avatar image={avatar} />
+                    <Avatar image={getStrapiImage(url)} />
                     <Text
                         weight={TEXT_WEIGHTS.medium}
                         color={COLORS.dark}
@@ -60,7 +63,7 @@ export const TeamItemInfo: FC<{
             <Mobile w="100%" alignItems="space-between">
                 <FlexRow gap="20px" w="90%" justifyContent="space-between">
                     <FlexColumn>
-                        <Avatar image={avatar} />
+                        <Avatar image={getStrapiImage(url)} />
                     </FlexColumn>
 
                     <FlexRow w="100%" gap="15px" justifyContent="space-between">

@@ -11,7 +11,6 @@ import React, {
 } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import checkIcon from "@/assets/icon/check.svg";
-import { ApproachInterface } from "@/pages/api/outstaffing";
 import {
     StepTitle,
     CircularProgressbarContainer,
@@ -22,12 +21,14 @@ import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import Image from "next/image";
+import { ApproachInterface } from "@/anatomic/organisms/OurApproach/utils";
 
 interface Props {
     approaches: ApproachInterface[];
+    title: string;
 }
 
-export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
+export const ApproachSlide: FC<Props> = ({ approaches = [], title }) => {
     const [currentApproachIndex, setCurrentApproachIndex] = useState<number>(0);
     const [percents, setPercents] = useState(approaches[0]?.progress || 0);
 
@@ -95,7 +96,7 @@ export const ApproachSlide: FC<Props> = ({ approaches = [] }) => {
                 weight={TEXT_WEIGHTS.medium}
                 size={TEXT_SIZES.medium.l}
             >
-                Our approach
+                {title}
             </Text>
             <FlexRow gap="90px" justifyContent="center" alignItems="center">
                 <FlexColumn mw="340px" ref={gsapRef} className="text-wrapper">

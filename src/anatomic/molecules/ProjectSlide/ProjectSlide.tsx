@@ -3,11 +3,11 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { ProjectsInterface, Technologies } from "@/pages/api/projects";
 import React, { FC } from "react";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
+import { ProjectsInterface, Technologies } from "@/pages/projects";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,
@@ -15,7 +15,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     description,
     location,
     budget,
-    tech,
+    technology,
     color,
 }) => {
     return (
@@ -72,7 +72,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                 </FlexRow>
 
                 <FlexRow gap="20px">
-                    {tech.map((el: Technologies, index) => (
+                    {technology.map((el: Technologies, index: number) => (
                         <FlexRow
                             justifyContent="center"
                             alignItems="center"

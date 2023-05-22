@@ -6,7 +6,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo } from "react";
 import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
@@ -20,33 +20,19 @@ import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
-import client from "@/axios";
-import { ApproachInterface, BenefitsInterface } from "./api/outstaffing";
 import { Card, FlexContainer, Img } from "@/lib/pageStyles/outstaffing";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { BgImage } from "@/anatomic/atoms/BgImage/";
 import { OurApproach } from "@/anatomic/organisms/OurApproach/OurApproach";
 import teamIcon from "@/assets/projects/teamIcon.svg";
 import { FitToViewport } from "react-fit-to-viewport";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
 
 const Outstaffing = () => {
-    const [approach, setApproach] = useState<ApproachInterface[]>([]);
-    const [benefits, setBenefits] = useState<BenefitsInterface[]>([]);
+    const [data, isLoading] = useStrapiData(Pages.outstaffing);
 
-    const getData = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/outstaffing");
-            setApproach(data.approach);
-            setBenefits(data.benefits);
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getData();
-    }, [getData]);
-
+    if (!data) return null;
     return (
         <FlexColumn
             w="100%"
@@ -67,17 +53,14 @@ const Outstaffing = () => {
                     size={TEXT_SIZES.large.xs}
                     type={TEXT_TYPES.title}
                 >
-                    Out-staffing with iTeam.
+                    {data.main.title}
                 </Text>
                 <Text
                     size={TEXT_SIZES.small.xl}
                     color={COLORS.textThird}
                     lineHeight="27px"
                 >
-                    Mobil-unity out-staffing solutions in Ukraine provide
-                    clients with access to a vast pool of talent at a cost
-                    nearly 60% cheaper than Western markets. You get a team
-                    built to your specification and for a fraction of the cost.
+                    {data.main.description}
                 </Text>
             </FlexColumn>
             <FlexColumn
@@ -98,7 +81,10 @@ const Outstaffing = () => {
                     priority
                 />
 
-                <OurApproach approaches={approach} />
+                <OurApproach
+                    title={data.approachTitle}
+                    approaches={data.approach}
+                />
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage
@@ -152,7 +138,7 @@ const Outstaffing = () => {
                             weight={TEXT_WEIGHTS.main}
                             color="272.07deg, #17092D 35.9%, #7232E0 100%"
                         >
-                            Benefits Of Having Dedicated Development Team
+                            {data.benefitsTitle}
                         </GradientTitle>
                     </FlexColumn>
 
@@ -162,7 +148,7 @@ const Outstaffing = () => {
                             width="100%"
                             maxWidth="975px"
                         >
-                            {benefits.map((item: BenefitsInterface) => (
+                            {data.benefits.map((item: BenefitsInterface) => (
                                 <SwiperSlide
                                     key={item.id}
                                     style={{
@@ -176,7 +162,7 @@ const Outstaffing = () => {
                                 >
                                     <BenefitsSlide
                                         title={item.title}
-                                        text={item.text}
+                                        description={item.description}
                                     />
                                 </SwiperSlide>
                             ))}
@@ -191,7 +177,7 @@ const Outstaffing = () => {
                             weight={TEXT_WEIGHTS.medium}
                             size={TEXT_SIZES.medium.xl}
                         >
-                            How We Helped Our Clients
+                            {data.helpingToClients.title}
                         </Text>
                         <Button
                             href="/projects"
@@ -203,7 +189,7 @@ const Outstaffing = () => {
                                     weight={TEXT_WEIGHTS.main}
                                     size={TEXT_SIZES.small.l}
                                 >
-                                    Visit Portfolio
+                                    {data.helpingToClients.button}
                                 </Text>
                             }
                         />
@@ -243,7 +229,7 @@ const Outstaffing = () => {
                     weight={TEXT_WEIGHTS.medium}
                     size={TEXT_SIZES.medium.xl}
                 >
-                    Check out our dedicated teams
+                    {data.teamTitle}
                 </Text>
 
                 <FlexColumn
@@ -262,18 +248,13 @@ const Outstaffing = () => {
                         >
                             <FlexColumn w="100%" h="100%" gap="40px">
                                 <FlexColumn gap="20px">
-                                    {[
-                                        "Angular Front End Developers",
-                                        "React Front End Developers",
-                                        "MERN Developers",
-                                        "MEAN Developers",
-                                    ].map((item, index) => (
+                                    {data.team.map((item: any) => (
                                         <Text
-                                            key={index}
+                                            key={item.id}
                                             color={COLORS.textThird}
                                             size={TEXT_SIZES.medium.xs}
                                         >
-                                            • {item}
+                                            • {item.text}
                                         </Text>
                                     ))}
                                 </FlexColumn>

@@ -1,7 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { ProjectsInterface } from "./api/projects";
-import client from "@/axios";
 import {
     LETTER_SPACING,
     Text,
@@ -16,15 +14,34 @@ import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
+
+export interface ProjectsInterface {
+    id?: number;
+    title: string;
+    description: string;
+    location: string;
+    budget: string;
+    technology: Technologies[];
+    color: string;
+    projectImg: any;
+    img?: any;
+}
+
+export interface Technologies {
+    icon: "react" | "ts" | "js" | "angular";
+    name: string;
+}
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
+    const [data, isLoading] = useStrapiData(Pages.portfolio);
 
-    const getProject = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/projects");
+    useEffect(() => {
+        data &&
             setSlides(
-                data.map((item: ProjectsInterface) => ({
+                data.projects.map((item: ProjectsInterface) => ({
                     content: (
                         <Slide
                             id={item.id}
@@ -32,22 +49,15 @@ const Projects = () => {
                             description={item.description}
                             location={item.location}
                             budget={item.budget}
-                            tech={item.tech}
+                            technology={item.technology}
                             color={item.color}
-                            img={item.img}
+                            projectImg={item.projectImg}
                         />
                     ),
-                    image: item.img,
+                    image: getStrapiImage(item.projectImg.data.attributes.url),
                 })),
             );
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getProject();
-    }, []);
+    }, [data?.projects]);
 
     return (
         <FlexColumn
