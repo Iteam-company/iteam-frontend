@@ -4,16 +4,19 @@ import styled from "styled-components";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { ImplementSlide } from "@/anatomic/molecules/ImplementSlide";
 import { SwiperSlide } from "swiper/react";
-import { AppsInterface } from "@/pages/api/outsourcing";
 import { COLORS } from "@/lib/theme/color";
-
+export interface AppsInterface {
+    step: number;
+    title: string;
+    text: string;
+}
 interface Props {
     apps: AppsInterface[];
 }
 
 export const AppsImplement: FC<Props> = memo(({ apps }) => {
     const swiperRef = useRef<any>(null);
-    const [activeIndex, setActiveIndex] = useState(1);
+    const [activeIndex, setActiveIndex] = useState(2);
 
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
@@ -44,38 +47,37 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                 : setActiveIndex(activeIndex - 1);
                         }}
                     >
-                        {apps &&
-                            apps.map((item: any, index) => (
-                                <SwiperSlide
-                                    key={item.step}
-                                    style={{
-                                        transition: "0.3s all",
-                                        borderRadius: "16px",
-                                        minHeight: "300px",
-                                        background: COLORS.white,
-                                        transform:
-                                            activeIndex == index + 1
-                                                ? "scale(1)"
-                                                : "scale(0.9)",
-                                        height:
-                                            activeIndex == index + 1
-                                                ? "400px"
-                                                : "200px",
-                                        boxSizing: "content-box",
-                                        boxShadow:
-                                            activeIndex == index + 1
-                                                ? "0px 4px 20px 0px #904FD1"
-                                                : "0px 4px 20px rgba(37, 7, 67, 0.37)",
-                                    }}
-                                >
-                                    <ImplementSlide
-                                        title={item.title}
-                                        text={item.text}
-                                        step={item.step}
-                                        isActive={activeIndex == index + 1}
-                                    />
-                                </SwiperSlide>
-                            ))}
+                        {apps.map((item: any, index) => (
+                            <SwiperSlide
+                                key={item.step}
+                                style={{
+                                    transition: "0.3s all",
+                                    borderRadius: "16px",
+                                    minHeight: "300px",
+                                    background: COLORS.white,
+                                    transform:
+                                        activeIndex == index + 1
+                                            ? "scale(1)"
+                                            : "scale(0.9)",
+                                    height:
+                                        activeIndex == index + 1
+                                            ? "400px"
+                                            : "200px",
+                                    boxSizing: "content-box",
+                                    boxShadow:
+                                        activeIndex == index + 1
+                                            ? "0px 4px 20px 0px #904FD1"
+                                            : "0px 4px 20px rgba(37, 7, 67, 0.37)",
+                                }}
+                            >
+                                <ImplementSlide
+                                    title={item.title}
+                                    text={item.text}
+                                    step={item.step}
+                                    isActive={activeIndex == index + 1}
+                                />
+                            </SwiperSlide>
+                        ))}
                     </HorizontalSwiperElem>
                 </FlexColumn>
             </Desktop>
@@ -96,25 +98,24 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                         slidesPerView={1}
                         spaceBetween={60}
                     >
-                        {apps &&
-                            apps.map((item: any) => (
-                                <SwiperSlide
-                                    key={item.step}
-                                    style={{
-                                        borderRadius: "16px",
-                                        minHeight: "300px",
-                                        background: COLORS.white,
-                                        boxShadow:
-                                            "0px 4px 20px rgba(37, 7, 67, 0.37)",
-                                    }}
-                                >
-                                    <ImplementSlide
-                                        title={item.title}
-                                        text={item.text}
-                                        step={item.step}
-                                    />
-                                </SwiperSlide>
-                            ))}
+                        {apps.map((item: AppsInterface) => (
+                            <SwiperSlide
+                                key={item.step}
+                                style={{
+                                    borderRadius: "16px",
+                                    minHeight: "300px",
+                                    background: COLORS.white,
+                                    boxShadow:
+                                        "0px 4px 20px rgba(37, 7, 67, 0.37)",
+                                }}
+                            >
+                                <ImplementSlide
+                                    title={item.title}
+                                    text={item.text}
+                                    step={item.step}
+                                />
+                            </SwiperSlide>
+                        ))}
                     </HorizontalSwiperElem>
                 </FlexColumn>
             </Mobile>

@@ -13,8 +13,12 @@ import { COLORS } from "@/lib/theme/color";
 import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
+import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 
 const ContactUs = () => {
+    const [data, isLoading] = useStrapiData(Pages.contactUs);
+
+    if (!data) return null;
     return (
         <FlexColumn
             w="100%"
@@ -36,11 +40,10 @@ const ContactUs = () => {
                     weight={TEXT_WEIGHTS.medium}
                     type={TEXT_TYPES.title}
                 >
-                    Contact Us
+                    {data.main.title}
                 </Text>
                 <Text color={COLORS.textThird} size={TEXT_SIZES.medium.xs}>
-                    Feel free to write and call us. We really love to
-                    communicate with our clients.
+                    {data.main.description}
                 </Text>
             </FlexColumn>
             <FlexColumn
@@ -51,7 +54,7 @@ const ContactUs = () => {
             >
                 <AdaptiveElem gap="80px" justifyContent="center">
                     <FormElem />
-                    <Info />
+                    <Info {...data.contact} />
                 </AdaptiveElem>
 
                 <BgImage

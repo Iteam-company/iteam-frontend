@@ -1,7 +1,5 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { TeamInterface } from "./api/team";
-import { memo, useCallback, useEffect, useState } from "react";
-import client from "@/axios";
+import { memo, useEffect, useState } from "react";
 import {
     TEXT_SIZES,
     LETTER_SPACING,
@@ -9,31 +7,47 @@ import {
     Text,
     TEXT_TYPES,
 } from "@/anatomic/atoms/Text";
-import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { COLORS } from "@/lib/theme/color";
 import { Title } from "@/lib/pageStyles/teamStyles";
 import { SmoothSlider } from "@/anatomic/organisms/SmoothSlider";
-import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { TeamItem } from "@/anatomic/molecules/TeamItemCard";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
+
+export interface TeamInterface {
+    id?: number;
+    name: string;
+    avatar?: any;
+    position: string;
+    comments?: CommentsI[];
+    technology?: Technology[];
+    experience: { position: string; year: number };
+    rate: number;
+}
+
+export interface Technology {
+    text: string;
+    short: string;
+    id: number;
+}
 
 const Team = () => {
-    const [team, setTeam] = useState<SlideInterface[]>([]);
+    const [team, setTeam] = useState<any>([]);
+    const [data, isLoading] = useStrapiData(Pages.company);
 
-    const getTeam = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/team");
-
+    useEffect(() => {
+        data &&
             setTeam(
-                data.map((item: TeamInterface) => ({
+                data.team.map((item: TeamInterface) => ({
                     content: (
                         <TeamItem
                             key={item.id}
-                            avatar={item.avatar.src}
+                            avatar={item.avatar}
                             name={item.name}
                             position={item.position}
                             technology={item.technology}
@@ -44,14 +58,7 @@ const Team = () => {
                     ),
                 })),
             );
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getTeam();
-    }, []);
+    }, [data?.team]);
 
     return (
         <FlexColumn
@@ -64,19 +71,20 @@ const Team = () => {
                 overflow: "hidden",
             }}
         >
-            <Adaptive
+            <FlexColumn
                 h="calc(100vh - 100px)"
+                w="90%"
                 justifyContent="center"
-                alignItems="center"
+                alignItems="start"
                 position="relative"
             >
                 <BgImage
                     src={BgImage1}
                     maxWidth={710}
-                    right={-60}
+                    right={-30}
                     top={34}
-                    mobileTop={56}
-                    mobileRight={-60}
+                    mobileTop={60}
+                    mobileRight={-40}
                     priority
                 />
                 <FlexColumn justifyContent="center" alignItems="start">
@@ -87,7 +95,7 @@ const Team = () => {
                         type={TEXT_TYPES.title}
                         color={COLORS.warmGray}
                     >
-                        OUR TEAM
+                        {data?.main.title}
                     </Text>
                     <Title
                         size={TEXT_SIZES.large.m}
@@ -95,13 +103,11 @@ const Team = () => {
                         weight={TEXT_WEIGHTS.medium}
                         mobileSize={TEXT_SIZES.medium.xs}
                     >
-                        We are a group of brilliant minds and exceptional
-                        talents who promote the values of effective
-                        communication and process transparency.
+                        {data?.main.description}
                     </Title>
                 </FlexColumn>
-            </Adaptive>
-            {team.length && (
+            </FlexColumn>
+            {team?.length && (
                 <>
                     <Desktop>
                         <SmoothSlider

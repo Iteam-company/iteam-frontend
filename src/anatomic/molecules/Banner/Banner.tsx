@@ -1,43 +1,27 @@
-import React from "react";
+import React, { FC } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import {
-    LETTER_SPACING,
-    Text,
-    TEXT_SIZES,
-    TEXT_TYPES,
-    TEXT_WEIGHTS,
-} from "@/anatomic/atoms/Text";
-import { TEXT_CONTENT } from "@/lib/lang";
+import { TEXT_SIZES, Text } from "@/anatomic/atoms/Text";
 import { TextTyping } from "@/anatomic/atoms/TextTyping";
 import { COLORS } from "@/lib/theme/color";
+interface PropsI {
+    main: {
+        text: TextI[];
+        description: string;
+    };
+}
+export interface TextI {
+    text: string;
+}
 
-export const Banner = () => {
+export const Banner: FC<PropsI> = ({ main }) => {
+    const optionList = main.text.map((item: TextI) => item.text);
+
     return (
-        <FlexColumn>
-            <Text
-                size={TEXT_SIZES.large.l}
-                letterSpacing={LETTER_SPACING.xl}
-                color={COLORS.dark}
-                weight={TEXT_WEIGHTS.bold}
-                type={TEXT_TYPES.title}
-            >
-                {TEXT_CONTENT.banner.text}
+        <FlexColumn mw="778px" mh="200px" justifyContent="space-between">
+            <TextTyping text={optionList} />
+            <Text size={TEXT_SIZES.medium.xs} color={COLORS.textThird}>
+                {main.description}
             </Text>
-            <TextTyping
-                textStyles={{
-                    size: TEXT_SIZES.large.l,
-                    letterSpacing: LETTER_SPACING.xl,
-                    color: COLORS.dark,
-                    weight: TEXT_WEIGHTS.bold,
-                }}
-                text={[
-                    TEXT_CONTENT.banner.options[0],
-                    TEXT_CONTENT.banner.options[1],
-                    TEXT_CONTENT.banner.options[2],
-                    TEXT_CONTENT.banner.options[3],
-                    TEXT_CONTENT.banner.options[4],
-                ]}
-            />
         </FlexColumn>
     );
 };

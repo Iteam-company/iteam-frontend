@@ -2,6 +2,7 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import {
+    AppsInterface,
     Desktop,
     Mobile,
 } from "@/anatomic/organisms/AppsImplement/AppsImplement";
@@ -10,13 +11,12 @@ import { motion } from "framer-motion";
 import React, { FC } from "react";
 import styled from "styled-components";
 
-interface Props {
-    title: string;
-    step: string;
-    text: string;
-    isActive?: boolean;
-}
-export const ImplementSlide: FC<Props> = ({ title, step, text, isActive }) => {
+export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
+    title,
+    step,
+    text,
+    isActive,
+}) => {
     return (
         <FlexColumn
             h="100%"

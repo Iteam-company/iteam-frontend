@@ -10,14 +10,14 @@ import arrowIcon from "@/assets/icon/down-arrow.svg";
 import { COLORS } from "@/lib/theme/color";
 import { Container, Icon, LinkElem, Menu, Title } from "./styled";
 
-interface Options {
+export interface OptionsI {
     option: string;
     href: string;
 }
 
 interface Props {
     title: string;
-    options: Options[];
+    options: OptionsI[];
     activeRoute?: string;
 }
 

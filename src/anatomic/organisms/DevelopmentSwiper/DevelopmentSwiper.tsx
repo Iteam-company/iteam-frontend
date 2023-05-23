@@ -1,9 +1,9 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import React, { FC, memo } from "react";
 import styled from "styled-components";
-import { InfoInterface } from "@/pages/api/technologies";
 import { DevelopmentDesktop } from "./DevelopmentDesktop";
 import { DevelopmentMobile } from "./DevelopmentMobile";
+import { InfoInterface } from "@/pages/development";
 
 export interface TechnologiesProps {
     technologies: InfoInterface[];

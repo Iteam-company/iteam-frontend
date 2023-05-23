@@ -8,14 +8,12 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { NAV_LINKS } from "./util";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { LinkElem } from "./styledMobile";
 import { useRouter } from "next/router";
+import { HeaderI, HeaderLinksI } from "./utils";
 
-export const MobileComponent: FC<{ activeRoute: string }> = ({
-    activeRoute,
-}) => {
+export const MobileComponent: FC<HeaderI> = ({ activeRoute, data = [] }) => {
     const [open, setOpen] = useState(false);
     const { asPath } = useRouter();
 
@@ -56,15 +54,8 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                     zIndex="1000"
                     style={{ top: "70px", boxSizing: "border-box" }}
                 >
-                    {NAV_LINKS.map((item) =>
-                        item.options ? (
-                            <DropdownMobile
-                                key={item.id}
-                                title={item.title}
-                                activeRoute={activeRoute}
-                                options={item.options}
-                            />
-                        ) : (
+                    {data.map((item: HeaderLinksI) =>
+                        item.href ? (
                             <FlexRow
                                 position="relative"
                                 alignItems="center"
@@ -83,6 +74,15 @@ export const MobileComponent: FC<{ activeRoute: string }> = ({
                                     active={item.href === activeRoute}
                                 />
                             </FlexRow>
+                        ) : (
+                            item.options && (
+                                <DropdownMobile
+                                    key={item.id}
+                                    title={item.title}
+                                    activeRoute={activeRoute}
+                                    options={item.options}
+                                />
+                            )
                         ),
                     )}
                 </FlexColumn>

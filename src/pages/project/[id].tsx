@@ -1,11 +1,9 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { SwiperSlide } from "swiper/react";
-import client from "@/axios";
 import { useRouter } from "next/router";
-import { ProjectItemInterface, SolutionInterface } from "../api/project-item";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Divider } from "@/lib/pageStyles/projectItem";
@@ -19,29 +17,44 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.svg";
 import styled from "styled-components";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { TextI } from "@/anatomic/molecules/Banner/Banner";
+
+export interface ProjectItemInterface {
+    id: number;
+    title: string;
+    description: string;
+    location: string;
+    budget: string;
+    solution: SolutionInterface[];
+    result: ResultInterface;
+    tech: Technologies[];
+    color: string;
+    img: any;
+}
+
+export interface Technologies {
+    icon: "react" | "ts" | "js" | "angular";
+    name: string;
+}
+
+export interface SolutionInterface {
+    title: string;
+    text: TextI[];
+}
+
+export interface ResultInterface {
+    title: string;
+    text: TextI[];
+}
 
 const Project = () => {
     const router = useRouter();
     const { id } = router.query;
-    const [project, setProject] = useState<ProjectItemInterface>();
 
-    const getProject = useCallback(
-        async (id: string) => {
-            try {
-                const { data } = await client.get(`/api/project-item?id=${id}`);
-                setProject(data);
-            } catch (err) {
-                console.log(err);
-            }
-        },
-        [id],
+    const [data, isLoading] = useStrapiData(
+        `${Pages.projectItemDetails}/${id}`,
     );
-
-    useEffect(() => {
-        if (id != undefined) {
-            getProject(id as string);
-        }
-    }, [id]);
 
     return (
         <Container
@@ -85,7 +98,7 @@ const Project = () => {
                 priority
             />
 
-            {project && (
+            {data?.projectDetail && (
                 <FlexColumn
                     w="100%"
                     alignItems="center"
@@ -93,7 +106,7 @@ const Project = () => {
                     gap="40px"
                     style={{ boxSizing: "border-box" }}
                 >
-                    <ProjectItemInfo {...project} />
+                    <ProjectItemInfo {...data.projectDetail} />
 
                     <FlexColumn
                         w="100%"
@@ -127,8 +140,11 @@ const Project = () => {
                         </FlexColumn>
                         <Desktop w="100%" mw="1068px" zIndex="2">
                             <FlexRow justifyContent="space-between" w="100%">
-                                {project.solution.map(
-                                    (item: SolutionInterface, index) => (
+                                {data.projectDetail.solution?.map(
+                                    (
+                                        item: SolutionInterface,
+                                        index: number,
+                                    ) => (
                                         <FlexColumn
                                             bg={COLORS.white}
                                             style={{
@@ -154,15 +170,18 @@ const Project = () => {
                                                 </Text>
                                             </FlexRow>
                                             <FlexColumn gap="8px">
-                                                {item.text.map(
-                                                    (elem, index) => (
+                                                {item?.text.map(
+                                                    (
+                                                        elem: TextI,
+                                                        index: number,
+                                                    ) => (
                                                         <Text
                                                             key={index}
                                                             color={
                                                                 COLORS.textPrimary
                                                             }
                                                         >
-                                                            • {elem}
+                                                            • {elem.text}
                                                         </Text>
                                                     ),
                                                 )}
@@ -187,8 +206,11 @@ const Project = () => {
                                 navigation={false}
                                 pagination={true}
                             >
-                                {project.solution.map(
-                                    (item: SolutionInterface, index) => (
+                                {data?.projectDetail?.solution.map(
+                                    (
+                                        item: SolutionInterface,
+                                        index: number,
+                                    ) => (
                                         <SwiperSlide
                                             key={index}
                                             style={{
@@ -227,14 +249,17 @@ const Project = () => {
                                                 </FlexRow>
                                                 <FlexColumn gap="8px">
                                                     {item.text.map(
-                                                        (elem, index) => (
+                                                        (
+                                                            elem: TextI,
+                                                            index: number,
+                                                        ) => (
                                                             <Text
                                                                 key={index}
                                                                 color={
                                                                     COLORS.textPrimary
                                                                 }
                                                             >
-                                                                • {elem}
+                                                                • {elem.text}
                                                             </Text>
                                                         ),
                                                     )}
@@ -274,17 +299,17 @@ const Project = () => {
                                         weight={TEXT_WEIGHTS.medium}
                                         mobileSize={TEXT_SIZES.small.l}
                                     >
-                                        {project.result.title}
+                                        {data?.projectDetail.result.title}
                                     </Text>
                                     <FlexColumn gap="10px">
-                                        {project.result.text.map(
-                                            (elem, index) => (
+                                        {data.projectDetail.result.text.map(
+                                            (elem: TextI, index: number) => (
                                                 <Text
                                                     size={TEXT_SIZES.small.m}
                                                     key={index}
                                                     color={COLORS.textThird}
                                                 >
-                                                    • {elem}
+                                                    • {elem.text}
                                                 </Text>
                                             ),
                                         )}
@@ -330,7 +355,7 @@ const Project = () => {
                         </Text>
                         <Button
                             href="/contact_us"
-                            gradient={project.color}
+                            gradient={data.projectDetail.color}
                             variant={BUTTON_VARIANTS.gradient_link}
                             label={
                                 <Text

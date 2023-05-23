@@ -2,7 +2,6 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { SideChevron } from "@/anatomic/atoms/SideChevron";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { CoreValueInterface } from "@/pages/api/home";
 import React, { FC } from "react";
 import {
     Container,
@@ -12,12 +11,29 @@ import {
     Dot,
     Mobile,
 } from "./styled";
+import Image from "next/image";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
 
 interface Props {
-    info: CoreValueInterface[];
+    coreValue: CoreValueInterface;
+}
+interface CoreValueInterface {
+    image: any;
+    title: string;
+    value: ValueInterface[];
+}
+interface ValueInterface {
+    id: string;
+    title: string;
+    text: string;
+    step: string;
 }
 
-export const OurCoreValues: FC<Props> = ({ info = [] }) => {
+export const OurCoreValues: FC<Props> = ({ coreValue }) => {
+    if (!coreValue) return null;
+
+    const { url, width, height } = coreValue?.image.data.attributes;
+
     return (
         <Container
             p="110px 20px"
@@ -32,16 +48,27 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
                 weight={TEXT_WEIGHTS.medium}
                 color={COLORS.textPrimary}
             >
-                Our Core Values
+                {coreValue.title}
             </Text>
-            <Desktop>
+            <Desktop w="100%" alignItems="center" gap="32px" mw="1200px">
+                <Image
+                    src={getStrapiImage(url)}
+                    width={width}
+                    height={height}
+                    alt="iteam"
+                    style={{
+                        height: "auto",
+                        width: "90%",
+                        paddingTop: "40px",
+                    }}
+                />
+
                 <FlexRow
                     w="100%"
-                    mw="926px"
                     p="0 20px"
                     style={{ boxSizing: "border-box" }}
                 >
-                    {info.map((item) => (
+                    {coreValue.value.map((item: ValueInterface) => (
                         <FlexColumn
                             key={item.id}
                             justifyContent="center"
@@ -49,14 +76,6 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
                             w="50%"
                             gap="20px"
                         >
-                            <GradientText
-                                weight={TEXT_WEIGHTS.medium}
-                                size="200px"
-                                lineHeight="200px"
-                                color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
-                            >
-                                {item.letter}
-                            </GradientText>
                             <FlexColumn
                                 w="100%"
                                 position="relative"
@@ -103,7 +122,7 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
                     alignItems="center"
                     style={{ boxSizing: "border-box", overflow: "hidden" }}
                 >
-                    {info.map((item) => (
+                    {coreValue.value.map((item: ValueInterface) => (
                         <FlexRow
                             key={item.id}
                             justifyContent="space-evenly"
@@ -124,7 +143,7 @@ export const OurCoreValues: FC<Props> = ({ info = [] }) => {
                                     textAlign="center"
                                     color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
                                 >
-                                    {item.letter}
+                                    {item.step}
                                 </GradientText>
                             </FlexColumn>
 

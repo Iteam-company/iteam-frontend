@@ -13,13 +13,15 @@ export const TEXT_CONTENT = {
         contact_us: "Contact Us",
     },
     banner: {
-        text: "Here at All Front, we always",
         options: [
-            "test out work.",
-            "put your users first.",
-            "make you feel at easy.",
-            "deliver on time.",
-            "strive of simplicity.",
+            "Innovative solutions, powered by ITeam.",
+            "Unleashing the potential of technology.",
+            "Technology made simple - with ITeam by your side.",
+            "Maximizing your tech potential.",
+            "The future of technology, today.",
+            "Innovate, transform, and grow.",
+            "Your ultimate IT partner - ITeam delivers.",
+            "Unlock the power of digital - with ITeam's cutting-edge solutions.",
         ],
     },
 };

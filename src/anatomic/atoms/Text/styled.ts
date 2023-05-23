@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TEXT_SIZES, TEXT_WEIGHTS, Props } from "./util";
 
 export const StyledTitle = styled.h1<Props>`
+    white-space: pre-line;
     font-size: ${({ size }) => size || TEXT_SIZES.medium.l};
     color: ${({ color }) => color || COLORS.dark};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.medium};
@@ -22,6 +23,7 @@ export const StyledTitle = styled.h1<Props>`
 `;
 
 export const StyledText = styled.span<Props>`
+    white-space: pre-line;
     font-size: ${({ size }) => size || TEXT_SIZES.small.l};
     color: ${({ color }) => color || COLORS.gray};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};
@@ -42,6 +44,7 @@ export const StyledText = styled.span<Props>`
 `;
 
 export const StyledBlockText = styled.p<Props>`
+    white-space: pre-line;
     font-size: ${({ size }) => size || TEXT_SIZES.small.l};
     color: ${({ color }) => color || COLORS.gray};
     font-weight: ${({ weight }) => weight || TEXT_WEIGHTS.normal};

@@ -1,5 +1,4 @@
 import React, { FC, memo } from "react";
-import { TeamInterface } from "@/pages/api/team";
 import { COLORS } from "@/lib/theme/color";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES } from "@/anatomic/atoms/Text";
@@ -8,6 +7,7 @@ import { CommentSlider } from "./CommentSlider";
 import UpWorkLink from "@/assets/icon/upWorkLink.svg";
 import { TeamItemCard } from "./TeamItemCard";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
+import { TeamInterface } from "@/pages/team";
 
 export const TeamItem: FC<TeamInterface> = memo(
     ({ name, avatar, position, technology, comments, experience, rate }) => {

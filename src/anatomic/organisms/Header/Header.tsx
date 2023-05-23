@@ -2,18 +2,20 @@ import { Component } from "@/anatomic/organisms/Header/Component";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { MobileComponent } from "./MobileComponent";
+import { FC } from "react";
+import { PropsI } from "./utils";
 
-export const Header = ({}) => {
+export const Header: FC<PropsI> = ({ data = [] }) => {
     const activeRoute = useRouter().asPath;
 
     return (
         <>
             <Mobile>
-                <MobileComponent activeRoute={activeRoute} />
+                <MobileComponent activeRoute={activeRoute} data={data} />
             </Mobile>
 
             <Desktop>
-                <Component activeRoute={activeRoute} />
+                <Component activeRoute={activeRoute} data={data} />
             </Desktop>
         </>
     );

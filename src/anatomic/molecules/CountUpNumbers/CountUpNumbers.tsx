@@ -1,22 +1,13 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
+import { NumbersInterface } from "@/pages/outsourcing";
 import React, { FC } from "react";
 import CountUp from "react-countup";
 
-interface Props {
-    title: number;
-    subTitle?: string;
-    text: string;
-    isNumbersInView: boolean;
-}
-
-export const CountUpNumbers: FC<Props> = ({
-    title,
-    subTitle,
-    text,
-    isNumbersInView,
-}) => {
+export const CountUpNumbers: FC<
+    NumbersInterface & { isNumbersInView: boolean }
+> = ({ title, subTitle, text, isNumbersInView }) => {
     return (
         <FlexColumn
             justifyContent="center"
@@ -29,7 +20,7 @@ export const CountUpNumbers: FC<Props> = ({
                 size={TEXT_SIZES.large.m}
                 color={COLORS.textPrimary}
             >
-                {isNumbersInView && <CountUp end={title} duration={3} />}
+                {isNumbersInView && <CountUp end={title} duration={2} />}
                 {subTitle}
             </Text>
             <Text
