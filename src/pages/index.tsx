@@ -7,6 +7,7 @@ import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam/ExploreWithIteam";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
@@ -43,6 +44,10 @@ const Home = () => {
                 </FlexColumn>
 
                 <HowWeWork howWeWork={data?.howWeWork} />
+            </FlexColumn>
+            
+            <FlexColumn w='100%' style={{background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}}>
+            <ExploreWithIteam />
             </FlexColumn>
 
             <OurCoreValues coreValue={data?.coreValues} />
