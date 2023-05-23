@@ -110,8 +110,8 @@ export const Line = styled(FlexColumn)<{ step: string }>`
     width: 4px;
     z-index: 5;
     background-color: ${COLORS.brightPurple};
-    top: ${({ step }) => !(+step % 2) && "50px"};
-    bottom: ${({ step }) => +step % 2 && "50px"};
+    top: ${({ step }) => (+step % 2) ? "50px": ""};
+    bottom: ${({ step }) => !(+step % 2) ? "50px" : ""};
     @media all and (max-width: 1050px) and (min-width: 751px) {
         height: 20px;
     }
