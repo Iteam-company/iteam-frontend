@@ -1,7 +1,6 @@
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { Technology } from "@/pages/api/team";
 import React, { FC } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
@@ -13,6 +12,7 @@ import {
     GradientElem,
     GradientElemContent,
 } from "./styled";
+import { Technology } from "@/pages/team";
 
 interface Props {
     technology?: Technology[];

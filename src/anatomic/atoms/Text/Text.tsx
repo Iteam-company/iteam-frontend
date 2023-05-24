@@ -60,6 +60,7 @@ export const Text: FC<Props> = ({
                 font={font}
                 mobileSize={mobileSize}
                 mobileLineHeight={mobileLineHeight}
+             
             >
                 {children}
             </StyledText>
@@ -82,6 +83,7 @@ export const Text: FC<Props> = ({
                 font={font}
                 mobileSize={mobileSize}
                 mobileLineHeight={mobileLineHeight}
+                
             >
                 {children}
             </StyledBlockText>

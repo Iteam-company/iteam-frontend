@@ -4,30 +4,15 @@ import BgImage1 from "@/assets/bgImage/home/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
-import client from "@/axios";
-import { useState, useCallback, useEffect } from "react";
-import { CoreValueInterface, HomeInterface } from "./api/home";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
+import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam/ExploreWithIteam";
 
 const Home = () => {
-    const [data, setData] = useState<HomeInterface[]>([]);
-    const [info, setInfo] = useState<CoreValueInterface[]>([]);
+    const [data, isLoading] = useStrapiData(Pages.homepage);
 
-    const getData = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/home");
-            setData(data.data);
-            setInfo(data.info);
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getData();
-    }, []);
-
+    if (!data) return null;
     return (
         <FlexColumn
             alignItems="center"
@@ -55,13 +40,17 @@ const Home = () => {
                     w="90%"
                     justifyContent="center"
                 >
-                    <Banner />
+                    <Banner main={data?.main} />
                 </FlexColumn>
 
-                <HowWeWork data={data} />
+                <HowWeWork howWeWork={data?.howWeWork} />
+            </FlexColumn>
+            
+            <FlexColumn w='100%' style={{background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}}>
+            <ExploreWithIteam  data={data?.exploreWithIteam}/>
             </FlexColumn>
 
-            <OurCoreValues info={info} />
+            <OurCoreValues coreValue={data?.coreValues} />
 
             <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
                 <BookingForm />

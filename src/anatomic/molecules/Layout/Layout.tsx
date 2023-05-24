@@ -7,6 +7,7 @@ import { ButtonUp } from "../ButtonUp";
 import { StyledLayout } from "./styled";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useDelayedScroll } from "@/hooks/useDelayedScroll";
+import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 
 interface Props {
     children: ReactNode;
@@ -14,11 +15,13 @@ interface Props {
 
 export const Layout: FC<Props> = ({ children }) => {
     useDelayedScroll();
+    const [data, isLoading] = useStrapiData(Pages.headerFooter);
+    if (!data) return null;
 
     return (
         <StyledLayout>
             <LogoAnimation />
-            <Header />
+            <Header data={data.header} />
             <main>
                 <FlexColumn
                     w="100%"
@@ -30,7 +33,12 @@ export const Layout: FC<Props> = ({ children }) => {
                 </FlexColumn>
             </main>
             <ButtonUp />
-            <Footer />
+            <Footer
+                data={data.footer}
+                title={data.info}
+                socialMedia={data.socialMedia}
+                footerText={data.footerText}
+            />
         </StyledLayout>
     );
 };

@@ -4,10 +4,10 @@ import { COLORS } from "@/lib/theme/color";
 import React, { FC } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import checkIcon from "@/assets/icon/check.svg";
-import { ApproachInterface } from "@/pages/api/outstaffing";
 import { StepTitle, CircularProgressbarContainer, Container } from "./styled";
 import { GradientTitle } from "@/anatomic/atoms/GradientTitle";
 import Image from "next/image";
+import { ApproachInterface } from "@/anatomic/organisms/OurApproach/utils";
 
 interface ProgressInterface {
     [key: number]: number;
@@ -20,19 +20,16 @@ const PROGRESS: ProgressInterface = {
     4: 100,
 };
 
-export const ApproachSlideMobile: FC<ApproachInterface> = ({
-    step,
-    title,
-    text,
-    color,
-}) => (
+export const ApproachSlideMobile: FC<
+    ApproachInterface & { sectionTitle: string }
+> = ({ step, title, text, color, sectionTitle }) => (
     <FlexColumn alignItems="center" gap="30px" p="20px" position="relative">
         <Text
             color={COLORS.textPrimary}
             weight={TEXT_WEIGHTS.medium}
             size={TEXT_SIZES.medium.m}
         >
-            Our approach
+            {sectionTitle}
         </Text>
 
         <FlexRow

@@ -1,9 +1,3 @@
-import {
-    REACT_APP_SMTP_HOST,
-    REACT_APP_SMTP_PASSWORD,
-    REACT_APP_SMTP_PORT,
-    REACT_APP_SMTP_USER,
-} from "env";
 import { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 
@@ -13,19 +7,19 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
     console.log(req.body, "!!!");
 
     const transporter = nodemailer.createTransport({
-        host: REACT_APP_SMTP_HOST,
-        port: REACT_APP_SMTP_PORT,
+        host: process.env.REACT_APP_SMTP_HOST,
+        port: process.env.REACT_APP_SMTP_PORT,
         secure: true,
         auth: {
-            user: REACT_APP_SMTP_USER,
-            pass: REACT_APP_SMTP_PASSWORD,
+            user: process.env.REACT_APP_SMTP_USER,
+            pass: process.env.REACT_APP_SMTP_PASSWORD,
         },
-    });
+    } as { host: string });
 
     transporter.sendMail(
         {
             from: `${name} <${email}>`,
-            to: REACT_APP_SMTP_USER,
+            to: process.env.REACT_APP_SMTP_USER,
             text: comments,
             subject,
         },

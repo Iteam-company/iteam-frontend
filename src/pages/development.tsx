@@ -6,32 +6,28 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import client from "@/axios";
 import BgImage1 from "@/assets/bgImage/development/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/development/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/development/bgImage3.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import { DevelopmentInterface } from "./api/technologies";
 import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
-
+import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+export interface DevelopmentInterface {
+    title: string;
+    info: InfoInterface[];
+}
+export interface InfoInterface {
+    title: string;
+    description: string;
+    icon: any;
+    href: string;
+}
 const Development = () => {
-    const [info, setInfo] = useState<DevelopmentInterface[]>([]);
+    const [data, isLoading] = useStrapiData(Pages.development);
 
-    const getInfo = useCallback(async () => {
-        try {
-            const { data } = await client.get("/api/technologies");
-            setInfo(data);
-        } catch (err) {
-            console.log(err);
-        }
-    }, []);
-
-    useEffect(() => {
-        getInfo();
-    }, []);
-
+    if (!data) return null;
     return (
         <FlexColumn
             h="100%"
@@ -66,7 +62,7 @@ const Development = () => {
                     mobileSize={TEXT_SIZES.small.xl}
                     type={TEXT_TYPES.title}
                 >
-                    Technology we use
+                    {data.main.title}
                 </Text>
 
                 <Text
@@ -76,8 +72,7 @@ const Development = () => {
                     letterSpacing={LETTER_SPACING.s}
                     mobileSize={TEXT_SIZES.small.l}
                 >
-                    Our team uses a wide range of technologies to ensure and
-                    accelerate your business growth
+                    {data.main.description}
                 </Text>
             </FlexColumn>
             <FlexColumn
@@ -104,28 +99,30 @@ const Development = () => {
                     mobileLeft={-25}
                     loading="lazy"
                 />
-                {info.map((item, index) => (
-                    <FlexColumn
-                        justifyContent="center"
-                        alignItems="center"
-                        w="100%"
-                        p="40px 0 80px"
-                        gap="50px"
-                        key={index}
-                        zIndex="2"
-                        bg={index == 1 ? COLORS.white : ""}
-                    >
-                        <Text
-                            textAlign="center"
-                            color={COLORS.textPrimary}
-                            size={TEXT_SIZES.large.xs}
-                            mobileSize={TEXT_SIZES.small.xl}
+                {data?.development.map(
+                    (item: DevelopmentInterface, index: number) => (
+                        <FlexColumn
+                            justifyContent="center"
+                            alignItems="center"
+                            w="100%"
+                            p="40px 0 80px"
+                            gap="50px"
+                            key={index}
+                            zIndex="2"
+                            bg={index == 1 ? COLORS.white : ""}
                         >
-                            {item.title}
-                        </Text>
-                        <DevelopmentSwiper technologies={item.info} />
-                    </FlexColumn>
-                ))}
+                            <Text
+                                textAlign="center"
+                                color={COLORS.textPrimary}
+                                size={TEXT_SIZES.large.xs}
+                                mobileSize={TEXT_SIZES.small.xl}
+                            >
+                                {item.title}
+                            </Text>
+                            <DevelopmentSwiper technologies={item.info} />
+                        </FlexColumn>
+                    ),
+                )}
             </FlexColumn>
         </FlexColumn>
     );

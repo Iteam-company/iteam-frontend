@@ -1,8 +1,7 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React from "react";
-import { FOOTER_TEXT, NAV_LINKS, SOCIAL_MEDIA, TITLES } from "./util";
+import React, { FC } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
@@ -10,8 +9,16 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { Divider } from "./styled";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { PropsI, LinkDataI, SocialMediaI, CompanyInfoI } from "./utils";
+import { OptionsI } from "@/anatomic/atoms/Dropdown/Dropdown";
 
-export const Footer = () => {
+export const Footer: FC<PropsI> = ({
+    data = [],
+    title,
+    socialMedia,
+    footerText,
+}) => {
     return (
         <footer>
             <FlexRow justifyContent="center" bg={COLORS.dark} p="45px 0">
@@ -27,33 +34,32 @@ export const Footer = () => {
                             size={TEXT_SIZES.medium.xs}
                             weight={TEXT_WEIGHTS.main}
                         >
-                            {TITLES.office}
+                            {title.office}
                         </Text>
                         <FlexColumn justifyContent="space-between" gap="8px">
-                            <Text
-                                color={COLORS.white}
-                                size={TEXT_SIZES.small.l}
-                                weight={TEXT_WEIGHTS.main}
-                            >
-                                {FOOTER_TEXT.address}
-                            </Text>
-                            <Text
-                                color={COLORS.white}
-                                size={TEXT_SIZES.small.l}
-                                weight={TEXT_WEIGHTS.main}
-                            >
-                                {FOOTER_TEXT.tel}
-                            </Text>
-                            <Text
-                                color={COLORS.white}
-                                size={TEXT_SIZES.small.l}
-                                weight={TEXT_WEIGHTS.main}
-                            >
-                                {FOOTER_TEXT.hours}
-                            </Text>
+                            {footerText.companyInfo.map(
+                                (item: CompanyInfoI, index: number) => (
+                                    <FlexRow key={index}>
+                                        <Text
+                                            color={COLORS.white}
+                                            size={TEXT_SIZES.small.l}
+                                            weight={TEXT_WEIGHTS.main}
+                                        >
+                                            {item.title}
+                                        </Text>
+                                        <Text
+                                            color={COLORS.white}
+                                            size={TEXT_SIZES.small.l}
+                                            weight={TEXT_WEIGHTS.main}
+                                        >
+                                            {item.value}
+                                        </Text>
+                                    </FlexRow>
+                                ),
+                            )}
                         </FlexColumn>
                     </FlexColumn>
-                    {NAV_LINKS.map((item) => (
+                    {data.map((item: LinkDataI) => (
                         <FlexColumn gap="20px" key={item.id}>
                             <Text
                                 color={COLORS.white}
@@ -63,7 +69,7 @@ export const Footer = () => {
                                 {item.title}
                             </Text>
                             <FlexColumn gap="10px">
-                                {item.options?.map((option) => (
+                                {item.options.map((option: OptionsI) => (
                                     <Link
                                         key={option.href}
                                         linkPosition={LINK_POSITION.footer}
@@ -73,7 +79,11 @@ export const Footer = () => {
                                             weight: TEXT_WEIGHTS.normal,
                                         }}
                                         linkText={option.option}
-                                        href={option.href}
+                                        href={
+                                            option.href == "/home"
+                                                ? "/"
+                                                : option.href
+                                        }
                                         gap="8px"
                                         icon={
                                             <MdArrowForwardIos
@@ -94,13 +104,15 @@ export const Footer = () => {
                             size={TEXT_SIZES.medium.xs}
                             weight={TEXT_WEIGHTS.main}
                         >
-                            {TITLES.socil_media}
+                            {title.socil_media}
                         </Text>
                         <FlexRow justifyContent="space-between" gap="8px">
-                            {SOCIAL_MEDIA.map((item) => (
+                            {socialMedia.map((item: SocialMediaI) => (
                                 <Button
                                     variant={BUTTON_VARIANTS.icon}
-                                    icon={item.icon.src}
+                                    icon={getStrapiImage(
+                                        item.icon.data.attributes.url,
+                                    )}
                                     href={item.href}
                                     hoverColor={COLORS.blue}
                                     key={item.id}
@@ -114,7 +126,7 @@ export const Footer = () => {
             <FlexRow justifyContent="center" bg={COLORS.dark} p="30px 0">
                 <Adaptive>
                     <Text color={COLORS.white} size={TEXT_SIZES.medium.xs}>
-                        {FOOTER_TEXT.rights}
+                        {footerText.rights}
                     </Text>
                 </Adaptive>
             </FlexRow>

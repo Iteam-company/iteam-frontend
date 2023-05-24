@@ -5,10 +5,10 @@ import { Logo } from "@/anatomic/atoms/Logo/Logo";
 import { Link } from "@/anatomic/atoms/Link";
 import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { NAV_LINKS } from "./util";
 import { LinkElem, Button } from "./styled";
+import { HeaderI, HeaderLinksI } from "./utils";
 
-export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
+export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
     return (
         <FlexRow
             w="100%"
@@ -30,11 +30,15 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                         alignItems="center"
                         justifyContent="space-between"
                     >
-                        {NAV_LINKS.slice(0, 5).map((item) =>
+                        {data.slice(0, 5).map((item: HeaderLinksI) =>
                             item.href ? (
                                 <FlexRow position="relative" key={item.id}>
                                     <LinkElem
-                                        href={item.href}
+                                        href={
+                                            item.href == "/home"
+                                                ? "/"
+                                                : item.href
+                                        }
                                         linkText={item.title}
                                         active={item.href === activeRoute}
                                         textStyles={{
@@ -67,11 +71,9 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                                     justifyContent="center"
                                 >
                                     <LinkElem
-                                        href={NAV_LINKS[5].href!}
-                                        linkText={NAV_LINKS[5].title}
-                                        active={
-                                            NAV_LINKS[5].href === activeRoute
-                                        }
+                                        href={data[5].href! || ''}
+                                        linkText={data[5].title}
+                                        active={data[5].href === activeRoute}
                                         textStyles={{
                                             textAlign: "center",
                                             color: COLORS.dark,
@@ -84,8 +86,8 @@ export const Component: FC<{ activeRoute: string }> = ({ activeRoute }) => {
                         ) : (
                             <Button>
                                 <Link
-                                    href={NAV_LINKS[5].href!}
-                                    linkText={NAV_LINKS[5].title}
+                                      href={data[5].href! || ''}
+                                      linkText={data[5].title}
                                     textStyles={{
                                         textAlign: "center",
                                         color: COLORS.dark,

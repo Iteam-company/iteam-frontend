@@ -4,20 +4,16 @@ import {
     ApproachSlide,
     ApproachSlideMobile,
 } from "@/anatomic/molecules/ApproachSlide";
-import { ApproachInterface } from "@/pages/api/outstaffing";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 import { SwiperRange } from "../SwiperRange";
+import { PropsI, ApproachInterface } from "./utils";
 
-interface Props {
-    approaches: ApproachInterface[];
-}
-
-export const OurApproach: FC<Props> = memo(({ approaches }) => {
+export const OurApproach: FC<PropsI> = memo(({ approaches, title }) => {
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5" mw="934px">
             <Desktop w="100%" alignItems="center">
-                <ApproachSlide approaches={approaches} />
+                <ApproachSlide approaches={approaches} title={title} />
             </Desktop>
 
             <Mobile w="100%" alignItems="center">
@@ -29,7 +25,10 @@ export const OurApproach: FC<Props> = memo(({ approaches }) => {
                                 minHeight: "400px",
                             }}
                         >
-                            <ApproachSlideMobile {...item} />
+                            <ApproachSlideMobile
+                                {...item}
+                                sectionTitle={title}
+                            />
                         </SwiperSlide>
                     ))}
                 </SwiperRange>
@@ -49,4 +48,5 @@ const Desktop = styled(FlexColumn)`
         display: none;
     }
 `;
+
 OurApproach.displayName = "OurApproach";

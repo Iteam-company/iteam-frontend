@@ -19,6 +19,7 @@ enum MEDIUM_TEXT_SIZES {
     xs = "20px",
     s = "22px",
     m = "24px",
+    largeM = '26px',
     l = "30px",
     xl = "32px",
 }

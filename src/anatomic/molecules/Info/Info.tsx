@@ -1,11 +1,21 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React from "react";
-import { Flex } from "./styled";
-import { INFO } from "./utils";
+import React, { FC } from "react";
+import { Flex, Icon } from "./styled";
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
 
-export const Info = () => {
+interface Props {
+    title: string;
+    description: string;
+    contactInfo: contactInfoI[];
+}
+interface contactInfoI {
+    title: string;
+    text: string;
+    icon: any;
+}
+export const Info: FC<Props> = ({ title, description, contactInfo }) => {
     return (
         <Flex gap="24px" p="20px" w="40%">
             <Text
@@ -13,16 +23,17 @@ export const Info = () => {
                 color={COLORS.textPrimary}
                 size={TEXT_SIZES.medium.s}
             >
-                Lets talk
+                {title}
             </Text>
             <FlexColumn gap="30px">
                 <Text color={COLORS.warmGray} size={TEXT_SIZES.small.xl}>
-                    Feel free to send us an enquiry using the contact form. We
-                    will replay within 24 hour
+                    {description}
                 </Text>
-                {INFO.map((item) => (
+                {contactInfo.map((item) => (
                     <FlexRow alignItems="center" gap="10px" key={item.title}>
-                        {item.icon}
+                        <Icon
+                            src={getStrapiImage(item.icon.data.attributes.url)}
+                        />
                         <FlexColumn>
                             <Text
                                 size={TEXT_SIZES.small.xl}

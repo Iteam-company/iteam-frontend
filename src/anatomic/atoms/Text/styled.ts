@@ -36,6 +36,7 @@ export const StyledText = styled.span<Props>`
     white-space: ${({ whiteSpace }) => whiteSpace || "auto"};
     line-height: ${({ lineHeight }) => lineHeight || "auto"};
     font: ${({ font }) => font || "auto"};
+    white-space: pre-line;
     @media all and (max-width: 600px) {
         font-size: ${({ mobileSize }) => mobileSize};
         line-height: ${({ mobileLineHeight }) => mobileLineHeight};

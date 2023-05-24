@@ -1,8 +1,8 @@
-import { ProjectsInterface } from "@/pages/api/projects";
 import { FC } from "react";
 import { ProjectSlide } from "./ProjectSlide";
 import { ProjectSlideMobile } from "./ProjectSlideMobile";
 import { Desktop, Mobile } from "./styled";
+import { ProjectsInterface } from "@/pages/projects";
 
 export const Slide: FC<ProjectsInterface> = (props) => {
     return (

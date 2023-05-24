@@ -1,19 +1,19 @@
 import React, { FC } from "react";
 import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
-import { ProjectsInterface, Technologies } from "@/pages/api/projects";
 import { COLORS } from "@/lib/theme/color";
 import { FitToViewport } from "react-fit-to-viewport";
 import { iconsMobile } from "./utils";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
+import { ProjectsInterface, Technologies } from "@/pages/projects";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
     title,
     description,
-    tech,
+    technology,
     img,
     color,
 }) => {
@@ -47,23 +47,26 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                     </Text>
 
                     <FlexRow gap="15px" flexWrap="wrap">
-                        {tech.map((el: Technologies, index) => (
-                            <FlexRow
-                                justifyContent="center"
-                                alignItems="center"
-                                gap="5px"
-                                key={index}
-                            >
-                                <>{iconsMobile[el.icon]}</>
-                                <Text
-                                    size={TEXT_SIZES.small.s}
-                                    weight={TEXT_WEIGHTS.main}
-                                    color={COLORS.warmGray}
-                                >
-                                    {el.name}
-                                </Text>
-                            </FlexRow>
-                        ))}
+                        {technology &&
+                            technology.map(
+                                (el: Technologies, index: number) => (
+                                    <FlexRow
+                                        justifyContent="center"
+                                        alignItems="center"
+                                        gap="5px"
+                                        key={index}
+                                    >
+                                        <>{iconsMobile[el.icon]}</>
+                                        <Text
+                                            size={TEXT_SIZES.small.s}
+                                            weight={TEXT_WEIGHTS.main}
+                                            color={COLORS.warmGray}
+                                        >
+                                            {el.name}
+                                        </Text>
+                                    </FlexRow>
+                                ),
+                            )}
                     </FlexRow>
                 </FlexColumn>
 
