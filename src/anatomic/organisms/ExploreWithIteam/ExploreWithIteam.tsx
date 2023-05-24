@@ -18,46 +18,11 @@ import Link from "next/link";
 import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 
-const blocks = [
-    {
-        title: 'System For \n Online \n Consulting',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_1,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'Small \n Businesses \n Accounting App',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_2,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'Cut And \n Measure Images \n System',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_3,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'System For \n Handling Church \n Meetings',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_4,
-        backgroundImageOnHover: exploreBackOnHover
-    },{
-        title: 'Web App \n For Searching \n Job',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_5,
-        backgroundImageOnHover: exploreBackOnHover
-    },{
-        title: 'Ylabs Security \n Landing \n Page',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_6,
-        backgroundImageOnHover: exploreBackOnHover
-    },
-]
-
 type Props = {
     data: any;
 }
 
 export const ExploreWithIteam: FC<Props> = ({data}) => {
-  
     return (
         <FlexColumn w="100%"  justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
             <FlexColumn w="80%">
