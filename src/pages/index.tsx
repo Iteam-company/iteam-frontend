@@ -47,7 +47,7 @@ const Home = () => {
             </FlexColumn>
             
             <FlexColumn w='100%' style={{background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}}>
-            <ExploreWithIteam />
+            <ExploreWithIteam  data={data?.exploreWithIteam}/>
             </FlexColumn>
 
             <OurCoreValues coreValue={data?.coreValues} />

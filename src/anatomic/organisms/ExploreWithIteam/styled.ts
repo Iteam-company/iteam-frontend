@@ -56,7 +56,7 @@ export const Box = styled.div<BoxProps>`
     z-index: 1;
     overflow: hidden;
   }
-}`
+`
 
 export const BoxForText = styled.div`
   margin-top: 28px;

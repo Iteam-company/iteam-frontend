@@ -2,7 +2,7 @@ import { FlexColumn } from "@/anatomic/atoms/Flex"
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import {  Box, BoxForPreview, BoxForSpot, BoxForText, BoxHover, GridBox } from "./styled";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import exploreImage_1 from '../../../assets/explore/explore_1.png';
 import exploreImage_2 from '../../../assets/explore/explore_2.png';
 import exploreImage_3 from '../../../assets/explore/explore_3.png';
@@ -16,6 +16,7 @@ import Image from "next/image";
 import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
 import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
+import { getStrapiImage } from "@/hooks/useStrapiContentData";
 
 const blocks = [
     {
@@ -51,7 +52,12 @@ const blocks = [
     },
 ]
 
-export const ExploreWithIteam = () => {
+type Props = {
+    data: any;
+}
+
+export const ExploreWithIteam: FC<Props> = ({data}) => {
+  
     return (
         <FlexColumn w="100%"  justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
             <FlexColumn w="80%">
@@ -73,39 +79,53 @@ export const ExploreWithIteam = () => {
                 gridRowGap='15px'
             >
                 {
-                    blocks.map((block) => (
-                        <Box key={block.title} backgroundImage={`url(${block.backgroundImg.src})`} bg='rgba(232, 186, 253, 0.55)'>
-                           <HoverBox>
-                                <FlexColumn justifyContent="space-between" h='100%'>
-                                    <BoxForSpot t='10%' l='5%' />
-                                        <BoxForText>
-                                        <Text 
+                    data.map((block: any) => {
+                     
+                        return (
+                            (
+                        
+                          
+                        
+                                <Box key={block.id} backgroundImage={`url(${block.backgroundImage.data.attributes.url})`} bg='rgba(232, 186, 253, 0.55)'>
+                                   <HoverBox>
+                                        <FlexColumn justifyContent="space-between" h='100%'>
+                                            <BoxForSpot t='10%' l='5%' />
+                                                <BoxForText>
+                                                <Text 
+                                                    size={TEXT_SIZES.medium.largeM}
+                                                    weight={TEXT_WEIGHTS.medium}
+                                                    color={COLORS.dark}
+                                                    >
+                                                          {block.title}
+                                                  
+                                                </Text>
+                                    </BoxForText>
+                                <BoxForPreview>
+                                    <FlexColumn>
+                                        <Text
                                             size={TEXT_SIZES.medium.largeM}
-                                            weight={TEXT_WEIGHTS.medium}
+                                            weight={TEXT_WEIGHTS.normal}
                                             color={COLORS.dark}
-                                            >
-                                            {block.title}
+                                         >         
+                                            <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
+                                            {block.subtitleForPreview}
+                                            </Link>
                                         </Text>
-                            </BoxForText>
-                        <BoxForPreview>
-                            <FlexColumn>
-                                <Text
-                                    size={TEXT_SIZES.medium.largeM}
-                                    weight={TEXT_WEIGHTS.normal}
-                                    color={COLORS.dark}
-                                 >         
-                                    <Link href='#' style={{color: 'inherit', textDecoration: 'none'}}>
-                                    {block.link}
-                                    </Link>
-                                </Text>
-                                <Image src={arrow} alt='arrow' style={{marginTop: '-10px'}}/>
-                            </FlexColumn>
-                                </BoxForPreview>
-                            </FlexColumn>
-                        </HoverBox>
-                        <BoxForSpot />
-                        </Box>
-                    ))
+                                        <Image 
+                                            src={`${block.previewImage.data.attributes.url}`}
+                                            width={block.previewImage.data.attributes.width}
+                                            height={block.previewImage.data.attributes.height}
+                                            alt='arrow' style={{marginTop: '-10px'}}
+                                        />
+                                    </FlexColumn>
+                                        </BoxForPreview>
+                                    </FlexColumn>
+                                </HoverBox>
+                                <BoxForSpot />
+                                </Box>
+                            )
+                        )
+                    })
                 }
             </GridBox>
         </FlexColumn>

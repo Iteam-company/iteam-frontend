@@ -1,6 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'res.cloudinary.com',
+            port: '',
+            pathname: '/iteam-cloud/image/upload/**',
+          },
+        ],
+      },
     env: {
         REACT_APP_SMTP_HOST: process.env.SMTP_HOST,
         REACT_APP_SMTP_PORT: process.env.REACT_APP_SMTP_PORT,
