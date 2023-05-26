@@ -8,6 +8,7 @@ import { StyledLayout } from "./styled";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 interface Props {
     children: ReactNode;
@@ -21,7 +22,11 @@ export const Layout: FC<Props> = ({ children }) => {
     return (
         <StyledLayout>
             <LogoAnimation />
+            <div style={{background: '#FDFBFF'}}>
+            <AdaptContainer >
             <Header data={data.header} />
+            </AdaptContainer>
+            </div>
             <main>
                 <FlexColumn
                     w="100%"

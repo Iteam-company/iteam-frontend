@@ -16,6 +16,7 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 export interface ProjectsInterface {
     id?: number;

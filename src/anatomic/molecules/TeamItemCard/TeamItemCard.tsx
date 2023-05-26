@@ -12,7 +12,9 @@ import {
     GradientElem,
     GradientElemContent,
 } from "./styled";
+import Image from 'next/image';
 import { Technology } from "@/pages/team";
+import label from '../../../assets/icon/label.svg';
 
 interface Props {
     technology?: Technology[];
@@ -29,8 +31,8 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                     alignItems="space-between"
                     w="100%"
                     gap="20px"
-                >
-                    <Card justifyContent="space-between">
+                >        
+                   <Card justifyContent="space-between">
                         <FlexColumn gap="10px">
                             <Text
                                 color={COLORS.purple}
@@ -57,13 +59,14 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                     justifyContent="center"
                                     alignItems="center"
                                     width={experience.year}
+
                                 >
                                     <div style={{ paddingBottom: "10px" }}>
                                         <Text
                                             color={COLORS.dark}
                                             size={TEXT_SIZES.small.xs}
                                         >
-                                            {experience.year} ysr
+                                            {experience.year} yrs
                                         </Text>
                                     </div>
                                 </Label>
@@ -86,28 +89,24 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         </Text>
                         <FlexRow
                             flexWrap="wrap"
-                            gap="20px"
+                            gap="16px"
                             alignItems="space-between"
                             h="100%"
+                            w='100%'
                         >
                             {technology &&
                                 technology.map((elem: Technology) => (
                                     <GradientElem
                                         gradient={COLORS.technologyGradient}
                                         key={elem.id}
+                                        width="90px"
                                     >
                                         <GradientElemContent
                                             justifyContent="center"
                                             alignItems="center"
                                             gap="3px"
                                         >
-                                            <Text
-                                                color={COLORS.textSecondary}
-                                                weight={TEXT_WEIGHTS.medium}
-                                                size={TEXT_SIZES.small.l}
-                                            >
-                                                {elem.short}
-                                            </Text>
+                                            <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='20' height='20'/>
                                             <Text
                                                 weight={TEXT_WEIGHTS.main}
                                                 color={COLORS.textSecondary}
@@ -121,44 +120,94 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         </FlexRow>
                     </Card>
                     <Card>
-                        <Text
-                            color={COLORS.purple}
-                            textTransform="uppercase"
-                            textDecoration="underline"
-                            weight={TEXT_WEIGHTS.medium}
-                            size={TEXT_SIZES.small.m}
-                        >
-                            Rate
-                        </Text>
-                        <FlexRow alignItems="end" w="100%" gap="10px" h="100%">
-                            <FlexRow alignItems="end" w="100%" h="100%">
+                        <FlexColumn gap='8px'>
+                            <FlexRow>
+                                <FlexColumn gap='10px'>
+                                <Text
+                                    color={COLORS.purple}
+                                    textTransform="uppercase"
+                                    textDecoration="underline"
+                                    weight={TEXT_WEIGHTS.medium}
+                                    size={TEXT_SIZES.small.m}
+                                >
+                                Rate
+                                </Text>
+                                <div style={{marginTop: '-10px', marginBottom: '12px'}}>
+                                <Text
+                                    color={COLORS.textSecondary}
+                                    size={TEXT_SIZES.medium.largeM}
+                                    weight={TEXT_WEIGHTS.main}
+                                >
+                                    {rate}$
+                                </Text>
+                                </div>
                                 <Text
                                     color={COLORS.textSecondary}
                                     size={TEXT_SIZES.small.m}
                                 >
                                     Hourly developer’s rate
                                 </Text>
-                            </FlexRow>
-                            <div
+                                </FlexColumn>
+                                <div
                                 style={{
                                     width: "100%",
                                     height: "100%",
-                                    maxWidth: "117px",
+                                    maxWidth: "100px",
                                     minWidth: "70px",
+                                    paddingLeft: "14px",
+                                    paddingTop: '30px',
                                 }}
                             >
+                                <div style={{position: 'relative'}}>                  
                                 <CircularProgressbar
-                                    text={`${rate}$`}
                                     maxValue={30}
                                     value={rate}
                                     styles={buildStyles({
+                                        rotation: rate === 30 || rate === 20 ? 0.33 : 0.16,
                                         pathColor: COLORS.progressPath,
                                         textColor: COLORS.textSecondary,
-                                        trailColor: COLORS.progressTrail,
+                                        trailColor: COLORS.progressTrail,  
                                     })}
+                                    
                                 />
+                                <div style={rate === 30 
+                                    ? {display: 'none'} 
+                                    : {position: 'absolute', top: '-20%', right: '44%'}}
+                                >
+                                <Text
+                                    color={COLORS.dark}
+                                    size={TEXT_SIZES.small.xs}
+                                >   
+                                    30$
+                                     </Text>
+                                </div>
+                                <Label bgImg={rate === 30 ? null : label} 
+                                    justifyContent="center" 
+                                    alignItems="center" 
+                                    top={rate === 30 ? '-26%' : rate === 25 ? '17%' : '53%'} 
+                                    right={rate === 30 ? '38%' :rate === 25 ? '25%' : '22%'}
+                                >
+                                <Text
+                                    color={COLORS.dark}
+                                    size={TEXT_SIZES.small.xs}
+                                >
+                                   <div style={rate === 30 
+                                        ? {padding: '3px 3px 8px 6px'} 
+                                        : {padding: '4px 12px 6px 10px'}}
+                                    >
+                                    {`${rate}$`}
+                                    </div>
+                                   
+                                </Text>
+                                </Label>
+                                </div>
                             </div>
+                            </FlexRow>               
+                        <FlexRow  w="100%" gap="10px" h="100%">
+                            <FlexRow w="100%" h="100%">
+                            </FlexRow>                    
                         </FlexRow>
+                        </FlexColumn>
                     </Card>
                 </FlexRow>
             </Desktop>

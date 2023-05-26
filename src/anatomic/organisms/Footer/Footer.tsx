@@ -12,6 +12,7 @@ import { Divider } from "./styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { PropsI, LinkDataI, SocialMediaI, CompanyInfoI } from "./utils";
 import { OptionsI } from "@/anatomic/atoms/Dropdown/Dropdown";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 export const Footer: FC<PropsI> = ({
     data = [],
@@ -22,6 +23,7 @@ export const Footer: FC<PropsI> = ({
     return (
         <footer>
             <FlexRow justifyContent="center" bg={COLORS.dark} p="45px 0">
+            <AdaptContainer>
                 <Adaptive
                     justifyContent="space-between"
                     flexWrap="wrap"
@@ -121,14 +123,18 @@ export const Footer: FC<PropsI> = ({
                         </FlexRow>
                     </FlexColumn>
                 </Adaptive>
+                </AdaptContainer>
             </FlexRow>
             <Divider />
             <FlexRow justifyContent="center" bg={COLORS.dark} p="30px 0">
                 <Adaptive>
+                    <AdaptContainer>
                     <Text color={COLORS.white} size={TEXT_SIZES.medium.xs}>
                         {footerText.rights}
                     </Text>
+                    </AdaptContainer>
                 </Adaptive>
+               
             </FlexRow>
         </footer>
     );

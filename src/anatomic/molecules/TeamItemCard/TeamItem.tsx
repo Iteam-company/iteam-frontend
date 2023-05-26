@@ -8,15 +8,19 @@ import UpWorkLink from "@/assets/icon/upWorkLink.svg";
 import { TeamItemCard } from "./TeamItemCard";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { TeamInterface } from "@/pages/team";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const TeamItem: FC<TeamInterface> = memo(
     ({ name, avatar, position, technology, comments, experience, rate }) => {
+        const size = useWindowSize();
+        const width = size.width! > 1800 ? '100%' : '80vw'
+        const padding = size.width! > 1800 ? '0 20px 0 0' : '';
         return (
             <>
                 <Desktop w="100%" alignItems="center">
                     <FlexRow
                         gap="30px"
-                        w="80vw"
+                        w={width}
                         p="0 20px"
                         justifyContent="center"
                     >
@@ -25,7 +29,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                             avatar={avatar}
                             position={position}
                         />
-                        <FlexColumn w="62vw" gap="40px">
+                        <FlexColumn w="80%" gap="40px" p={padding}>
                             <TeamItemCard
                                 technology={technology}
                                 experience={experience}

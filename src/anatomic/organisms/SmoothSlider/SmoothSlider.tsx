@@ -4,6 +4,8 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Dot } from "./styled";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -25,7 +27,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     editionContent,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
-
+    const size = useWindowSize();
+    const h = size.width! > 1800 ? '1000px' : height;
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
@@ -145,7 +148,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     }, []);
 
     return (
-        <div>
+        <AdaptContainer>
             <section
                 className="container"
                 style={{
@@ -163,7 +166,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                     style={{
                         position: "relative",
                         margin: "0 20px",
-                        height: height ? height : "90vh",
+                        height: h ? h : "90vh",
                         width: "95vw",
                         paddingLeft: navigation ? "50px" : "0px",
                         boxSizing: "border-box",
@@ -193,9 +196,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     position: "absolute",
                                     top: "0",
 
-                                    width: "100%",
                                     height: "100%",
-
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
@@ -315,6 +316,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 </div>
                 {editionContent && editionContent}
             </section>
-        </div>
+        </AdaptContainer>
     );
 };

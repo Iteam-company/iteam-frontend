@@ -6,6 +6,7 @@ import ArrowLeft from "@/assets/icon/leftvector.svg";
 import ArrowRight from "@/assets/icon/vector.svg";
 import { Text } from "@/anatomic/atoms/Text";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
+import { ImageProps } from "next/image";
 
 export const Avatar = styled.div<{ image: any }>`
     height: 122px;
@@ -21,6 +22,7 @@ export const Avatar = styled.div<{ image: any }>`
 `;
 export const Card = styled(FlexColumn)`
     width: 100%;
+    maxWidth: 100px;
     height: 140px;
     padding: 20px;
     background: ${COLORS.white};
@@ -42,22 +44,29 @@ export const ProgressIndicator = styled.div<{ width: number }>`
     border-radius: 16px;
 `;
 
-export const Label = styled(FlexColumn)<{ width?: number }>`
-    height: 27px;
-    width: 30px;
+export const Label = styled(FlexColumn)<{ width?: number, top?: string, bgImg?: ImageProps, right?: string }>`
+    height: 29px;
+    width: ${({bgImg}) => bgImg ? '41px': '36px'};
     background: transparent no-repeat center;
     background-size: cover;
-    background-image: url(${LabelIcon.src});
+    backgroung-position: center;
+    background-image: ${({bgImg}) => bgImg ? `url(${bgImg.src})`: `url(${LabelIcon.src})`};
     position: absolute;
-    top: -20px;
+    top: ${({top}) => top || '-20px'};
     left: calc(${({ width }) => width} * 20% - 15px);
+    right: ${({right}) => right || '0'};
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+
 `;
 
-export const GradientElem = styled.div<{ gradient: string }>`
+export const GradientElem = styled.div<{ gradient: string, width?: string, padding?: string, }>`
     height: 32px;
-    width: 100px;
+    width: ${(props) => props.width || '100px'};
     border-radius: 50px;
-    padding: 2px;
+    padding: ${(props) => props.padding || '2px'};
     background-image: linear-gradient(${({ gradient }) => gradient});
 `;
 

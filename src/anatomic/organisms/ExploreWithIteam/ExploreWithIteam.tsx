@@ -17,6 +17,7 @@ import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
 import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 type Props = {
     data: any;
@@ -24,6 +25,7 @@ type Props = {
 
 export const ExploreWithIteam: FC<Props> = ({data}) => {
     return (
+        <AdaptContainer>
         <FlexColumn w="100%"  justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
             <FlexColumn w="80%">
                 <FlexColumn p='0 0 45px 0'>
@@ -39,19 +41,15 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                 </FlexColumn>
             <GridBox 
                 gridTemplateColumn='1fr 1fr' 
-                gridTemplateRow='repeat(3, 525px)'
+                gridTemplateRow='repeat(3, 325px)'
                 gridColumnGap='13px'
                 gridRowGap='15px'
             >
                 {
-                    data.map((block: any) => {
-                     
+                    data.map((block: any) => { 
                         return (
                             (
-                        
-                          
-                        
-                                <Box key={block.id} backgroundImage={`url(${block.backgroundImage.data.attributes.url})`} bg='rgba(232, 186, 253, 0.55)'>
+                                <Box key={block.id} backgroundImage={`url(${block.backgroundImage.data.attributes.url})`} bg='rgba(77, 38, 95, 0.55)'>
                                    <HoverBox>
                                         <FlexColumn justifyContent="space-between" h='100%'>
                                             <BoxForSpot t='10%' l='5%' />
@@ -95,5 +93,6 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
             </GridBox>
         </FlexColumn>
     </FlexColumn>
+    </AdaptContainer>
     )
 }

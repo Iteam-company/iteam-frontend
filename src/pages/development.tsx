@@ -92,7 +92,7 @@ const Development = () => {
                 />
                 <BgImage
                     src={BgImage3}
-                    maxWidth={1300}
+                    maxWidth={1450}
                     left={-30}
                     top={88}
                     mobileTop={100}

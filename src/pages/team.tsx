@@ -18,6 +18,7 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 export interface TeamInterface {
     id?: number;
@@ -34,6 +35,7 @@ export interface Technology {
     text: string;
     short: string;
     id: number;
+    techIcon: any;
 }
 
 const Team = () => {
@@ -87,7 +89,9 @@ const Team = () => {
                     mobileRight={-40}
                     priority
                 />
-                <FlexColumn justifyContent="center" alignItems="start">
+                  <AdaptContainer >
+                <FlexColumn justifyContent="center" alignItems="start" >
+              
                     <Text
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
@@ -106,6 +110,7 @@ const Team = () => {
                         {data?.main.description}
                     </Title>
                 </FlexColumn>
+                </AdaptContainer>
             </FlexColumn>
             {team?.length && (
                 <>
@@ -113,7 +118,7 @@ const Team = () => {
                         <SmoothSlider
                             slides={team}
                             isTwoColumn={false}
-                            editionContent={
+                            editionContent={ 
                                 <FlexColumn
                                     position="absolute"
                                     style={{
@@ -139,7 +144,7 @@ const Team = () => {
                                 </FlexColumn>
                             }
                         />
-                    </Desktop>
+                    </Desktop> 
                     <Mobile>
                         <SmoothSlider
                             slides={team}
@@ -154,7 +159,7 @@ const Team = () => {
                                         left: "10vw",
                                     }}
                                     zIndex="100"
-                                >
+                                > 
                                     <Button
                                         href="/contact_us"
                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"

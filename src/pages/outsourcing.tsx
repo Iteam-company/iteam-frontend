@@ -28,6 +28,8 @@ import { SwiperRange } from "@/anatomic/organisms/SwiperRange";
 import { AppsImplement } from "@/anatomic/organisms/AppsImplement";
 import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface ProcessInterface {
     step?: number;
@@ -46,6 +48,8 @@ export interface NumbersInterface {
 const Outsourcing = () => {
     const numbersViewRef = useRef(null);
     const isNumbersInView = useInView(numbersViewRef);
+    const size = useWindowSize();
+    const w = size.width! > 1800 ? '100%' : '60%';
 
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
 
@@ -63,6 +67,7 @@ const Outsourcing = () => {
                 alignItems="center"
                 style={{ boxSizing: "border-box" }}
             >
+               
                 <Text
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
@@ -79,6 +84,7 @@ const Outsourcing = () => {
                     {data?.main.description}
                 </Text>
             </FlexColumn>
+            
 
             <FlexColumn
                 w="100%"
@@ -161,7 +167,6 @@ const Outsourcing = () => {
                     </FlexContainer>
                 </Card>
             </FlexColumn>
-
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage
                     src={BgImage2}
@@ -182,6 +187,8 @@ const Outsourcing = () => {
                     loading="lazy"
                 />
                 <WhiteSection>
+                    <AdaptContainer c='center'>
+                        <div style={{textAlign: 'center'}}>
                     <Text
                         weight={TEXT_WEIGHTS.medium}
                         color={COLORS.textPrimary}
@@ -190,8 +197,9 @@ const Outsourcing = () => {
                     >
                         {data?.numbersTitle}
                     </Text>
+                    </div>
                     <FlexContainer
-                        w="60%"
+                        w="100%"
                         justifyContent="space-between"
                         alignItems="center"
                         p="10px 0 0"
@@ -208,6 +216,7 @@ const Outsourcing = () => {
                             />
                         ))}
                     </FlexContainer>
+                    </AdaptContainer>
                 </WhiteSection>
             </FlexColumn>
 
@@ -301,8 +310,12 @@ const Outsourcing = () => {
                     {data?.appsTitle}
                 </Text>
 
-                {data?.apps && <AppsImplement apps={data.apps} />}
-            </FlexColumn>
+                {data?.apps &&
+                
+                <AppsImplement apps={data.apps} />
+             
+                }
+            </FlexColumn>  
         </FlexColumn>
     );
 };

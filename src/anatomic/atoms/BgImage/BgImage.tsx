@@ -76,8 +76,10 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
 };
 const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
     ({ rotateZ }) => ({
-        style: {
+        style:  rotateZ ? {
             transform: `rotateZ(${rotateZ}deg)`,
+        } : {
+            transform: `rotateZ(355deg)`,
         },
     }),
 )<BgImageI & ImageSize & ImagePosition>`
@@ -85,9 +87,8 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
     width: 100%;
     object-fit: contain;
     position: absolute;
-    transition: 0.3s all;
+    transition: 0.3s rotate;
     z-index: 0 !important;
-
     max-width: ${({ maxWidth }) => maxWidth}px;
 
     ${({ top }) => top && `top: ${top}%`};
@@ -99,6 +100,12 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         ${({ mobileTop }) => mobileTop && `top: ${mobileTop}%`};
         ${({ mobileBottom }) => mobileBottom && `bottom: ${mobileBottom}%`};
         ${({ mobileRight }) => mobileRight && `right: ${mobileRight}%`};
-        ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`};
+        ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`}; 
+    }
+
+    @media (min-width: 2000px) {
+        positin: absolute;
+        top: 30%;
+        right: -10%;
     }
 `;

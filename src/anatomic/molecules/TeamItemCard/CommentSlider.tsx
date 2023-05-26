@@ -6,6 +6,7 @@ import { A11y, Navigation, Pagination } from "swiper";
 import { ItalicText, StyledSwiper } from "./styled";
 import { COLORS } from "@/lib/theme/color";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
     comments?: CommentsI[];
@@ -16,11 +17,13 @@ export interface CommentsI {
 }
 
 export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
+    const size = useWindowSize();
+    const windowWidth = size.width! > 1800 ? '100%' : width;
     return (
         <StyledSwiper
             style={{
                 height: "100%",
-                width: width,
+                width: windowWidth,
             }}
             spaceBetween={50}
             modules={[Navigation, Pagination, A11y]}

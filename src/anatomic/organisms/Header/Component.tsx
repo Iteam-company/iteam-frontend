@@ -7,6 +7,7 @@ import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { LinkElem, Button } from "./styled";
 import { HeaderI, HeaderLinksI } from "./utils";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
     return (

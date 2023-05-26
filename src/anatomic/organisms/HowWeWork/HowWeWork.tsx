@@ -11,13 +11,14 @@ import {
     StepNumber,
 } from "./styled";
 import { PropsI, HomeInterface } from "./utils";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
     if (!howWeWork) return null;
     return (
         <FlexColumn w="100%" justifyContent="center" alignItems="center">
             <FlexColumn w="80%">
-          
+            <AdaptContainer>
                 <Text
                     size={TEXT_SIZES.medium.xs}
                     weight={TEXT_WEIGHTS.main}
@@ -25,6 +26,7 @@ export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
                 >
                     {howWeWork.title}
                 </Text>
+                </AdaptContainer>
             </FlexColumn>
             <Container
                 w="100%"
