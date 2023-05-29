@@ -21,13 +21,34 @@ interface CoreValueInterface {
     image: any;
     title: string;
     value: ValueInterface[];
+    mobileImage?: any;
 }
 interface ValueInterface {
     id: string;
     title: string;
     text: string;
     step: string;
+    mobileImage?: any;
 }
+
+const iTeamLogo = [
+    {
+        letter: 'i'
+    },
+    {
+        letter: 'T'
+    },
+    {
+        letter: 'e'
+    },
+    {
+        letter: 'a'
+    },
+    {
+        letter: 'm'
+    },
+
+]
 
 export const OurCoreValues: FC<Props> = ({ coreValue }) => {
     if (!coreValue) return null;
@@ -68,7 +89,7 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                     p="0 20px"
                     style={{ boxSizing: "border-box" }}
                 >
-                    {coreValue.value.map((item: ValueInterface) => (
+                    {coreValue.value.map((item: ValueInterface, i: number) => (
                         <FlexColumn
                             key={item.id}
                             justifyContent="center"
@@ -122,8 +143,9 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                     alignItems="center"
                     style={{ boxSizing: "border-box", overflow: "hidden" }}
                 >
-                    {coreValue.value.map((item: ValueInterface) => (
-                        <FlexRow
+                    {coreValue.value.map((item: ValueInterface, i: number) => {
+                        return (
+                            <FlexRow
                             key={item.id}
                             justifyContent="space-evenly"
                             alignItems="center"
@@ -135,15 +157,26 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                 w="60%"
                                 justifyContent="center"
                                 alignItems="center"
-                            >
+                            >   
+                            {/* <Image
+                                src={getStrapiImage(url)}
+                                width={width}
+                                height={height}
+                                alt="iteam"
+                                style={{
+                                    height: "auto",
+                                    width: "100%",
+                                    paddingLeft: '50%'
+                                }}
+                            /> */}
                                 <GradientText
                                     weight={TEXT_WEIGHTS.medium}
-                                    size="150px"
-                                    lineHeight="150px"
+                                    size="50px"
+                                    lineHeight="50px"
                                     textAlign="center"
                                     color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
                                 >
-                                    {item.step}
+                                    {iTeamLogo[i].letter}
                                 </GradientText>
                             </FlexColumn>
 
@@ -163,6 +196,7 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                 alignItems="center"
                                 w="100%"
                             >
+
                                 <Text
                                     size={TEXT_SIZES.medium.s}
                                     color={COLORS.textPrimary}
@@ -171,6 +205,7 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                 >
                                     {item.title}
                                 </Text>
+                                
                                 <SideChevron>
                                     <Text
                                         size={TEXT_SIZES.small.l}
@@ -181,7 +216,10 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                 </SideChevron>
                             </FlexColumn>
                         </FlexRow>
-                    ))}
+
+                        )
+                     
+})}
                 </FlexColumn>
             </Mobile>
         </Container>
