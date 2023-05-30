@@ -103,6 +103,9 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`}; 
     }
 
+    @media (max-width: 992px) {
+        display: none;
+    }
     @media (min-width: 2000px) {
         positin: absolute;
         top: 30%;

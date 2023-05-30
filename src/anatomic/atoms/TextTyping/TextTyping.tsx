@@ -1,13 +1,15 @@
 import React, { FC } from "react";
-import { StyledTypingEffect } from "./styled";
+import { ShowContainet, StyledTypingEffect } from "./styled";
 import Typewriter from "typewriter-effect";
+import { AddaptForText, StyledTypingEffectAdapt } from "../Addapt/addapt";
 interface Props {
     text: string[];
 }
 export const TextTyping: FC<Props> = ({ text }) => {
     return (
-        <StyledTypingEffect>
-            <Typewriter
+        <>
+        <StyledTypingEffectAdapt>
+        <Typewriter
                 options={{
                     strings: text,
                     autoStart: true,
@@ -15,6 +17,7 @@ export const TextTyping: FC<Props> = ({ text }) => {
                     delay: 100,
                 }}
             />
-        </StyledTypingEffect>
+       </StyledTypingEffectAdapt>
+        </>   
     );
 };

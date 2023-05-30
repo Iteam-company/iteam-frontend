@@ -15,6 +15,8 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
+    const size = useWindowSize();
+    
     
     if (!howWeWork) return null;
 
@@ -22,6 +24,7 @@ export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
         <FlexColumn w="100%" justifyContent="center" alignItems="center" ov='hidden'>
             <FlexColumn w="80%">
             <AdaptContainer>
+                <div style={size.width! < 992 ? {textAlign: 'center', marginBottom: '13px'} : {}}>
                 <Text
                     size={TEXT_SIZES.medium.xs}
                     weight={TEXT_WEIGHTS.main}
@@ -29,6 +32,7 @@ export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
                 >
                     {howWeWork.title}
                 </Text>
+                </div>
                 </AdaptContainer>
             </FlexColumn>
             <Container

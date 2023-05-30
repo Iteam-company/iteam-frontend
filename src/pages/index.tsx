@@ -2,6 +2,7 @@ import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
+import bgMain from '@/assets/bgImage/home/bgMain.svg';
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
@@ -11,15 +12,15 @@ import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam/ExploreW
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
+import Image from 'next/image';
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
     const size = useWindowSize();
 
-    const topPosition = size.height! > 920 ? 24 : ((size.height! /100) * 4);
-    
-    const imWidth = size.width! > 1800 ? 100 : ((topPosition! / 100) * 9);
-
+    let widthSize = size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
+    let widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 740;
 
     if (!data) return null;
 
@@ -30,29 +31,34 @@ const Home = () => {
             h="100%"
             style={{ overflow: "hidden" }}
         >
+           
             <FlexColumn
                 alignItems="center"
                 w="100%"
                 h="100%"
                 position="relative"
-                style={{ overflow: "hidden" }}
-            >  <AdaptContainer w='90%'>
-                <div style={{width: `${imWidth}%`}}>
+                style={{ overflow: "hidden", position: 'relative' }}
+            > 
+                 <AddaptFoIbg style={{position: 'absolute'}}>
+                    <Image src={bgMain} alt='bg'/>
+                  </AddaptFoIbg> 
+            <AdaptContainer w='90%'>
                 <BgImage
                     src={BgImage1}
-                    maxWidth={740}
+                    maxWidth={widthBg}
                     right={-16}
                     mobileRight={-30}
-                    mobileTop={topPosition}
+                    mobileTop={24}
                     priority
-                />
-                </div>
+                /> 
                 <FlexColumn
-                    h="calc(100vh - 100px)"
+                    h={widthSize}
                     w="90%"
                     justifyContent="center"
-                >
+                >   
+                    <AddaptTextMain>
                     <Banner main={data?.main} />
+                    </AddaptTextMain>
                 </FlexColumn>
               </AdaptContainer>
                 <HowWeWork howWeWork={data?.howWeWork} />
