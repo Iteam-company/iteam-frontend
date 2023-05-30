@@ -19,7 +19,7 @@ const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
     const size = useWindowSize();
 
-    let widthSize = size.width! < 992 ? "calc(55vh - 100px)" : "calc(100vh - 100px)";
+    let widthSize = size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
     let widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
 
     if (!data) return null;
