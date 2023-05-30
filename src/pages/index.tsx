@@ -14,6 +14,12 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
+    const size = useWindowSize();
+
+    const topPosition = size.height! > 920 ? 24 : ((size.height! /100) * 4);
+    
+    const imWidth = size.width! > 1800 ? 100 : ((topPosition! / 100) * 9);
+
 
     if (!data) return null;
 
@@ -31,14 +37,16 @@ const Home = () => {
                 position="relative"
                 style={{ overflow: "hidden" }}
             >  <AdaptContainer w='90%'>
+                <div style={{width: `${imWidth}%`}}>
                 <BgImage
                     src={BgImage1}
                     maxWidth={740}
                     right={-16}
                     mobileRight={-30}
-                    mobileTop={24}
+                    mobileTop={topPosition}
                     priority
                 />
+                </div>
                 <FlexColumn
                     h="calc(100vh - 100px)"
                     w="90%"

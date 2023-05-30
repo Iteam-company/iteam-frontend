@@ -103,44 +103,6 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`}; 
     }
 
-   
-    @media (max-width: 850px) {
-        top: 29%;
-        width: 80%;
-    }
-
-    @media (max-width: 730px) {
-        top: 22%;
-        right: -20%;
-        width: 80%;
-    }
-
-    @media (max-width:630px) {
-        top: 26%;
-        right: -20%;
-        width: 80%;
-    }
-
-    @media (max-width:600px) {
-        top: 32%;
-        right: -20%;
-        width: 80%;
-    }
-
-    @media (max-width:520px) {
-        top: 36%;
-        right: -20%;
-        width: 80%;
-    }
-
-    @media (max-width:420px) {
-        top: 40%;
-        right: -20%;
-        width: 80%;
-    }
-
-
-
     @media (min-width: 2000px) {
         positin: absolute;
         top: 30%;
