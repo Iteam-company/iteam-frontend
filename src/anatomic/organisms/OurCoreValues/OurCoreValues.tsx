@@ -31,25 +31,6 @@ interface ValueInterface {
     mobileImage?: any;
 }
 
-const iTeamLogo = [
-    {
-        letter: 'i'
-    },
-    {
-        letter: 'T'
-    },
-    {
-        letter: 'e'
-    },
-    {
-        letter: 'a'
-    },
-    {
-        letter: 'm'
-    },
-
-]
-
 export const OurCoreValues: FC<Props> = ({ coreValue }) => {
     if (!coreValue) return null;
 
@@ -176,7 +157,7 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                     textAlign="center"
                                     color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
                                 >
-                                    {iTeamLogo[i].letter}
+                                    {item.step}
                                 </GradientText>
                             </FlexColumn>
 

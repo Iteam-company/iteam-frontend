@@ -12,11 +12,14 @@ import {
 } from "./styled";
 import { PropsI, HomeInterface } from "./utils";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
+    
     if (!howWeWork) return null;
+
     return (
-        <FlexColumn w="100%" justifyContent="center" alignItems="center">
+        <FlexColumn w="100%" justifyContent="center" alignItems="center" ov='hidden'>
             <FlexColumn w="80%">
             <AdaptContainer>
                 <Text

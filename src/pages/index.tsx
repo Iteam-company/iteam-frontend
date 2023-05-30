@@ -10,11 +10,13 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam/ExploreWithIteam";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
 
     if (!data) return null;
+
     return (
         <FlexColumn
             alignItems="center"

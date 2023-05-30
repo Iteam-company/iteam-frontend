@@ -24,6 +24,7 @@ interface FlexProps {
     flexWrap?: string;
     gap?: string;
     type?: "column";
+    ov?: string;
 }
 
 export const Flex = styled.div<FlexProps & DefaultElementProps>`
@@ -55,4 +56,5 @@ export const FlexRow = styled(Flex)`
 
 export const FlexColumn = styled(Flex)`
     flex-direction: column;
+    overflow: ${(props) => props.ov || 'visible'};
 `;
