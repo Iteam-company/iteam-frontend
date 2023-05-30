@@ -4,6 +4,7 @@ interface ContainerProps {
     bg?: string;
     w?: string;
     c?: string;
+    h?: string;
 }
 export const AdaptContainer = styled.div<ContainerProps>`
 width: ${(props) => props.w || '100%'};
@@ -12,7 +13,7 @@ background-color: ${(props) => props.bg || 'inherit'};
         max-width: 1450px;
         width: 100%;
         margin: 0 auto;
-        overflow: hidden;
+        overflow: ${(props) => props.h || 'hidden'};;
         text-align: ${(props) => props.c || 'left'};
     }
 

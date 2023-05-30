@@ -79,7 +79,7 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         style:  rotateZ ? {
             transform: `rotateZ(${rotateZ}deg)`,
         } : {
-            transform: `rotateZ(355deg)`,
+            transform: `rotateZ(380deg)`,
         },
     }),
 )<BgImageI & ImageSize & ImagePosition>`
