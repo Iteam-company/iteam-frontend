@@ -11,7 +11,6 @@ import exploreImage_5 from '../../../assets/explore/explore_5.png';
 import exploreImage_6 from '../../../assets/explore/explore_6.png';
 import exploreBack from '../../../assets/explore/Rectangle 94.png';
 import exploreBackOnHover from '../../../assets/explore/backOnHover.png';
-
 import Image from "next/image";
 import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
@@ -54,14 +53,14 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         <FlexColumn justifyContent="space-between" h='100%'>
                                             <BoxForSpot t='10%' l='5%' />
                                                 <BoxForText>
-                                                <Text 
+                                                {/* <Text 
                                                     size={TEXT_SIZES.medium.largeM}
                                                     weight={TEXT_WEIGHTS.medium}
                                                     color={COLORS.dark}
                                                     >
                                                           {block.title}
                                                   
-                                                </Text>
+                                                </Text> */}
                                     </BoxForText>
                                 <BoxForPreview>
                                     <FlexColumn>

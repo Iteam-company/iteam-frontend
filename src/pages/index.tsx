@@ -19,8 +19,8 @@ const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
     const size = useWindowSize();
 
-    let widthSize = size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
-    let widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
+    const widthSize = size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
+    const widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
 
     if (!data) return null;
 
@@ -30,8 +30,7 @@ const Home = () => {
             w="100%"
             h="100%"
             style={{ overflow: "hidden" }}
-        >
-           
+        >     
             <FlexColumn
                 alignItems="center"
                 w="100%"
@@ -45,9 +44,9 @@ const Home = () => {
             <AdaptContainer w='90%' style={{position: 'relative'}} h='visible'>
                 <BgImage
                     src={BgImage1}
-                    maxWidth={widthBg}
-                    right={-22}
-                    top={-5}
+                    maxWidth={720}
+                    right={size.width! > 1800 ? -28 : -20}
+                    bottom={size.width! > 1800 ? -20 : -38}
                     mobileRight={-24}
                     mobileTop={14}
                     priority

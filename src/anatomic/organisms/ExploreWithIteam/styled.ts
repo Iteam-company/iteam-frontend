@@ -41,8 +41,8 @@ export const Box = styled.div<BoxProps>`
   border-radius: 8px;
   background: ${props => props.backgroundImage || 'none'};
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center right;
+  background-size: 100% 100%;
+  background-position: center;
   overflow: hidden;
 
   &::before {

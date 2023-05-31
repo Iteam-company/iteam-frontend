@@ -64,7 +64,6 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                         paddingTop: "40px",
                     }}
                 />
-
                 <FlexRow
                     w="100%"
                     p="0 20px"
