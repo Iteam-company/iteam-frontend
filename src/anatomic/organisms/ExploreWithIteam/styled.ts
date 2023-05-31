@@ -10,6 +10,10 @@ interface GridBoxProps {
     gridRowGap?: string;
 }
 
+interface SpotProps {
+  bg?: string;
+}
+
 export const GridBox = styled.div<GridBoxProps>`
     width: 100%;
     display: grid;
@@ -22,6 +26,13 @@ export const GridBox = styled.div<GridBoxProps>`
       @media(max-width: 1024px) {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 525px);
+      }
+    }
+
+    & {
+      @media(max-width: 824px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 425px);
       }
     }
 `
@@ -55,6 +66,12 @@ export const Box = styled.div<BoxProps>`
     width: 100%;
     z-index: 1;
     overflow: hidden;
+   
+  }
+
+  &:hover::before {
+    opacity: 0;
+    transition: opacity 1s ease-out;
   }
 `
 
@@ -96,4 +113,21 @@ export const BoxHover = styled(motion.div)<BoxProps>`
   overflow: hidden;
   z-index: 3;
   background-origin: context-box;
+`
+
+export const BoxForPinkSpot = styled.div<SpotProps>`
+  position: absolute;
+  left: 30%;
+  width: 550px;
+  height: 500px;
+  background: linear-gradient(90deg, #C471F5 0%, #FA71CD 100%);
+  filter: blur(150px);
+  overflow: hidden;
+  transform: rotate(54.56deg);
+  overflow: hidden;
+
+  @media(max-width: 800px) {
+    width: 100px;
+    height: 100px;
+  }
 `
