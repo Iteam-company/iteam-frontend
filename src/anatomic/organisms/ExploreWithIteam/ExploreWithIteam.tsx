@@ -62,14 +62,6 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         <FlexColumn justifyContent="space-between" h='100%'>
                                             <BoxForSpot t='10%' l='5%' />
                                                 <BoxForText>
-                                                {/* <Text 
-                                                    size={TEXT_SIZES.medium.largeM}
-                                                    weight={TEXT_WEIGHTS.medium}
-                                                    color={COLORS.dark}
-                                                    >
-                                                          {block.title}
-                                                  
-                                                </Text> */}
                                     </BoxForText>
                                 <BoxForPreview>
                                     <FlexColumn>
@@ -84,7 +76,7 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         size={TEXT_SIZES.small.l}
                                     >
                                         <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
-                                        View Case
+                                            {block.subtitleForPreview}
                                         </Link>
                                    
                                     </Text>

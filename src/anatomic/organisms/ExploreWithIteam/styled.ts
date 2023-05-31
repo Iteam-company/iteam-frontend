@@ -23,7 +23,7 @@ export const GridBox = styled.div<GridBoxProps>`
     grid-row-gap: ${props => props.gridRowGap || '0'};
 
     & {
-      @media(max-width: 1024px) {
+      @media(max-width: 992px) {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 525px);
       }
@@ -32,7 +32,7 @@ export const GridBox = styled.div<GridBoxProps>`
     & {
       @media(max-width: 824px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 425px);
+        grid-template-rows: repeat(6, 355px);
       }
     }
 `
