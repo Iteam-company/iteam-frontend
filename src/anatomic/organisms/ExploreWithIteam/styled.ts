@@ -73,6 +73,10 @@ export const Box = styled.div<BoxProps>`
     opacity: 0;
     transition: opacity 1s ease-out;
   }
+
+  @media (max-width: 992px) {
+    background-size: cover;
+  }
 `
 
 export const BoxForText = styled.div`
