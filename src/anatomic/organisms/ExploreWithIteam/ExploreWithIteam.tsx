@@ -21,7 +21,7 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
         <AdaptContainer>
         <FlexColumn w="100%"  justifyContent="center" alignItems="center"  p='2px 0 2px 0'>
             <FlexColumn w="80%">
-                <FlexColumn p='0 0 45px 0'>
+                <FlexColumn p='0 0 45px 0' >
                     <Text
                         size={TEXT_SIZES.medium.largeM}
                         weight={TEXT_WEIGHTS.medium}
@@ -32,9 +32,13 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                         Explore with ITeam:
                     </Text>
                 </FlexColumn>
-                <BoxForPinkSpot>
-                   
-                </BoxForPinkSpot>
+                <div 
+                style={size.width! < 920 
+                ? {position: 'relative'} 
+                : {}}
+                >
+                <BoxForPinkSpot/>
+                </div>
             <GridBox 
                 gridTemplateColumn='1fr 1fr' 
                 gridTemplateRow='repeat(3, 325px)'
@@ -50,9 +54,9 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                     bg='rgba(77, 38, 95, 0.55)'
                                 >     
                                    <HoverBox>
-                                        <FlexColumn justifyContent="space-between" h='100%'>
+                                        <FlexColumn justifyContent="space-between" h='100%' >
                                             <BoxForSpot t='10%' l='5%' />
-                                                <BoxForText>
+                                                <BoxForText> 
                                     </BoxForText>
                                 <BoxForPreview>
                                     <FlexColumn>

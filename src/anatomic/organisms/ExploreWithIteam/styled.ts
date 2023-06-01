@@ -95,8 +95,8 @@ export const BoxForPreview = styled.div`
 export const BoxForSpot = styled.div<BoxForTextSpotProps>`
   background: rgba(241, 241, 241, 1);
   filter: blur(100px);
-  width: 40%;
-  height: 40%;
+  width: 50%;
+  height: 50%;
   position: absolute;
   top: ${props => props.t || '30%'};
   left: ${props => props.l || '30%'};
@@ -130,7 +130,8 @@ export const BoxForPinkSpot = styled.div<SpotProps>`
   overflow: hidden;
 
   @media(max-width: 920px) {
-    width: 100px;
-    height: 100px;
+    top: 10%;
+    left: 0;
+    right: 0;
   }
 `
