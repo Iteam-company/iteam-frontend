@@ -22,13 +22,15 @@ export const GridBox = styled.div<GridBoxProps>`
     grid-column-gap: ${props => props.gridColumnGap || '0'};
     grid-row-gap: ${props => props.gridRowGap || '0'};
 
-  
-      @media(max-width: 992px) {
+
+    @media(max-width: 992px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 325px);
-        grid-row-gap: 9px;
-        margin-bottom: 10px;
-    }
+        grid-template-rows: repeat(6, 325px);
+      }
+      @media(max-width: 600px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 225px);
+      }
 
 `
 
@@ -67,10 +69,6 @@ export const Box = styled.div<BoxProps>`
   &:hover::before {
     opacity: 0;
     transition: opacity 1s ease-out;
-  }
-
-  @media (max-width: 992px) {
-    background-size: 100% 100%;
   }
 
 `

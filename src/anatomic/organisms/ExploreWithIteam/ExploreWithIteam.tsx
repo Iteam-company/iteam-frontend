@@ -20,16 +20,13 @@ import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
-import { useWindowSize } from "@/hooks/useWindowSize";
 
 type Props = {
     data: any;
 }
 
 export const ExploreWithIteam: FC<Props> = ({data}) => {
-    const size = useWindowSize();
-
-    const dataForDevice = size.width! > 600 ? data : data.slice(0, 4);
+    console.log(data)
     return (
         <AdaptContainer>
         <FlexColumn w="100%"  justifyContent="center" alignItems="center"  p='2px 0 2px 0'>
@@ -38,29 +35,28 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                     <Text
                         size={TEXT_SIZES.medium.largeM}
                         weight={TEXT_WEIGHTS.medium}
-                        color={size.width! > 750 ? COLORS.light : COLORS.dark}
+                        color={COLORS.light}
                         lineHeight='39px'
+               
                     >
                         Explore with ITeam:
                     </Text>
                 </FlexColumn>
                 <BoxForPinkSpot>
+                   
                 </BoxForPinkSpot>
             <GridBox 
                 gridTemplateColumn='1fr 1fr' 
-                gridTemplateRow='repeat(6, 325px)'
+                gridTemplateRow='repeat(3, 325px)'
                 gridColumnGap='13px'
                 gridRowGap='15px'
             >
                 {
-                    dataForDevice.map((block: any) => {
+                    data.map((block: any) => { 
                         return (
                             (
                                 <Box key={block.id} 
-                                    backgroundImage={size.width! > 600
-                                        ? `url(${block.backgroundImage.data.attributes.url})`
-                                        : `url(${block.backgroundForMobile.data[0].attributes.url})`
-                                    } 
+                                    backgroundImage={`url(${block.backgroundImage.data.attributes.url})`} 
                                     bg='rgba(77, 38, 95, 0.55)'
                                 >     
                                    <HoverBox>
@@ -83,6 +79,7 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
                                             {block.subtitleForPreview}
                                         </Link>
+                                   
                                     </Text>
                                     
                                 }
