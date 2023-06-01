@@ -4,7 +4,7 @@ export interface Props {
     variant?: BUTTON_VARIANTS;
     className?: string;
     color?: any;
-    w?: string;
+    w?: string | null;
     p?: string;
     textColor?: string;
     label?: ReactNode;
@@ -15,6 +15,7 @@ export interface Props {
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
     gradient?: any;
+    h?: string | null;
 }
 
 export const enum BUTTON_VARIANTS {

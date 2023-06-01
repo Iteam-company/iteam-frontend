@@ -3,30 +3,20 @@ import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import {  Box, BoxForPinkSpot, BoxForPreview, BoxForSpot, BoxForText, BoxHover, GridBox } from "./styled";
 import { FC, Fragment } from "react";
-import exploreImage_1 from '../../../assets/explore/explore_1.png';
-import exploreImage_2 from '../../../assets/explore/explore_2.png';
-import exploreImage_3 from '../../../assets/explore/explore_3.png';
-import exploreImage_4 from '../../../assets/explore/explore_4.png';
-import exploreImage_5 from '../../../assets/explore/explore_5.png';
-import exploreImage_6 from '../../../assets/explore/explore_6.png';
-import exploreBack from '../../../assets/explore/Rectangle 94.png';
-import exploreBg from '../../../assets/explore/Rectangle 94.png';
-import exploreBackOnHover from '../../../assets/explore/bgExplore.svg';
-import Image from "next/image";
-import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
 import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 type Props = {
     data: any;
 }
 
 export const ExploreWithIteam: FC<Props> = ({data}) => {
-    console.log(data)
+    const size = useWindowSize();
     return (
         <AdaptContainer>
         <FlexColumn w="100%"  justifyContent="center" alignItems="center"  p='2px 0 2px 0'>
@@ -70,11 +60,13 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         href="/projects"
                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                         variant={BUTTON_VARIANTS.gradient_link}
+                                        h={size.width! < 600 ? '30px' : null}
+                                        w={size.width! < 600 ? '100px' : null}
                                         label={
                                     <Text
                                         color={COLORS.dark}
                                         weight={TEXT_WEIGHTS.main}
-                                        size={TEXT_SIZES.small.l}
+                                        size={size.width! < 600 ? TEXT_SIZES.small.m : TEXT_SIZES.small.l}
                                     >
                                         <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
                                             {block.subtitleForPreview}

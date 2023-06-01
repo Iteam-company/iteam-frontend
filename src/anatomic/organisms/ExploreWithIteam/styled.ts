@@ -31,7 +31,6 @@ export const GridBox = styled.div<GridBoxProps>`
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 225px);
       }
-
 `
 
 interface BoxProps {
