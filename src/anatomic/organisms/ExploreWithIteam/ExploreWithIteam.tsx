@@ -61,8 +61,8 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                         variant={BUTTON_VARIANTS.gradient_link}
                                         h={size.width! < 600 ? '30px' : null}
-                                        w={size.width! < 600 ? '110px' : null}
-                                        m={size.width! < 600 ? '0 -25px -10px 0' : null}
+                                        w={size.width! < 600 ? '180px' : null}
+                                        m={size.width! < 600 ? 'auto' : null}
                                         label={
                                     <Text
                                         color={COLORS.dark}
@@ -72,9 +72,7 @@ export const ExploreWithIteam: FC<Props> = ({data}) => {
                                         <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
                                             {block.subtitleForPreview}
                                         </Link>
-                                   
                                     </Text>
-                                    
                                 }
                             />
                                     </FlexColumn>

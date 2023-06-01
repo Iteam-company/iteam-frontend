@@ -50,11 +50,14 @@ export const GradientLink = styled.a<{ gradient: string, h?: string | null , w?:
     text-decoration: none;
     height: ${(props) => props.h || '46px'};
     width: ${(props) => props.w || '167px'};
-    margin: ${(props) => props.m || '0 0 0 0'};
     border-radius: 50px;
     padding: 3px;
     background-image: linear-gradient(${({ gradient }) => gradient});
     cursor: pointer;
+
+    @media (max-width: 600px) {
+        margin: ${(props) => props.m || 'auto'};
+    }
 `;
 
 export const GradientButton = styled.button<{ gradient: string }>`

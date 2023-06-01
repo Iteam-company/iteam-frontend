@@ -81,9 +81,15 @@ export const BoxForText = styled.div`
 
 export const BoxForPreview = styled.div`
   position: absolute;
-  right: 35px;
-  bottom: 30px;
   z-index: 2;
+  bottom: 10px;
+  right: 15px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `
 
 export const BoxForSpot = styled.div<BoxForTextSpotProps>`
