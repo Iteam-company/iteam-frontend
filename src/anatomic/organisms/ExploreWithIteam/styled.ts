@@ -22,19 +22,14 @@ export const GridBox = styled.div<GridBoxProps>`
     grid-column-gap: ${props => props.gridColumnGap || '0'};
     grid-row-gap: ${props => props.gridRowGap || '0'};
 
-    & {
+  
       @media(max-width: 992px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 525px);
-      }
+        grid-template-rows: repeat(4, 325px);
+        grid-row-gap: 9px;
+        margin-bottom: 10px;
     }
 
-    & {
-      @media(max-width: 824px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 355px);
-      }
-    }
 `
 
 interface BoxProps {
@@ -75,8 +70,9 @@ export const Box = styled.div<BoxProps>`
   }
 
   @media (max-width: 992px) {
-    background-size: cover;
+    background-size: 100% 100%;
   }
+
 `
 
 export const BoxForText = styled.div`
@@ -130,7 +126,7 @@ export const BoxForPinkSpot = styled.div<SpotProps>`
   transform: rotate(54.56deg);
   overflow: hidden;
 
-  @media(max-width: 800px) {
+  @media(max-width: 920px) {
     width: 100px;
     height: 100px;
   }

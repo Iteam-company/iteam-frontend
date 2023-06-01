@@ -21,6 +21,9 @@ const Home = () => {
 
     const widthSize = size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
     const widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
+    const bgColor = size.width! > 750 
+        ? {background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}
+        : {background: 'linear-gradient(90deg, rgba(48, 25, 115, 0.46) 7.84%, rgba(70, 22, 205, 0) 45.98%)'}
 
     if (!data) return null;
 
@@ -64,7 +67,7 @@ const Home = () => {
                 <HowWeWork howWeWork={data?.howWeWork} />
             </FlexColumn>
             
-            <FlexColumn w='100%' style={{background: 'linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)'}}>
+            <FlexColumn w='100%' style={bgColor}>
             <ExploreWithIteam  data={data?.exploreWithIteam}/>
             </FlexColumn>
             <OurCoreValues coreValue={data?.coreValues} />
