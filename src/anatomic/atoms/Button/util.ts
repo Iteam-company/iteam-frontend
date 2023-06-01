@@ -6,6 +6,7 @@ export interface Props {
     color?: any;
     w?: string | null;
     p?: string;
+    m?: string | null;
     textColor?: string;
     label?: ReactNode;
     icon?: string;
