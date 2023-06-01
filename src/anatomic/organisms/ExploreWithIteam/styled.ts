@@ -130,7 +130,7 @@ export const BoxForPinkSpot = styled.div<SpotProps>`
   overflow: hidden;
 
   @media(max-width: 920px) {
-    top: 10%;
+    height: 130px;
     left: 0;
     right: 0;
   }
