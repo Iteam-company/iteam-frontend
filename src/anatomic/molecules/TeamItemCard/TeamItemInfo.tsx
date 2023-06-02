@@ -17,7 +17,7 @@ export const TeamItemInfo: FC<{
 }> = ({ avatar, name, position }) => {
     const { url } = avatar.data.attributes;
     const size = useWindowSize();
-    const displayForm = size.width! < 370 ? 'none' : 'block';
+    const displayForm = size.width! < 370 ? "none" : "block";
 
     return (
         <>
@@ -87,32 +87,32 @@ export const TeamItemInfo: FC<{
                         </FlexColumn>
 
                         <FlexColumn w="100%" gap="8px">
-                            <div style={{display: `${displayForm}`}}>
-                            <FlexRow gap="10px" alignItems="center">
-                                <img
-                                    src={UpworkIcon.src}
-                                    style={{ height: "20px" }}
-                                />
-                                <Text
-                                    weight={TEXT_WEIGHTS.main}
-                                    size={TEXT_SIZES.small.m}
-                                    color={COLORS.dark}
-                                >
-                                    5.0
-                                </Text>
-                            </FlexRow>
-                            <img src={StarsIcon.src} />
+                            <div style={{ display: `${displayForm}` }}>
+                                <FlexRow gap="10px" alignItems="center">
+                                    <img
+                                        src={UpworkIcon.src}
+                                        style={{ height: "20px" }}
+                                    />
+                                    <Text
+                                        weight={TEXT_WEIGHTS.main}
+                                        size={TEXT_SIZES.small.m}
+                                        color={COLORS.dark}
+                                    >
+                                        5.0
+                                    </Text>
+                                </FlexRow>
+                                <img src={StarsIcon.src} />
 
-                            <FlexRow gap="10px" alignItems="center">
-                                <img src={TopIcon.src} />
-                                <Text
-                                    weight={TEXT_WEIGHTS.main}
-                                    color={COLORS.textMinor}
-                                    size={TEXT_SIZES.small.s}
-                                >
-                                    TOP RATED PLUS
-                                </Text>
-                            </FlexRow>
+                                <FlexRow gap="10px" alignItems="center">
+                                    <img src={TopIcon.src} />
+                                    <Text
+                                        weight={TEXT_WEIGHTS.main}
+                                        color={COLORS.textMinor}
+                                        size={TEXT_SIZES.small.s}
+                                    >
+                                        TOP RATED PLUS
+                                    </Text>
+                                </FlexRow>
                             </div>
                         </FlexColumn>
                     </FlexRow>

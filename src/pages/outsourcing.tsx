@@ -49,7 +49,7 @@ const Outsourcing = () => {
     const numbersViewRef = useRef(null);
     const isNumbersInView = useInView(numbersViewRef);
     const size = useWindowSize();
-    const w = size.width! > 1800 ? '100%' : '60%';
+    const w = size.width! > 1800 ? "100%" : "60%";
 
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
 
@@ -67,7 +67,6 @@ const Outsourcing = () => {
                 alignItems="center"
                 style={{ boxSizing: "border-box" }}
             >
-               
                 <Text
                     color={COLORS.textPrimary}
                     weight={TEXT_WEIGHTS.medium}
@@ -84,7 +83,6 @@ const Outsourcing = () => {
                     {data?.main.description}
                 </Text>
             </FlexColumn>
-            
 
             <FlexColumn
                 w="100%"
@@ -187,35 +185,35 @@ const Outsourcing = () => {
                     loading="lazy"
                 />
                 <WhiteSection>
-                    <AdaptContainer c='center'>
-                        <div style={{textAlign: 'center'}}>
-                    <Text
-                        weight={TEXT_WEIGHTS.medium}
-                        color={COLORS.textPrimary}
-                        size={TEXT_SIZES.medium.l}
-                        textAlign="center"
-                    >
-                        {data?.numbersTitle}
-                    </Text>
-                    </div>
-                    <FlexContainer
-                        w="100%"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        p="10px 0 0"
-                        gap="30px"
-                        ref={numbersViewRef}
-                    >
-                        {data?.numbers.map((item: NumbersInterface) => (
-                            <CountUpNumbers
-                                key={item.id}
-                                title={item.title}
-                                subTitle={item.subTitle}
-                                text={item.text}
-                                isNumbersInView={isNumbersInView}
-                            />
-                        ))}
-                    </FlexContainer>
+                    <AdaptContainer c="center">
+                        <div style={{ textAlign: "center" }}>
+                            <Text
+                                weight={TEXT_WEIGHTS.medium}
+                                color={COLORS.textPrimary}
+                                size={TEXT_SIZES.medium.l}
+                                textAlign="center"
+                            >
+                                {data?.numbersTitle}
+                            </Text>
+                        </div>
+                        <FlexContainer
+                            w="100%"
+                            justifyContent="space-between"
+                            alignItems="center"
+                            p="10px 0 0"
+                            gap="30px"
+                            ref={numbersViewRef}
+                        >
+                            {data?.numbers.map((item: NumbersInterface) => (
+                                <CountUpNumbers
+                                    key={item.id}
+                                    title={item.title}
+                                    subTitle={item.subTitle}
+                                    text={item.text}
+                                    isNumbersInView={isNumbersInView}
+                                />
+                            ))}
+                        </FlexContainer>
                     </AdaptContainer>
                 </WhiteSection>
             </FlexColumn>
@@ -310,12 +308,8 @@ const Outsourcing = () => {
                     {data?.appsTitle}
                 </Text>
 
-                {data?.apps &&
-                
-                <AppsImplement apps={data.apps} />
-             
-                }
-            </FlexColumn>  
+                {data?.apps && <AppsImplement apps={data.apps} />}
+            </FlexColumn>
         </FlexColumn>
     );
 };

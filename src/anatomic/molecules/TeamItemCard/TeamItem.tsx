@@ -12,10 +12,19 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import Link from "next/link";
 
 export const TeamItem: FC<TeamInterface> = memo(
-    ({ name, avatar, position, technology, comments, experience, rate, upworkLink }) => {
+    ({
+        name,
+        avatar,
+        position,
+        technology,
+        comments,
+        experience,
+        rate,
+        upworkLink,
+    }) => {
         const size = useWindowSize();
-        const width = size.width! > 1800 ? '100%' : '80vw'
-        const padding = size.width! > 1800 ? '0 20px 0 0' : '';
+        const width = size.width! > 1800 ? "100%" : "80vw";
+        const padding = size.width! > 1800 ? "0 20px 0 0" : "";
 
         return (
             <>
@@ -42,22 +51,24 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 w="100%"
                                 justifyContent="end"
                                 alignItems="end"
-                            >  
-
-                            <FlexColumn
-                                w="100%"
-                                justifyContent="end"
-                                alignItems="end"
                             >
-                                <Link
-                                    href={upworkLink}
-                                    style={{ color: `${COLORS.textSecondary}`, fontSize: `${TEXT_SIZES.small.s}`, textDecoration: 'none'}}
+                                <FlexColumn
+                                    w="100%"
+                                    justifyContent="end"
+                                    alignItems="end"
                                 >
-                                    Follow the link to see more
-                                </Link>
-                                <img src={UpWorkLink.src} />
+                                    <Link
+                                        href={upworkLink!}
+                                        style={{
+                                            color: `${COLORS.textSecondary}`,
+                                            fontSize: `${TEXT_SIZES.small.s}`,
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        Follow the link to see more
+                                    </Link>
+                                    <img src={UpWorkLink.src} />
                                 </FlexColumn>
-  
                             </FlexColumn>
                         </FlexColumn>
                     </FlexRow>
@@ -83,12 +94,20 @@ export const TeamItem: FC<TeamInterface> = memo(
                             <CommentSlider comments={comments} width="90vw" />
                             <FlexColumn
                                 w="100%"
-                                justifyContent={size.width! < 500 ? 'center' : 'end'}
-                                alignItems={size.width! < 500 ? 'center' : 'end'}
+                                justifyContent={
+                                    size.width! < 500 ? "center" : "end"
+                                }
+                                alignItems={
+                                    size.width! < 500 ? "center" : "end"
+                                }
                             >
                                 <Link
-                                    href={upworkLink}
-                                    style={{ color: `${COLORS.textSecondary}`, fontSize: `${TEXT_SIZES.small.s}`, textDecoration: 'none'}}
+                                    href={upworkLink || ""}
+                                    style={{
+                                        color: `${COLORS.textSecondary}`,
+                                        fontSize: `${TEXT_SIZES.small.s}`,
+                                        textDecoration: "none",
+                                    }}
                                 >
                                     Follow the link to see more
                                 </Link>

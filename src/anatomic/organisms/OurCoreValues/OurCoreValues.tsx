@@ -126,19 +126,19 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                     {coreValue.value.map((item: ValueInterface, i: number) => {
                         return (
                             <FlexRow
-                            key={item.id}
-                            justifyContent="space-evenly"
-                            alignItems="center"
-                            position="relative"
-                            h="100%"
-                            w="100%"
-                        >
-                            <FlexColumn
-                                w="60%"
-                                justifyContent="center"
+                                key={item.id}
+                                justifyContent="space-evenly"
                                 alignItems="center"
-                            >   
-                            {/* <Image
+                                position="relative"
+                                h="100%"
+                                w="100%"
+                            >
+                                <FlexColumn
+                                    w="60%"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                    {/* <Image
                                 src={getStrapiImage(url)}
                                 width={width}
                                 height={height}
@@ -149,57 +149,54 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                                     paddingLeft: '50%'
                                 }}
                             /> */}
-                                <GradientText
-                                    weight={TEXT_WEIGHTS.medium}
-                                    size="50px"
-                                    lineHeight="50px"
-                                    textAlign="center"
-                                    color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
-                                >
-                                    {item.step}
-                                </GradientText>
-                            </FlexColumn>
-
-                            <FlexColumn
-                                h="100%"
-                                w="50%"
-                                justifyContent="center"
-                                alignItems="center"
-                            >
-                                <Divider height="150px" width="2px" />
-                                <Dot />
-                            </FlexColumn>
-
-                            <FlexColumn
-                                gap="10px"
-                                justifyContent="center"
-                                alignItems="center"
-                                w="100%"
-                            >
-
-                                <Text
-                                    size={TEXT_SIZES.medium.s}
-                                    color={COLORS.textPrimary}
-                                    weight={TEXT_WEIGHTS.medium}
-                                    mobileSize={TEXT_SIZES.small.l}
-                                >
-                                    {item.title}
-                                </Text>
-                                
-                                <SideChevron>
-                                    <Text
-                                        size={TEXT_SIZES.small.l}
-                                        color={COLORS.textPrimary}
+                                    <GradientText
+                                        weight={TEXT_WEIGHTS.medium}
+                                        size="50px"
+                                        lineHeight="50px"
+                                        textAlign="center"
+                                        color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
                                     >
-                                        {item.text}
-                                    </Text>
-                                </SideChevron>
-                            </FlexColumn>
-                        </FlexRow>
+                                        {item.step}
+                                    </GradientText>
+                                </FlexColumn>
 
-                        )
-                     
-})}
+                                <FlexColumn
+                                    h="100%"
+                                    w="50%"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                    <Divider height="150px" width="2px" />
+                                    <Dot />
+                                </FlexColumn>
+
+                                <FlexColumn
+                                    gap="10px"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    w="100%"
+                                >
+                                    <Text
+                                        size={TEXT_SIZES.medium.s}
+                                        color={COLORS.textPrimary}
+                                        weight={TEXT_WEIGHTS.medium}
+                                        mobileSize={TEXT_SIZES.small.l}
+                                    >
+                                        {item.title}
+                                    </Text>
+
+                                    <SideChevron>
+                                        <Text
+                                            size={TEXT_SIZES.small.l}
+                                            color={COLORS.textPrimary}
+                                        >
+                                            {item.text}
+                                        </Text>
+                                    </SideChevron>
+                                </FlexColumn>
+                            </FlexRow>
+                        );
+                    })}
                 </FlexColumn>
             </Mobile>
         </Container>

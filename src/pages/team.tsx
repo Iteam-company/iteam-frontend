@@ -47,7 +47,7 @@ const Team = () => {
         data &&
             setTeam(
                 data.team.map((item: TeamInterface) => {
-                    return ({
+                    return {
                         content: (
                             <TeamItem
                                 key={item.id}
@@ -61,7 +61,7 @@ const Team = () => {
                                 upworkLink={item?.upworkLink}
                             />
                         ),
-                    })
+                    };
                 }),
             );
     }, [data?.team]);
@@ -93,26 +93,26 @@ const Team = () => {
                     mobileRight={-40}
                     priority
                 />
-                  <AdaptContainer >
-                <FlexColumn justifyContent="center" alignItems="start" >
-                    <Text
-                        size={TEXT_SIZES.small.s}
-                        letterSpacing={LETTER_SPACING.s}
-                        weight={TEXT_WEIGHTS.medium}
-                        type={TEXT_TYPES.title}
-                        color={COLORS.warmGray}
-                    >
-                        {data?.main.title}
-                    </Text>
-                    <Title
-                        size={TEXT_SIZES.large.m}
-                        color={COLORS.dark}
-                        weight={TEXT_WEIGHTS.medium}
-                        mobileSize={TEXT_SIZES.medium.xs}
-                    >
-                        {data?.main.description}
-                    </Title>
-                </FlexColumn>
+                <AdaptContainer>
+                    <FlexColumn justifyContent="center" alignItems="start">
+                        <Text
+                            size={TEXT_SIZES.small.s}
+                            letterSpacing={LETTER_SPACING.s}
+                            weight={TEXT_WEIGHTS.medium}
+                            type={TEXT_TYPES.title}
+                            color={COLORS.warmGray}
+                        >
+                            {data?.main.title}
+                        </Text>
+                        <Title
+                            size={TEXT_SIZES.large.m}
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.medium}
+                            mobileSize={TEXT_SIZES.medium.xs}
+                        >
+                            {data?.main.description}
+                        </Title>
+                    </FlexColumn>
                 </AdaptContainer>
             </FlexColumn>
             {team?.length && (
@@ -121,7 +121,7 @@ const Team = () => {
                         <SmoothSlider
                             slides={team}
                             isTwoColumn={false}
-                            editionContent={ 
+                            editionContent={
                                 <FlexColumn
                                     position="absolute"
                                     style={{
@@ -147,7 +147,7 @@ const Team = () => {
                                 </FlexColumn>
                             }
                         />
-                    </Desktop> 
+                    </Desktop>
                     <Mobile>
                         <SmoothSlider
                             slides={team}
@@ -162,7 +162,7 @@ const Team = () => {
                                         left: "10vw",
                                     }}
                                     zIndex="100"
-                                > 
+                                >
                                     <Button
                                         href="/contact_us"
                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"

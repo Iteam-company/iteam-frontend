@@ -16,23 +16,33 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
     const size = useWindowSize();
-    
-    
+
     if (!howWeWork) return null;
 
     return (
-        <FlexColumn w="100%" justifyContent="center" alignItems="center" ov='hidden'>
+        <FlexColumn
+            w="100%"
+            justifyContent="center"
+            alignItems="center"
+            ov="hidden"
+        >
             <FlexColumn w="80%">
-            <AdaptContainer>
-                <div style={size.width! < 992 ? {textAlign: 'center', marginBottom: '13px'} : {}}>
-                <Text
-                    size={TEXT_SIZES.medium.xs}
-                    weight={TEXT_WEIGHTS.main}
-                    color={COLORS.dark}
-                >
-                    {howWeWork.title}
-                </Text>
-                </div>
+                <AdaptContainer>
+                    <div
+                        style={
+                            size.width! < 992
+                                ? { textAlign: "center", marginBottom: "13px" }
+                                : {}
+                        }
+                    >
+                        <Text
+                            size={TEXT_SIZES.medium.xs}
+                            weight={TEXT_WEIGHTS.main}
+                            color={COLORS.dark}
+                        >
+                            {howWeWork.title}
+                        </Text>
+                    </div>
                 </AdaptContainer>
             </FlexColumn>
             <Container

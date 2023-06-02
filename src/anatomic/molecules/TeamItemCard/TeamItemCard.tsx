@@ -12,9 +12,9 @@ import {
     GradientElem,
     GradientElemContent,
 } from "./styled";
-import Image from 'next/image';
+import Image from "next/image";
 import { Technology } from "@/pages/team";
-import label from '../../../assets/icon/label.svg';
+import label from "../../../assets/icon/label.svg";
 
 interface Props {
     technology?: Technology[];
@@ -31,8 +31,8 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                     alignItems="space-between"
                     w="100%"
                     gap="20px"
-                >        
-                   <Card justifyContent="space-between">
+                >
+                    <Card justifyContent="space-between">
                         <FlexColumn gap="10px">
                             <Text
                                 color={COLORS.purple}
@@ -54,12 +54,17 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                 position="relative"
                             >
                                 <Text size="12px">0</Text>
-                                <Text size="12px">{experience.year < 5  ? experience.year : ''}</Text>
+                                <Text size="12px">
+                                    {experience.year < 5 ? experience.year : ""}
+                                </Text>
                                 <Label
                                     justifyContent="center"
                                     alignItems="center"
-                                    width={experience.year < 5 ? experience.year : experience.year - 0.2}
-
+                                    width={
+                                        experience.year < 5
+                                            ? experience.year
+                                            : experience.year - 0.2
+                                    }
                                 >
                                     <div style={{ paddingBottom: "10px" }}>
                                         <Text
@@ -92,7 +97,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             gap="16px"
                             alignItems="space-between"
                             h="100%"
-                            w='100%'
+                            w="100%"
                         >
                             {technology &&
                                 technology.map((elem: Technology) => (
@@ -106,21 +111,29 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                             alignItems="center"
                                             gap="3px"
                                         >
-                                             <FlexRow
+                                            <FlexRow
                                                 alignItems="center"
                                                 justifyContent="space-around"
                                                 w="100%"
                                                 h="100%"
-                                                p='5px'
+                                                p="5px"
                                             >
-                                            <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='20' height='20'/>
-                                            <Text
-                                                weight={TEXT_WEIGHTS.main}
-                                                color={COLORS.textSecondary}
-                                                size={TEXT_SIZES.small.xs}
-                                            >
-                                                {elem.text}
-                                            </Text>
+                                                <Image
+                                                    src={
+                                                        elem.techIcon.data
+                                                            .attributes.url
+                                                    }
+                                                    alt="tech_logo"
+                                                    width="20"
+                                                    height="20"
+                                                />
+                                                <Text
+                                                    weight={TEXT_WEIGHTS.main}
+                                                    color={COLORS.textSecondary}
+                                                    size={TEXT_SIZES.small.xs}
+                                                >
+                                                    {elem.text}
+                                                </Text>
                                             </FlexRow>
                                         </GradientElemContent>
                                     </GradientElem>
@@ -128,93 +141,128 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         </FlexRow>
                     </Card>
                     <Card>
-                        <FlexColumn gap='8px'>
+                        <FlexColumn gap="8px">
                             <FlexRow>
-                                <FlexColumn gap='10px'>
-                                <Text
-                                    color={COLORS.purple}
-                                    textTransform="uppercase"
-                                    textDecoration="underline"
-                                    weight={TEXT_WEIGHTS.medium}
-                                    size={TEXT_SIZES.small.m}
-                                >
-                                    Rate
-                                </Text>
-                                <div style={{marginTop: '-10px', marginBottom: '12px'}}>
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.medium.largeM}
-                                    weight={TEXT_WEIGHTS.main}
-                                >
-                                    {rate}$
-                                </Text>
-                                </div>
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.small.m}
-                                >
-                                    Hourly developer’s rate
-                                </Text>
+                                <FlexColumn gap="10px">
+                                    <Text
+                                        color={COLORS.purple}
+                                        textTransform="uppercase"
+                                        textDecoration="underline"
+                                        weight={TEXT_WEIGHTS.medium}
+                                        size={TEXT_SIZES.small.m}
+                                    >
+                                        Rate
+                                    </Text>
+                                    <div
+                                        style={{
+                                            marginTop: "-10px",
+                                            marginBottom: "12px",
+                                        }}
+                                    >
+                                        <Text
+                                            color={COLORS.textSecondary}
+                                            size={TEXT_SIZES.medium.largeM}
+                                            weight={TEXT_WEIGHTS.main}
+                                        >
+                                            {rate}$
+                                        </Text>
+                                    </div>
+                                    <Text
+                                        color={COLORS.textSecondary}
+                                        size={TEXT_SIZES.small.m}
+                                    >
+                                        Hourly developer’s rate
+                                    </Text>
                                 </FlexColumn>
                                 <div
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    maxWidth: "100px",
-                                    minWidth: "70px",
-                                    paddingLeft: "14px",
-                                    paddingTop: '30px',
-                                }}
-                            >
-                                <div style={{position: 'relative'}}>                  
-                                <CircularProgressbar
-                                    maxValue={30}
-                                    value={rate}
-                                    styles={buildStyles({
-                                        rotation: rate === 30 || rate === 20 ? 0.33 : 0.16,
-                                        pathColor: COLORS.progressPath,
-                                        textColor: COLORS.textSecondary,
-                                        trailColor: COLORS.progressTrail,  
-                                    })}
-                                    
-                                />
-                                <div style={rate === 30 
-                                    ? {display: 'none'} 
-                                    : {position: 'absolute', top: '-20%', right: '44%'}}
+                                    style={{
+                                        width: "100%",
+                                        height: "100%",
+                                        maxWidth: "100px",
+                                        minWidth: "70px",
+                                        paddingLeft: "14px",
+                                        paddingTop: "30px",
+                                    }}
                                 >
-                                <Text
-                                    color={COLORS.dark}
-                                    size={TEXT_SIZES.small.xs}
-                                >   
-                                    30$
-                                     </Text>
-                                </div>
-                                <Label bgImg={rate === 30 ? null : label} 
-                                    justifyContent="center" 
-                                    alignItems="center" 
-                                    top={rate === 30 ? '-29%' : rate === 25 ? '17%' : '53%'} 
-                                    right={rate === 30 ? '35%' :rate === 25 ? '25%' : '22%'}
-                                >
-                                <Text
-                                    color={COLORS.dark}
-                                    size={TEXT_SIZES.small.xs}
-                                >
-                                   <div style={rate === 30 
-                                        ? {padding: '3px 3px 8px 6px'} 
-                                        : {padding: '4px 12px 6px 10px'}}
-                                    >
-                                    {`${rate}$`}
+                                    <div style={{ position: "relative" }}>
+                                        <CircularProgressbar
+                                            maxValue={30}
+                                            value={rate}
+                                            styles={buildStyles({
+                                                rotation:
+                                                    rate === 30 || rate === 20
+                                                        ? 0.33
+                                                        : 0.16,
+                                                pathColor: COLORS.progressPath,
+                                                textColor: COLORS.textSecondary,
+                                                trailColor:
+                                                    COLORS.progressTrail,
+                                            })}
+                                        />
+                                        <div
+                                            style={
+                                                rate === 30
+                                                    ? { display: "none" }
+                                                    : {
+                                                          position: "absolute",
+                                                          top: "-20%",
+                                                          right: "44%",
+                                                      }
+                                            }
+                                        >
+                                            <Text
+                                                color={COLORS.dark}
+                                                size={TEXT_SIZES.small.xs}
+                                            >
+                                                30$
+                                            </Text>
+                                        </div>
+                                        <Label
+                                            bgImg={rate === 30 ? null : label}
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            top={
+                                                rate === 30
+                                                    ? "-29%"
+                                                    : rate === 25
+                                                    ? "17%"
+                                                    : "53%"
+                                            }
+                                            right={
+                                                rate === 30
+                                                    ? "35%"
+                                                    : rate === 25
+                                                    ? "25%"
+                                                    : "22%"
+                                            }
+                                        >
+                                            <Text
+                                                color={COLORS.dark}
+                                                size={TEXT_SIZES.small.xs}
+                                            >
+                                                <div
+                                                    style={
+                                                        rate === 30
+                                                            ? {
+                                                                  padding:
+                                                                      "3px 3px 8px 6px",
+                                                              }
+                                                            : {
+                                                                  padding:
+                                                                      "4px 12px 6px 10px",
+                                                              }
+                                                    }
+                                                >
+                                                    {`${rate}$`}
+                                                </div>
+                                            </Text>
+                                        </Label>
                                     </div>
-                                   
-                                </Text>
-                                </Label>
                                 </div>
-                            </div>
-                            </FlexRow>               
-                        <FlexRow  w="100%" gap="10px" h="100%">
-                            <FlexRow w="100%" h="100%">
-                            </FlexRow>                    
-                        </FlexRow>
+                            </FlexRow>
+                            <FlexRow w="100%" gap="10px" h="100%">
+                                <FlexRow w="100%" h="100%"></FlexRow>
+                            </FlexRow>
                         </FlexColumn>
                     </Card>
                 </FlexRow>
@@ -260,32 +308,46 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             alignItems="space-between"
                             h="100%"
                         >
-                                {technology &&
-                                technology.map((elem: Technology, index: number) => {
-                                    console.log(elem)
-                                    return(   
-                                        <FlexRow key={elem.id}
-                                           alignItems="center"
-                                           justifyContent="center"
-                                           flexWrap="wrap"
-                                           gap='10px'
-                                           w="100%"
-                                           h="100%"
-                                       >
-                                        {
-                                            !(index % 2) && (
-                                                <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='17' height='17'/>
-                                            )
-                                        }
-                                        {
-                                            !!(index % 2) && (
-                                                <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='17' height='17'/>
-                                            )
-                                                                                   
-                                        }
-                                       </FlexRow>
-                                    )
-                                })}
+                            {technology &&
+                                technology.map(
+                                    (elem: Technology, index: number) => {
+                                        console.log(elem);
+                                        return (
+                                            <FlexRow
+                                                key={elem.id}
+                                                alignItems="center"
+                                                justifyContent="center"
+                                                flexWrap="wrap"
+                                                gap="10px"
+                                                w="100%"
+                                                h="100%"
+                                            >
+                                                {!(index % 2) && (
+                                                    <Image
+                                                        src={
+                                                            elem.techIcon.data
+                                                                .attributes.url
+                                                        }
+                                                        alt="tech_logo"
+                                                        width="17"
+                                                        height="17"
+                                                    />
+                                                )}
+                                                {!!(index % 2) && (
+                                                    <Image
+                                                        src={
+                                                            elem.techIcon.data
+                                                                .attributes.url
+                                                        }
+                                                        alt="tech_logo"
+                                                        width="17"
+                                                        height="17"
+                                                    />
+                                                )}
+                                            </FlexRow>
+                                        );
+                                    },
+                                )}
                             {/* {technology &&
                                 technology.map((elem: Technology) => <></>)} */}
                         </FlexRow>
