@@ -12,7 +12,7 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import Link from "next/link";
 
 export const TeamItem: FC<TeamInterface> = memo(
-    ({ name, avatar, position, technology, comments, experience, rate }) => {
+    ({ name, avatar, position, technology, comments, experience, rate, upworkLink }) => {
         const size = useWindowSize();
         const width = size.width! > 1800 ? '100%' : '80vw'
         const padding = size.width! > 1800 ? '0 20px 0 0' : '';
@@ -50,7 +50,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 alignItems="end"
                             >
                                 <Link
-                                    href='#'
+                                    href={upworkLink}
                                     style={{ color: `${COLORS.textSecondary}`, fontSize: `${TEXT_SIZES.small.s}`, textDecoration: 'none'}}
                                 >
                                     Follow the link to see more
@@ -62,7 +62,6 @@ export const TeamItem: FC<TeamInterface> = memo(
                         </FlexColumn>
                     </FlexRow>
                 </Desktop>
-
                 <Mobile>
                     <FlexColumn
                         gap="30px"
@@ -87,12 +86,12 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 justifyContent={size.width! < 500 ? 'center' : 'end'}
                                 alignItems={size.width! < 500 ? 'center' : 'end'}
                             >
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.small.s}
+                                <Link
+                                    href={upworkLink}
+                                    style={{ color: `${COLORS.textSecondary}`, fontSize: `${TEXT_SIZES.small.s}`, textDecoration: 'none'}}
                                 >
                                     Follow the link to see more
-                                </Text>
+                                </Link>
                                 <img src={UpWorkLink.src} />
                             </FlexColumn>
                         </FlexColumn>

@@ -29,6 +29,7 @@ export interface TeamInterface {
     technology?: Technology[];
     experience: { position: string; year: number };
     rate: number;
+    upworkLink?: string;
 }
 
 export interface Technology {
@@ -45,20 +46,23 @@ const Team = () => {
     useEffect(() => {
         data &&
             setTeam(
-                data.team.map((item: TeamInterface) => ({
-                    content: (
-                        <TeamItem
-                            key={item.id}
-                            avatar={item.avatar}
-                            name={item.name}
-                            position={item.position}
-                            technology={item.technology}
-                            comments={item.comments}
-                            experience={item.experience}
-                            rate={item.rate}
-                        />
-                    ),
-                })),
+                data.team.map((item: TeamInterface) => {
+                    return ({
+                        content: (
+                            <TeamItem
+                                key={item.id}
+                                avatar={item.avatar}
+                                name={item.name}
+                                position={item.position}
+                                technology={item.technology}
+                                comments={item.comments}
+                                experience={item.experience}
+                                rate={item.rate}
+                                upworkLink={item?.upworkLink}
+                            />
+                        ),
+                    })
+                }),
             );
     }, [data?.team]);
 
