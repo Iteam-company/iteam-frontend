@@ -9,12 +9,14 @@ import { TeamItemCard } from "./TeamItemCard";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { TeamInterface } from "@/pages/team";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import Link from "next/link";
 
 export const TeamItem: FC<TeamInterface> = memo(
     ({ name, avatar, position, technology, comments, experience, rate }) => {
         const size = useWindowSize();
         const width = size.width! > 1800 ? '100%' : '80vw'
         const padding = size.width! > 1800 ? '0 20px 0 0' : '';
+
         return (
             <>
                 <Desktop w="100%" alignItems="center">
@@ -40,14 +42,22 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 w="100%"
                                 justifyContent="end"
                                 alignItems="end"
+                            >  
+
+                            <FlexColumn
+                                w="100%"
+                                justifyContent="end"
+                                alignItems="end"
                             >
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.small.s}
+                                <Link
+                                    href='#'
+                                    style={{ color: `${COLORS.textSecondary}`, fontSize: `${TEXT_SIZES.small.s}`, textDecoration: 'none'}}
                                 >
                                     Follow the link to see more
-                                </Text>
+                                </Link>
                                 <img src={UpWorkLink.src} />
+                                </FlexColumn>
+  
                             </FlexColumn>
                         </FlexColumn>
                     </FlexRow>
@@ -72,11 +82,10 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 rate={rate}
                             />
                             <CommentSlider comments={comments} width="90vw" />
-
                             <FlexColumn
                                 w="100%"
-                                justifyContent="end"
-                                alignItems="end"
+                                justifyContent={size.width! < 500 ? 'center' : 'end'}
+                                alignItems={size.width! < 500 ? 'center' : 'end'}
                             >
                                 <Text
                                     color={COLORS.textSecondary}

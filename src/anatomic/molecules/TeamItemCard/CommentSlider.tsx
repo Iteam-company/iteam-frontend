@@ -18,7 +18,7 @@ export interface CommentsI {
 
 export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
     const size = useWindowSize();
-    const windowWidth = size.width! > 1800 ? '100%' : width;
+    const windowWidth = size.width! > 1800 ? '100%' : size.width! < 700 ? '90%' : width;
     return (
         <StyledSwiper
             style={{

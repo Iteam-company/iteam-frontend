@@ -25,7 +25,7 @@ interface Props {
 export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
     return (
         <FlexColumn w="100%" alignItems="space-between">
-            <Desktop w="100%" alignItems="space-between">
+            <Desktop w="100%" alignItems="space-between" mW={1250}>
                 <FlexRow
                     justifyContent="space-between"
                     alignItems="space-between"
@@ -54,11 +54,11 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                 position="relative"
                             >
                                 <Text size="12px">0</Text>
-                                <Text size="12px">5</Text>
+                                <Text size="12px">{experience.year < 5  ? experience.year : ''}</Text>
                                 <Label
                                     justifyContent="center"
                                     alignItems="center"
-                                    width={experience.year}
+                                    width={experience.year < 5 ? experience.year : experience.year - 0.2}
 
                                 >
                                     <div style={{ paddingBottom: "10px" }}>
@@ -106,6 +106,13 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                             alignItems="center"
                                             gap="3px"
                                         >
+                                             <FlexRow
+                                                alignItems="center"
+                                                justifyContent="space-around"
+                                                w="100%"
+                                                h="100%"
+                                                p='5px'
+                                            >
                                             <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='20' height='20'/>
                                             <Text
                                                 weight={TEXT_WEIGHTS.main}
@@ -114,6 +121,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                             >
                                                 {elem.text}
                                             </Text>
+                                            </FlexRow>
                                         </GradientElemContent>
                                     </GradientElem>
                                 ))}
@@ -130,7 +138,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                     weight={TEXT_WEIGHTS.medium}
                                     size={TEXT_SIZES.small.m}
                                 >
-                                Rate
+                                    Rate
                                 </Text>
                                 <div style={{marginTop: '-10px', marginBottom: '12px'}}>
                                 <Text
@@ -184,8 +192,8 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                 <Label bgImg={rate === 30 ? null : label} 
                                     justifyContent="center" 
                                     alignItems="center" 
-                                    top={rate === 30 ? '-26%' : rate === 25 ? '17%' : '53%'} 
-                                    right={rate === 30 ? '38%' :rate === 25 ? '25%' : '22%'}
+                                    top={rate === 30 ? '-29%' : rate === 25 ? '17%' : '53%'} 
+                                    right={rate === 30 ? '35%' :rate === 25 ? '25%' : '22%'}
                                 >
                                 <Text
                                     color={COLORS.dark}
@@ -212,7 +220,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                 </FlexRow>
             </Desktop>
 
-            <Mobile>
+            <Mobile mW={1250}>
                 <FlexRow justifyContent="space-between" w="100%" gap="20px">
                     <FlexColumn gap="10px" w="100%" alignItems="center">
                         <Text
@@ -247,11 +255,37 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             Expertise
                         </Text>
                         <FlexRow
-                            flexWrap="wrap"
+                            flexWrap="nowrap"
                             gap="20px"
                             alignItems="space-between"
                             h="100%"
                         >
+                                {technology &&
+                                technology.map((elem: Technology, index: number) => {
+                                    console.log(elem)
+                                    return(   
+                                        <FlexRow key={elem.id}
+                                           alignItems="center"
+                                           justifyContent="center"
+                                           flexWrap="wrap"
+                                           gap='10px'
+                                           w="100%"
+                                           h="100%"
+                                       >
+                                        {
+                                            !(index % 2) && (
+                                                <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='17' height='17'/>
+                                            )
+                                        }
+                                        {
+                                            !!(index % 2) && (
+                                                <Image src={elem.techIcon.data.attributes.url} alt='tech_logo' width='17' height='17'/>
+                                            )
+                                                                                   
+                                        }
+                                       </FlexRow>
+                                    )
+                                })}
                             {/* {technology &&
                                 technology.map((elem: Technology) => <></>)} */}
                         </FlexRow>

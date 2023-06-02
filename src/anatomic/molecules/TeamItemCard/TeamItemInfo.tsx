@@ -8,6 +8,7 @@ import TopIcon from "@/assets/icon/top.svg";
 import { Avatar } from "./styled";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const TeamItemInfo: FC<{
     avatar: any;
@@ -15,6 +16,8 @@ export const TeamItemInfo: FC<{
     position: string;
 }> = ({ avatar, name, position }) => {
     const { url } = avatar.data.attributes;
+    const size = useWindowSize();
+    const displayForm = size.width! < 370 ? 'none' : 'block';
 
     return (
         <>
@@ -46,7 +49,6 @@ export const TeamItemInfo: FC<{
                         </Text>
                     </FlexRow>
                     <img src={StarsIcon.src} />
-
                     <FlexRow gap="10px" alignItems="center">
                         <img src={TopIcon.src} />
                         <Text
@@ -85,6 +87,7 @@ export const TeamItemInfo: FC<{
                         </FlexColumn>
 
                         <FlexColumn w="100%" gap="8px">
+                            <div style={{display: `${displayForm}`}}>
                             <FlexRow gap="10px" alignItems="center">
                                 <img
                                     src={UpworkIcon.src}
@@ -110,6 +113,7 @@ export const TeamItemInfo: FC<{
                                     TOP RATED PLUS
                                 </Text>
                             </FlexRow>
+                            </div>
                         </FlexColumn>
                     </FlexRow>
                 </FlexRow>

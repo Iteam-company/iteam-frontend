@@ -22,7 +22,6 @@ export const Avatar = styled.div<{ image: any }>`
 `;
 export const Card = styled(FlexColumn)`
     width: 100%;
-    maxWidth: 100px;
     height: 140px;
     padding: 20px;
     background: ${COLORS.white};

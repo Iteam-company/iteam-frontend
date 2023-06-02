@@ -91,7 +91,6 @@ const Team = () => {
                 />
                   <AdaptContainer >
                 <FlexColumn justifyContent="center" alignItems="start" >
-              
                     <Text
                         size={TEXT_SIZES.small.s}
                         letterSpacing={LETTER_SPACING.s}
