@@ -14,3 +14,10 @@ export const Desktop = styled(FlexColumn)<MobileProps>`
         display: none;
     }
 `;
+
+
+export const Stick = styled.div`
+    width: 1px;
+    height: 20px;
+    background-color: black;
+`

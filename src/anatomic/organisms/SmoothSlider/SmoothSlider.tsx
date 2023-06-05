@@ -193,13 +193,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 const containerStyle = {
                                     position: "absolute",
                                     top: "0",
-
                                     height: "100%",
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
                                     zIndex: index,
-
+                                    // width: "100%",
                                     overflow: "hidden",
                                     ...(!!index
                                         ? {
