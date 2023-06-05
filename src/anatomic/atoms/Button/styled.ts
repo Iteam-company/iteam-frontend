@@ -56,7 +56,7 @@ export const GradientLink = styled.a<{ gradient: string, h?: string | null , w?:
     cursor: pointer;
 
     @media (max-width: 600px) {
-        margin: ${(props) => props.m || 'auto'};
+        margin: ${(props) => props.m ? props.m : '0px'};
     }
 `;
 
