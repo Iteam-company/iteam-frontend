@@ -29,7 +29,7 @@ export const FormElem = () => {
 
     const onSubmit = async (values: FormikValues) => {
         try {
-            await client.post("/api/nodemailer", values);
+            await client.post("/nodemailer", values);
             setSuccess(true);
         } catch (err) {
             setError("Sorry, we were unable to send your message");
