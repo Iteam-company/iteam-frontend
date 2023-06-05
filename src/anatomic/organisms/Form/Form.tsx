@@ -1,4 +1,5 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
+import nodemailerClient from "@/axios-nodemailer";
 import { Input } from "@/anatomic/atoms/Input";
 import { Formik } from "formik";
 import React, { useState } from "react";
@@ -29,7 +30,7 @@ export const FormElem = () => {
 
     const onSubmit = async (values: FormikValues) => {
         try {
-            await client.post("/api/nodemailer", values);
+            await nodemailerClient.post("api/nodemailer", values);
             setSuccess(true);
         } catch (err) {
             setError("Sorry, we were unable to send your message");

@@ -4,8 +4,8 @@ import { FlexRow } from "../Flex";
 import { Props } from "./util";
 
 export const ColorButton = styled.button<Props>`
-    height: ${(props) => props.h || '50px'} ;
-    width: ${(props) => props.w || '100%'};
+    height: ${(props) => props.h || "50px"};
+    width: ${(props) => props.w || "100%"};
     padding: 8px 20px;
     border: none;
     border-radius: 12px;
@@ -46,17 +46,22 @@ export const Icon = styled.img`
     width: 16px;
 `;
 
-export const GradientLink = styled.a<{ gradient: string, h?: string | null , w?: string| null, m?: string | null }>`
+export const GradientLink = styled.a<{
+    gradient: string;
+    h?: string | null;
+    w?: string | null;
+    m?: string | null;
+}>`
     text-decoration: none;
-    height: ${(props) => props.h || '46px'};
-    width: ${(props) => props.w || '167px'};
+    height: ${(props) => props.h || "46px"};
+    width: ${(props) => props.w || "167px"};
     border-radius: 50px;
     padding: 3px;
     background-image: linear-gradient(${({ gradient }) => gradient});
     cursor: pointer;
-/* 
+    /* 
     @media (max-width: 600px) {
-        margin: ${(props) => props.m ? props.m : null};
+        margin: ${(props) => (props.m ? props.m : null)};
     } */
     /* problem with this endpoint */
 `;
