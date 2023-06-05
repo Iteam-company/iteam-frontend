@@ -4,8 +4,6 @@ import nodemailer from "nodemailer";
 export default function (req: NextApiRequest, res: NextApiResponse) {
     const { name, email, subject, comments } = req.body;
 
-    console.log(req.body, "!!!");
-
     const transporter = nodemailer.createTransport({
         host: process.env.REACT_APP_SMTP_HOST,
         port: process.env.REACT_APP_SMTP_PORT,
