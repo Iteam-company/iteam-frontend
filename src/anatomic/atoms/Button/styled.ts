@@ -54,10 +54,11 @@ export const GradientLink = styled.a<{ gradient: string, h?: string | null , w?:
     padding: 3px;
     background-image: linear-gradient(${({ gradient }) => gradient});
     cursor: pointer;
-
+/* 
     @media (max-width: 600px) {
-        margin: ${(props) => props.m ? props.m : '0px'};
-    }
+        margin: ${(props) => props.m ? props.m : null};
+    } */
+    /* problem with this endpoint */
 `;
 
 export const GradientButton = styled.button<{ gradient: string }>`
