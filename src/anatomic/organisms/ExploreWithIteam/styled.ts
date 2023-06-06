@@ -10,6 +10,10 @@ interface GridBoxProps {
     gridRowGap?: string;
 }
 
+interface SpotProps {
+  bg?: string;
+}
+
 export const GridBox = styled.div<GridBoxProps>`
     width: 100%;
     display: grid;
@@ -18,12 +22,15 @@ export const GridBox = styled.div<GridBoxProps>`
     grid-column-gap: ${props => props.gridColumnGap || '0'};
     grid-row-gap: ${props => props.gridRowGap || '0'};
 
-    & {
-      @media(max-width: 1024px) {
+
+    @media(max-width: 992px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 525px);
+        grid-template-rows: repeat(6, 325px);
       }
-    }
+      @media(max-width: 600px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 225px);
+      }
 `
 
 interface BoxProps {
@@ -41,8 +48,8 @@ export const Box = styled.div<BoxProps>`
   border-radius: 8px;
   background: ${props => props.backgroundImage || 'none'};
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center right;
+  background-size: 100% 100%;
+  background-position: center;
   overflow: hidden;
 
   &::before {
@@ -55,7 +62,14 @@ export const Box = styled.div<BoxProps>`
     width: 100%;
     z-index: 1;
     overflow: hidden;
+   
   }
+
+  &:hover::before {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+
 `
 
 export const BoxForText = styled.div`
@@ -67,16 +81,22 @@ export const BoxForText = styled.div`
 
 export const BoxForPreview = styled.div`
   position: absolute;
-  right: 35px;
-  bottom: 30px;
   z-index: 2;
+  bottom: 10px;
+  right: 15px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `
 
 export const BoxForSpot = styled.div<BoxForTextSpotProps>`
   background: rgba(241, 241, 241, 1);
   filter: blur(100px);
-  width: 40%;
-  height: 40%;
+  width: 50%;
+  height: 50%;
   position: absolute;
   top: ${props => props.t || '30%'};
   left: ${props => props.l || '30%'};
@@ -96,4 +116,24 @@ export const BoxHover = styled(motion.div)<BoxProps>`
   overflow: hidden;
   z-index: 3;
   background-origin: context-box;
+`
+
+export const BoxForPinkSpot = styled.div<SpotProps>`
+  position: absolute;
+  left: 30%;
+  width: 550px;
+  height: 500px;
+  background: linear-gradient(90deg, #C471F5 0%, #FA71CD 100%);
+  filter: blur(150px);
+  overflow: hidden;
+  transform: rotate(54.56deg);
+  overflow: hidden;
+
+  @media(max-width: 920px) {
+    height: 200px;
+    top: 0;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+  }
 `

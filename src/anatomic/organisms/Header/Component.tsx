@@ -7,6 +7,7 @@ import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { LinkElem, Button } from "./styled";
 import { HeaderI, HeaderLinksI } from "./utils";
+import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
 export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
     return (
@@ -71,7 +72,7 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                     justifyContent="center"
                                 >
                                     <LinkElem
-                                        href={data[5].href! || ''}
+                                        href={data[5].href! || ""}
                                         linkText={data[5].title}
                                         active={data[5].href === activeRoute}
                                         textStyles={{
@@ -86,8 +87,8 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                         ) : (
                             <Button>
                                 <Link
-                                      href={data[5].href! || ''}
-                                      linkText={data[5].title}
+                                    href={data[5].href! || ""}
+                                    linkText={data[5].title}
                                     textStyles={{
                                         textAlign: "center",
                                         color: COLORS.dark,

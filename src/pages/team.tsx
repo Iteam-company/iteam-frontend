@@ -18,6 +18,7 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 
 export interface TeamInterface {
     id?: number;
@@ -28,12 +29,14 @@ export interface TeamInterface {
     technology?: Technology[];
     experience: { position: string; year: number };
     rate: number;
+    upworkLink?: string;
 }
 
 export interface Technology {
     text: string;
     short: string;
     id: number;
+    techIcon: any;
 }
 
 const Team = () => {
@@ -43,20 +46,23 @@ const Team = () => {
     useEffect(() => {
         data &&
             setTeam(
-                data.team.map((item: TeamInterface) => ({
-                    content: (
-                        <TeamItem
-                            key={item.id}
-                            avatar={item.avatar}
-                            name={item.name}
-                            position={item.position}
-                            technology={item.technology}
-                            comments={item.comments}
-                            experience={item.experience}
-                            rate={item.rate}
-                        />
-                    ),
-                })),
+                data.team.map((item: TeamInterface) => {
+                    return {
+                        content: (
+                            <TeamItem
+                                key={item.id}
+                                avatar={item.avatar}
+                                name={item.name}
+                                position={item.position}
+                                technology={item.technology}
+                                comments={item.comments}
+                                experience={item.experience}
+                                rate={item.rate}
+                                upworkLink={item?.upworkLink}
+                            />
+                        ),
+                    };
+                }),
             );
     }, [data?.team]);
 
@@ -87,25 +93,27 @@ const Team = () => {
                     mobileRight={-40}
                     priority
                 />
-                <FlexColumn justifyContent="center" alignItems="start">
-                    <Text
-                        size={TEXT_SIZES.small.s}
-                        letterSpacing={LETTER_SPACING.s}
-                        weight={TEXT_WEIGHTS.medium}
-                        type={TEXT_TYPES.title}
-                        color={COLORS.warmGray}
-                    >
-                        {data?.main.title}
-                    </Text>
-                    <Title
-                        size={TEXT_SIZES.large.m}
-                        color={COLORS.dark}
-                        weight={TEXT_WEIGHTS.medium}
-                        mobileSize={TEXT_SIZES.medium.xs}
-                    >
-                        {data?.main.description}
-                    </Title>
-                </FlexColumn>
+                <AdaptContainer>
+                    <FlexColumn justifyContent="center" alignItems="start">
+                        <Text
+                            size={TEXT_SIZES.small.s}
+                            letterSpacing={LETTER_SPACING.s}
+                            weight={TEXT_WEIGHTS.medium}
+                            type={TEXT_TYPES.title}
+                            color={COLORS.warmGray}
+                        >
+                            {data?.main.title}
+                        </Text>
+                        <Title
+                            size={TEXT_SIZES.large.m}
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.medium}
+                            mobileSize={TEXT_SIZES.medium.xs}
+                        >
+                            {data?.main.description}
+                        </Title>
+                    </FlexColumn>
+                </AdaptContainer>
             </FlexColumn>
             {team?.length && (
                 <>

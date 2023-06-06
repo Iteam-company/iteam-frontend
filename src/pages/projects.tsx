@@ -16,6 +16,8 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projects/bgImage1.svg";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface ProjectsInterface {
     id?: number;
@@ -37,6 +39,7 @@ export interface Technologies {
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
     const [data, isLoading] = useStrapiData(Pages.portfolio);
+    const size = useWindowSize();
 
     useEffect(() => {
         data &&
@@ -71,7 +74,7 @@ const Projects = () => {
             }}
         >
             <FlexColumn
-                h="calc(100vh - 100px)"
+                h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
                 justifyContent="center"
                 alignItems="center"
                 w="100%"
@@ -140,13 +143,14 @@ const Projects = () => {
                 </Mobile>
 
                 <BgImage
+                    ds="block"
                     src={BgImage1}
                     maxWidth={710}
                     top={-15}
                     right={70}
                     priority
-                    mobileTop={70}
-                    mobileLeft={-20}
+                    mobileTop={75}
+                    mobileLeft={-40}
                 />
             </FlexColumn>
 
@@ -156,11 +160,13 @@ const Projects = () => {
                         <SmoothSlider slides={slides} />
                     </Desktop>
                     <Mobile>
-                        <SmoothSlider
-                            slides={slides}
-                            isTwoColumn={false}
-                            navigation={false}
-                        />
+                        <AdaptContainer>
+                            <SmoothSlider
+                                slides={slides}
+                                isTwoColumn={false}
+                                navigation={false}
+                            />
+                        </AdaptContainer>
                     </Mobile>
                 </>
             )}

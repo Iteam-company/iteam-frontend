@@ -40,6 +40,7 @@ export const MobileComponent: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                 <RxHamburgerMenu
                     onClick={() => setOpen(!open)}
                     color={open ? COLORS.white : COLORS.dark}
+                    size={24}
                 />
             </FlexRow>
             {open && (

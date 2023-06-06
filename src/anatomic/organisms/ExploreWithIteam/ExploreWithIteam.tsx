@@ -1,134 +1,150 @@
-import { FlexColumn } from "@/anatomic/atoms/Flex"
+import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import {  Box, BoxForPreview, BoxForSpot, BoxForText, BoxHover, GridBox } from "./styled";
+import {
+    Box,
+    BoxForPinkSpot,
+    BoxForPreview,
+    BoxForSpot,
+    BoxForText,
+    BoxHover,
+    GridBox,
+} from "./styled";
 import { FC, Fragment } from "react";
-import exploreImage_1 from '../../../assets/explore/explore_1.png';
-import exploreImage_2 from '../../../assets/explore/explore_2.png';
-import exploreImage_3 from '../../../assets/explore/explore_3.png';
-import exploreImage_4 from '../../../assets/explore/explore_4.png';
-import exploreImage_5 from '../../../assets/explore/explore_5.png';
-import exploreImage_6 from '../../../assets/explore/explore_6.png';
-import exploreBack from '../../../assets/explore/Rectangle 94.png';
-import exploreBackOnHover from '../../../assets/explore/backOnHover.png';
-
-import Image from "next/image";
-import arrow from '../../../assets/explore/arrow.png';
 import Link from "next/link";
-import { HoverBox } from '@/anatomic/atoms/HoverBox/HoverBox';
+import { HoverBox } from "@/anatomic/atoms/HoverBox/HoverBox";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
-
-const blocks = [
-    {
-        title: 'System For \n Online \n Consulting',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_1,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'Small \n Businesses \n Accounting App',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_2,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'Cut And \n Measure Images \n System',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_3,
-        backgroundImageOnHover: exploreBackOnHover
-    }, {
-        title: 'System For \n Handling Church \n Meetings',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_4,
-        backgroundImageOnHover: exploreBackOnHover
-    },{
-        title: 'Web App \n For Searching \n Job',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_5,
-        backgroundImageOnHover: exploreBackOnHover
-    },{
-        title: 'Ylabs Security \n Landing \n Page',
-        link: 'Go to Preview',
-        backgroundImg: exploreImage_6,
-        backgroundImageOnHover: exploreBackOnHover
-    },
-]
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
+import { Button } from "@/anatomic/atoms/Button";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 type Props = {
     data: any;
-}
+};
 
-export const ExploreWithIteam: FC<Props> = ({data}) => {
-  
+export const ExploreWithIteam: FC<Props> = ({ data }) => {
+    const size = useWindowSize();
     return (
-        <FlexColumn w="100%"  justifyContent="center" alignItems="center" style={{cursor: 'pointer'}} p='2px 0 2px 0'>
-            <FlexColumn w="80%">
-                <FlexColumn p='0 0 45px 0'>
-                    <Text
-                        size={TEXT_SIZES.medium.largeM}
-                        weight={TEXT_WEIGHTS.medium}
-                        color={COLORS.light}
-                        lineHeight='39px'
-               
-                    >
-                        Explore with ITeam:
-                    </Text>
-                </FlexColumn>
-            <GridBox 
-                gridTemplateColumn='1fr 1fr' 
-                gridTemplateRow='repeat(3, 525px)'
-                gridColumnGap='13px'
-                gridRowGap='15px'
+        <AdaptContainer>
+            <FlexColumn
+                w="100%"
+                justifyContent="center"
+                alignItems="center"
+                p="2px 0 2px 0"
             >
-                {
-                    data.map((block: any) => {
-                     
-                        return (
-                            (
-                        
-                          
-                        
-                                <Box key={block.id} backgroundImage={`url(${block.backgroundImage.data.attributes.url})`} bg='rgba(232, 186, 253, 0.55)'>
-                                   <HoverBox>
-                                        <FlexColumn justifyContent="space-between" h='100%'>
-                                            <BoxForSpot t='10%' l='5%' />
-                                                <BoxForText>
-                                                <Text 
-                                                    size={TEXT_SIZES.medium.largeM}
-                                                    weight={TEXT_WEIGHTS.medium}
-                                                    color={COLORS.dark}
-                                                    >
-                                                          {block.title}
-                                                  
-                                                </Text>
-                                    </BoxForText>
-                                <BoxForPreview>
-                                    <FlexColumn>
-                                        <Text
-                                            size={TEXT_SIZES.medium.largeM}
-                                            weight={TEXT_WEIGHTS.normal}
-                                            color={COLORS.dark}
-                                         >         
-                                            <Link href={block.linkToPreview || '#'} style={{color: 'inherit', textDecoration: 'none'}}>
-                                            {block.subtitleForPreview}
-                                            </Link>
-                                        </Text>
-                                        <Image 
-                                            src={`${block.previewImage.data.attributes.url}`}
-                                            width={block.previewImage.data.attributes.width}
-                                            height={block.previewImage.data.attributes.height}
-                                            alt='arrow' style={{marginTop: '-10px'}}
-                                        />
-                                    </FlexColumn>
-                                        </BoxForPreview>
-                                    </FlexColumn>
-                                </HoverBox>
-                                <BoxForSpot />
+                <FlexColumn w="80%">
+                    <FlexColumn p="0 0 45px 0">
+                        <Text
+                            size={TEXT_SIZES.medium.largeM}
+                            weight={TEXT_WEIGHTS.medium}
+                            color={COLORS.light}
+                            lineHeight="39px"
+                        >
+                            Explore with ITeam:
+                        </Text>
+                    </FlexColumn>
+                    <div
+                        style={
+                            size.width! < 920 ? { position: "relative" } : {}
+                        }
+                    >
+                        <BoxForPinkSpot />
+                    </div>
+                    <GridBox
+                        gridTemplateColumn="1fr 1fr"
+                        gridTemplateRow="repeat(3, 325px)"
+                        gridColumnGap="13px"
+                        gridRowGap="15px"
+                    >
+                        {data.map((block: any) => {
+                            return (
+                                <Box
+                                    key={block.id}
+                                    backgroundImage={`url(${block.backgroundImage.data.attributes.url})`}
+                                    bg="rgba(77, 38, 95, 0.55)"
+                                >
+                                    <HoverBox>
+                                        <FlexColumn
+                                            justifyContent="space-between"
+                                            h="100%"
+                                        >
+                                            <BoxForSpot t="10%" l="5%" />
+                                            <BoxForText></BoxForText>
+                                            <BoxForPreview>
+                                                <FlexColumn
+                                                    justifyContent="center"
+                                                    alignItems="center"
+                                                >
+                                                    <Button
+                                                        href="/projects"
+                                                        gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
+                                                        variant={
+                                                            BUTTON_VARIANTS.gradient_link
+                                                        }
+                                                        h={
+                                                            size.width! < 600
+                                                                ? "30px"
+                                                                : null
+                                                        }
+                                                        w={
+                                                            size.width! < 600
+                                                                ? "180px"
+                                                                : null
+                                                        }
+                                                        m={
+                                                            size.width! < 600
+                                                                ? "auto"
+                                                                : null
+                                                        }
+                                                        label={
+                                                            <Text
+                                                                color={
+                                                                    COLORS.dark
+                                                                }
+                                                                weight={
+                                                                    TEXT_WEIGHTS.main
+                                                                }
+                                                                size={
+                                                                    size.width! <
+                                                                    600
+                                                                        ? TEXT_SIZES
+                                                                              .small
+                                                                              .m
+                                                                        : TEXT_SIZES
+                                                                              .small
+                                                                              .l
+                                                                }
+                                                            >
+                                                                <Link
+                                                                    href={
+                                                                        block.linkToPreview ||
+                                                                        "#"
+                                                                    }
+                                                                    style={{
+                                                                        color: "inherit",
+                                                                        textDecoration:
+                                                                            "none",
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        block.subtitleForPreview
+                                                                    }
+                                                                </Link>
+                                                            </Text>
+                                                        }
+                                                    />
+                                                </FlexColumn>
+                                            </BoxForPreview>
+                                        </FlexColumn>
+                                    </HoverBox>
+                                    <BoxForSpot />
                                 </Box>
-                            )
-                        )
-                    })
-                }
-            </GridBox>
-        </FlexColumn>
-    </FlexColumn>
-    )
-}
+                            );
+                        })}
+                    </GridBox>
+                </FlexColumn>
+            </FlexColumn>
+        </AdaptContainer>
+    );
+};

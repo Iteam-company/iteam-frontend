@@ -8,6 +8,7 @@ import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
+import { Stick } from "./styled";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,
@@ -23,7 +24,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
             justifyContent="center"
             alignItems="center"
             gap="50px"
-            w="90%"
+            w="100%"
         >
             <FlexColumn gap="50px" w="100%">
                 <Text
@@ -51,14 +52,14 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                             {location}
                         </Text>
                     </FlexRow>
-
+                    <Stick />
                     <FlexRow
                         alignItems="center"
                         gap="5px"
                         style={{
                             borderLeft: "1px solid dark",
                         }}
-                        p="0 0 0 20px"
+                        p="0 0 0 0px"
                     >
                         <FiDollarSign />
                         <Text
@@ -91,7 +92,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                     ))}
                 </FlexRow>
             </FlexColumn>
-            <FlexColumn w="100%" alignItems="end">
+            <FlexColumn w="100%" alignItems="center">
                 <Button
                     href={`/project/${id}`}
                     gradient={color}

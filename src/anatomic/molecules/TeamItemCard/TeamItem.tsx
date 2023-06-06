@@ -8,15 +8,30 @@ import UpWorkLink from "@/assets/icon/upWorkLink.svg";
 import { TeamItemCard } from "./TeamItemCard";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { TeamInterface } from "@/pages/team";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import Link from "next/link";
 
 export const TeamItem: FC<TeamInterface> = memo(
-    ({ name, avatar, position, technology, comments, experience, rate }) => {
+    ({
+        name,
+        avatar,
+        position,
+        technology,
+        comments,
+        experience,
+        rate,
+        upworkLink,
+    }) => {
+        const size = useWindowSize();
+        const width = size.width! > 1800 ? "100%" : "80vw";
+        const padding = size.width! > 1800 ? "0 20px 0 0" : "";
+
         return (
             <>
                 <Desktop w="100%" alignItems="center">
                     <FlexRow
                         gap="30px"
-                        w="80vw"
+                        w={width}
                         p="0 20px"
                         justifyContent="center"
                     >
@@ -25,7 +40,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                             avatar={avatar}
                             position={position}
                         />
-                        <FlexColumn w="62vw" gap="40px">
+                        <FlexColumn w="80%" gap="40px" p={padding}>
                             <TeamItemCard
                                 technology={technology}
                                 experience={experience}
@@ -37,18 +52,27 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 justifyContent="end"
                                 alignItems="end"
                             >
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.small.s}
+                                <FlexColumn
+                                    w="100%"
+                                    justifyContent="end"
+                                    alignItems="end"
                                 >
-                                    Follow the link to see more
-                                </Text>
-                                <img src={UpWorkLink.src} />
+                                    <Link
+                                        href={upworkLink!}
+                                        style={{
+                                            color: `${COLORS.textSecondary}`,
+                                            fontSize: `${TEXT_SIZES.small.s}`,
+                                            textDecoration: "none",
+                                        }}
+                                    >
+                                        Follow the link to see more
+                                    </Link>
+                                    <img src={UpWorkLink.src} />
+                                </FlexColumn>
                             </FlexColumn>
                         </FlexColumn>
                     </FlexRow>
                 </Desktop>
-
                 <Mobile>
                     <FlexColumn
                         gap="30px"
@@ -68,18 +92,25 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 rate={rate}
                             />
                             <CommentSlider comments={comments} width="90vw" />
-
                             <FlexColumn
                                 w="100%"
-                                justifyContent="end"
-                                alignItems="end"
+                                justifyContent={
+                                    size.width! < 500 ? "center" : "end"
+                                }
+                                alignItems={
+                                    size.width! < 500 ? "center" : "end"
+                                }
                             >
-                                <Text
-                                    color={COLORS.textSecondary}
-                                    size={TEXT_SIZES.small.s}
+                                <Link
+                                    href={upworkLink || ""}
+                                    style={{
+                                        color: `${COLORS.textSecondary}`,
+                                        fontSize: `${TEXT_SIZES.small.s}`,
+                                        textDecoration: "none",
+                                    }}
                                 >
                                     Follow the link to see more
-                                </Text>
+                                </Link>
                                 <img src={UpWorkLink.src} />
                             </FlexColumn>
                         </FlexColumn>

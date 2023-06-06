@@ -18,6 +18,8 @@ const nextConfig = {
         REACT_APP_SMTP_PASSWORD: process.env.REACT_APP_SMTP_PASSWORD,
         REACT_APP_STRAPI_URL: process.env.REACT_APP_STRAPI_URL,
         REACT_APP_STRAPI_CONTENT_URL: process.env.REACT_APP_STRAPI_CONTENT_URL,
+        REACT_APP_DEPLOY_HOST: process.env.REACT_APP_DEPLOY_HOST,
+        REACT_APP_LOCAL_HOST: process.env.REACT_APP_LOCAL_HOST
     },
 };
 

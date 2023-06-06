@@ -5,6 +5,7 @@ import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { ImplementSlide } from "@/anatomic/molecules/ImplementSlide";
 import { SwiperSlide } from "swiper/react";
 import { COLORS } from "@/lib/theme/color";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 export interface AppsInterface {
     step: number;
     title: string;
@@ -20,6 +21,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
 
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
+          
             <Desktop>
                 <FlexColumn
                     w="130vw"
@@ -29,7 +31,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                     <HorizontalSwiperElem
                         minHeight="500px"
                         width="100%"
-                        maxWidth="100wv"
+                        maxWidth="1450px"
                         slidesPerView={3}
                         spaceBetween={60}
                         loop={true}
@@ -81,7 +83,6 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                     </HorizontalSwiperElem>
                 </FlexColumn>
             </Desktop>
-
             <Mobile h="100%" w="100%" alignItems="center">
                 <FlexColumn
                     mw="975px"

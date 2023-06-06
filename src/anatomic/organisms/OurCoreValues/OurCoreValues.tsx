@@ -21,12 +21,14 @@ interface CoreValueInterface {
     image: any;
     title: string;
     value: ValueInterface[];
+    mobileImage?: any;
 }
 interface ValueInterface {
     id: string;
     title: string;
     text: string;
     step: string;
+    mobileImage?: any;
 }
 
 export const OurCoreValues: FC<Props> = ({ coreValue }) => {
@@ -62,13 +64,12 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                         paddingTop: "40px",
                     }}
                 />
-
                 <FlexRow
                     w="100%"
                     p="0 20px"
                     style={{ boxSizing: "border-box" }}
                 >
-                    {coreValue.value.map((item: ValueInterface) => (
+                    {coreValue.value.map((item: ValueInterface, i: number) => (
                         <FlexColumn
                             key={item.id}
                             justifyContent="center"
@@ -122,66 +123,80 @@ export const OurCoreValues: FC<Props> = ({ coreValue }) => {
                     alignItems="center"
                     style={{ boxSizing: "border-box", overflow: "hidden" }}
                 >
-                    {coreValue.value.map((item: ValueInterface) => (
-                        <FlexRow
-                            key={item.id}
-                            justifyContent="space-evenly"
-                            alignItems="center"
-                            position="relative"
-                            h="100%"
-                            w="100%"
-                        >
-                            <FlexColumn
-                                w="60%"
-                                justifyContent="center"
+                    {coreValue.value.map((item: ValueInterface, i: number) => {
+                        return (
+                            <FlexRow
+                                key={item.id}
+                                justifyContent="space-evenly"
                                 alignItems="center"
-                            >
-                                <GradientText
-                                    weight={TEXT_WEIGHTS.medium}
-                                    size="150px"
-                                    lineHeight="150px"
-                                    textAlign="center"
-                                    color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
-                                >
-                                    {item.step}
-                                </GradientText>
-                            </FlexColumn>
-
-                            <FlexColumn
+                                position="relative"
                                 h="100%"
-                                w="50%"
-                                justifyContent="center"
-                                alignItems="center"
-                            >
-                                <Divider height="150px" width="2px" />
-                                <Dot />
-                            </FlexColumn>
-
-                            <FlexColumn
-                                gap="10px"
-                                justifyContent="center"
-                                alignItems="center"
                                 w="100%"
                             >
-                                <Text
-                                    size={TEXT_SIZES.medium.s}
-                                    color={COLORS.textPrimary}
-                                    weight={TEXT_WEIGHTS.medium}
-                                    mobileSize={TEXT_SIZES.small.l}
+                                <FlexColumn
+                                    w="60%"
+                                    justifyContent="center"
+                                    alignItems="center"
                                 >
-                                    {item.title}
-                                </Text>
-                                <SideChevron>
-                                    <Text
-                                        size={TEXT_SIZES.small.l}
-                                        color={COLORS.textPrimary}
+                                    {/* <Image
+                                src={getStrapiImage(url)}
+                                width={width}
+                                height={height}
+                                alt="iteam"
+                                style={{
+                                    height: "auto",
+                                    width: "100%",
+                                    paddingLeft: '50%'
+                                }}
+                            /> */}
+                                    <GradientText
+                                        weight={TEXT_WEIGHTS.medium}
+                                        size="50px"
+                                        lineHeight="50px"
+                                        textAlign="center"
+                                        color="180deg, #250743 0%, rgba(95, 59, 199, 0.46) 63.54%, rgba(95, 59, 199, 0.23) 97.92%"
                                     >
-                                        {item.text}
+                                        {item.step}
+                                    </GradientText>
+                                </FlexColumn>
+
+                                <FlexColumn
+                                    h="100%"
+                                    w="50%"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                >
+                                    <Divider height="150px" width="2px" />
+                                    <Dot />
+                                </FlexColumn>
+
+                                <FlexColumn
+                                    gap="10px"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    w="100%"
+                                >
+                                    <Text
+                                        size={TEXT_SIZES.medium.s}
+                                        color={COLORS.textPrimary}
+                                        weight={TEXT_WEIGHTS.medium}
+                                        mobileSize={TEXT_SIZES.small.l}
+                                    >
+                                        {item.title}
                                     </Text>
-                                </SideChevron>
-                            </FlexColumn>
-                        </FlexRow>
-                    ))}
+
+                                    <SideChevron>
+                                        <Text
+                                            size={TEXT_SIZES.small.l}
+                                            color={COLORS.textPrimary}
+                                        >
+                                            {item.text}
+                                        </Text>
+                                    </SideChevron>
+                                </FlexColumn>
+                            </FlexRow>
+                        );
+                    })}
                 </FlexColumn>
             </Mobile>
         </Container>

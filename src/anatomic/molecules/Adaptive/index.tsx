@@ -32,5 +32,6 @@ export const Adaptive = styled(Flex)`
         padding: 0 10px;
         min-width: 65%;      
         max-width: 65%;
+        margin: 0 auto;
     `)}
 `;

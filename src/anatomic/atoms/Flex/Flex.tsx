@@ -24,6 +24,7 @@ interface FlexProps {
     flexWrap?: string;
     gap?: string;
     type?: "column";
+    ov?: string;
 }
 
 export const Flex = styled.div<FlexProps & DefaultElementProps>`
@@ -32,6 +33,7 @@ export const Flex = styled.div<FlexProps & DefaultElementProps>`
     max-width: ${(props) => props.mw || "auto"};
     min-height: ${(props) => props.mh || "auto"};
     height: ${(props) => props.h || "auto"};
+    max-height: ${(props) => props.mh || "auto"};
     margin: ${(props) => props.m || "0"};
     padding: ${(props) => props.p || "0"};
     align-items: ${(props) => props.alignItems || "flex-start"};
@@ -55,4 +57,5 @@ export const FlexRow = styled(Flex)`
 
 export const FlexColumn = styled(Flex)`
     flex-direction: column;
+    overflow: ${(props) => props.ov || "visible"};
 `;

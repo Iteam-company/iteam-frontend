@@ -11,20 +11,39 @@ import {
     StepNumber,
 } from "./styled";
 import { PropsI, HomeInterface } from "./utils";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const HowWeWork: FC<PropsI> = ({ howWeWork }) => {
+    const size = useWindowSize();
+
     if (!howWeWork) return null;
+
     return (
-        <FlexColumn w="100%" justifyContent="center" alignItems="center">
+        <FlexColumn
+            w="100%"
+            justifyContent="center"
+            alignItems="center"
+            ov="hidden"
+        >
             <FlexColumn w="80%">
-          
-                <Text
-                    size={TEXT_SIZES.medium.xs}
-                    weight={TEXT_WEIGHTS.main}
-                    color={COLORS.dark}
-                >
-                    {howWeWork.title}
-                </Text>
+                <AdaptContainer>
+                    <div
+                        style={
+                            size.width! < 992
+                                ? { textAlign: "center", marginBottom: "13px" }
+                                : {}
+                        }
+                    >
+                        <Text
+                            size={TEXT_SIZES.medium.xs}
+                            weight={TEXT_WEIGHTS.main}
+                            color={COLORS.dark}
+                        >
+                            {howWeWork.title}
+                        </Text>
+                    </div>
+                </AdaptContainer>
             </FlexColumn>
             <Container
                 w="100%"

@@ -23,6 +23,7 @@ interface ImagePosition {
 }
 interface ImageSize {
     maxWidth?: number;
+    ds?: string;
 }
 
 export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
@@ -39,6 +40,7 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     mobileBottom,
     mobileLeft,
     mobileRight,
+    ds,
 }) => {
     const [rotateZ, setRotateZ] = useState<number>(0);
     const ref = useRef(null);
@@ -71,23 +73,27 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             placeholder="blur"
             priority={priority}
             loading={loading}
+            ds={ds}
         />
     );
 };
 const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
     ({ rotateZ }) => ({
-        style: {
-            transform: `rotateZ(${rotateZ}deg)`,
-        },
+        style: rotateZ
+            ? {
+                  transform: `rotateZ(${rotateZ}deg)`,
+              }
+            : {
+                  transform: `rotateZ(380deg)`,
+              },
     }),
 )<BgImageI & ImageSize & ImagePosition>`
     height: auto;
     width: 100%;
     object-fit: contain;
     position: absolute;
-    transition: 0.3s all;
+    transition: 0.3s rotate;
     z-index: 0 !important;
-
     max-width: ${({ maxWidth }) => maxWidth}px;
 
     ${({ top }) => top && `top: ${top}%`};
@@ -100,5 +106,14 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         ${({ mobileBottom }) => mobileBottom && `bottom: ${mobileBottom}%`};
         ${({ mobileRight }) => mobileRight && `right: ${mobileRight}%`};
         ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`};
+    }
+
+    @media (max-width: 992px) {
+        display: ${({ ds }) => (ds ? ds : "none")};
+    }
+    @media (min-width: 2000px) {
+        positin: absolute;
+        top: 30%;
+        right: -10%;
     }
 `;

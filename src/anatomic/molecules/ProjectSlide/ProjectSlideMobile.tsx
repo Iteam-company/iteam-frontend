@@ -21,7 +21,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
         <>
             <FlexColumn
                 justifyContent="center"
-                alignItems="end"
+                alignItems="center"
                 gap="20px"
                 w="fit-content"
             >
