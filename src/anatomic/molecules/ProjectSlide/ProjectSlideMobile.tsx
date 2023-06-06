@@ -131,7 +131,6 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 <FitToViewport
                     style={{
                         maxWidth: "350px",
-
                         height: "auto",
                         width: "100%",
                         display: "flex",

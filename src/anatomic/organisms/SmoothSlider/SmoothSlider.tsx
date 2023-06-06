@@ -29,6 +29,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
     const h = size.width! > 1800 ? "720px" : height;
+    const leftPercent = size.width! < 500 ? "-10%" : "0";
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
@@ -176,6 +177,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
+                        overflow: "hidden",
                     }}
                 >
                     {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
@@ -183,7 +185,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         className="left-content-container"
                         style={{
                             position: "relative",
-                            width: isTwoColumn ? "60%" : "100%",
+                            width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
                             overflow: "hidden",
                         }}
@@ -247,10 +249,17 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 slides.map(({ image }, index) => {
                                     const containerStyle = {
                                         position: "absolute",
-                                        top: "0",
+                                        top: size.width! < 500 ? "-50%" : "0",
+                                        left: leftPercent,
                                         width: "100%",
                                         height: "100%",
+                                        minHeight: "290px",
+                                        minWidth: "290px",
                                         overflow: "hidden",
+                                        tansform:
+                                            size.width! < 500
+                                                ? "translateY(50%)"
+                                                : "",
                                         ...(!!index
                                             ? {
                                                   transform:
