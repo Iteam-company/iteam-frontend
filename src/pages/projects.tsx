@@ -34,6 +34,7 @@ export interface ProjectsInterface {
 export interface Technologies {
     icon: "react" | "ts" | "js" | "angular";
     name: string;
+    techIcon: any;
 }
 
 const Projects = () => {
@@ -45,6 +46,7 @@ const Projects = () => {
         data &&
             setSlides(
                 data.projects.map((item: ProjectsInterface) => ({
+                    
                     content: (
                         <Slide
                             id={item.id}
@@ -151,7 +153,7 @@ const Projects = () => {
                     priority
                     mobileTop={75}
                     mobileLeft={-40}
-                />
+                           />
             </FlexColumn>
 
             {slides.length && (
@@ -162,6 +164,7 @@ const Projects = () => {
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
+                                height='700px'
                                 slides={slides}
                                 isTwoColumn={false}
                                 navigation={false}

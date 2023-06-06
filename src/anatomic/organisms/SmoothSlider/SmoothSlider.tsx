@@ -28,7 +28,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const h = size.width! > 1800 ? "800px" : height;
+    const h = size.width! > 1800 ? "720px" : height;
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
