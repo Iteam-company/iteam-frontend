@@ -8,7 +8,7 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
-import Image from 'next/image';
+import Image from "next/image";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
@@ -23,99 +23,115 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
             <FlexColumn
                 justifyContent="center"
                 alignItems="center"
-                gap="20px"
+                gap="15px"
                 w="fit-content"
             >
                 <FlexColumn
-                    gap="30px"
-                    w="100%"
-                    p="0 20px"
+                    gap="20px"
+                    w="90%"
+                    flexWrap="wrap"
                     style={{ boxSizing: "border-box" }}
                 >
                     <Text
                         color={COLORS.dark}
-                        size={TEXT_SIZES.medium.largeM}
+                        size={TEXT_SIZES.medium.s}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         {title}
                     </Text>
                     <Text
                         color={COLORS.dark}
-                        size={TEXT_SIZES.small.xl}
+                        size={TEXT_SIZES.small.m}
                         weight={TEXT_WEIGHTS.normal}
                     >
                         {description}
                     </Text>
 
-                    <FlexRow gap="15px" flexWrap="wrap" justifyContent="start"
-                    alignItems="center">
+                    <FlexColumn
+                        gap="15px"
+                        flexWrap="wrap"
+                        justifyContent="center"
+                        alignItems="start"
+                    >
                         {technology &&
                             technology.map(
                                 (el: Technologies, index: number) => {
-                                    console.log(el)
                                     return (
                                         <FlexColumn
                                             justifyContent="center"
                                             alignItems="center"
-                                            flexWrap='wrap'
-                                            gap="20px"
-                                            key={index} 
+                                            flexWrap="wrap"
+                                            gap="10px"
+                                            key={index}
                                         >
-                                            <div>
-                                            {
-                                                (index % 2 === 0) && (
-                                                    <div style={{flex: '100%'}}>
-                                                    <FlexRow justifyContent="space-between"
+                                            {index % 2 === 0 && index < 3 && (
+                                                <FlexRow
+                                                    justifyContent="space-between"
                                                     alignItems="center"
-                                                    gap='5px'
-                                                 >
-                                                    <Image src={el.techIcon.data.attributes.url} alt='techIcon' width='30' height='30'/>
+                                                    gap="5px"
+                                                >
+                                                    <Image
+                                                        src={
+                                                            el.techIcon.data
+                                                                .attributes.url
+                                                        }
+                                                        alt="techIcon"
+                                                        width="20"
+                                                        height="20"
+                                                    />
                                                     <Text
-                                                    size={TEXT_SIZES.small.l}
-                                                    weight={TEXT_WEIGHTS.main}
-                                                    color={COLORS.warmGray}
+                                                        size={
+                                                            TEXT_SIZES.small.l
+                                                        }
+                                                        weight={
+                                                            TEXT_WEIGHTS.main
+                                                        }
+                                                        color={COLORS.warmGray}
                                                     >
-                                                    {el.name}
-                                                    
-                                                </Text>
-                                                    </FlexRow>
-                                                    </div>
-                                                )
-                                            }
-                                          
-                                            {
-                                                (index % 2 !== 0) && (
-                                                    <div style={{flex: '100%'}}>
-                                                <FlexRow justifyContent="space-between"
+                                                        {el.name}
+                                                    </Text>
+                                                </FlexRow>
+                                            )}
+
+                                            {index % 2 !== 0 && index < 3 && (
+                                                <FlexRow
+                                                    justifyContent="space-between"
                                                     alignItems="center"
-                                                    gap='5px'
-                                                 >
-                                                    <Image src={el.techIcon.data.attributes.url} alt='techIcon' width='30' height='30'/>
+                                                    gap="5px"
+                                                >
+                                                    <Image
+                                                        src={
+                                                            el.techIcon.data
+                                                                .attributes.url
+                                                        }
+                                                        alt="techIcon"
+                                                        width="20"
+                                                        height="20"
+                                                    />
                                                     <Text
-                                                    size={TEXT_SIZES.small.l}
-                                                    weight={TEXT_WEIGHTS.main}
-                                                    color={COLORS.warmGray}
+                                                        size={
+                                                            TEXT_SIZES.small.l
+                                                        }
+                                                        weight={
+                                                            TEXT_WEIGHTS.main
+                                                        }
+                                                        color={COLORS.warmGray}
                                                     >
-                                                    {el.name}
-                                                    
-                                                </Text>
-                                                    </FlexRow>
-                                                    </div>
-                                           
-  
-                                                )
-                                            }
-                                            </div>
+                                                        {el.name}
+                                                    </Text>
+                                                </FlexRow>
+                                            )}
                                         </FlexColumn>
-                                    )
+                                    );
                                 },
                             )}
-                    </FlexRow>
+                    </FlexColumn>
                 </FlexColumn>
 
                 <FitToViewport
                     style={{
-                        maxWidth: "300px",
+                        maxWidth: "350px",
+
                         height: "auto",
                         width: "100%",
                         display: "flex",
@@ -131,13 +147,19 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 </FitToViewport>
             </FlexColumn>
 
-            <FlexRow justifyContent="center" alignItems="center" w="100%" p='20px 0 0 0'>
+            <FlexRow justifyContent="center" alignItems="center" w="100%">
                 <Button
                     href={`/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
+                    p="5px"
+                    w="80%"
                     label={
-                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
+                        <Text
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.main}
+                            size={TEXT_SIZES.small.l}
+                        >
                             View Case
                         </Text>
                     }

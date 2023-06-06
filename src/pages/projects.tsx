@@ -46,7 +46,6 @@ const Projects = () => {
         data &&
             setSlides(
                 data.projects.map((item: ProjectsInterface) => ({
-                    
                     content: (
                         <Slide
                             id={item.id}
@@ -153,7 +152,7 @@ const Projects = () => {
                     priority
                     mobileTop={75}
                     mobileLeft={-40}
-                           />
+                />
             </FlexColumn>
 
             {slides.length && (
@@ -164,9 +163,9 @@ const Projects = () => {
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
-                                height='600px'
+                                height="600px"
                                 slides={slides}
-                                isTwoColumn={false}
+                                isTwoColumn={true}
                                 navigation={false}
                             />
                         </AdaptContainer>
