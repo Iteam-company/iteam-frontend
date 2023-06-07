@@ -256,10 +256,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                         minHeight: "290px",
                                         minWidth: "290px",
                                         overflow: "hidden",
-                                        tansform:
-                                            size.width! < 500
-                                                ? "translateY(50%)"
-                                                : "",
+
                                         ...(!!index
                                             ? {
                                                   transform:

@@ -19,6 +19,7 @@ import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface TeamInterface {
     id?: number;
@@ -42,6 +43,7 @@ export interface Technology {
 const Team = () => {
     const [team, setTeam] = useState<any>([]);
     const [data, isLoading] = useStrapiData(Pages.company);
+    const size = useWindowSize();
 
     useEffect(() => {
         data &&
@@ -78,19 +80,20 @@ const Team = () => {
             }}
         >
             <FlexColumn
-                h="calc(100vh - 100px)"
+                h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
                 w="90%"
                 justifyContent="center"
                 alignItems="start"
                 position="relative"
             >
                 <BgImage
+                    ds="block"
                     src={BgImage1}
                     maxWidth={710}
                     right={-30}
                     top={34}
-                    mobileTop={60}
-                    mobileRight={-40}
+                    mobileTop={70}
+                    mobileRight={0}
                     priority
                 />
                 <AdaptContainer>

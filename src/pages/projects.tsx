@@ -70,7 +70,7 @@ const Projects = () => {
             alignItems="center"
             position="relative"
             style={{
-                paddingBottom: "100px",
+                paddingBottom: size.width! < 800 ? "0" : "100px",
                 overflow: "hidden",
             }}
         >

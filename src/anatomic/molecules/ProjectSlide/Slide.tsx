@@ -14,7 +14,6 @@ export const Slide: FC<ProjectsInterface> = (props) => {
                 h="100%"
                 gap="20px"
             >
-                
                 <ProjectSlideMobile {...props} />
             </Mobile>
             <Desktop
@@ -25,7 +24,7 @@ export const Slide: FC<ProjectsInterface> = (props) => {
                 gap="40px"
             >
                 <SliderBox>
-                <ProjectSlide {...props} />
+                    <ProjectSlide {...props} />
                 </SliderBox>
             </Desktop>
         </>

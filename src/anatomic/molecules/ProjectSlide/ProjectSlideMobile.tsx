@@ -64,63 +64,28 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                                             gap="10px"
                                             key={index}
                                         >
-                                            {index % 2 === 0 && index < 3 && (
-                                                <FlexRow
-                                                    justifyContent="space-between"
-                                                    alignItems="center"
-                                                    gap="5px"
+                                            <FlexRow
+                                                justifyContent="space-between"
+                                                alignItems="center"
+                                                gap="5px"
+                                            >
+                                                <Image
+                                                    src={
+                                                        el.techIcon.data
+                                                            .attributes.url
+                                                    }
+                                                    alt="techIcon"
+                                                    width="20"
+                                                    height="20"
+                                                />
+                                                <Text
+                                                    size={TEXT_SIZES.small.l}
+                                                    weight={TEXT_WEIGHTS.main}
+                                                    color={COLORS.warmGray}
                                                 >
-                                                    <Image
-                                                        src={
-                                                            el.techIcon.data
-                                                                .attributes.url
-                                                        }
-                                                        alt="techIcon"
-                                                        width="20"
-                                                        height="20"
-                                                    />
-                                                    <Text
-                                                        size={
-                                                            TEXT_SIZES.small.l
-                                                        }
-                                                        weight={
-                                                            TEXT_WEIGHTS.main
-                                                        }
-                                                        color={COLORS.warmGray}
-                                                    >
-                                                        {el.name}
-                                                    </Text>
-                                                </FlexRow>
-                                            )}
-
-                                            {index % 2 !== 0 && index < 3 && (
-                                                <FlexRow
-                                                    justifyContent="space-between"
-                                                    alignItems="center"
-                                                    gap="5px"
-                                                >
-                                                    <Image
-                                                        src={
-                                                            el.techIcon.data
-                                                                .attributes.url
-                                                        }
-                                                        alt="techIcon"
-                                                        width="20"
-                                                        height="20"
-                                                    />
-                                                    <Text
-                                                        size={
-                                                            TEXT_SIZES.small.l
-                                                        }
-                                                        weight={
-                                                            TEXT_WEIGHTS.main
-                                                        }
-                                                        color={COLORS.warmGray}
-                                                    >
-                                                        {el.name}
-                                                    </Text>
-                                                </FlexRow>
-                                            )}
+                                                    {el.name}
+                                                </Text>
+                                            </FlexRow>
                                         </FlexColumn>
                                     );
                                 },
