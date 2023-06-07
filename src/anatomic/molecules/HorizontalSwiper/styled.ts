@@ -1,7 +1,7 @@
 import { Swiper as SwiperComponent } from "swiper/react";
 import styled from "styled-components";
-import ArrowLeft from "@/assets/icon/arrowLeft.svg";
-import ArrowRight from "@/assets/icon/arrowRight.svg";
+import ArrowLeft from "@/assets/icon/ArrowLeft.svg";
+import ArrowRight from "@/assets/icon/ArrowRight.svg";
 import { COLORS } from "@/lib/theme/color";
 
 export const StyledSwiper = styled(SwiperComponent)<{
