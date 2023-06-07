@@ -16,12 +16,11 @@ interface Props {
 }
 
 export const AppsImplement: FC<Props> = memo(({ apps }) => {
-    const swiperRef = useRef<any>(null);
-    const [activeIndex, setActiveIndex] = useState(2);
+    const swiperRef = useRef<JSX.Element>(null);
+    const [activeIndex, setActiveIndex] = useState(1);
 
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
-          
             <Desktop>
                 <FlexColumn
                     w="130vw"
@@ -34,8 +33,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                         maxWidth="1450px"
                         slidesPerView={3}
                         spaceBetween={60}
-                        loop={true}
-                        loopedSlides={1.1}
+                        loop={false}
+                        loopedSlides={1}
                         swiperRef={swiperRef}
                         centeredSlides={true}
                         onSlideNext={() => {

@@ -172,6 +172,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         paddingLeft: navigation ? "50px" : "0px",
                         boxSizing: "border-box",
                         borderRadius: "20px",
+
                         backgroundColor: COLORS.white,
                         boxShadow: "0px 4px 20px 0px #00000040",
                         display: "flex",
@@ -200,7 +201,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     justifyContent: "center",
                                     alignItems: "center",
                                     zIndex: index,
-                                    // width: "100%",
+                                    width: "100%",
                                     overflow: "hidden",
                                     ...(!!index
                                         ? {
