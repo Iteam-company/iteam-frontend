@@ -94,7 +94,7 @@ const Outstaffing = () => {
                     maxWidth={710}
                     top={1}
                     right={-20}
-                    mobileRight={-36}
+                    mobileRight={-60}
                     loading="lazy"
                 />
                 <BgImage
