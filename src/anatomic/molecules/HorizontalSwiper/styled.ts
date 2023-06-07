@@ -38,7 +38,6 @@ export const StyledSwiper = styled(SwiperComponent)<{
     .swiper-button-prev {
         height: 40px;
         width: 40px;
-        z-index: 2;
         border-radius: 50%;
         background-image: linear-gradient(
             109.75deg,
@@ -50,12 +49,15 @@ export const StyledSwiper = styled(SwiperComponent)<{
         box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.2);
 
         ::after {
-            background-color: ${COLORS.lightPurple};
             border-radius: 50%;
             height: 34px;
             width: 34px;
+            position: absolute;
+            top: 17%;
+            left: 31%;
+            transform: translateY(-50%);
             box-sizing: border-box;
-            padding-left: 3px;
+            padding-left: 5px;
             content: url(${ArrowLeft.src});
         }
     }
@@ -74,10 +76,13 @@ export const StyledSwiper = styled(SwiperComponent)<{
         box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.2);
 
         ::after {
-            background-color: ${COLORS.lightPurple};
             border-radius: 50%;
             height: 34px;
             width: 34px;
+            position: absolute;
+            top: 17%;
+            left: 28%;
+            transform: translateY(-50%);
             box-sizing: border-box;
             padding-left: 5px;
             content: url(${ArrowRight.src});
