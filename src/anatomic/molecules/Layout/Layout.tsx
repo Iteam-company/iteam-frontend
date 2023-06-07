@@ -17,7 +17,7 @@ interface Props {
 
 export const Layout: FC<Props> = ({ children }) => {
     const size = useWindowSize();
-    const partial = size.width! < 801 ? 2.2 : null;
+    const partial = size.width! < 801 ? 2.1 : null;
 
     useDelayedScroll(4000, partial);
     const [data, isLoading] = useStrapiData(Pages.headerFooter);

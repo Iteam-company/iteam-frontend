@@ -163,7 +163,7 @@ const Projects = () => {
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
-                                height="600px"
+                                height="65vh"
                                 slides={slides}
                                 isTwoColumn={true}
                                 navigation={false}

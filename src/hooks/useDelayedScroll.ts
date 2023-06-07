@@ -6,15 +6,14 @@ let timers: NodeJS.Timeout[] = [];
 
 export const useDelayedScroll = (delay: number, fraction: number | null = 1) => {
     const { asPath } = useRouter();
-   
-console.log(fraction)
+
     useEffect(() => {
         const isRouteIncludesAnimations = routes.includes(asPath);
 
         const timer = setTimeout(() => {
             window.scrollY === 0 &&
                 isRouteIncludesAnimations &&
-                scrollTo(fraction ? { top: window.innerHeight / fraction, behavior: "smooth" } : { top: window.innerHeight , behavior: "smooth" });
+                scrollTo(fraction ? { top: 400, behavior: "smooth" } : { top: window.innerHeight , behavior: "smooth" });
         }, delay);
 
         timers.push(timer);
