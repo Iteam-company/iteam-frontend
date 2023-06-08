@@ -39,6 +39,7 @@ const Development = () => {
             style={{ overflow: "hidden" }}
         >
             <BgImage
+                ds="block"
                 src={BgImage1}
                 maxWidth={500}
                 top={1}
@@ -82,6 +83,7 @@ const Development = () => {
                 alignItems="center"
             >
                 <BgImage
+                    ds="block"
                     src={BgImage2}
                     maxWidth={550}
                     right={-20}
@@ -91,6 +93,7 @@ const Development = () => {
                     loading="lazy"
                 />
                 <BgImage
+                    ds="block"
                     src={BgImage3}
                     maxWidth={1450}
                     left={-30}

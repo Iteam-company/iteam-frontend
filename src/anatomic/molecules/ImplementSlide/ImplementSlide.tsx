@@ -78,18 +78,23 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                 )}
             </Desktop>
             <Mobile>
-                <FlexColumn
-                    as={motion.div}
-                    w="100%"
-                    h="100%"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 0, 1] }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <Text size={TEXT_SIZES.small.m} color={COLORS.textThird}>
-                        {text}
-                    </Text>
-                </FlexColumn>
+                {isActive && (
+                    <FlexColumn
+                        as={motion.div}
+                        w="100%"
+                        h="100%"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: [0, 0, 1] }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Text
+                            size={TEXT_SIZES.small.m}
+                            color={COLORS.textThird}
+                        >
+                            {text}
+                        </Text>
+                    </FlexColumn>
+                )}
             </Mobile>
         </FlexColumn>
     );
@@ -99,4 +104,5 @@ const Divider = styled.div`
     width: 100%;
     height: 1px;
     background: ${COLORS.textThird};
+    margin-bottom: 20px;
 `;

@@ -13,6 +13,7 @@ export interface SlidesInterface {
     navigation?: boolean;
     height?: string;
     editionContent?: ReactNode;
+    slidePosition?: string;
 }
 export interface SlideInterface {
     content: ReactNode[];
@@ -25,10 +26,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     navigation = true,
     height,
     editionContent,
+    slidePosition,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const h = size.width! > 1800 ? "800px" : height;
+    const h = size.width! > 1800 ? "720px" : height;
+    const leftPercent = size.width! < 500 ? "-10%" : "0";
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
@@ -171,11 +174,13 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         paddingLeft: navigation ? "50px" : "0px",
                         boxSizing: "border-box",
                         borderRadius: "20px",
+
                         backgroundColor: COLORS.white,
                         boxShadow: "0px 4px 20px 0px #00000040",
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
+                        overflow: "hidden",
                     }}
                 >
                     {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
@@ -195,10 +200,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     top: "0",
                                     height: "100%",
                                     display: "flex",
-                                    justifyContent: "center",
+                                    justifyContent: slidePosition
+                                        ? slidePosition
+                                        : "center",
                                     alignItems: "center",
                                     zIndex: index,
-                                    // width: "100%",
+                                    width: slidePosition ? "auto" : "100%",
                                     overflow: "hidden",
                                     ...(!!index
                                         ? {
@@ -247,10 +254,14 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 slides.map(({ image }, index) => {
                                     const containerStyle = {
                                         position: "absolute",
-                                        top: "0",
+                                        top: size.width! < 500 ? "-50%" : "0",
+                                        left: leftPercent,
                                         width: "100%",
                                         height: "100%",
+                                        minHeight: "290px",
+                                        minWidth: "290px",
                                         overflow: "hidden",
+
                                         ...(!!index
                                             ? {
                                                   transform:

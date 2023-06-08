@@ -93,21 +93,23 @@ const Outsourcing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <BgImage
+                    ds="block"
                     src={BgImage1}
                     maxWidth={800}
                     top={-40}
                     left={-20}
-                    mobileTop={-14}
+                    mobileTop={-2}
                     mobileLeft={-40}
                     priority
                 />
                 <Card position="relative" style={{ overflow: "hidden" }}>
                     <BgImage
+                        ds="block"
                         src={BgImage6}
                         maxWidth={500}
                         bottom={-6}
                         right={-24}
-                        mobileRight={-36}
+                        mobileRight={-46}
                         mobileBottom={-12}
                         loading="lazy"
                     />
@@ -167,12 +169,13 @@ const Outsourcing = () => {
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage
+                    ds="block"
                     src={BgImage2}
                     maxWidth={600}
                     top={10}
                     right={-15}
-                    mobileRight={-30}
-                    mobileTop={60}
+                    mobileRight={-28}
+                    mobileTop={50}
                     loading="lazy"
                 />
                 <BgImage
@@ -225,12 +228,13 @@ const Outsourcing = () => {
                 alignItems="center"
             >
                 <BgImage
+                    ds="block"
                     src={BgImage3}
                     maxWidth={1000}
                     bottom={10}
                     left={-30}
-                    mobileBottom={12}
-                    mobileLeft={-40}
+                    mobileBottom={-20}
+                    mobileLeft={-55}
                     loading="lazy"
                 />
 
@@ -291,6 +295,7 @@ const Outsourcing = () => {
                     loading="lazy"
                 />
                 <BgImage
+                    ds="block"
                     src={BgImage5}
                     maxWidth={700}
                     bottom={-50}

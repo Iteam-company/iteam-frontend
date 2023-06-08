@@ -50,8 +50,8 @@ const Home = () => {
                     <BgImage
                         src={BgImage1}
                         maxWidth={720}
-                        right={size.width! > 1800 ? -28 : -20}
-                        bottom={size.width! > 1800 ? -20 : -38}
+                        right={size.width! > 1800 ? -28 : -28}
+                        bottom={size.width! > 1800 ? -20 : -25}
                         mobileRight={-24}
                         mobileTop={14}
                         priority

@@ -58,6 +58,7 @@ const ContactUs = () => {
                 </AdaptiveElem>
 
                 <BgImage
+                    ds="block"
                     src={BgImage1}
                     maxWidth={520}
                     bottom={70}
@@ -68,6 +69,7 @@ const ContactUs = () => {
                 />
             </FlexColumn>
             <BgImage
+                ds="block"
                 src={BgImage2}
                 maxWidth={1420}
                 bottom={-40}

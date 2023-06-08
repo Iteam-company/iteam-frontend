@@ -47,7 +47,7 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
 
     const rotatableFunction = () => {
         if (ref.current && scrollable) {
-            setRotateZ(window.scrollY * 0.005);
+            setRotateZ(window.scrollY * 0.01);
         }
     };
 
@@ -79,13 +79,9 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
 };
 const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
     ({ rotateZ }) => ({
-        style: rotateZ
-            ? {
-                  transform: `rotateZ(${rotateZ}deg)`,
-              }
-            : {
-                  transform: `rotateZ(380deg)`,
-              },
+        style: {
+            transform: `rotateZ(${rotateZ}deg)`,
+        },
     }),
 )<BgImageI & ImageSize & ImagePosition>`
     height: auto;

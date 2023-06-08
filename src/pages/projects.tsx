@@ -34,6 +34,7 @@ export interface ProjectsInterface {
 export interface Technologies {
     icon: "react" | "ts" | "js" | "angular";
     name: string;
+    techIcon: any;
 }
 
 const Projects = () => {
@@ -69,7 +70,7 @@ const Projects = () => {
             alignItems="center"
             position="relative"
             style={{
-                paddingBottom: "100px",
+                paddingBottom: size.width! < 800 ? "0" : "100px",
                 overflow: "hidden",
             }}
         >
@@ -157,13 +158,17 @@ const Projects = () => {
             {slides.length && (
                 <>
                     <Desktop>
-                        <SmoothSlider slides={slides} />
+                        <SmoothSlider
+                            slides={slides}
+                            slidePosition="space-between"
+                        />
                     </Desktop>
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
+                                height="65vh"
+                                slidePosition="space-between"
                                 slides={slides}
-                                isTwoColumn={false}
                                 navigation={false}
                             />
                         </AdaptContainer>

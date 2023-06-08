@@ -9,23 +9,27 @@ import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
     children: ReactNode;
 }
 
 export const Layout: FC<Props> = ({ children }) => {
-    useDelayedScroll();
+    const size = useWindowSize();
+    const partial = size.width! < 801 ? 2.1 : null;
+
+    useDelayedScroll(4000, partial);
     const [data, isLoading] = useStrapiData(Pages.headerFooter);
     if (!data) return null;
 
     return (
         <StyledLayout>
             <LogoAnimation />
-            <div style={{background: '#FDFBFF'}}>
-            <AdaptContainer >
-            <Header data={data.header} />
-            </AdaptContainer>
+            <div style={{ background: "#FDFBFF" }}>
+                <AdaptContainer>
+                    <Header data={data.header} />
+                </AdaptContainer>
             </div>
             <main>
                 <FlexColumn

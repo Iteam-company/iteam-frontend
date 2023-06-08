@@ -23,7 +23,7 @@ export const TeamItem: FC<TeamInterface> = memo(
         upworkLink,
     }) => {
         const size = useWindowSize();
-        const width = size.width! > 1800 ? "100%" : "80vw";
+        const width = size.width! > 1800 ? "100vw" : "80vw";
         const padding = size.width! > 1800 ? "0 20px 0 0" : "";
 
         return (

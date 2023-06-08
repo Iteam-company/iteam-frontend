@@ -16,12 +16,11 @@ interface Props {
 }
 
 export const AppsImplement: FC<Props> = memo(({ apps }) => {
-    const swiperRef = useRef<any>(null);
-    const [activeIndex, setActiveIndex] = useState(2);
+    const swiperRef = useRef<JSX.Element>(null);
+    const [activeIndex, setActiveIndex] = useState(1);
 
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
-          
             <Desktop>
                 <FlexColumn
                     w="130vw"
@@ -34,8 +33,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                         maxWidth="1450px"
                         slidesPerView={3}
                         spaceBetween={60}
-                        loop={true}
-                        loopedSlides={1.1}
+                        loop={false}
+                        loopedSlides={1}
                         swiperRef={swiperRef}
                         centeredSlides={true}
                         onSlideNext={() => {
@@ -95,25 +94,52 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                     <HorizontalSwiperElem
                         minHeight="500px"
                         width="100%"
-                        maxWidth="975px"
+                        maxWidth="1450px"
                         slidesPerView={1}
                         spaceBetween={60}
+                        loop={false}
+                        loopedSlides={1}
+                        swiperRef={swiperRef}
+                        centeredSlides={true}
+                        onSlideNext={() => {
+                            activeIndex < apps.length
+                                ? setActiveIndex(activeIndex + 1)
+                                : setActiveIndex(1);
+                        }}
+                        onSlidePrev={() => {
+                            activeIndex == 1
+                                ? setActiveIndex(apps.length)
+                                : setActiveIndex(activeIndex - 1);
+                        }}
                     >
-                        {apps.map((item: AppsInterface) => (
+                        {apps.map((item: AppsInterface, index: number) => (
                             <SwiperSlide
                                 key={item.step}
                                 style={{
+                                    transition: "0.3s all",
                                     borderRadius: "16px",
                                     minHeight: "300px",
                                     background: COLORS.white,
+                                    transform:
+                                        activeIndex == index + 1
+                                            ? "scale(1)"
+                                            : "scale(0.9)",
+                                    height:
+                                        activeIndex == index + 1
+                                            ? "400px"
+                                            : "200px",
+                                    boxSizing: "content-box",
                                     boxShadow:
-                                        "0px 4px 20px rgba(37, 7, 67, 0.37)",
+                                        activeIndex == index + 1
+                                            ? "0px 4px 20px 0px #904FD1"
+                                            : "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                 }}
                             >
                                 <ImplementSlide
                                     title={item.title}
                                     text={item.text}
                                     step={item.step}
+                                    isActive={activeIndex == index + 1}
                                 />
                             </SwiperSlide>
                         ))}

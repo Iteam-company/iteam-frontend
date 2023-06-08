@@ -28,10 +28,11 @@ import teamIcon from "@/assets/projects/teamIcon.svg";
 import { FitToViewport } from "react-fit-to-viewport";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
-
+    const size = useWindowSize();
     if (!data) return null;
     return (
         <FlexColumn
@@ -72,6 +73,7 @@ const Outstaffing = () => {
                 style={{ boxSizing: "border-box" }}
             >
                 <BgImage
+                    ds="block"
                     src={BgImage1}
                     maxWidth={750}
                     top={-20}
@@ -88,16 +90,18 @@ const Outstaffing = () => {
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage
+                    ds="block"
                     src={BgImage2}
                     maxWidth={710}
                     top={1}
                     right={-20}
-                    mobileRight={-36}
+                    mobileRight={-60}
                     loading="lazy"
                 />
                 <BgImage
+                    ds="block"
                     src={ITeamIcon}
-                    maxWidth={660}
+                    maxWidth={size.width! < 715 ? 300 : 660}
                     bottom={5}
                     right={2}
                     mobileBottom={10}
@@ -114,6 +118,7 @@ const Outstaffing = () => {
                 alignItems="center"
             >
                 <BgImage
+                    ds="block"
                     src={BgImage3}
                     maxWidth={1200}
                     bottom={5}
@@ -206,6 +211,7 @@ const Outstaffing = () => {
                 gap="50px"
             >
                 <BgImage
+                    ds="block"
                     src={BgImage4}
                     maxWidth={850}
                     top={-25}
@@ -215,6 +221,7 @@ const Outstaffing = () => {
                     loading="lazy"
                 />
                 <BgImage
+                    ds="block"
                     src={BgImage5}
                     maxWidth={700}
                     bottom={-50}
