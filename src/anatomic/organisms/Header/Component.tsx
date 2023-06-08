@@ -50,16 +50,14 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                         }}
                                     />
                                 </FlexRow>
-                            ) : (
-                                item.options && (
-                                    <Dropdown
-                                        title={item.title}
-                                        activeRoute={activeRoute}
-                                        options={item.options}
-                                        key={item.id}
-                                    />
-                                )
-                            ),
+                            ) : item.options ? (
+                                <Dropdown
+                                    title={item.title}
+                                    activeRoute={activeRoute}
+                                    options={item.options}
+                                    key={item.id}
+                                />
+                            ) : null,
                         )}
                     </FlexRow>
 

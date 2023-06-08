@@ -7,15 +7,24 @@ import { COLORS } from "@/lib/theme/color";
 import React, { FC } from "react";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
+import Image from "next/image";
 
-export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
-    color,
-    title,
-}) => {
+export const ProjectItemInfo: FC<{
+    data: any;
+}> = ({ data }) => {
+    const { title, color } = data.projectDetail;
+    const {
+        developedTitle,
+        developedText,
+        requestTitle,
+        requestText,
+        approachTitle,
+        approachText,
+    } = data;
     return (
         <>
             <Desktop>
-                <Card>
+                <Card mw="1150px">
                     <FlexRow w="100%" mh="80vh" alignItems="center" gap="20px">
                         <FlexColumn w="100%" gap="20px">
                             <GradientTitle
@@ -31,14 +40,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Developed responsive app, created new
-                                    features.
+                                    {developedTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {developedText}
                                 </Text>
                             </FlexColumn>
                             <FlexColumn gap="10px">
@@ -46,13 +51,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Client’s request
+                                    {requestTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {requestText}
                                 </Text>
                             </FlexColumn>
                             <FlexColumn gap="10px">
@@ -60,13 +62,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Our approach
+                                    {approachTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {approachText}
                                 </Text>
                             </FlexColumn>
                         </FlexColumn>
@@ -74,33 +73,41 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                         <FlexColumn w="100%">
                             <HorizontalSwiperElem
                                 minHeight="64vh"
-                                width="100%"
-                                maxWidth="42vw"
+                                loop={false}
+                                slidesPerView={1}
+                                spaceBetween={70}
+                                loopedSlides={1}
                             >
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    1
-                                </SwiperSlide>
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    2
-                                </SwiperSlide>
+                                {data.mainImages.data.map((item: any) => {
+                                    return (
+                                        <SwiperSlide
+                                            key={item.attributes.url}
+                                            style={{
+                                                background:
+                                                    "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
+                                                boxShadow:
+                                                    "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                                                borderRadius: "18px",
+                                                overflow: "hidden",
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                    alignItems: "center",
+                                                }}
+                                            >
+                                                <Image
+                                                    src={item.attributes.url}
+                                                    alt="swiper-image"
+                                                    width="470"
+                                                    height="300"
+                                                />
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                })}
                             </HorizontalSwiperElem>
                         </FlexColumn>
                     </FlexRow>
@@ -188,9 +195,12 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
     );
 };
 
-export const Card = styled(FlexColumn)`
+interface cardProps {
+    mw?: string;
+}
+export const Card = styled(FlexColumn)<cardProps>`
     z-index: 1;
-    max-width: 1068px;
+    max-width: ${({ mw }) => (mw ? mw : "1068px")};
     padding: 30px;
     background: ${COLORS.white};
     box-shadow: 0px 4px 20px rgba(37, 7, 67, 0.37);

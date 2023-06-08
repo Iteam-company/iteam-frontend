@@ -19,6 +19,8 @@ import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.svg";
 import styled from "styled-components";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { TextI } from "@/anatomic/molecules/Banner/Banner";
+import Image from "next/image";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface ProjectItemInterface {
     id: number;
@@ -51,6 +53,8 @@ export interface ResultInterface {
 const Project = () => {
     const router = useRouter();
     const { id } = router.query;
+
+    const size = useWindowSize();
 
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
@@ -106,7 +110,7 @@ const Project = () => {
                     gap="40px"
                     style={{ boxSizing: "border-box" }}
                 >
-                    <ProjectItemInfo {...data.projectDetail} />
+                    <ProjectItemInfo data={data} />
 
                     <FlexColumn
                         w="100%"
@@ -151,6 +155,7 @@ const Project = () => {
                                                 borderRadius: "16px",
                                                 boxShadow:
                                                     "0px 4px 20px 0px #00000040",
+                                                minHeight: "300px",
                                             }}
                                             w="25%"
                                             p="24px"
@@ -226,6 +231,7 @@ const Project = () => {
                                                     borderRadius: "16px",
                                                     boxShadow:
                                                         "0px 4px 20px 0px #00000040",
+                                                    minHeight: "300px",
                                                 }}
                                                 w="100%"
                                                 p="24px"
@@ -276,46 +282,56 @@ const Project = () => {
                             gap="40px"
                             p="30px 0"
                             zIndex="2"
+                            style={{
+                                alignItems: "center",
+                            }}
                         >
-                            <FlexColumn
-                                w="100%"
-                                justifyContent="start"
-                                alignItems="start"
-                                gap="15px"
-                            >
-                                <Text
-                                    size={TEXT_SIZES.large.s}
-                                    weight={TEXT_WEIGHTS.medium}
-                                    color={COLORS.dark}
-                                    mobileSize={TEXT_SIZES.small.xl}
+                            <FlexRow>
+                                <FlexColumn
+                                    w="100%"
+                                    justifyContent="start"
+                                    alignItems="start"
+                                    gap="15px"
                                 >
-                                    Result
-                                </Text>
-                                <FlexColumn gap="20px">
                                     <Text
-                                        textDecoration="underline"
-                                        size={TEXT_SIZES.small.xl}
-                                        color={COLORS.dark}
+                                        size={TEXT_SIZES.large.s}
                                         weight={TEXT_WEIGHTS.medium}
-                                        mobileSize={TEXT_SIZES.small.l}
+                                        color={COLORS.dark}
+                                        mobileSize={TEXT_SIZES.small.xl}
                                     >
-                                        {data?.projectDetail.result.title}
+                                        Result
                                     </Text>
-                                    <FlexColumn gap="10px">
-                                        {data.projectDetail.result.text.map(
-                                            (elem: TextI, index: number) => (
-                                                <Text
-                                                    size={TEXT_SIZES.small.m}
-                                                    key={index}
-                                                    color={COLORS.textThird}
-                                                >
-                                                    • {elem.text}
-                                                </Text>
-                                            ),
-                                        )}
+                                    <FlexColumn gap="20px">
+                                        <Text
+                                            textDecoration="underline"
+                                            size={TEXT_SIZES.small.xl}
+                                            color={COLORS.dark}
+                                            weight={TEXT_WEIGHTS.medium}
+                                            mobileSize={TEXT_SIZES.small.l}
+                                        >
+                                            {data?.projectDetail.result.title}
+                                        </Text>
+                                        <FlexColumn gap="10px">
+                                            {data.projectDetail.result.text.map(
+                                                (
+                                                    elem: TextI,
+                                                    index: number,
+                                                ) => (
+                                                    <Text
+                                                        size={
+                                                            TEXT_SIZES.small.m
+                                                        }
+                                                        key={index}
+                                                        color={COLORS.textThird}
+                                                    >
+                                                        • {elem.text}
+                                                    </Text>
+                                                ),
+                                            )}
+                                        </FlexColumn>
                                     </FlexColumn>
                                 </FlexColumn>
-                            </FlexColumn>
+                            </FlexRow>
                             <FlexColumn
                                 w="100%"
                                 justifyContent="center"
@@ -324,14 +340,36 @@ const Project = () => {
                             >
                                 <div
                                     style={{
-                                        width: "100%",
-                                        minHeight: "300px",
+                                        width:
+                                            size.width! < 850
+                                                ? "300px"
+                                                : "400px",
+                                        height:
+                                            size.width! < 850
+                                                ? "175px"
+                                                : "270px",
                                         background: COLORS.white,
                                         boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                                            "0px 0px 0px  rgba(0, 0, 0, 0.25)",
+                                        filter: "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25))",
                                         borderRadius: "16px",
+                                        overflow: "hidden",
                                     }}
-                                ></div>
+                                >
+                                    <Image
+                                        src={
+                                            data.projectDetail.result
+                                                .resultImage.data.attributes.url
+                                        }
+                                        alt="resutImage"
+                                        width={
+                                            size.width! < 850 ? "300" : "400"
+                                        }
+                                        height={
+                                            size.width! < 850 ? "175" : "270"
+                                        }
+                                    />
+                                </div>
                             </FlexColumn>
                         </FlexContainer>
                     </FlexColumn>
