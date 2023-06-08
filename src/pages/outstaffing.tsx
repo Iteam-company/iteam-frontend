@@ -28,10 +28,11 @@ import teamIcon from "@/assets/projects/teamIcon.svg";
 import { FitToViewport } from "react-fit-to-viewport";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
-
+    const size = useWindowSize();
     if (!data) return null;
     return (
         <FlexColumn
@@ -100,7 +101,7 @@ const Outstaffing = () => {
                 <BgImage
                     ds="block"
                     src={ITeamIcon}
-                    maxWidth={660}
+                    maxWidth={size.width! < 715 ? 300 : 660}
                     bottom={5}
                     right={2}
                     mobileBottom={10}

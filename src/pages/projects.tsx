@@ -158,14 +158,17 @@ const Projects = () => {
             {slides.length && (
                 <>
                     <Desktop>
-                        <SmoothSlider slides={slides} />
+                        <SmoothSlider
+                            slides={slides}
+                            slidePosition="space-between"
+                        />
                     </Desktop>
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
                                 height="65vh"
+                                slidePosition="space-between"
                                 slides={slides}
-                                isTwoColumn={true}
                                 navigation={false}
                             />
                         </AdaptContainer>

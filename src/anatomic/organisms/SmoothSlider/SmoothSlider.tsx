@@ -13,6 +13,7 @@ export interface SlidesInterface {
     navigation?: boolean;
     height?: string;
     editionContent?: ReactNode;
+    slidePosition?: string;
 }
 export interface SlideInterface {
     content: ReactNode[];
@@ -25,6 +26,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     navigation = true,
     height,
     editionContent,
+    slidePosition,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
@@ -198,10 +200,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     top: "0",
                                     height: "100%",
                                     display: "flex",
-                                    justifyContent: "center",
+                                    justifyContent: slidePosition
+                                        ? slidePosition
+                                        : "center",
                                     alignItems: "center",
                                     zIndex: index,
-                                    width: "100%",
+                                    width: slidePosition ? "auto" : "100%",
                                     overflow: "hidden",
                                     ...(!!index
                                         ? {
