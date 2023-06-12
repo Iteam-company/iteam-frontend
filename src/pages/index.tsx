@@ -75,7 +75,12 @@ const Home = () => {
                 <ExploreWithIteam data={data?.exploreWithIteam} />
             </FlexColumn>
             <OurCoreValues coreValue={data?.coreValues} />
-            <FlexColumn w="100%" h="100%" position="relative" p="0 0 100px">
+            <FlexColumn
+                w="100%"
+                h="100%"
+                position="relative"
+                p={size.width! < 800 ? "12% 0 100px " : "0 0 100px"}
+            >
                 <BookingForm />
                 <BgImage
                     src={BgImage2}
