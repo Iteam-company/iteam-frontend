@@ -205,11 +205,12 @@ const Project = () => {
                             zIndex="2"
                         >
                             <HorizontalSwiperElem
-                                minHeight="330px"
+                                minHeight="350px"
                                 width="100%"
                                 maxWidth="650px"
                                 navigation={false}
                                 pagination={true}
+                                m="0 0 20px 0"
                             >
                                 {data?.projectDetail?.solution.map(
                                     (

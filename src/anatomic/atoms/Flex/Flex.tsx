@@ -14,6 +14,7 @@ interface DefaultElementProps {
     borderRadius?: string;
     position?: string;
     zIndex?: string;
+    gridGap?: string;
 }
 
 interface FlexProps {
@@ -49,6 +50,9 @@ export const Flex = styled.div<FlexProps & DefaultElementProps>`
     flex-direction: ${(props) => props.type || "row"};
     box-shadow: ${(props) => props.boxShadow || "none"};
     border-radius: ${(props) => props.borderRadius || "none"};
+    & > * {
+        margin-right: ${(props) => props.gridGap || "0px"};
+    }
 `;
 
 export const FlexRow = styled(Flex)`
