@@ -17,7 +17,7 @@ export const BookingForm = () => {
     const onSubmit = (values: FormikValues) => {
         const date = new Date().toISOString().split(".")[0];
         router.push(
-            `https://calendly.com/labk19/30min/${date}?email=${values.email}`,
+            `https://calendly.com/iteamcom/30min/${date}?email=${values.email}`,
         );
     };
 
