@@ -115,10 +115,11 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                         >
                                             <FlexRow
                                                 alignItems="center"
-                                                justifyContent="space-around"
+                                                justifyContent="flex-start"
+                                                gap="10px"
                                                 w="100%"
                                                 h="100%"
-                                                p="5px"
+                                                p="10px"
                                             >
                                                 <Image
                                                     src={
@@ -129,12 +130,12 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                     width={
                                                         size.width! > 1700
                                                             ? "25"
-                                                            : "20"
+                                                            : "18"
                                                     }
                                                     height={
                                                         size.width! > 1700
                                                             ? "25"
-                                                            : "20"
+                                                            : "18"
                                                     }
                                                 />
                                                 <Text
