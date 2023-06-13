@@ -13,6 +13,7 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import Arrow_Rigth from "@/assets/icon/arrow-right.svg";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { log } from "console";
 
 export const ProjectItemInfo: FC<{
     data: any;
@@ -26,6 +27,7 @@ export const ProjectItemInfo: FC<{
         requestText,
         approachTitle,
         approachText,
+        visitLink,
     } = data;
     return (
         <>
@@ -76,7 +78,7 @@ export const ProjectItemInfo: FC<{
                             </FlexColumn>
                             <FlexColumn m="80px 0 0 0 ">
                                 <Button
-                                    href={"/"}
+                                    href={visitLink}
                                     gradient={data.projectDetail.color}
                                     variant={BUTTON_VARIANTS.gradient_link}
                                     label={
@@ -244,6 +246,31 @@ export const ProjectItemInfo: FC<{
                         <Text size={TEXT_SIZES.small.l} whiteSpace="pre-line">
                             {approachText}
                         </Text>
+                    </FlexColumn>
+                    <FlexColumn m="40px 0 0 0 ">
+                        <Button
+                            href={visitLink}
+                            gradient={data.projectDetail.color}
+                            variant={BUTTON_VARIANTS.gradient_link}
+                            label={
+                                <FlexRow alignItems="center" gridGap="10px">
+                                    <Text
+                                        size={TEXT_SIZES.small.s}
+                                        color={COLORS.dark}
+                                        weight={TEXT_WEIGHTS.main}
+                                    >
+                                        Visit site
+                                    </Text>
+
+                                    <Image
+                                        src={Arrow_Rigth.src}
+                                        alt="swiper-imagurkle"
+                                        width="21"
+                                        height="20"
+                                    />
+                                </FlexRow>
+                            }
+                        />
                     </FlexColumn>
                 </FlexColumn>
             </Mobile>

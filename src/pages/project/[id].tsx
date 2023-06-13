@@ -59,6 +59,7 @@ const Project = () => {
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
     );
+    console.log(data);
 
     return (
         <Container

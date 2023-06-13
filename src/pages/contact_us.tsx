@@ -14,10 +14,11 @@ import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
-
+    const size = useWindowSize();
     if (!data) return null;
     return (
         <FlexColumn
@@ -60,9 +61,9 @@ const ContactUs = () => {
                 <BgImage
                     ds="block"
                     src={BgImage1}
-                    maxWidth={520}
-                    bottom={70}
-                    left={-12}
+                    maxWidth={size.width! < 1600 ? 570 : 620}
+                    bottom={size.width! < 1600 ? 66 : 60}
+                    left={size.width! < 1600 ? -14 : -10}
                     mobileBottom={40}
                     mobileLeft={50}
                     priority

@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import { Technology } from "@/pages/team";
 import label from "../../../assets/icon/label.svg";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
     technology?: Technology[];
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
+    const size = useWindowSize();
     return (
         <FlexColumn w="100%" alignItems="space-between">
             <Desktop w="100%" alignItems="space-between" mW={1250}>
@@ -55,7 +57,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             >
                                 <Text size="12px">0</Text>
                                 <Text size="12px">
-                                    {experience.year < 5 ? experience.year : ""}
+                                    {experience.year < 5 ? 5 : ""}
                                 </Text>
                                 <Label
                                     justifyContent="center"
@@ -95,7 +97,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         <FlexRow
                             flexWrap="wrap"
                             gap="16px"
-                            alignItems="space-between"
+                            alignItems="center"
                             h="100%"
                             w="100%"
                         >
@@ -104,7 +106,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                     <GradientElem
                                         gradient={COLORS.technologyGradient}
                                         key={elem.id}
-                                        width="90px"
+                                        width="44%"
                                     >
                                         <GradientElemContent
                                             justifyContent="center"
@@ -124,8 +126,16 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                             .attributes.url
                                                     }
                                                     alt="tech_logo"
-                                                    width="20"
-                                                    height="20"
+                                                    width={
+                                                        size.width! > 1700
+                                                            ? "25"
+                                                            : "20"
+                                                    }
+                                                    height={
+                                                        size.width! > 1700
+                                                            ? "25"
+                                                            : "20"
+                                                    }
                                                 />
                                                 <Text
                                                     weight={TEXT_WEIGHTS.main}

@@ -32,6 +32,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                     <FlexRow
                         gap="30px"
                         w={width}
+                        mw="1300px"
                         p="0 20px"
                         justifyContent="center"
                     >
