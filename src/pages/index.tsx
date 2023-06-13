@@ -44,9 +44,9 @@ const Home = () => {
                 <AdaptContainer w="90%" h="visible">
                     <BgImage
                         src={BgImage1}
-                        maxWidth={720}
-                        right={size.width! > 1800 ? -10 : -14}
-                        bottom={40}
+                        maxWidth={size.width! < 1200 ? 700 : 820}
+                        right={size.width! > 1800 ? -14 : -20}
+                        bottom={38}
                         mobileRight={-24}
                         mobileTop={14}
                         priority
