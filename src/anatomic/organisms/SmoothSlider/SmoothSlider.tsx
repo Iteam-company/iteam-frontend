@@ -171,13 +171,14 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         margin: "0 20px",
                         height: h ? h : "90vh",
                         width: "95vw",
-                        paddingLeft: navigation ? "50px" : "0px",
+                        paddingLeft: navigation ? "5%" : "0px",
                         boxSizing: "border-box",
                         borderRadius: "20px",
 
                         backgroundColor: COLORS.white,
                         boxShadow: "0px 4px 20px 0px #00000040",
                         display: "flex",
+
                         justifyContent: "space-between",
                         alignItems: "center",
                         overflow: "hidden",
@@ -247,7 +248,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 position: "relative",
                                 paddingBottom: "36.25%",
                                 height: "auto",
-                                width: "40vw",
+                                width: "55%",
                             }}
                         >
                             {!!slides.length &&

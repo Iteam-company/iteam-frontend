@@ -43,7 +43,7 @@ const Development = () => {
                 src={BgImage1}
                 maxWidth={500}
                 top={1}
-                right={74}
+                left={-16}
                 mobileRight={60}
                 mobileTop={6}
                 priority
