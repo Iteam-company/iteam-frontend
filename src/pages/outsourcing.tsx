@@ -7,7 +7,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useRef } from "react";
-import BgImage1 from "@/assets/bgImage/outsourcing/bgImage1.svg";
+import BgImage1 from "@/assets/bgImage/home/back.svg";
 import BgImage2 from "@/assets/bgImage/outsourcing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outsourcing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outsourcing/bgImage4.svg";

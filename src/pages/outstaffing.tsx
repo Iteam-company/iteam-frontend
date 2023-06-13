@@ -7,7 +7,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import React, { memo } from "react";
-import BgImage1 from "@/assets/bgImage/outstaffing/bgImage1.svg";
+import BgImage1 from "@/assets/bgImage/home/back.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
@@ -76,8 +76,8 @@ const Outstaffing = () => {
                     ds="block"
                     src={BgImage1}
                     maxWidth={750}
-                    top={-20}
-                    left={-12}
+                    top={-30}
+                    left={-20}
                     mobileTop={-14}
                     mobileLeft={-40}
                     priority

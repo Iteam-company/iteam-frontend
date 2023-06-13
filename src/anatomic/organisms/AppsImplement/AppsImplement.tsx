@@ -67,7 +67,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                     boxSizing: "content-box",
                                     boxShadow:
                                         activeIndex == index + 1
-                                            ? "0px 4px 20px 0px #904FD1"
+                                            ? "0px 4px 20px 0px rgba(37, 7, 67, 0.37)"
                                             : "0px 4px 20px rgba(37, 7, 67, 0.37)",
                                 }}
                             >
