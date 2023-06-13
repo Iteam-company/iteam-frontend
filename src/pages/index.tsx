@@ -30,28 +30,23 @@ const Home = () => {
             alignItems="center"
             w="100%"
             h="100%"
-            style={{ overflow: "hidden" }}
+            style={{ overflow: "hidden", position: "relative" }}
         >
             <FlexColumn
                 alignItems="center"
                 w="100%"
                 h="100%"
                 position="relative"
-                style={{ overflow: "hidden", position: "relative" }}
             >
                 <AddaptFoIbg style={{ position: "absolute" }}>
                     <Image src={bgMain} alt="bg" />
                 </AddaptFoIbg>
-                <AdaptContainer
-                    w="90%"
-                    style={{ position: "relative" }}
-                    h="visible"
-                >
+                <AdaptContainer w="90%" h="visible">
                     <BgImage
                         src={BgImage1}
                         maxWidth={720}
-                        right={size.width! > 1800 ? -28 : -28}
-                        bottom={size.width! > 1800 ? -20 : -25}
+                        right={size.width! > 1800 ? -10 : -14}
+                        bottom={40}
                         mobileRight={-24}
                         mobileTop={14}
                         priority

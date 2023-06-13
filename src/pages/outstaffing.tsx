@@ -77,7 +77,7 @@ const Outstaffing = () => {
                     src={BgImage1}
                     maxWidth={750}
                     top={-30}
-                    left={-20}
+                    left={-16}
                     mobileTop={-14}
                     mobileLeft={-40}
                     priority
