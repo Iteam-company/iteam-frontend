@@ -8,7 +8,7 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useRef } from "react";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
-import BgImage2 from "@/assets/bgImage/outsourcing/bgImage2.svg";
+import BgImage2 from "@/assets/bgImage/outsourcing/bgout.svg";
 import BgImage3 from "@/assets/bgImage/outsourcing/bgImage3.svg";
 import BgImage4 from "@/assets/bgImage/outsourcing/bgImage4.svg";
 import BgImage5 from "@/assets/bgImage/outsourcing/bgImage5.svg";
@@ -108,7 +108,7 @@ const Outsourcing = () => {
                         src={BgImage6}
                         maxWidth={500}
                         bottom={-6}
-                        right={-24}
+                        right={-28}
                         mobileRight={-46}
                         mobileBottom={-12}
                         loading="lazy"
