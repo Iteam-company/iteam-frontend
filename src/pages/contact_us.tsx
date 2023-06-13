@@ -61,8 +61,8 @@ const ContactUs = () => {
                 <BgImage
                     ds="block"
                     src={BgImage1}
-                    maxWidth={size.width! < 1600 ? 570 : 620}
-                    bottom={size.width! < 1600 ? 66 : 60}
+                    maxWidth={size.width! < 1600 ? 585 : 620}
+                    bottom={size.width! < 1600 ? 65 : 60}
                     left={size.width! < 1600 ? -14 : -10}
                     mobileBottom={40}
                     mobileLeft={50}
