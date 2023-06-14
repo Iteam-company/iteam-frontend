@@ -88,7 +88,7 @@ const Outstaffing = () => {
                     approaches={data.approach}
                 />
             </FlexColumn>
-            <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
+            <FlexColumn w="100%" h="100%" position="relative" p="150px 0">
                 <BgImage
                     ds="block"
                     src={BgImage2}
@@ -104,13 +104,13 @@ const Outstaffing = () => {
                     maxWidth={size.width! < 715 ? 300 : 660}
                     bottom={5}
                     right={2}
-                    mobileBottom={10}
+                    mobileBottom={0}
                     scrollable={false}
                     loading="lazy"
                 />
-
-                <BookingForm />
+                <BookingForm h="350px" />
             </FlexColumn>
+
             <FlexColumn
                 w="100%"
                 h="100%"
@@ -133,13 +133,17 @@ const Outstaffing = () => {
                     h="100%"
                     w="100%"
                     zIndex="3"
-                    gap="100px"
+                    gap="50px"
                     style={{ boxSizing: "border-box" }}
                     p="0 20px"
                 >
                     <FlexColumn mw="600px" alignItems="center" p="0 20px 0 ">
                         <GradientTitle
-                            size={TEXT_SIZES.large.xs}
+                            size={
+                                size.width! < 800
+                                    ? TEXT_SIZES.medium.largeM
+                                    : TEXT_SIZES.large.xl
+                            }
                             weight={TEXT_WEIGHTS.main}
                             color="272.07deg, #17092D 35.9%, #7232E0 100%"
                         >

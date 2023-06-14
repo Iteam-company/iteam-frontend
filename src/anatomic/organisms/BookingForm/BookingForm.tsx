@@ -2,7 +2,7 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React from "react";
+import React, { FC } from "react";
 import { Input } from "@/anatomic/atoms/Input";
 import { Formik, Form } from "formik";
 import { Button } from "@/anatomic/atoms/Button";
@@ -11,7 +11,11 @@ import { FormSchema, FormikValues, initialValues } from "./util";
 import { useRouter } from "next/router";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 
-export const BookingForm = () => {
+type Props = {
+    h?: string;
+};
+
+export const BookingForm: FC<Props> = ({ h }) => {
     const router = useRouter();
 
     const onSubmit = (values: FormikValues) => {
@@ -22,7 +26,7 @@ export const BookingForm = () => {
     };
 
     return (
-        <WhiteSection>
+        <WhiteSection h={h}>
             <Text
                 color={COLORS.textPrimary}
                 weight={TEXT_WEIGHTS.medium}

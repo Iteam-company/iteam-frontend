@@ -169,25 +169,25 @@ const Outsourcing = () => {
             </FlexColumn>
             <FlexColumn w="100%" h="100%" position="relative" p="250px 0">
                 <BgImage
-                    ds="block"
                     src={BgImage2}
                     maxWidth={600}
                     top={10}
                     right={-15}
-                    mobileRight={-28}
-                    mobileTop={50}
+                    mobileRight={-48}
+                    mobileTop={55}
                     loading="lazy"
                 />
                 <BgImage
+                    ds="block"
                     src={ITeamIcon}
-                    maxWidth={660}
+                    maxWidth={size.width! < 800 ? 300 : 660}
                     bottom={5}
                     right={2}
                     mobileBottom={5}
                     scrollable={false}
                     loading="lazy"
                 />
-                <WhiteSection>
+                <WhiteSection p="0">
                     <AdaptContainer c="center">
                         <div style={{ textAlign: "center" }}>
                             <Text

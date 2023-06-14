@@ -17,7 +17,7 @@ interface contactInfoI {
 }
 export const Info: FC<Props> = ({ title, description, contactInfo }) => {
     return (
-        <Flex gap="24px" p="20px" w="40%">
+        <Flex gap="35px" p="20px" w="40%">
             <Text
                 weight={TEXT_WEIGHTS.main}
                 color={COLORS.textPrimary}

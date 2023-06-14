@@ -23,7 +23,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
             <Desktop>
                 <FlexColumn
-                    w="130vw"
+                    w="100%"
                     justifyContent="center"
                     alignItems="center"
                 >

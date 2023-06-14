@@ -33,7 +33,7 @@ const ContactUs = () => {
                 h="100%"
                 alignItems="center"
                 gap="40px"
-                p="80px 20px 120px"
+                p="80px 20px 40px"
             >
                 <Text
                     color={COLORS.textPrimary}
@@ -53,7 +53,11 @@ const ContactUs = () => {
                 alignItems="center"
                 position="relative"
             >
-                <AdaptiveElem gap="80px" justifyContent="center">
+                <AdaptiveElem
+                    gap="80px"
+                    justifyContent="center"
+                    or={size.width! < 886 ? "column-reverse" : "column"}
+                >
                     <FormElem />
                     <Info {...data.contact} />
                 </AdaptiveElem>
@@ -61,8 +65,8 @@ const ContactUs = () => {
                 <BgImage
                     ds="block"
                     src={BgImage1}
-                    maxWidth={size.width! < 1600 ? 585 : 620}
-                    bottom={size.width! < 1600 ? 65 : 60}
+                    maxWidth={size.width! < 1600 ? 550 : 600}
+                    bottom={size.width! < 1600 ? 56 : 50}
                     left={size.width! < 1600 ? -14 : -10}
                     mobileBottom={40}
                     mobileLeft={50}

@@ -1,9 +1,13 @@
 import styled from "styled-components";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
-export const AdaptiveElem = styled(Adaptive)`
+type Order =  {
+    or?: string;
+}
+
+export const AdaptiveElem = styled(Adaptive)<Order>`
     padding: 0 0 230px;
     @media all and (max-width: 885px) {
-        flex-direction: column;
+        flex-direction: ${({or}) => or || 'column'};
     }
 `;
