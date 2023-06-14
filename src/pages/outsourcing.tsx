@@ -273,7 +273,7 @@ const Outsourcing = () => {
                 </FlexColumn>
 
                 <FlexColumn w="100%" h="100%" position="relative" p="150px 0 0">
-                    <BookingForm />
+                    <BookingForm h={size.width! < 886 ? "340px" : "250px"} />
                 </FlexColumn>
             </FlexColumn>
             <FlexColumn

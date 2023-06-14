@@ -102,9 +102,9 @@ const Outstaffing = () => {
                     ds="block"
                     src={ITeamIcon}
                     maxWidth={size.width! < 715 ? 300 : 660}
-                    bottom={5}
+                    bottom={-4}
                     right={2}
-                    mobileBottom={0}
+                    mobileBottom={3}
                     scrollable={false}
                     loading="lazy"
                 />
@@ -142,8 +142,9 @@ const Outstaffing = () => {
                             size={
                                 size.width! < 800
                                     ? TEXT_SIZES.medium.largeM
-                                    : TEXT_SIZES.large.xl
+                                    : TEXT_SIZES.large.m
                             }
+                            lineHeight="130%"
                             weight={TEXT_WEIGHTS.main}
                             color="272.07deg, #17092D 35.9%, #7232E0 100%"
                         >
