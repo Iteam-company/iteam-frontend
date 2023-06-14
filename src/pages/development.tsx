@@ -44,7 +44,7 @@ const Development = () => {
                 maxWidth={500}
                 top={1}
                 left={-16}
-                mobileRight={60}
+                mobileLeft={-55}
                 mobileTop={6}
                 priority
             />
