@@ -68,7 +68,6 @@ const Projects = () => {
             w="100%"
             justifyContent="center"
             alignItems="center"
-            position="relative"
             style={{
                 paddingBottom: size.width! < 800 ? "0" : "100px",
                 overflow: "hidden",
@@ -148,7 +147,7 @@ const Projects = () => {
                     src={BgImage1}
                     maxWidth={710}
                     top={-15}
-                    right={70}
+                    left={size.width! < 1700 ? -20 : -15}
                     priority
                     mobileTop={75}
                     mobileLeft={-40}
