@@ -9,6 +9,7 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
 import Image from "next/image";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
@@ -18,6 +19,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     img,
     color,
 }) => {
+    const size = useWindowSize();
     return (
         <>
             <FlexColumn
@@ -33,6 +35,8 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                     style={{ boxSizing: "border-box" }}
                 >
                     <Text
+                        w="100%"
+                        whiteSpace="pre-line"
                         color={COLORS.dark}
                         size={TEXT_SIZES.medium.s}
                         weight={TEXT_WEIGHTS.medium}
@@ -40,9 +44,15 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                         {title}
                     </Text>
                     <Text
+                        w="100%"
                         color={COLORS.dark}
-                        size={TEXT_SIZES.small.m}
+                        size={
+                            size.width! < 381
+                                ? TEXT_SIZES.small.s
+                                : TEXT_SIZES.small.l
+                        }
                         weight={TEXT_WEIGHTS.normal}
+                        whiteSpace="pre-line"
                     >
                         {description}
                     </Text>
@@ -111,18 +121,22 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 </FitToViewport>
             </FlexColumn>
 
-            <FlexRow justifyContent="center" alignItems="center" w="100%">
+            <FlexRow
+                justifyContent={size.width! < 381 ? "flex-start" : "center"}
+                alignItems="center"
+                w="100%"
+            >
                 <Button
                     href={`/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
-                    p="5px"
-                    w="80%"
+                    p="5px 5px 0 10px"
+                    w={size.width! < 401 ? "140px" : "80%"}
                     label={
                         <Text
                             color={COLORS.dark}
                             weight={TEXT_WEIGHTS.main}
-                            size={TEXT_SIZES.small.l}
+                            size={TEXT_SIZES.small.s}
                         >
                             View Case
                         </Text>

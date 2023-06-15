@@ -165,7 +165,7 @@ const Projects = () => {
                     <Mobile>
                         <AdaptContainer>
                             <SmoothSlider
-                                height="65vh"
+                                height={size.height! < 701 ? "80vh" : "65vh"}
                                 slidePosition="space-between"
                                 slides={slides}
                                 navigation={false}
