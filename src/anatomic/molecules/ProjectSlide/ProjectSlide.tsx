@@ -100,7 +100,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
             </FlexColumn>
             <FlexColumn w="100%" alignItems="center">
                 <Button
-                    href={`/project/${id}`}
+                    href={id! > 4 ? `/project/${id! + 2}` : `/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     label={

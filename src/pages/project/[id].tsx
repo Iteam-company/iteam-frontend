@@ -402,7 +402,7 @@ const Project = () => {
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Contacu Us
+                                    Contact Us
                                 </Text>
                             }
                         />

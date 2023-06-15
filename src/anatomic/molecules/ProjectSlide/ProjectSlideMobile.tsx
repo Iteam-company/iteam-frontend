@@ -139,7 +139,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 p="0 0 0 5px"
             >
                 <Button
-                    href={`/project/${id}`}
+                    href={id! > 4 ? `/project/${id! + 2}` : `/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     p="5px 5px 0 10px"
