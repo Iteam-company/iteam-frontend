@@ -53,7 +53,7 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                     </div>
                     <GridBox
                         gridTemplateColumn="1fr 1fr"
-                        gridTemplateRow="repeat(3, 325px)"
+                        gridTemplateRow="repeat(4, 325px)"
                         gridColumnGap="13px"
                         gridRowGap="15px"
                     >
