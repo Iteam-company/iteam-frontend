@@ -25,11 +25,13 @@ export const GridBox = styled.div<GridBoxProps>`
 
     @media(max-width: 992px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 325px);
+        grid-template-rows: repeat(8, 325px);
+        padding-bottom: 20px;
       }
       @media(max-width: 600px) {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 225px);
+        grid-template-rows: repeat(8, 225px);
+        padding-bottom: 20px;
       }
 `
 
