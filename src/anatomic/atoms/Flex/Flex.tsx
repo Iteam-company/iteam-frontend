@@ -26,6 +26,7 @@ interface FlexProps {
     gap?: string;
     type?: "column";
     ov?: string;
+    bl?: string;
 }
 
 export const Flex = styled.div<FlexProps & DefaultElementProps>`

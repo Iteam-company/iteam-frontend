@@ -31,8 +31,19 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 <FlexColumn
                     gap="20px"
                     w="90%"
+                    justifyContent="flex-start"
                     flexWrap="wrap"
-                    style={{ boxSizing: "border-box" }}
+                    style={
+                        size.width! < 381
+                            ? {
+                                  boxSizing: "border-box",
+                                  whiteSpace: "pre-line",
+                                  wordBreak: "break-all",
+                              }
+                            : {
+                                  boxSizing: "border-box",
+                              }
+                    }
                 >
                     <Text
                         w="100%"
@@ -122,16 +133,17 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
             </FlexColumn>
 
             <FlexRow
-                justifyContent={size.width! < 381 ? "flex-start" : "center"}
+                justifyContent={size.width! < 401 ? "flex-start" : "center"}
                 alignItems="center"
                 w="100%"
+                p="0 0 0 5px"
             >
                 <Button
                     href={`/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     p="5px 5px 0 10px"
-                    w={size.width! < 401 ? "140px" : "80%"}
+                    w={size.width! < 401 ? "140px" : "160px"}
                     label={
                         <Text
                             color={COLORS.dark}

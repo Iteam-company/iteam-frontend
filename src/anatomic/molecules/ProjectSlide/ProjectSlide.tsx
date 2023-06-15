@@ -9,7 +9,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
 import { Stick } from "./styled";
-import Image from 'next/image';
+import Image from "next/image";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,
@@ -81,7 +81,12 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                             gap="10px"
                             key={index}
                         >
-                            <Image src={el.techIcon.data.attributes.url} alt='techIcon' width='30' height='30'/>
+                            <Image
+                                src={el.techIcon.data.attributes.url}
+                                alt="techIcon"
+                                width="30"
+                                height="30"
+                            />
                             <Text
                                 size={TEXT_SIZES.small.m}
                                 weight={TEXT_WEIGHTS.main}
