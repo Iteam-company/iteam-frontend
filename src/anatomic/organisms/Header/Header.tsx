@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { MobileComponent } from "./MobileComponent";
 import { FC } from "react";
 import { PropsI } from "./utils";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 export const Header: FC<PropsI> = ({ data = [] }) => {
     const activeRoute = useRouter().asPath;
@@ -11,11 +12,15 @@ export const Header: FC<PropsI> = ({ data = [] }) => {
     return (
         <>
             <Mobile>
+                <Layout>
                 <MobileComponent activeRoute={activeRoute} data={data} />
+                </Layout>
             </Mobile>
 
             <Desktop>
+            <Layout>
                 <Component activeRoute={activeRoute} data={data} />
+                </Layout>
             </Desktop>
         </>
     );

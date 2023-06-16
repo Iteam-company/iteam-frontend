@@ -1,3 +1,4 @@
+import { Layout } from "@/anatomic/molecules/Layout";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
@@ -5,11 +6,13 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
+               
                 <Head></Head>
                 <body className="no-scroll">
                     <Main />
                     <NextScript />
                 </body>
+                
             </Html>
         );
     }

@@ -15,12 +15,14 @@ import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
     const size = useWindowSize();
-    if (!data) return null;
+    // if (!data) return null;
     return (
+        <Layout>
         <FlexColumn
             w="100%"
             h="100%"
@@ -83,6 +85,7 @@ const ContactUs = () => {
                 loading="lazy"
             />
         </FlexColumn>
+        </Layout>
     );
 };
 

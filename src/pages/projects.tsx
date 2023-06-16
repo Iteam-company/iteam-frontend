@@ -64,6 +64,7 @@ const Projects = () => {
     }, [data?.projects]);
 
     return (
+        
         <FlexColumn
             w="100%"
             justifyContent="center"

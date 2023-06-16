@@ -10,6 +10,7 @@ import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { MainContextProvider } from "@/context/MainContext";
 
 interface Props {
     children: ReactNode;
@@ -21,33 +22,39 @@ export const Layout: FC<Props> = ({ children }) => {
 
     useDelayedScroll(4000, partial);
     const [data, isLoading] = useStrapiData(Pages.headerFooter);
-    if (!data) return null;
 
     return (
-        <StyledLayout>
-            <LogoAnimation />
-            <div style={{ background: "#FDFBFF" }}>
-                <AdaptContainer>
-                    <Header data={data.header} />
-                </AdaptContainer>
-            </div>
-            <main>
-                <FlexColumn
-                    w="100%"
-                    alignItems="center"
-                    justifyContent="center"
-                    bg={COLORS.pageBG}
-                >
-                    {children}
-                </FlexColumn>
-            </main>
-            <ButtonUp />
-            <Footer
-                data={data.footer}
-                title={data.info}
-                socialMedia={data.socialMedia}
-                footerText={data.footerText}
-            />
-        </StyledLayout>
+        
+            <StyledLayout>
+                {!data || isLoading ? (
+                    <>loading...</>
+                ) : (
+                    <>
+                        <div style={{ background: "#FDFBFF" }}>
+                            <AdaptContainer>
+                                <Header data={data.header} />
+                            </AdaptContainer>
+                        </div>
+                        <main>
+                            <FlexColumn
+                                w="100%"
+                                alignItems="center"
+                                justifyContent="center"
+                                bg={COLORS.pageBG}
+                            >
+                                {children}
+                            </FlexColumn>
+                        </main>
+                        <ButtonUp />
+                        <Footer
+                            data={data.footer}
+                            title={data.info}
+                            socialMedia={data.socialMedia}
+                            footerText={data.footerText}
+                        />
+                    </>
+                )}
+            </StyledLayout>
+       
     );
 };

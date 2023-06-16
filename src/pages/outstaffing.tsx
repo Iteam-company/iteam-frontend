@@ -29,13 +29,15 @@ import { FitToViewport } from "react-fit-to-viewport";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
     const size = useWindowSize();
-    if (!data) return null;
+    // if (!data) return null;
     return (
-        <FlexColumn
+        <Layout>
+                   <FlexColumn
             w="100%"
             h="100%"
             alignItems="center"
@@ -313,6 +315,8 @@ const Outstaffing = () => {
                 </FlexColumn>
             </FlexColumn>
         </FlexColumn>
+        </Layout>
+ 
     );
 };
 export default memo(Outstaffing);

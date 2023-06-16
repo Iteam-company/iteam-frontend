@@ -5,6 +5,7 @@ const routes = ["/team", "/projects"];
 let timers: NodeJS.Timeout[] = [];
 
 export const useDelayedScroll = (delay: number, fraction: number | null = 1) => {
+    
     const { asPath } = useRouter();
 
     useEffect(() => {

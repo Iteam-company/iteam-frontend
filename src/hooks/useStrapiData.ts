@@ -1,7 +1,7 @@
 import client from "@/axios";
-import { useCallback, useEffect, useState } from "react";
+import { Dispatch, useCallback, useEffect, useState } from "react";
 
-export enum Pages {
+export  enum Pages {
     homepage = "homepage",
     company = "company",
     portfolio = "portfolio",
@@ -13,28 +13,33 @@ export enum Pages {
     headerFooter = "header-footer",
 }
 
-export const useStrapiData = (page: Pages | string) => {
+const getData = async (
+    setIsLoading: Dispatch<boolean>,
+    setData: Dispatch<any>,
+    page: Pages | string,
+) => {
+    try {
+        setIsLoading(true);
+        const { data } = await client.get(`${page}?populate=deep`);
+        setData(data.data.attributes);
+    } catch (err) {
+        console.log(err);
+    } finally {
+        setIsLoading(false);
+    }
+};
+
+export const useStrapiData = (page: Pages | string): [any, boolean] => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
     const [data, setData] = useState<any>();
 
-    const getData = useCallback(async () => {
-        try {
-            setIsLoading(true);
-    
-            const { data } = await client.get(
-                `${page}?populate=deep`,
-                
-            );
-            setData(data.data.attributes);
-        } catch (err) {
-            console.log(err);
-        } finally {
-            setIsLoading(false);
-        }
+    useEffect(() => {
+        
+        getData(setIsLoading, setData, page);
     }, [page]);
 
-    useEffect(() => {
-        getData();
-    }, [page]);
-    return [data, isLoading];
-};
+
+
+    return typeof window !== "undefined" ? [data, isLoading] : [null, true];
+};  

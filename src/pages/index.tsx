@@ -14,6 +14,7 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
 import Image from "next/image";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
@@ -23,10 +24,11 @@ const Home = () => {
         size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
     const widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
 
-    if (!data) return null;
+    // if (!data) return null;
 
     return (
-        <FlexColumn
+        <Layout>
+            <FlexColumn
             alignItems="center"
             w="100%"
             h="100%"
@@ -87,6 +89,8 @@ const Home = () => {
                 />
             </FlexColumn>
         </FlexColumn>
+        </Layout>
+
     );
 };
 

@@ -20,6 +20,7 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 export interface TeamInterface {
     id?: number;
@@ -69,6 +70,7 @@ const Team = () => {
     }, [data?.team]);
 
     return (
+        <Layout>
         <FlexColumn
             w="100%"
             justifyContent="center"
@@ -187,6 +189,7 @@ const Team = () => {
                 </>
             )}
         </FlexColumn>
+        </Layout>
     );
 };
 

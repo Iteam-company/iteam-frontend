@@ -30,6 +30,7 @@ import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Layout } from "@/anatomic/molecules/Layout";
 
 export interface ProcessInterface {
     step?: number;
@@ -54,6 +55,7 @@ const Outsourcing = () => {
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
 
     return (
+        <Layout>
         <FlexColumn
             w="100%"
             h="100%"
@@ -316,6 +318,7 @@ const Outsourcing = () => {
                 {data?.apps && <AppsImplement apps={data.apps} />}
             </FlexColumn>
         </FlexColumn>
+        </Layout>
     );
 };
 export default memo(Outsourcing);

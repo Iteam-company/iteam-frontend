@@ -16,13 +16,14 @@ export interface TextI {
 }
 
 export const Banner: FC<PropsI> = ({ main }) => {
-    const optionList = main.text.map((item: TextI) => item.text);
+    const optionList = main ? main.text.map((item: TextI) => item.text) : [];
 
     return (
+        
         <FlexColumn mw="778px" mh="200px" justifyContent="space-between">
             <TextTyping text={optionList} />
           <AdoptForText>
-          {main.description}
+          {main ? main.description : null}
           </AdoptForText>
         </FlexColumn>
     );

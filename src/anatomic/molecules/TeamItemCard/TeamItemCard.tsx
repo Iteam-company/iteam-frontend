@@ -322,7 +322,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             {technology &&
                                 technology.map(
                                     (elem: Technology, index: number) => {
-                                        console.log(elem);
+                                        // console.log(elem);
                                         return (
                                             <FlexRow
                                                 key={elem.id}
