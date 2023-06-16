@@ -67,8 +67,10 @@ export const TeamItem: FC<TeamInterface> = memo(
                                         }}
                                     >
                                         Follow the link to see more
+                                        <div>
+                                            <img src={UpWorkLink.src} />
+                                        </div>
                                     </Link>
-                                    <img src={UpWorkLink.src} />
                                 </FlexColumn>
                             </FlexColumn>
                         </FlexColumn>
