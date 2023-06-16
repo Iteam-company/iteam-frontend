@@ -21,6 +21,7 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { TextI } from "@/anatomic/molecules/Banner/Banner";
 import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 export interface ProjectItemInterface {
     id: number;
@@ -59,7 +60,7 @@ const Project = () => {
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
     );
-    console.log(data);
+    if (!data) return <LogoAnimation />;
 
     return (
         <Container

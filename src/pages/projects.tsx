@@ -18,6 +18,7 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 export interface ProjectsInterface {
     id?: number;
@@ -62,6 +63,7 @@ const Projects = () => {
                 })),
             );
     }, [data?.projects]);
+    if (!data) return <LogoAnimation />;
 
     return (
         <FlexColumn

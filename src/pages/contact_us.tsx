@@ -15,11 +15,12 @@ import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
     const size = useWindowSize();
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
     return (
         <FlexColumn
             w="100%"

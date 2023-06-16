@@ -14,6 +14,7 @@ import BgImage3 from "@/assets/bgImage/development/bgImage3.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 export interface DevelopmentInterface {
     title: string;
     info: InfoInterface[];
@@ -27,7 +28,7 @@ export interface InfoInterface {
 const Development = () => {
     const [data, isLoading] = useStrapiData(Pages.development);
 
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
     return (
         <FlexColumn
             h="100%"

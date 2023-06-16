@@ -30,6 +30,7 @@ import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 export interface ProcessInterface {
     step?: number;
@@ -52,7 +53,7 @@ const Outsourcing = () => {
     const w = size.width! > 1800 ? "100%" : "60%";
 
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
-
+    if (!data) return <LogoAnimation />;
     return (
         <FlexColumn
             w="100%"

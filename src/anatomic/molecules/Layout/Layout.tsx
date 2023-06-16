@@ -21,33 +21,35 @@ export const Layout: FC<Props> = ({ children }) => {
 
     useDelayedScroll(4000, partial);
     const [data, isLoading] = useStrapiData(Pages.headerFooter);
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
 
     return (
         <StyledLayout>
-            <LogoAnimation />
-            <div style={{ background: "#FDFBFF" }}>
-                <AdaptContainer>
-                    <Header data={data.header} />
-                </AdaptContainer>
-            </div>
-            <main>
-                <FlexColumn
-                    w="100%"
-                    alignItems="center"
-                    justifyContent="center"
-                    bg={COLORS.pageBG}
-                >
-                    {children}
-                </FlexColumn>
-            </main>
-            <ButtonUp />
-            <Footer
-                data={data.footer}
-                title={data.info}
-                socialMedia={data.socialMedia}
-                footerText={data.footerText}
-            />
+            <>
+                <div style={{ background: "#FDFBFF" }}>
+                    <LogoAnimation />
+                    <AdaptContainer>
+                        <Header data={data.header} />
+                    </AdaptContainer>
+                </div>
+                <main>
+                    <FlexColumn
+                        w="100%"
+                        alignItems="center"
+                        justifyContent="center"
+                        bg={COLORS.pageBG}
+                    >
+                        {children}
+                    </FlexColumn>
+                </main>
+                <ButtonUp />
+                <Footer
+                    data={data.footer}
+                    title={data.info}
+                    socialMedia={data.socialMedia}
+                    footerText={data.footerText}
+                />
+            </>
         </StyledLayout>
     );
 };
