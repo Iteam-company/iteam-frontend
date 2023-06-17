@@ -3533,6 +3533,11 @@ react-intersection-observer@^8.26.2:
   resolved "https://registry.npmjs.org/react-intersection-observer/-/react-intersection-observer-8.34.0.tgz"
   integrity sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==
 
+react-intersection-observer@^9.5.0:
+  version "9.5.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.5.0.tgz#1025e4749a8916516fbcfec06018bd149cb2b133"
+  integrity sha512-bQbfe6Jl8KSynbWfQWz8LoGCCmG6fhsilljgc6dc1NMYpNmP20wfFsrF7CE5N9+LbWx33DUgJdkNBVhU1JzIRA==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"

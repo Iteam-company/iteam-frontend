@@ -32,7 +32,7 @@ export const Info: FC<Props> = ({ title, description, contactInfo }) => {
                 <Text color={COLORS.warmGray} size={TEXT_SIZES.small.xl}>
                     {description}
                 </Text>
-                {contactInfo.map((item, index: number) => (
+                {contactInfo?.map((item, index: number) => (
                     <Link
                         key={item.title}
                         href={item.linkToContactInfo}

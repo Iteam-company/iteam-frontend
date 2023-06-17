@@ -14,6 +14,7 @@ import Arrow_Rigth from "@/assets/icon/arrow-right.svg";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { log } from "console";
+import { Box } from "../ExploreWithIteam/styled";
 
 export const ProjectItemInfo: FC<{
     data: any;
@@ -117,6 +118,7 @@ export const ProjectItemInfo: FC<{
                                 m="0 0 50px 0"
                             >
                                 {data.mainImages.data.map((item: any) => {
+                                    console.log(data.mainImages.data);
                                     return (
                                         <SwiperSlide
                                             key={item.attributes.url}
@@ -135,14 +137,30 @@ export const ProjectItemInfo: FC<{
                                                     display: "flex",
                                                     justifyContent: "center",
                                                     alignItems: "center",
+                                                    width: "100%",
+                                                    height: "auto",
                                                 }}
                                             >
-                                                <Image
+                                                <div
+                                                    style={{
+                                                        backgroundImage: `url(${item.attributes.url})`,
+                                                        backgroundRepeat:
+                                                            "no-repeat",
+                                                        backgroundSize:
+                                                            "100% 100%",
+                                                        backgroundPosition:
+                                                            "center",
+                                                        overflow: "hidden",
+                                                        width: "100%",
+                                                        height: "270px",
+                                                    }}
+                                                ></div>
+                                                {/* <Image
                                                     src={item.attributes.url}
                                                     alt="swiper-image"
                                                     width="470"
                                                     height="300"
-                                                />
+                                                /> */}
                                             </div>
                                         </SwiperSlide>
                                     );
@@ -195,12 +213,23 @@ export const ProjectItemInfo: FC<{
                                         alignItems: "center",
                                     }}
                                 >
-                                    <Image
+                                    <div
+                                        style={{
+                                            backgroundImage: `url(${item.attributes.url})`,
+                                            backgroundRepeat: "no-repeat",
+                                            backgroundSize: "100% 100%",
+                                            backgroundPosition: "center",
+                                            overflow: "hidden",
+                                            width: "100%",
+                                            height: "300px",
+                                        }}
+                                    ></div>
+                                    {/* <Image
                                         src={item.attributes.url}
                                         alt="swiper-image"
                                         width="800"
                                         height="290"
-                                    />
+                                    /> */}
                                 </div>
                             </SwiperSlide>
                         );
