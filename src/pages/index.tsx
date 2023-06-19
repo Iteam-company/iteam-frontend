@@ -16,6 +16,7 @@ import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
 import Image from "next/image";
 import { Layout } from "@/anatomic/molecules/Layout";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import Script from "next/script";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
@@ -27,67 +28,87 @@ const Home = () => {
 
     if (!data) return <LogoAnimation />;
     return (
-        <FlexColumn
-            alignItems="center"
-            w="100%"
-            h="100%"
-            style={{ overflow: "hidden", position: "relative" }}
-        >
+        <>
+            {/* Global site tag (gtag.js) - Google Analytics */}
+            <Script
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.REACT_APP_GOOGLE_ANALYTICS}`}
+                strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+                {`
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+
+                            gtag('config', 'G-K6WMETJZXJ');
+                        `}
+            </Script>
             <FlexColumn
                 alignItems="center"
                 w="100%"
                 h="100%"
-                position="relative"
+                style={{ overflow: "hidden", position: "relative" }}
             >
-                <AddaptFoIbg style={{ position: "absolute" }}>
-                    <Image src={bgMain} alt="bg" />
-                </AddaptFoIbg>
-                <AdaptContainer w="90%" h="visible">
-                    <BgImage
-                        src={BgImage1}
-                        maxWidth={size.width! < 1200 ? 700 : 820}
-                        right={size.width! > 1800 ? -14 : -20}
-                        bottom={38}
-                        mobileRight={-24}
-                        mobileTop={14}
-                        priority
-                    />
-                    <FlexColumn h={widthSize} w="90%" justifyContent="center">
-                        <AddaptTextMain>
-                            <Banner main={data?.main} />
-                        </AddaptTextMain>
-                    </FlexColumn>
-                </AdaptContainer>
-                <HowWeWork howWeWork={data?.howWeWork} />
-            </FlexColumn>
+                <FlexColumn
+                    alignItems="center"
+                    w="100%"
+                    h="100%"
+                    position="relative"
+                >
+                    <AddaptFoIbg style={{ position: "absolute" }}>
+                        <Image src={bgMain} alt="bg" />
+                    </AddaptFoIbg>
+                    <AdaptContainer w="90%" h="visible">
+                        <BgImage
+                            src={BgImage1}
+                            maxWidth={size.width! < 1200 ? 700 : 820}
+                            right={size.width! > 1800 ? -14 : -20}
+                            bottom={38}
+                            mobileRight={-24}
+                            mobileTop={14}
+                            priority
+                        />
+                        <FlexColumn
+                            h={widthSize}
+                            w="90%"
+                            justifyContent="center"
+                        >
+                            <AddaptTextMain>
+                                <Banner main={data?.main} />
+                            </AddaptTextMain>
+                        </FlexColumn>
+                    </AdaptContainer>
+                    <HowWeWork howWeWork={data?.howWeWork} />
+                </FlexColumn>
 
-            <FlexColumn
-                w="100%"
-                style={{
-                    background:
-                        "linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
-                }}
-            >
-                <ExploreWithIteam data={data?.exploreWithIteam} />
+                <FlexColumn
+                    w="100%"
+                    style={{
+                        background:
+                            "linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
+                    }}
+                >
+                    <ExploreWithIteam data={data?.exploreWithIteam} />
+                </FlexColumn>
+                <OurCoreValues coreValue={data?.coreValues} />
+                <FlexColumn
+                    w="100%"
+                    h="100%"
+                    position="relative"
+                    p={size.width! < 800 ? "12% 0 100px " : "0 0 100px"}
+                >
+                    <BookingForm />
+                    <BgImage
+                        src={BgImage2}
+                        maxWidth={740}
+                        right={-5}
+                        mobileRight={-10}
+                        mobileTop={35}
+                        loading="lazy"
+                    />
+                </FlexColumn>
             </FlexColumn>
-            <OurCoreValues coreValue={data?.coreValues} />
-            <FlexColumn
-                w="100%"
-                h="100%"
-                position="relative"
-                p={size.width! < 800 ? "12% 0 100px " : "0 0 100px"}
-            >
-                <BookingForm />
-                <BgImage
-                    src={BgImage2}
-                    maxWidth={740}
-                    right={-5}
-                    mobileRight={-10}
-                    mobileTop={35}
-                    loading="lazy"
-                />
-            </FlexColumn>
-        </FlexColumn>
+        </>
     );
 };
 

@@ -6,21 +6,7 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head>
-                    <Script
-                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.REACT_APP_GOOGLE_ANALYTICS}`}
-                        strategy="afterInteractive"
-                    />
-                    <Script id="google-analytics" strategy="afterInteractive">
-                        {`
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-
-                            gtag('config', 'G-K6WMETJZXJ');
-                        `}
-                    </Script>
-                </Head>
+                <Head></Head>
                 <body className="no-scroll">
                     <Main />
                     <NextScript />
