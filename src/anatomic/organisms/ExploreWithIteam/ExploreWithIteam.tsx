@@ -77,7 +77,9 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                                                     alignItems="center"
                                                 >
                                                     <Button
-                                                        href="/projects"
+                                                        href={
+                                                            block.linkToPreview
+                                                        }
                                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                                         variant={
                                                             BUTTON_VARIANTS.gradient_link
