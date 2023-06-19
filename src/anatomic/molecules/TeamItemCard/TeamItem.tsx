@@ -82,6 +82,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                         w="90vw"
                         p="0 20px"
                         justifyContent="center"
+                        style={{ textAlign: "center" }}
                     >
                         <TeamItemInfo
                             name={name}
