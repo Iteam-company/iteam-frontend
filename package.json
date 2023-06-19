@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@fullstory/browser": "^1.7.1",
         "@merc/react-timeline": "^0.1.42",
         "@next/font": "13.1.5",
         "@types/node": "18.11.18",
@@ -30,6 +31,7 @@
         "react-dom": "18.2.0",
         "react-fit-to-viewport": "^0.1.1",
         "react-icons": "^4.7.1",
+        "react-intersection-observer": "^9.5.0",
         "react-tsparticles": "^2.9.3",
         "react-vertical-timeline-component": "^3.6.0",
         "styled-components": "^5.3.6",

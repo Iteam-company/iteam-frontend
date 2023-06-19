@@ -22,7 +22,6 @@ import { BgImage } from "@/anatomic/atoms/BgImage/";
 import { BenefitsSlide } from "@/anatomic/molecules/BenefitsSlide";
 import { SwiperSlide } from "swiper/react";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-import { useInView } from "framer-motion";
 import { FitToViewport } from "react-fit-to-viewport";
 import { SwiperRange } from "@/anatomic/organisms/SwiperRange";
 import { AppsImplement } from "@/anatomic/organisms/AppsImplement";
@@ -30,6 +29,8 @@ import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import { useInView } from "react-intersection-observer";
 
 export interface ProcessInterface {
     step?: number;
@@ -47,12 +48,11 @@ export interface NumbersInterface {
 }
 const Outsourcing = () => {
     const numbersViewRef = useRef(null);
-    const isNumbersInView = useInView(numbersViewRef);
+    const { ref, inView, entry } = useInView();
     const size = useWindowSize();
     const w = size.width! > 1800 ? "100%" : "60%";
-
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
-
+    if (!data) return <LogoAnimation />;
     return (
         <FlexColumn
             w="100%"
@@ -205,7 +205,7 @@ const Outsourcing = () => {
                             alignItems="center"
                             p="10px 0 0"
                             gap="30px"
-                            ref={numbersViewRef}
+                            ref={ref}
                         >
                             {data?.numbers.map((item: NumbersInterface) => (
                                 <CountUpNumbers
@@ -213,7 +213,7 @@ const Outsourcing = () => {
                                     title={item.title}
                                     subTitle={item.subTitle}
                                     text={item.text}
-                                    isNumbersInView={isNumbersInView}
+                                    isNumbersInView={inView}
                                 />
                             ))}
                         </FlexContainer>
@@ -318,4 +318,4 @@ const Outsourcing = () => {
         </FlexColumn>
     );
 };
-export default memo(Outsourcing);
+export default Outsourcing;

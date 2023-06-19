@@ -1,5 +1,6 @@
 import client from "@/axios";
-import { useCallback, useEffect, useState } from "react";
+import { Router } from "next/router";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 export enum Pages {
     homepage = "homepage",
@@ -13,28 +14,28 @@ export enum Pages {
     headerFooter = "header-footer",
 }
 
-export const useStrapiData = (page: Pages | string) => {
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+export const useStrapiData = (page?: Pages | string) => {
     const [data, setData] = useState<any>();
+    const [isAnimate, setIsAnimate] = useState(false);
 
     const getData = useCallback(async () => {
         try {
-            setIsLoading(true);
-    
-            const { data } = await client.get(
-                `${page}?populate=deep`,
-                
-            );
+            setIsAnimate(true);
+
+            const { data } = await client.get(`${page}?populate=deep`);
             setData(data.data.attributes);
+
+            return;
         } catch (err) {
             console.log(err);
         } finally {
-            setIsLoading(false);
+            setIsAnimate(false);
         }
     }, [page]);
 
     useEffect(() => {
         getData();
     }, [page]);
-    return [data, isLoading];
+
+    return [data, isAnimate];
 };

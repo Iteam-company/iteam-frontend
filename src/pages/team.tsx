@@ -20,6 +20,7 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 export interface TeamInterface {
     id?: number;
@@ -67,6 +68,7 @@ const Team = () => {
                 }),
             );
     }, [data?.team]);
+    if (!data) return <LogoAnimation />;
 
     return (
         <FlexColumn

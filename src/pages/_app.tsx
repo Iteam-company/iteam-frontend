@@ -6,6 +6,7 @@ import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import Router from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
     useIsomorphicLayoutEffect(() => {
@@ -14,9 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     return (
         <AnimatePresence mode="wait" initial={false}>
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <Layout>{<Component {...pageProps} />}</Layout>
         </AnimatePresence>
     );
 }

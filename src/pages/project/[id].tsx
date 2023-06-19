@@ -21,6 +21,7 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { TextI } from "@/anatomic/molecules/Banner/Banner";
 import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 
 export interface ProjectItemInterface {
     id: number;
@@ -59,7 +60,7 @@ const Project = () => {
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
     );
-    console.log(data);
+    if (!data) return <LogoAnimation />;
 
     return (
         <Container
@@ -349,7 +350,7 @@ const Project = () => {
                                         height:
                                             size.width! < 850
                                                 ? "175px"
-                                                : "270px",
+                                                : "200px",
                                         background: COLORS.white,
                                         boxShadow:
                                             "0px 0px 0px  rgba(0, 0, 0, 0.25)",
@@ -358,7 +359,40 @@ const Project = () => {
                                         overflow: "hidden",
                                     }}
                                 >
-                                    <Image
+                                    <div
+                                        style={
+                                            size.width! < 850
+                                                ? {
+                                                      backgroundImage: `url(${data.projectDetail.result.resultImage.data.attributes.url})`,
+                                                      backgroundRepeat:
+                                                          "no-repeat",
+                                                      backgroundSize:
+                                                          "100% 100%",
+                                                      backgroundPosition:
+                                                          "center",
+                                                      overflow: "hidden",
+                                                      width: "100%",
+                                                      height: "auto",
+                                                      padding: "0 0 175px 0",
+                                                  }
+                                                : {
+                                                      backgroundImage: `url(${data.projectDetail.result.resultImage.data.attributes.url})`,
+                                                      backgroundRepeat:
+                                                          "no-repeat",
+                                                      backgroundSize:
+                                                          "100% 100%",
+                                                      backgroundPosition:
+                                                          "center",
+                                                      overflow: "hidden",
+                                                      width: "100%",
+                                                      height: "auto",
+                                                      objectFit: "cover",
+                                                      objectPosition: "center",
+                                                      padding: "0 0 200px 0",
+                                                  }
+                                        }
+                                    ></div>
+                                    {/* <Image
                                         src={
                                             data.projectDetail.result
                                                 .resultImage.data.attributes.url
@@ -370,7 +404,7 @@ const Project = () => {
                                         height={
                                             size.width! < 850 ? "175" : "270"
                                         }
-                                    />
+                                    /> */}
                                 </div>
                             </FlexColumn>
                         </FlexContainer>
