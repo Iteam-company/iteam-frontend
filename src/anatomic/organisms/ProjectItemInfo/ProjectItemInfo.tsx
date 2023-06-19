@@ -109,7 +109,7 @@ export const ProjectItemInfo: FC<{
 
                         <FlexColumn w="100%">
                             <HorizontalSwiperElem
-                                minHeight={size.height! > 800 ? "100%" : "64vh"}
+                                minHeight={size.height! > 800 ? "80%" : "64vh"}
                                 maxWidth="470px"
                                 loop={false}
                                 slidesPerView={1}
@@ -118,7 +118,6 @@ export const ProjectItemInfo: FC<{
                                 m="0 0 50px 0"
                             >
                                 {data.mainImages.data.map((item: any) => {
-                                    console.log(data.mainImages.data);
                                     return (
                                         <SwiperSlide
                                             key={item.attributes.url}
@@ -187,7 +186,7 @@ export const ProjectItemInfo: FC<{
                 </GradientTitle>
 
                 <HorizontalSwiperElem
-                    minHeight="360px"
+                    minHeight="270px"
                     width="100%"
                     maxWidth="850px"
                     navigation={false}
@@ -222,7 +221,7 @@ export const ProjectItemInfo: FC<{
                                             backgroundPosition: "center",
                                             overflow: "hidden",
                                             width: "100%",
-                                            height: "300px",
+                                            height: "200px",
                                         }}
                                     ></div>
                                     {/* <Image

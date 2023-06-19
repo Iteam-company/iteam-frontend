@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@fullstory/browser": "^1.7.1",
         "@merc/react-timeline": "^0.1.42",
         "@next/font": "13.1.5",
         "@types/node": "18.11.18",
