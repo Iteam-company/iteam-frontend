@@ -157,6 +157,7 @@ const Outstaffing = () => {
                         <HorizontalSwiperElem
                             minHeight="500px"
                             width="100%"
+                            loop={true}
                             maxWidth="975px"
                         >
                             {data.benefits.map((item: BenefitsInterface) => (

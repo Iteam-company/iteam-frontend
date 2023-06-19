@@ -109,7 +109,9 @@ export const ProjectItemInfo: FC<{
 
                         <FlexColumn w="100%">
                             <HorizontalSwiperElem
-                                minHeight={size.height! > 800 ? "80%" : "64vh"}
+                                minHeight={
+                                    size.height! > 800 ? "350px" : "56vh"
+                                }
                                 maxWidth="470px"
                                 loop={false}
                                 slidesPerView={1}
