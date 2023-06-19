@@ -117,7 +117,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                             <SwiperSlide
                                 key={item.step}
                                 style={{
-                                    transition: "0.3s all",
+                                    transition: "0.5s all ease-in-out",
                                     borderRadius: "16px",
                                     minHeight: "200px",
 
@@ -128,7 +128,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                             : "scale(0.9)",
                                     height:
                                         activeIndex == index + 1
-                                            ? "100%"
+                                            ? "auto"
                                             : "200px",
                                     boxSizing: "content-box",
                                     boxShadow:

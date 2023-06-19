@@ -33,7 +33,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                 gap="15px"
             >
                 <FlexColumn
-                    h="160px"
+                    h="100%"
                     w="100%"
                     justifyContent="space-between"
                     alignItems="start"
@@ -48,7 +48,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                     </Text>
                     <Divider />
                 </FlexColumn>
-                {size.width! > 350 && (
+                {size.width! > 365 && (
                     <GradientTitle
                         size={size.width! < 800 ? "120px" : "200px"}
                         weight={TEXT_WEIGHTS.main}
