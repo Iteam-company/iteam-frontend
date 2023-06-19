@@ -6,6 +6,7 @@ import {
     Desktop,
     Mobile,
 } from "@/anatomic/organisms/AppsImplement/AppsImplement";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import { COLORS } from "@/lib/theme/color";
 import { motion } from "framer-motion";
 import React, { FC } from "react";
@@ -17,6 +18,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
     text,
     isActive,
 }) => {
+    const size = useWindowSize();
     return (
         <FlexColumn
             h="100%"
@@ -25,7 +27,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
         >
             <FlexRow
                 w="100%"
-                h="60%"
+                h="70%"
                 alignItems="center"
                 justifyContent="space-between"
                 gap="15px"
@@ -37,7 +39,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                     alignItems="start"
                 >
                     <Text
-                        size={TEXT_SIZES.medium.m}
+                        size={TEXT_SIZES.medium.s}
                         color={COLORS.textPrimary}
                         weight={TEXT_WEIGHTS.main}
                         w="70%"
@@ -46,15 +48,16 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                     </Text>
                     <Divider />
                 </FlexColumn>
-
-                <GradientTitle
-                    size="200px"
-                    weight={TEXT_WEIGHTS.main}
-                    lineHeight="160px"
-                    color="180deg, #B9B6DB 0%, rgba(186, 184, 217, 0.12) 100%"
-                >
-                    {step}
-                </GradientTitle>
+                {size.width! > 350 && (
+                    <GradientTitle
+                        size={size.width! < 800 ? "120px" : "200px"}
+                        weight={TEXT_WEIGHTS.main}
+                        lineHeight="160px"
+                        color="180deg, #B9B6DB 0%, rgba(186, 184, 217, 0.12) 100%"
+                    >
+                        {step}
+                    </GradientTitle>
+                )}
             </FlexRow>
 
             <Desktop>
@@ -87,7 +90,11 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                         transition={{ duration: 0.3 }}
                     >
                         <Text
-                            size={TEXT_SIZES.small.m}
+                            size={
+                                size.width! < 350
+                                    ? TEXT_SIZES.small.s
+                                    : TEXT_SIZES.small.m
+                            }
                             color={COLORS.textThird}
                         >
                             {text}

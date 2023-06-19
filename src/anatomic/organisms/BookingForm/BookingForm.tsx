@@ -10,6 +10,7 @@ import { FlexContainer } from "./styled";
 import { FormSchema, FormikValues, initialValues } from "./util";
 import { useRouter } from "next/router";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 type Props = {
     h?: string;
@@ -17,6 +18,7 @@ type Props = {
 
 export const BookingForm: FC<Props> = ({ h }) => {
     const router = useRouter();
+    const size = useWindowSize();
 
     const onSubmit = (values: FormikValues) => {
         const date = new Date().toISOString().split(".")[0];
@@ -44,7 +46,13 @@ export const BookingForm: FC<Props> = ({ h }) => {
                 validationSchema={FormSchema}
             >
                 {({ values, setFieldValue, errors, touched }) => (
-                    <Form style={{ width: "500px" }}>
+                    <Form
+                        style={
+                            size.width! < 321
+                                ? { width: "460px" }
+                                : { width: "500px" }
+                        }
+                    >
                         <FlexContainer
                             gap="45px"
                             alignItems="start"

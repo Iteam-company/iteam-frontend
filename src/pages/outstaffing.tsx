@@ -155,7 +155,7 @@ const Outstaffing = () => {
 
                     <FlexColumn w="100%">
                         <HorizontalSwiperElem
-                            minHeight="500px"
+                            minHeight={size.width! < 368 ? "650px" : "520px"}
                             width="100%"
                             loop={true}
                             maxWidth="975px"
