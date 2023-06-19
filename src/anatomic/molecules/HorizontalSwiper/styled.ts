@@ -16,14 +16,14 @@ export const StyledSwiper = styled(SwiperComponent)<{
     width: ${({ w }) => w && w};
     max-width: ${({ mw }) => mw && mw};
     z-index: 2;
-  
+    height: "100%";
 
     .swiper-button-next,
     .swiper-button-prev {
         top: calc(${({ mh }) => mh && mh} - 25px);
     }
     .swiper-wrapper {
-        margin: ${({ m }) => m || '0px'};
+        margin: ${({ m }) => m || "0px"};
     }
 
     .swiper-button-next {

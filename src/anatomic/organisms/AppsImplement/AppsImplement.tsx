@@ -62,8 +62,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                             : "scale(0.9)",
                                     height:
                                         activeIndex == index + 1
-                                            ? "400px"
-                                            : "200px",
+                                            ? "100%"
+                                            : "50%",
                                     boxSizing: "content-box",
                                     boxShadow:
                                         activeIndex == index + 1
@@ -94,6 +94,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                     <HorizontalSwiperElem
                         minHeight="500px"
                         width="100%"
+                        m="0 0 20% 0"
                         maxWidth="1450px"
                         slidesPerView={1}
                         spaceBetween={60}
@@ -118,7 +119,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                 style={{
                                     transition: "0.3s all",
                                     borderRadius: "16px",
-                                    minHeight: "300px",
+                                    minHeight: "200px",
+
                                     background: COLORS.white,
                                     transform:
                                         activeIndex == index + 1
@@ -126,7 +128,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                             : "scale(0.9)",
                                     height:
                                         activeIndex == index + 1
-                                            ? "400px"
+                                            ? "100%"
                                             : "200px",
                                     boxSizing: "content-box",
                                     boxShadow:

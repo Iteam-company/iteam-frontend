@@ -243,16 +243,22 @@ const Outsourcing = () => {
                     h="100%"
                     w="100%"
                     zIndex="3"
-                    gap="20px"
+                    gap="10px"
                     style={{ boxSizing: "border-box" }}
                     p="0 20px"
                 >
-                    <FlexColumn p="20px">
+                    <FlexColumn
+                        p="20px 0"
+                        w="100%"
+                        style={{
+                            textAlign: "center",
+                        }}
+                    >
                         <GradientTitle
-                            w="550px"
                             size="42px"
                             weight={TEXT_WEIGHTS.main}
                             color="272.07deg, #17092D 35.9%, #7232E0 100%"
+                            textAlign="center"
                         >
                             {data?.processTitle}
                         </GradientTitle>
@@ -272,8 +278,8 @@ const Outsourcing = () => {
                     </SwiperRange>
                 </FlexColumn>
 
-                <FlexColumn w="100%" h="100%" position="relative" p="150px 0 0">
-                    <BookingForm h={size.width! < 886 ? "340px" : "250px"} />
+                <FlexColumn w="100%" h="100%" position="relative" p="40px 0 0">
+                    <BookingForm h={size.width! < 886 ? "330px" : "240px"} />
                 </FlexColumn>
             </FlexColumn>
             <FlexColumn

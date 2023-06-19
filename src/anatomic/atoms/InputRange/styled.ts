@@ -8,8 +8,10 @@ export const Input = styled.input<{ translateY?: string }>`
     -webkit-appearance: none;
     background: transparent;
     width: 84%;
+
     @media all and (max-width: 602px) {
         width: 80%;
+        margin-top: 7%;
     }
 
     &::-webkit-slider-thumb {
