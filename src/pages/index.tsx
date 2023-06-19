@@ -40,7 +40,7 @@ const Home = () => {
                             function gtag(){dataLayer.push(arguments);}
                             gtag('js', new Date());
 
-                            gtag('config', 'G-K6WMETJZXJ');
+                            gtag('config', '${process.env.REACT_APP_GOOGLE_ANALYTICS}');
                         `}
             </Script>
             <FlexColumn
