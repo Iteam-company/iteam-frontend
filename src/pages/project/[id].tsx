@@ -350,7 +350,7 @@ const Project = () => {
                                         height:
                                             size.width! < 850
                                                 ? "175px"
-                                                : "270px",
+                                                : "200px",
                                         background: COLORS.white,
                                         boxShadow:
                                             "0px 0px 0px  rgba(0, 0, 0, 0.25)",
@@ -386,7 +386,9 @@ const Project = () => {
                                                       overflow: "hidden",
                                                       width: "100%",
                                                       height: "auto",
-                                                      padding: "0 0 270px 0",
+                                                      objectFit: "cover",
+                                                      objectPosition: "center",
+                                                      padding: "0 0 200px 0",
                                                   }
                                         }
                                     ></div>

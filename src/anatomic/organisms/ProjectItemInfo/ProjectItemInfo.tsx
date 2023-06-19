@@ -130,6 +130,7 @@ export const ProjectItemInfo: FC<{
                                                 borderRadius: "18px",
                                                 overflow: "hidden",
                                                 maxWidth: "470px",
+                                                maxHeight: "250px",
                                             }}
                                         >
                                             <div
@@ -152,7 +153,7 @@ export const ProjectItemInfo: FC<{
                                                             "center",
                                                         overflow: "hidden",
                                                         width: "100%",
-                                                        height: "270px",
+                                                        height: "250px",
                                                     }}
                                                 ></div>
                                                 {/* <Image
