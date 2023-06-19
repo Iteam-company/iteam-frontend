@@ -20,13 +20,12 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
     return (
         <FlexColumn
             h="100%"
-            gap="35px"
-            p="40px 45px 50px"
+            p="20px 45px 20px"
             style={{ boxSizing: "border-box" }}
         >
             <FlexRow
                 w="100%"
-                h="100%"
+                h="60%"
                 alignItems="center"
                 justifyContent="space-between"
                 gap="15px"
