@@ -63,12 +63,22 @@ export const TeamItemInfo: FC<{
             </Desktop>
 
             <Mobile w="100%" alignItems="space-between">
-                <FlexRow gap="20px" w="90%" justifyContent="space-between">
-                    <FlexColumn>
+                <FlexRow
+                    gap="20px"
+                    w="100%"
+                    justifyContent="space-between"
+                    alignItems="center"
+                >
+                    <FlexColumn style={{ flex: "1 1 60%" }} alignItems="center">
                         <Avatar image={getStrapiImage(url)} />
                     </FlexColumn>
 
-                    <FlexRow w="100%" gap="15px" justifyContent="space-between">
+                    <FlexRow
+                        w="100%"
+                        gap="15px"
+                        justifyContent="space-between"
+                        style={size.width! < 370 ? { flex: "1 1 40%" } : {}}
+                    >
                         <FlexColumn w="100%" gap="8px">
                             <Text
                                 weight={TEXT_WEIGHTS.medium}

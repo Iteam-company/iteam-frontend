@@ -6,7 +6,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo } from "react";
+import React, { memo, useMemo, useRef } from "react";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
@@ -30,11 +30,16 @@ import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import { getElementMaxHeight } from "@/utils/element-height";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
     const size = useWindowSize();
+    const swiperRef = useRef<any | null>(null);
+    const minHeight = getElementMaxHeight(swiperRef);
+
     if (!data) return <LogoAnimation />;
+
     return (
         <FlexColumn
             w="100%"
@@ -159,13 +164,14 @@ const Outstaffing = () => {
                             width="100%"
                             loop={true}
                             maxWidth="975px"
+                            swiperRef={swiperRef}
                         >
                             {data.benefits.map((item: BenefitsInterface) => (
                                 <SwiperSlide
                                     key={item.id}
                                     style={{
                                         borderRadius: "16px",
-                                        minHeight: "400px",
+                                        minHeight: minHeight,
                                         background: COLORS.white,
                                         maxWidth: "975px",
                                         boxShadow:
