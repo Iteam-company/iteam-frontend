@@ -6,11 +6,15 @@
         "dev": "NODE_ENV=development next dev",
         "build": "next build",
         "start": "NODE_ENV=production next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "analyze": "cross-env ANALYZE=true next build",
+        "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+        "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
     },
     "dependencies": {
         "@fullstory/browser": "^1.7.1",
         "@merc/react-timeline": "^0.1.42",
+        "@next/bundle-analyzer": "^13.4.6",
         "@next/font": "13.1.5",
         "@types/node": "18.11.18",
         "@types/react": "18.0.27",
@@ -46,7 +50,8 @@
         "@types/react-typing-effect": "^2.0.3",
         "@types/react-vertical-timeline-component": "^3.3.3",
         "@types/styled-components": "^5.1.26",
-        "babel-plugin-styled-components": "^2.0.7"
+        "babel-plugin-styled-components": "^2.0.7",
+        "cross-env": "^7.0.3"
     },
     "resolutions": {
         "styled-components": "^5"
