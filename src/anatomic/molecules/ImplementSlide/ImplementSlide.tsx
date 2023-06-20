@@ -27,7 +27,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
         >
             <FlexRow
                 w="100%"
-                h="70%"
+                h="40%"
                 alignItems="center"
                 justifyContent="space-between"
                 gap="15px"
