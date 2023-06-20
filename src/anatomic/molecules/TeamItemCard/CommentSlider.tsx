@@ -75,7 +75,11 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                 <ItalicText
                                     weight="300"
                                     size={TEXT_SIZES.small.xl}
-                                    mobileSize={TEXT_SIZES.small.s}
+                                    mobileSize={
+                                        size.height! < 600
+                                            ? "10px"
+                                            : TEXT_SIZES.small.s
+                                    }
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem?.text}&quot;

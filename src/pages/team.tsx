@@ -158,14 +158,21 @@ const Team = () => {
                             slides={team}
                             isTwoColumn={false}
                             navigation={false}
-                            height="80vh"
+                            height={size.height! < 600 ? "90vh" : "80vh"}
                             editionContent={
                                 <FlexColumn
                                     position="absolute"
-                                    style={{
-                                        bottom: "60px",
-                                        left: "10vw",
-                                    }}
+                                    style={
+                                        size.height! < 600
+                                            ? {
+                                                  bottom: "0",
+                                                  left: "10vw",
+                                              }
+                                            : {
+                                                  bottom: "60px",
+                                                  left: "10vw",
+                                              }
+                                    }
                                     zIndex="100"
                                 >
                                     <Button

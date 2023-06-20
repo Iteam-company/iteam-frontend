@@ -33,6 +33,7 @@ interface Props {
     centeredSlides?: any;
     maxH?: string;
     m?: string;
+    ref?: any;
 }
 
 export const HorizontalSwiperElem: FC<Props> = memo(
@@ -60,6 +61,7 @@ export const HorizontalSwiperElem: FC<Props> = memo(
         onSlideNext,
         onSlidePrev,
         centeredSlides,
+
         m,
     }) => {
         const onSwiperHandler = (e: any) => {

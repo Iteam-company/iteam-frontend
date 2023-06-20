@@ -119,7 +119,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                 style={{
                                     transition: "0.5s all ease-in-out",
                                     borderRadius: "16px",
-                                    minHeight: "200px",
+                                    minHeight: "300px",
 
                                     background: COLORS.white,
                                     transform:
@@ -128,8 +128,8 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                                             : "scale(0.9)",
                                     height:
                                         activeIndex == index + 1
-                                            ? "auto"
-                                            : "200px",
+                                            ? "400px"
+                                            : "300px",
                                     boxSizing: "content-box",
                                     boxShadow:
                                         activeIndex == index + 1
