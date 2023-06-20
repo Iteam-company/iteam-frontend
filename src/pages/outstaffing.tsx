@@ -6,7 +6,7 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo, useMemo, useRef } from "react";
+import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
 import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
@@ -34,9 +34,14 @@ import { getElementMaxHeight } from "@/utils/element-height";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
+    const [h, setH] = useState("");
     const size = useWindowSize();
     const swiperRef = useRef<any | null>(null);
-    const minHeight = getElementMaxHeight(swiperRef);
+
+    useEffect(() => {
+        const minHeight = getElementMaxHeight(swiperRef);
+        setH(minHeight);
+    }, [swiperRef.current]);
 
     if (!data) return <LogoAnimation />;
 
@@ -171,7 +176,7 @@ const Outstaffing = () => {
                                     key={item.id}
                                     style={{
                                         borderRadius: "16px",
-                                        minHeight: minHeight,
+                                        minHeight: h,
                                         background: COLORS.white,
                                         maxWidth: "975px",
                                         boxShadow:

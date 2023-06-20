@@ -12,5 +12,5 @@ export const getElementMaxHeight = (param: MutableRefObject<any>) => {
         });
     }
 
-    return `${maxHeight}px` || 100;
+    return `${maxHeight}px` || "100px";
 };
