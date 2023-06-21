@@ -10,6 +10,7 @@ import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { TeamInterface } from "@/pages/team";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import Link from "next/link";
+import Image from "next/image";
 
 export const TeamItem: FC<TeamInterface> = memo(
     ({
@@ -68,7 +69,12 @@ export const TeamItem: FC<TeamInterface> = memo(
                                     >
                                         Follow the link to see more
                                         <div>
-                                            <img src={UpWorkLink.src} />
+                                            <Image
+                                                src={UpWorkLink.src}
+                                                alt="upwork-logo"
+                                                width="90"
+                                                height="30"
+                                            />
                                         </div>
                                     </Link>
                                 </FlexColumn>
@@ -115,7 +121,12 @@ export const TeamItem: FC<TeamInterface> = memo(
                                 >
                                     Follow the link to see more
                                 </Link>
-                                <img src={UpWorkLink.src} />
+                                <Image
+                                    src={UpWorkLink.src}
+                                    alt="upwork logo"
+                                    width="90"
+                                    height="30"
+                                />
                             </FlexColumn>
                         </FlexColumn>
                     </FlexColumn>
