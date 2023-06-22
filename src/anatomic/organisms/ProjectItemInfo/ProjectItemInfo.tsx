@@ -4,7 +4,7 @@ import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { COLORS } from "@/lib/theme/color";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
 import Image from "next/image";
@@ -15,6 +15,7 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { log } from "console";
 import { Box } from "../ExploreWithIteam/styled";
+import { Gallery } from "@/anatomic/molecules/Gallery";
 
 export const ProjectItemInfo: FC<{
     data: any;
@@ -30,6 +31,14 @@ export const ProjectItemInfo: FC<{
         approachText,
         visitLink,
     } = data;
+    const [open, setOpen] = useState(false);
+    const func = (param: boolean) => {
+        setOpen(param);
+    };
+
+    const openGallery = () => {
+        setOpen(true);
+    };
     return (
         <>
             <Desktop mW={1000}>
@@ -134,6 +143,7 @@ export const ProjectItemInfo: FC<{
                                                 maxWidth: "470px",
                                                 maxHeight: "250px",
                                                 aspectRatio: "1.8/1.5",
+                                                cursor: "pointer",
                                             }}
                                         >
                                             <div
@@ -147,6 +157,7 @@ export const ProjectItemInfo: FC<{
                                                 }}
                                             >
                                                 <div
+                                                    onClick={openGallery}
                                                     style={{
                                                         backgroundImage: `url(${item.attributes.url})`,
                                                         backgroundRepeat:
@@ -172,6 +183,11 @@ export const ProjectItemInfo: FC<{
                                     );
                                 })}
                             </HorizontalSwiperElem>
+                            <Gallery
+                                open={open}
+                                func={func}
+                                data={data.mainImages.data}
+                            ></Gallery>
                         </FlexColumn>
                     </FlexRow>
                 </Card>
