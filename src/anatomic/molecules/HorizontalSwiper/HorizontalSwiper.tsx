@@ -61,7 +61,6 @@ export const HorizontalSwiperElem: FC<Props> = memo(
         onSlideNext,
         onSlidePrev,
         centeredSlides,
-
         m,
     }) => {
         const onSwiperHandler = (e: any) => {

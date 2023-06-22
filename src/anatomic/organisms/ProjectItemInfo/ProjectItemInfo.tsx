@@ -132,6 +132,8 @@ export const ProjectItemInfo: FC<{
                                                 overflow: "hidden",
                                                 maxWidth: "470px",
                                                 maxHeight: "250px",
+
+                                                aspectRatio: "1.8/1.5",
                                             }}
                                         >
                                             <div
@@ -139,6 +141,7 @@ export const ProjectItemInfo: FC<{
                                                     display: "flex",
                                                     justifyContent: "center",
                                                     alignItems: "center",
+
                                                     width: "100%",
                                                     height: "auto",
                                                 }}
@@ -155,6 +158,7 @@ export const ProjectItemInfo: FC<{
                                                         overflow: "hidden",
                                                         width: "100%",
                                                         height: "250px",
+                                                        aspectRatio: "1.8/1.5",
                                                     }}
                                                 ></div>
                                                 {/* <Image
@@ -188,7 +192,8 @@ export const ProjectItemInfo: FC<{
                 </GradientTitle>
 
                 <HorizontalSwiperElem
-                    minHeight="270px"
+                    minHeight="230px"
+                    m="0 0 10px 0 "
                     width="100%"
                     maxWidth="850px"
                     navigation={false}
@@ -206,6 +211,7 @@ export const ProjectItemInfo: FC<{
                                     borderRadius: "18px",
                                     overflow: "hidden",
                                     maxWidth: "800px",
+                                    aspectRatio: "1.8/1",
                                 }}
                             >
                                 <div
@@ -213,6 +219,7 @@ export const ProjectItemInfo: FC<{
                                         display: "flex",
                                         justifyContent: "center",
                                         alignItems: "center",
+                                        aspectRatio: "1.8/1",
                                     }}
                                 >
                                     <div
@@ -223,15 +230,10 @@ export const ProjectItemInfo: FC<{
                                             backgroundPosition: "center",
                                             overflow: "hidden",
                                             width: "100%",
-                                            height: "200px",
+                                            height: "auto",
+                                            aspectRatio: "1.8/1",
                                         }}
                                     ></div>
-                                    {/* <Image
-                                        src={item.attributes.url}
-                                        alt="swiper-image"
-                                        width="800"
-                                        height="290"
-                                    /> */}
                                 </div>
                             </SwiperSlide>
                         );
