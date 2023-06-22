@@ -133,7 +133,6 @@ export const ProjectItemInfo: FC<{
                                                 overflow: "hidden",
                                                 maxWidth: "470px",
                                                 maxHeight: "250px",
-
                                                 aspectRatio: "1.8/1.5",
                                             }}
                                         >
