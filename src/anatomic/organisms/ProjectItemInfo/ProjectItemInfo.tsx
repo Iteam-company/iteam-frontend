@@ -32,7 +32,7 @@ export const ProjectItemInfo: FC<{
     } = data;
     return (
         <>
-            <Desktop>
+            <Desktop mW={1000}>
                 <Card mw="1150px">
                     <FlexRow w="100%" alignItems="center" gap="20px">
                         <FlexColumn w="100%" gap="20px">
@@ -110,7 +110,7 @@ export const ProjectItemInfo: FC<{
                         <FlexColumn w="100%">
                             <HorizontalSwiperElem
                                 minHeight={
-                                    size.height! > 800 ? "350px" : "56vh"
+                                    size.height! > 800 ? "350px" : "58vh"
                                 }
                                 maxWidth="470px"
                                 loop={false}
@@ -118,6 +118,7 @@ export const ProjectItemInfo: FC<{
                                 spaceBetween={70}
                                 loopedSlides={1}
                                 m="0 0 50px 0"
+                                mb={size.height! < 580 ? "10%" : ""}
                             >
                                 {data.mainImages.data.map((item: any) => {
                                     return (
@@ -177,6 +178,7 @@ export const ProjectItemInfo: FC<{
                 </Card>
             </Desktop>
             <Mobile
+                mW={1000}
                 h="100%"
                 w="100%"
                 gap="20px"
