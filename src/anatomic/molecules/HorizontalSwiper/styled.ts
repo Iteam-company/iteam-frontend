@@ -9,6 +9,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
     w?: string;
     mw?: string;
     m?: string;
+    mb?: string;
 }>`
     box-sizing: border-box;
     padding: 20px;
@@ -21,6 +22,7 @@ export const StyledSwiper = styled(SwiperComponent)<{
     .swiper-button-next,
     .swiper-button-prev {
         top: calc(${({ mh }) => mh && mh} - 25px);
+        margin-top: ${({ mb }) => mb || null};
     }
     .swiper-wrapper {
         margin: ${({ m }) => m || "0px"};
