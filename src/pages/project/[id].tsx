@@ -202,7 +202,9 @@ const Project = () => {
                             h="100%"
                             w="100%"
                             gap="20px"
-                            style={{ boxSizing: "border-box" }}
+                            style={{
+                                boxSizing: "border-box",
+                            }}
                             p="0 20px"
                             zIndex="2"
                         >
@@ -343,20 +345,15 @@ const Project = () => {
                             >
                                 <div
                                     style={{
-                                        width:
-                                            size.width! < 850
-                                                ? "300px"
-                                                : "400px",
-                                        height:
-                                            size.width! < 850
-                                                ? "175px"
-                                                : "200px",
+                                        width: "100%",
+                                        maxWidth: "450px",
                                         background: COLORS.white,
                                         boxShadow:
                                             "0px 0px 0px  rgba(0, 0, 0, 0.25)",
                                         filter: "drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.25))",
                                         borderRadius: "16px",
                                         overflow: "hidden",
+                                        aspectRatio: "1.8/1",
                                     }}
                                 >
                                     <div
@@ -373,7 +370,8 @@ const Project = () => {
                                                       overflow: "hidden",
                                                       width: "100%",
                                                       height: "auto",
-                                                      padding: "0 0 175px 0",
+                                                      //   padding: "0 0 175px 0",
+                                                      aspectRatio: "1.8/1",
                                                   }
                                                 : {
                                                       backgroundImage: `url(${data.projectDetail.result.resultImage.data.attributes.url})`,
@@ -388,7 +386,8 @@ const Project = () => {
                                                       height: "auto",
                                                       objectFit: "cover",
                                                       objectPosition: "center",
-                                                      padding: "0 0 200px 0",
+                                                      //   padding: "0 0 200px 0",
+                                                      aspectRatio: "1.8/1",
                                                   }
                                         }
                                     ></div>
@@ -403,8 +402,8 @@ const Project = () => {
                                         }
                                         height={
                                             size.width! < 850 ? "175" : "270"
-                                        }
-                                    /> */}
+                                        } */}
+                                    {/* /> */}
                                 </div>
                             </FlexColumn>
                         </FlexContainer>
