@@ -28,9 +28,14 @@ export const Layout: FC<Props> = ({ children }) => {
             <>
                 <div style={{ background: "#FDFBFF" }}>
                     <LogoAnimation />
-                    <AdaptContainer>
+                    <div
+                        style={{
+                            maxWidth: "1450px",
+                            margin: "0 auto",
+                        }}
+                    >
                         <Header data={data.header} />
-                    </AdaptContainer>
+                    </div>
                 </div>
                 <main>
                     <FlexColumn
