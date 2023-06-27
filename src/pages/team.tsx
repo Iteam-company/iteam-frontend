@@ -33,6 +33,7 @@ export interface TeamInterface {
     experience: { position: string; year: number };
     rate: number;
     upworkLink?: string;
+    rateImage: string;
 }
 
 export interface Technology {
@@ -55,6 +56,7 @@ const Team = () => {
                         content: (
                             <TeamItem
                                 key={item.id}
+                                rateImage={item.rateImage}
                                 avatar={item.avatar}
                                 name={item.name}
                                 position={item.position}
