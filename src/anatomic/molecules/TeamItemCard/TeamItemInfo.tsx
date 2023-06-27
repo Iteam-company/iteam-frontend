@@ -177,19 +177,6 @@ export const TeamItemInfo: FC<{
                                 />
 
                                 <FlexRow gap="10px" alignItems="center">
-                                    {/* <Image
-                                        src={TopIcon.src}
-                                        width={9}
-                                        height={9}
-                                        alt="rated-image"
-                                    />
-                                    <Text
-                                        weight={TEXT_WEIGHTS.main}
-                                        color={COLORS.textMinor}
-                                        size={TEXT_SIZES.small.s}
-                                    >
-                                        TOP RATED PLUS
-                                    </Text> */}
                                     {rated[rateLogo]}
                                 </FlexRow>
                             </div>
