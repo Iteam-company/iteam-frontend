@@ -61,7 +61,7 @@ const Project = () => {
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
     );
-    if (!data) return <LogoAnimation />;
+    if (!data) return null;
 
     return (
         <>
@@ -92,9 +92,12 @@ const Project = () => {
                             mobileSize: TEXT_SIZES.small.s,
                         }}
                         icon={
-                            <img
+                            <Image
                                 src={BackIcon.src}
                                 style={{ paddingRight: "10px" }}
+                                alt="back"
+                                width="24"
+                                height="14"
                             />
                         }
                     />

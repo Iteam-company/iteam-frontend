@@ -11,8 +11,8 @@ import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import Risingtalent from "../../../assets/rates/risingTalent.png";
-import TopRatedPlus from "../../../assets/rates/topRated.png";
-import TopRated from "../../../assets/rates/topRatedPlus.png";
+import TopRated from "../../../assets/rates/Tier-Top-Rated.webp";
+import TopRatedPlus from "../../../assets/rates/Tier-Top-Rated-Plus.webp";
 
 export const TeamItemInfo: FC<{
     avatar: any;
@@ -28,10 +28,13 @@ export const TeamItemInfo: FC<{
         TopRatedPlus: (
             <Image
                 src={TopRatedPlus}
-                width={size.width! > 1000 ? 122 : 80}
-                height={size.width! > 1000 ? 14 : 10}
+                width={size.width! > 1000 ? 100 : 80}
+                height={size.width! > 1000 ? 12 : 10}
                 alt="rated-image"
             />
+        ),
+        TopRated: (
+            <Image src={TopRated} width={75} height={12} alt="rated-image" />
         ),
         RisingTalent: (
             <Image
@@ -41,32 +44,21 @@ export const TeamItemInfo: FC<{
                 alt="rated-image"
             />
         ),
-        TopRated: (
-            <Image
-                src={TopRated}
-                width={size.width! > 1000 ? 88 : 80}
-                height={size.width! > 1000 ? 12 : 10}
-                alt="rated-image"
-            />
-        ),
     };
 
-    const convertText = (param: string) => {
-        if (param) {
-            let words = param.split(" ");
-            let capitalizedWords = words.map(function (word: string) {
-                return word.charAt(0).toUpperCase() + word.slice(1);
-            });
+    const convertText = (param: string): keyof typeof rated => {
+        let words = param.split(" ");
+        let capitalizedWords = words.map(function (word: string) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        });
 
-            let convertedString: any = capitalizedWords.join("");
+        let convertedString = capitalizedWords.join("");
 
-            return convertedString;
-        }
-        return;
+        return convertedString as keyof typeof rated;
     };
 
-    const rateLogo = convertText(rateImage) || "";
-    console.log(rateLogo);
+    const rateLogo = convertText(rateImage);
+
     return (
         <>
             <Desktop w="100%">
@@ -121,7 +113,7 @@ export const TeamItemInfo: FC<{
                         >
                             TOP RATED PLUS
                         </Text> */}
-                        {rated[rateLogo as keyof typeof rated]}
+                        {rated[rateLogo]}
                     </FlexRow>
                 </FlexColumn>
             </Desktop>
@@ -198,7 +190,7 @@ export const TeamItemInfo: FC<{
                                     >
                                         TOP RATED PLUS
                                     </Text> */}
-                                    {rated[rateLogo as keyof typeof rated]}
+                                    {rated[rateLogo]}
                                 </FlexRow>
                             </div>
                         </FlexColumn>

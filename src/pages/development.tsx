@@ -29,7 +29,7 @@ export interface InfoInterface {
 const Development = () => {
     const [data, isLoading] = useStrapiData(Pages.development);
 
-    if (!data) return <LogoAnimation />;
+    if (!data) return null;
     return (
         <>
             <Head>
