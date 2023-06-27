@@ -12,7 +12,7 @@
         "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
     },
     "dependencies": {
-        "@fullstory/browser": "^1.7.1",
+
         "@merc/react-timeline": "^0.1.42",
         "@next/bundle-analyzer": "^13.4.6",
         "@next/font": "13.1.5",
@@ -38,6 +38,7 @@
         "react-intersection-observer": "^9.5.0",
         "react-tsparticles": "^2.9.3",
         "react-vertical-timeline-component": "^3.6.0",
+        "sharp": "^0.32.1",
         "styled-components": "^5.3.6",
         "swiper": "^9.0.5",
         "tsparticles": "^2.9.3",
