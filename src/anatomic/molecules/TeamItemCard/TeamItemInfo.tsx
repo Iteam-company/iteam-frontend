@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Image from "next/image";
 import { COLORS } from "@/lib/theme/color";
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
@@ -9,16 +10,62 @@ import { Avatar } from "./styled";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import Risingtalent from "@/assets/rates/risingTalent.png";
+import TopRatedPlus from "@/assets/rates/topRatedPlus.png";
+import TopRated from "@/assets/rates/toprated.png";
+
+const convertText = (param: string) => {
+    if (param) {
+        let words = param.split(" ");
+        let capitalizedWords = words.map(function (word: string) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        });
+
+        let convertedString = capitalizedWords.join("");
+
+        return convertedString;
+    }
+};
 
 export const TeamItemInfo: FC<{
     avatar: any;
     name: string;
     position: string;
-}> = ({ avatar, name, position }) => {
+    rateImage: string;
+}> = ({ avatar, name, position, rateImage }) => {
     const { url } = avatar.data.attributes;
     const size = useWindowSize();
     const displayForm = size.width! < 370 ? "none" : "block";
 
+    const rated = {
+        TopRatedPlus: (
+            <Image
+                src={TopRatedPlus}
+                width={size.width! > 1000 ? 122 : 80}
+                height={size.width! > 1000 ? 14 : 10}
+                alt="rated-image"
+            />
+        ),
+        RisingTalent: (
+            <Image
+                src={Risingtalent}
+                width={size.width! > 1000 ? 88 : 80}
+                height={size.width! > 1000 ? 14 : 10}
+                alt="rated-image"
+            />
+        ),
+        TopRated: (
+            <Image
+                src={TopRated}
+                width={size.width! > 1000 ? 88 : 80}
+                height={size.width! > 1000 ? 14 : 10}
+                alt="rated-image"
+            />
+        ),
+    };
+
+    const rateLogo: string = convertText(rateImage) || "";
+    console.log(rateLogo);
     return (
         <>
             <Desktop w="100%">
@@ -39,7 +86,12 @@ export const TeamItemInfo: FC<{
                         {position}
                     </Text>
                     <FlexRow gap="10px" alignItems="center">
-                        <img src={UpworkIcon.src} />
+                        <Image
+                            src={UpworkIcon.src}
+                            width={28}
+                            height={28}
+                            alt="upwork logo"
+                        />
                         <Text
                             weight={TEXT_WEIGHTS.main}
                             size={TEXT_SIZES.small.m}
@@ -48,16 +100,27 @@ export const TeamItemInfo: FC<{
                             5.0
                         </Text>
                     </FlexRow>
-                    <img src={StarsIcon.src} />
+                    <Image
+                        src={StarsIcon.src}
+                        width={76}
+                        height={12}
+                        alt="upwork stars"
+                    />
                     <FlexRow gap="10px" alignItems="center">
-                        <img src={TopIcon.src} />
+                        {/* <Image
+                            src={TopIcon.src}
+                            width={9}
+                            height={9}
+                            alt="rated-image"
+                        />
                         <Text
                             weight={TEXT_WEIGHTS.main}
                             color={COLORS.textMinor}
                             size={TEXT_SIZES.small.s}
                         >
                             TOP RATED PLUS
-                        </Text>
+                        </Text> */}
+                        {rated[rateLogo]}
                     </FlexRow>
                 </FlexColumn>
             </Desktop>
@@ -99,9 +162,11 @@ export const TeamItemInfo: FC<{
                         <FlexColumn w="100%" gap="8px">
                             <div style={{ display: `${displayForm}` }}>
                                 <FlexRow gap="10px" alignItems="center">
-                                    <img
+                                    <Image
                                         src={UpworkIcon.src}
-                                        style={{ height: "20px" }}
+                                        width={28}
+                                        height={28}
+                                        alt="upwork logo"
                                     />
                                     <Text
                                         weight={TEXT_WEIGHTS.main}
@@ -111,17 +176,28 @@ export const TeamItemInfo: FC<{
                                         5.0
                                     </Text>
                                 </FlexRow>
-                                <img src={StarsIcon.src} />
+                                <Image
+                                    src={StarsIcon.src}
+                                    width={76}
+                                    height={12}
+                                    alt="upwork stars"
+                                />
 
                                 <FlexRow gap="10px" alignItems="center">
-                                    <img src={TopIcon.src} />
+                                    {/* <Image
+                                        src={TopIcon.src}
+                                        width={9}
+                                        height={9}
+                                        alt="rated-image"
+                                    />
                                     <Text
                                         weight={TEXT_WEIGHTS.main}
                                         color={COLORS.textMinor}
                                         size={TEXT_SIZES.small.s}
                                     >
                                         TOP RATED PLUS
-                                    </Text>
+                                    </Text> */}
+                                    {rated[rateLogo]}
                                 </FlexRow>
                             </div>
                         </FlexColumn>

@@ -22,6 +22,7 @@ export const TeamItem: FC<TeamInterface> = memo(
         experience,
         rate,
         upworkLink,
+        rateImage,
     }) => {
         const size = useWindowSize();
         const width = size.width! > 1800 ? "100vw" : "80vw";
@@ -41,6 +42,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                             name={name}
                             avatar={avatar}
                             position={position}
+                            rateImage={rateImage!}
                         />
                         <FlexColumn w="80%" gap="40px" p={padding}>
                             <TeamItemCard
@@ -94,6 +96,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                             name={name}
                             avatar={avatar}
                             position={position}
+                            rateImage={rateImage}
                         />
                         <FlexColumn w="100%" gap="40px">
                             <TeamItemCard
