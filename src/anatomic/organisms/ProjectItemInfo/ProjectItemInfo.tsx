@@ -36,6 +36,15 @@ export const ProjectItemInfo: FC<{
         setOpen(param);
     };
 
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const openMobileGallery = () => {
+        setMobileOpen(true);
+    };
+
+    const mobFunc = (param: boolean) => {
+        setMobileOpen(param);
+    };
+
     const openGallery = () => {
         setOpen(true);
     };
@@ -232,7 +241,7 @@ export const ProjectItemInfo: FC<{
                                 }}
                             >
                                 <div
-                                    onClick={openGallery}
+                                    onClick={openMobileGallery}
                                     style={{
                                         display: "flex",
                                         justifyContent: "center",
@@ -258,8 +267,8 @@ export const ProjectItemInfo: FC<{
                     })}
                 </HorizontalSwiperElem>
                 <Gallery
-                    open={open}
-                    func={func}
+                    open={mobileOpen}
+                    func={mobFunc}
                     data={data.mainImages.data}
                 ></Gallery>
                 <FlexColumn gap="10px" w="100%">
