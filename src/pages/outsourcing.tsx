@@ -53,7 +53,7 @@ const Outsourcing = () => {
     const size = useWindowSize();
     const w = size.width! > 1800 ? "100%" : "60%";
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
-    if (!data) return <LogoAnimation />;
+    if (!data) return null;
     return (
         <>
             <Head>
