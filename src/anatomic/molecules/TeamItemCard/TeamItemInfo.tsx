@@ -14,19 +14,6 @@ import Risingtalent from "@/assets/rates/risingTalent.png";
 import TopRatedPlus from "@/assets/rates/topRatedPlus.png";
 import TopRated from "@/assets/rates/toprated.png";
 
-const convertText = (param: string) => {
-    if (param) {
-        let words = param.split(" ");
-        let capitalizedWords = words.map(function (word: string) {
-            return word.charAt(0).toUpperCase() + word.slice(1);
-        });
-
-        let convertedString = capitalizedWords.join("");
-
-        return convertedString;
-    }
-};
-
 export const TeamItemInfo: FC<{
     avatar: any;
     name: string;
@@ -58,13 +45,27 @@ export const TeamItemInfo: FC<{
             <Image
                 src={TopRated}
                 width={size.width! > 1000 ? 88 : 80}
-                height={size.width! > 1000 ? 14 : 10}
+                height={size.width! > 1000 ? 12 : 10}
                 alt="rated-image"
             />
         ),
     };
 
-    const rateLogo: string = convertText(rateImage) || "";
+    const convertText = (param: string) => {
+        if (param) {
+            let words = param.split(" ");
+            let capitalizedWords = words.map(function (word: string) {
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            });
+
+            let convertedString: any = capitalizedWords.join("");
+
+            return convertedString;
+        }
+        return;
+    };
+
+    const rateLogo = convertText(rateImage) || "";
     console.log(rateLogo);
     return (
         <>
@@ -120,7 +121,7 @@ export const TeamItemInfo: FC<{
                         >
                             TOP RATED PLUS
                         </Text> */}
-                        {rated[rateLogo]}
+                        {rated[rateLogo as keyof typeof rated]}
                     </FlexRow>
                 </FlexColumn>
             </Desktop>
@@ -197,7 +198,7 @@ export const TeamItemInfo: FC<{
                                     >
                                         TOP RATED PLUS
                                     </Text> */}
-                                    {rated[rateLogo]}
+                                    {rated[rateLogo as keyof typeof rated]}
                                 </FlexRow>
                             </div>
                         </FlexColumn>
