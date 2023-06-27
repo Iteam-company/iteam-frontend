@@ -232,6 +232,7 @@ export const ProjectItemInfo: FC<{
                                 }}
                             >
                                 <div
+                                    onClick={openGallery}
                                     style={{
                                         display: "flex",
                                         justifyContent: "center",
@@ -256,7 +257,11 @@ export const ProjectItemInfo: FC<{
                         );
                     })}
                 </HorizontalSwiperElem>
-
+                <Gallery
+                    open={open}
+                    func={func}
+                    data={data.mainImages.data}
+                ></Gallery>
                 <FlexColumn gap="10px" w="100%">
                     <Text
                         color={COLORS.dark}

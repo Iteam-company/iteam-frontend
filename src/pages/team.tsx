@@ -54,18 +54,20 @@ const Team = () => {
                 data.team.map((item: TeamInterface) => {
                     return {
                         content: (
-                            <TeamItem
-                                key={item.id}
-                                rateImage={item.rateImage}
-                                avatar={item.avatar}
-                                name={item.name}
-                                position={item.position}
-                                technology={item.technology}
-                                comments={item.comments}
-                                experience={item.experience}
-                                rate={item.rate}
-                                upworkLink={item?.upworkLink}
-                            />
+                            <div style={{ position: "relative" }}>
+                                <TeamItem
+                                    key={item.id}
+                                    rateImage={item.rateImage}
+                                    avatar={item.avatar}
+                                    name={item.name}
+                                    position={item.position}
+                                    technology={item.technology}
+                                    comments={item.comments}
+                                    experience={item.experience}
+                                    rate={item.rate}
+                                    upworkLink={item?.upworkLink}
+                                />
+                            </div>
                         ),
                     };
                 }),
@@ -174,11 +176,11 @@ const Team = () => {
                                         style={
                                             size.height! < 600
                                                 ? {
-                                                      bottom: "0",
+                                                      bottom: "5px",
                                                       left: "10vw",
                                                   }
                                                 : {
-                                                      bottom: "60px",
+                                                      bottom: "7vh",
                                                       left: "10vw",
                                                   }
                                         }
