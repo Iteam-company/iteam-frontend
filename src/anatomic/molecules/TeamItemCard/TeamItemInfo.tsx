@@ -10,9 +10,9 @@ import { Avatar } from "./styled";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import Risingtalent from "@/assets/rates/risingTalent.png";
-import TopRatedPlus from "@/assets/rates/topRatedPlus.png";
-import TopRated from "@/assets/rates/toprated.png";
+import Risingtalent from "../../../assets/rates/risingTalent.png";
+import TopRatedPlus from "../../../assets/rates/topRated.png";
+import TopRated from "../../../assets/rates/topRatedPlus.png";
 
 export const TeamItemInfo: FC<{
     avatar: any;
