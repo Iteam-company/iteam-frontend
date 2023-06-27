@@ -6,7 +6,9 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang="en">
-                <Head></Head>
+                <Head>
+                    <title>iTeam</title>
+                </Head>
                 <body className="no-scroll">
                     <Main />
                     <NextScript />

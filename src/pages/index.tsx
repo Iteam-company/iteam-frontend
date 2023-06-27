@@ -1,4 +1,5 @@
 import { FlexColumn } from "@/anatomic/atoms/Flex";
+import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
@@ -30,6 +31,9 @@ const Home = () => {
     return (
         <>
             {/* Global site tag (gtag.js) - Google Analytics */}
+            <Head>
+                <title>iTeam</title>
+            </Head>
             <Script
                 src={`https://www.googletagmanager.com/gtag/js?id=${process.env.REACT_APP_GOOGLE_ANALYTICS}`}
                 strategy="afterInteractive"
