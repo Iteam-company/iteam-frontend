@@ -5,6 +5,7 @@ import React, { FC } from "react";
 import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
+import Image from "next/image";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
@@ -13,7 +14,7 @@ import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { PropsI, LinkDataI, SocialMediaI, CompanyInfoI } from "./utils";
 import { OptionsI } from "@/anatomic/atoms/Dropdown/Dropdown";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
-
+import upWorkLogo from "../../../assets/icon/upwork.svg";
 export const Footer: FC<PropsI> = ({
     data = [],
     title,
@@ -109,10 +110,13 @@ export const Footer: FC<PropsI> = ({
                                 size={TEXT_SIZES.medium.xs}
                                 weight={TEXT_WEIGHTS.main}
                             >
-                                {title.socil_media}
+                                Upwork Agency
                             </Text>
-                            <FlexRow justifyContent="space-between" gap="8px">
-                                {socialMedia.map((item: SocialMediaI) => (
+                            <FlexRow
+                                justifyContent="center"
+                                alignItems="center"
+                            >
+                                {/* {socialMedia.map((item: SocialMediaI) => (
                                     <Button
                                         variant={BUTTON_VARIANTS.icon}
                                         icon={getStrapiImage(
@@ -122,7 +126,15 @@ export const Footer: FC<PropsI> = ({
                                         hoverColor={COLORS.blue}
                                         key={item.id}
                                     />
-                                ))}
+                                ))} */}
+                                <Link href="#" linkText="">
+                                    <Image
+                                        src={upWorkLogo}
+                                        alt="upwork logo"
+                                        height="25"
+                                        width="25"
+                                    />
+                                </Link>
                             </FlexRow>
                         </FlexColumn>
                     </Adaptive>
