@@ -18,7 +18,6 @@ interface Props {
 export const AppsImplement: FC<Props> = memo(({ apps }) => {
     const swiperRef = useRef<JSX.Element>(null);
     const [activeIndex, setActiveIndex] = useState(1);
-
     return (
         <FlexColumn w="100%" h="auto" alignItems="center" zIndex="5">
             <Desktop>
