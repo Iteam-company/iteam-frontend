@@ -23,6 +23,7 @@ import { TextI } from "@/anatomic/molecules/Banner/Banner";
 import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import timeImage from "../../assets/projects/time.svg";
 
 export interface ProjectItemInterface {
     id: number;
@@ -61,6 +62,9 @@ const Project = () => {
     const [data, isLoading] = useStrapiData(
         `${Pages.projectItemDetails}/${id}`,
     );
+
+    console.log(data);
+
     if (!data) return null;
 
     return (
@@ -155,9 +159,10 @@ const Project = () => {
                             <Desktop w="100%" mw="1068px" zIndex="2">
                                 <FlexRow
                                     justifyContent="space-between"
+                                    alignItems="center"
                                     w="100%"
                                 >
-                                    {data.projectDetail.solution?.map(
+                                    {[data.projectDetail.solution[0]].map(
                                         (
                                             item: SolutionInterface,
                                             index: number,
@@ -197,16 +202,107 @@ const Project = () => {
                                                             elem: TextI,
                                                             index: number,
                                                         ) => (
-                                                            <Text
-                                                                key={index}
-                                                                color={
-                                                                    COLORS.textPrimary
-                                                                }
-                                                            >
-                                                                • {elem.text}
-                                                            </Text>
+                                                            <>
+                                                                <Text
+                                                                    key={index}
+                                                                    color={
+                                                                        COLORS.textPrimary
+                                                                    }
+                                                                >
+                                                                    •{elem.text}
+                                                                </Text>
+                                                            </>
                                                         ),
                                                     )}
+                                                </FlexColumn>
+                                            </FlexColumn>
+                                        ),
+                                    )}
+                                    <FlexColumn gap="8px" alignItems="center">
+                                        <Text
+                                            textDecoration="underline"
+                                            size={TEXT_SIZES.medium.xs}
+                                            color={COLORS.textPrimary}
+                                        >
+                                            Timeframe
+                                        </Text>
+                                        <Image
+                                            src={timeImage}
+                                            alt="timeImage"
+                                            width="160"
+                                            height="160"
+                                        />
+                                        <Text
+                                            size={TEXT_SIZES.medium.xs}
+                                            color={COLORS.textPrimary}
+                                        >
+                                            {data.timeFrame}
+                                        </Text>
+                                    </FlexColumn>
+                                    {[data.projectDetail.solution[1]].map(
+                                        (
+                                            item: SolutionInterface,
+                                            index: number,
+                                        ) => (
+                                            <FlexColumn
+                                                bg={COLORS.white}
+                                                style={{
+                                                    borderRadius: "16px",
+                                                    boxShadow:
+                                                        "0px 4px 20px 0px #00000040",
+                                                    minHeight: "300px",
+                                                }}
+                                                w="25%"
+                                                p="24px"
+                                                gap="15px"
+                                                key={index}
+                                            >
+                                                <FlexRow
+                                                    justifyContent="center"
+                                                    w="100%"
+                                                >
+                                                    <Text
+                                                        textDecoration="underline"
+                                                        size={
+                                                            TEXT_SIZES.medium.xs
+                                                        }
+                                                        color={
+                                                            COLORS.textPrimary
+                                                        }
+                                                    >
+                                                        {item.title}
+                                                    </Text>
+                                                </FlexRow>
+                                                <FlexColumn gap="8px">
+                                                    <Text
+                                                        key={index}
+                                                        color={
+                                                            COLORS.textPrimary
+                                                        }
+                                                    >
+                                                        {item?.text.map(
+                                                            (
+                                                                elem: TextI,
+                                                                index: number,
+                                                            ) => (
+                                                                <>
+                                                                    <Text
+                                                                        textAlign="center"
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        color={
+                                                                            COLORS.textPrimary
+                                                                        }
+                                                                    >
+                                                                        {
+                                                                            elem.text
+                                                                        }
+                                                                    </Text>
+                                                                </>
+                                                            ),
+                                                        )}
+                                                    </Text>
                                                 </FlexColumn>
                                             </FlexColumn>
                                         ),
@@ -275,22 +371,47 @@ const Project = () => {
                                                         </Text>
                                                     </FlexRow>
                                                     <FlexColumn gap="8px">
-                                                        {item.text.map(
-                                                            (
-                                                                elem: TextI,
-                                                                index: number,
-                                                            ) => (
-                                                                <Text
-                                                                    key={index}
-                                                                    color={
-                                                                        COLORS.textPrimary
-                                                                    }
-                                                                >
-                                                                    •{" "}
-                                                                    {elem.text}
-                                                                </Text>
-                                                            ),
-                                                        )}
+                                                        {index === 0
+                                                            ? item.text.map(
+                                                                  (
+                                                                      elem: TextI,
+                                                                      index: number,
+                                                                  ) => (
+                                                                      <Text
+                                                                          key={
+                                                                              index
+                                                                          }
+                                                                          color={
+                                                                              COLORS.textPrimary
+                                                                          }
+                                                                      >
+                                                                          •{" "}
+                                                                          {
+                                                                              elem.text
+                                                                          }
+                                                                      </Text>
+                                                                  ),
+                                                              )
+                                                            : item.text.map(
+                                                                  (
+                                                                      elem: TextI,
+                                                                      index: number,
+                                                                  ) => (
+                                                                      <Text
+                                                                          key={
+                                                                              index +
+                                                                              1
+                                                                          }
+                                                                          color={
+                                                                              COLORS.textPrimary
+                                                                          }
+                                                                      >
+                                                                          {
+                                                                              elem.text
+                                                                          }
+                                                                      </Text>
+                                                                  ),
+                                                              )}
                                                     </FlexColumn>
                                                 </FlexColumn>
                                             </SwiperSlide>
