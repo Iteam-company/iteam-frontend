@@ -15,9 +15,9 @@ export const Avatar = styled.div<{ image: any }>`
     background: transparent no-repeat center;
     background-size: cover;
     background-image: url(${({ image }) => image});
-    @media all and (max-width: 602px) {
-        height: 100px;
-        width: 100px;
+    @media all and (max-width: 600px) {
+        height: 90px;
+        width: 90px;
     }
 `;
 export const Card = styled(FlexColumn)`
@@ -43,29 +43,38 @@ export const ProgressIndicator = styled.div<{ width: number }>`
     border-radius: 16px;
 `;
 
-export const Label = styled(FlexColumn)<{ width?: number, top?: string, bgImg?: ImageProps, right?: string }>`
+export const Label = styled(FlexColumn)<{
+    width?: number;
+    top?: string;
+    bgImg?: ImageProps;
+    right?: string;
+}>`
     height: 29px;
-    width: ${({bgImg}) => bgImg ? '41px': '36px'};
+    width: ${({ bgImg }) => (bgImg ? "41px" : "36px")};
     background: transparent no-repeat center;
     background-size: cover;
     backgroung-position: center;
-    background-image: ${({bgImg}) => bgImg ? `url(${bgImg.src})`: `url(${LabelIcon.src})`};
+    background-image: ${({ bgImg }) =>
+        bgImg ? `url(${bgImg.src})` : `url(${LabelIcon.src})`};
     position: absolute;
-    top: ${({top}) => top || '-20px'};
+    top: ${({ top }) => top || "-20px"};
     left: calc(${({ width }) => width} * 20% - 15px);
-    right: ${({right}) => right || '0'};
+    right: ${({ right }) => right || "0"};
 
     @media (max-width: 1200px) {
         display: none;
     }
-
 `;
 
-export const GradientElem = styled.div<{ gradient: string, width?: string, padding?: string, }>`
+export const GradientElem = styled.div<{
+    gradient: string;
+    width?: string;
+    padding?: string;
+}>`
     height: 32px;
-    width: ${(props) => props.width || '100px'};
+    width: ${(props) => props.width || "100px"};
     border-radius: 50px;
-    padding: ${(props) => props.padding || '2px'};
+    padding: ${(props) => props.padding || "2px"};
     background-image: linear-gradient(${({ gradient }) => gradient});
 `;
 

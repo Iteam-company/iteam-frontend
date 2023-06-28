@@ -67,7 +67,7 @@ export const ImplementSlide: FC<AppsInterface & { isActive?: boolean }> = ({
                         w="100%"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0, 0, 1] }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.1 }}
                     >
                         <Text
                             w="70%"

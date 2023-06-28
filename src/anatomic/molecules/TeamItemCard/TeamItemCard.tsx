@@ -280,19 +280,24 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
             </Desktop>
 
             <Mobile mW={1250}>
-                <FlexRow justifyContent="space-between" w="100%" gap="20px">
+                <FlexRow
+                    justifyContent={
+                        size.height! > 650 ? "space-between" : "center"
+                    }
+                    w="100%"
+                    gap="20px"
+                >
                     <FlexColumn gap="10px" w="100%" alignItems="center">
-                        <div>
-                            <Text
-                                color={COLORS.purple}
-                                textTransform="uppercase"
-                                textDecoration="underline"
-                                weight={TEXT_WEIGHTS.medium}
-                                size="12px"
-                            >
-                                Experience
-                            </Text>
-                        </div>
+                        <Text
+                            color={COLORS.purple}
+                            textTransform="uppercase"
+                            textDecoration="underline"
+                            weight={TEXT_WEIGHTS.medium}
+                            size={size.height! > 650 ? "12px" : "10px"}
+                        >
+                            Experience
+                        </Text>
+
                         <Text
                             color={COLORS.dark}
                             size={TEXT_SIZES.small.s}
@@ -311,7 +316,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size="12px"
+                            size={size.height! > 650 ? "12px" : "10px"}
                         >
                             Expertise
                         </Text>
@@ -349,8 +354,16 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                                 .attributes.url
                                                         }
                                                         alt="tech_logo"
-                                                        width="17"
-                                                        height="17"
+                                                        width={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
+                                                        height={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
                                                     />
                                                 )}
                                                 {!!(index % 2) && (
@@ -360,8 +373,16 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                                 .attributes.url
                                                         }
                                                         alt="tech_logo"
-                                                        width="17"
-                                                        height="17"
+                                                        width={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
+                                                        height={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
                                                     />
                                                 )}
                                             </FlexRow>
@@ -379,7 +400,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size="12px"
+                            size={size.height! > 650 ? "12px" : "10px"}
                         >
                             Rate
                         </Text>

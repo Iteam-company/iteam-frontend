@@ -4,7 +4,10 @@ import { useEffect } from "react";
 const routes = ["/team", "/projects"];
 let timers: NodeJS.Timeout[] = [];
 
-export const useDelayedScroll = (delay: number, fraction: number | null = 1) => {
+export const useDelayedScroll = (
+    delay: number,
+    fraction: number | null = 1,
+) => {
     const { asPath } = useRouter();
 
     useEffect(() => {
@@ -13,7 +16,11 @@ export const useDelayedScroll = (delay: number, fraction: number | null = 1) => 
         const timer = setTimeout(() => {
             window.scrollY === 0 &&
                 isRouteIncludesAnimations &&
-                scrollTo(fraction ? { top: 400, behavior: "smooth" } : { top: window.innerHeight , behavior: "smooth" });
+                scrollTo(
+                    fraction
+                        ? { top: 400, behavior: "smooth" }
+                        : { top: window.innerHeight, behavior: "smooth" },
+                );
         }, delay);
 
         timers.push(timer);
