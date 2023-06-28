@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="9685478d-dba3-4313-a0ae-dbbf97d091b4"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="dc204df1-0854-43bc-827e-e18ae9687a07"  >
+</g>
+<g transform="matrix(77.14 0 0 77.14 540 540)"  >
+<g style=""   >
+		<g transform="matrix(1 0 0 1 -0.03 0)"  >
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(248,109,156); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  points="0.01,-7 -6.97,-7 -6.97,2.21 0.01,7 6.97,2.21 6.97,-7 0.01,-7 " />
+</g>
+		<g transform="matrix(1 0 0 1 0 -2.39)"  >
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(251,160,189); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  points="-7,-4.61 7,4.61 7,-4.61 -7,-4.61 " />
+</g>
+		<g transform="matrix(1 0 0 1 0.02 0)"  >
+<polygon style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(241,54,122); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  points="-6.97,2.21 0,7 6.98,2.21 6.98,-7 -6.97,2.21 " />
+</g>
+</g>
+</g>
+</svg>

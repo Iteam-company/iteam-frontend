@@ -54,20 +54,18 @@ const Team = () => {
                 data.team.map((item: TeamInterface) => {
                     return {
                         content: (
-                            <div style={{ position: "relative" }}>
-                                <TeamItem
-                                    key={item.id}
-                                    rateImage={item.rateImage}
-                                    avatar={item.avatar}
-                                    name={item.name}
-                                    position={item.position}
-                                    technology={item.technology}
-                                    comments={item.comments}
-                                    experience={item.experience}
-                                    rate={item.rate}
-                                    upworkLink={item?.upworkLink}
-                                />
-                            </div>
+                            <TeamItem
+                                key={item.id}
+                                rateImage={item.rateImage}
+                                avatar={item.avatar}
+                                name={item.name}
+                                position={item.position}
+                                technology={item.technology}
+                                comments={item.comments}
+                                experience={item.experience}
+                                rate={item.rate}
+                                upworkLink={item?.upworkLink}
+                            />
                         ),
                     };
                 }),
@@ -138,10 +136,17 @@ const Team = () => {
                                 editionContent={
                                     <FlexColumn
                                         position="absolute"
-                                        style={{
-                                            bottom: "10px",
-                                            left: "10vw",
-                                        }}
+                                        style={
+                                            size.width! > 1800
+                                                ? {
+                                                      bottom: "15vh",
+                                                      left: "7vw",
+                                                  }
+                                                : {
+                                                      bottom: "2vh",
+                                                      left: "10vw",
+                                                  }
+                                        }
                                         zIndex="100"
                                     >
                                         <Button
@@ -169,14 +174,21 @@ const Team = () => {
                                 slides={team}
                                 isTwoColumn={false}
                                 navigation={false}
-                                height={"85vh"}
+                                height={size.height! > 600 ? "85vh" : "90vh"}
                                 editionContent={
                                     <FlexColumn
                                         position="absolute"
-                                        style={{
-                                            bottom: "5vh",
-                                            left: "10vw",
-                                        }}
+                                        style={
+                                            size.height! > 650
+                                                ? {
+                                                      bottom: "4.5vh",
+                                                      left: "10vw",
+                                                  }
+                                                : {
+                                                      bottom: "1vh",
+                                                      left: "10vw",
+                                                  }
+                                        }
                                         zIndex="100"
                                     >
                                         <Button
@@ -184,6 +196,16 @@ const Team = () => {
                                             gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                             variant={
                                                 BUTTON_VARIANTS.gradient_link
+                                            }
+                                            h={
+                                                size.height! > 650
+                                                    ? "46px"
+                                                    : "40px"
+                                            }
+                                            w={
+                                                size.height! > 650
+                                                    ? "167px"
+                                                    : "140px"
                                             }
                                             label={
                                                 <Text

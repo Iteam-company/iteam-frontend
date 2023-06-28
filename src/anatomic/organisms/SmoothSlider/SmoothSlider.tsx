@@ -323,6 +323,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         </div>
                     )}
                 </div>
+
                 {editionContent && editionContent}
             </section>
         </AdaptContainer>

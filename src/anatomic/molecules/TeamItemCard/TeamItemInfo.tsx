@@ -11,8 +11,8 @@ import { Desktop, Mobile } from "../ProjectSlide/styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import Risingtalent from "../../../assets/rates/risingTalent.png";
-import TopRated from "../../../assets/rates/TierTopRated.webp";
-import TopRatedPlus from "../../../assets/rates/TierTopRatedPlus.webp";
+import TopRated from "../../../assets/rates/topratedsvg.svg";
+import TopRatedPlus from "../../../assets/rates/topratedplus.svg";
 
 export const TeamItemInfo: FC<{
     avatar: any;
@@ -26,15 +26,46 @@ export const TeamItemInfo: FC<{
 
     const rated = {
         TopRatedPlus: (
-            <Image
-                src={TopRatedPlus}
-                width={size.width! > 1000 ? 100 : 80}
-                height={size.width! > 1000 ? 12 : 10}
-                alt="rated-image"
-            />
+            <FlexRow gap="10px" alignItems="center">
+                <Image
+                    src={TopRatedPlus}
+                    width={size.width! > 1000 ? 13 : 10}
+                    height={size.width! > 1000 ? 13 : 10}
+                    alt="rated-image"
+                />
+                <Text
+                    weight={TEXT_WEIGHTS.main}
+                    color={COLORS.textMinor}
+                    size={
+                        size.width! > 1000
+                            ? TEXT_SIZES.small.s
+                            : TEXT_SIZES.small.xs
+                    }
+                >
+                    TOP RATED PLUS
+                </Text>
+            </FlexRow>
         ),
         TopRated: (
-            <Image src={TopRated} width={75} height={12} alt="rated-image" />
+            <FlexRow gap="10px" alignItems="center">
+                <Image
+                    src={TopRated}
+                    width={size.width! > 1000 ? 13 : 10}
+                    height={size.width! > 1000 ? 13 : 10}
+                    alt="rated-image"
+                />
+                <Text
+                    weight={TEXT_WEIGHTS.main}
+                    color={COLORS.textMinor}
+                    size={
+                        size.width! > 1000
+                            ? TEXT_SIZES.small.s
+                            : TEXT_SIZES.small.xs
+                    }
+                >
+                    TOP RATED
+                </Text>
+            </FlexRow>
         ),
         RisingTalent: (
             <Image
@@ -99,22 +130,8 @@ export const TeamItemInfo: FC<{
                         height={12}
                         alt="upwork stars"
                     />
-                    <FlexRow gap="10px" alignItems="center">
-                        {/* <Image
-                            src={TopIcon.src}
-                            width={9}
-                            height={9}
-                            alt="rated-image"
-                        />
-                        <Text
-                            weight={TEXT_WEIGHTS.main}
-                            color={COLORS.textMinor}
-                            size={TEXT_SIZES.small.s}
-                        >
-                            TOP RATED PLUS
-                        </Text> */}
-                        {rated[rateLogo]}
-                    </FlexRow>
+
+                    {rated[rateLogo]}
                 </FlexColumn>
             </Desktop>
 
@@ -135,17 +152,28 @@ export const TeamItemInfo: FC<{
                         justifyContent="space-between"
                         style={size.width! < 370 ? { flex: "1 1 40%" } : {}}
                     >
-                        <FlexColumn w="100%" gap="8px">
+                        <FlexColumn
+                            w="100%"
+                            gap={size.height! > 600 ? "8px" : "5px"}
+                        >
                             <Text
                                 weight={TEXT_WEIGHTS.medium}
                                 color={COLORS.dark}
-                                size={TEXT_SIZES.small.m}
+                                size={
+                                    size.height! > 600
+                                        ? TEXT_SIZES.small.m
+                                        : TEXT_SIZES.small.s
+                                }
                                 textTransform="uppercase"
                             >
                                 {name}
                             </Text>
                             <Text
-                                size={TEXT_SIZES.small.s}
+                                size={
+                                    size.height! > 600
+                                        ? TEXT_SIZES.small.s
+                                        : TEXT_SIZES.small.xs
+                                }
                                 color={COLORS.textSecondary}
                             >
                                 {position}

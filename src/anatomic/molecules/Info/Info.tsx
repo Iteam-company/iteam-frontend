@@ -45,16 +45,23 @@ export const Info: FC<Props> = ({ title, description, contactInfo }) => {
                                     item.icon.data.attributes.url,
                                 )}
                             />
-                            <FlexColumn>
+                            <FlexColumn
+                                flexWrap="wrap"
+                                style={{
+                                    wordBreak: "break-all",
+                                }}
+                            >
                                 <Text
                                     size={TEXT_SIZES.small.xl}
                                     color={COLORS.black}
+                                    whiteSpace="pre"
                                 >
                                     {item.title}
                                 </Text>
                                 <Text
                                     size={TEXT_SIZES.small.xl}
                                     color={COLORS.black}
+                                    whiteSpace="pre"
                                 >
                                     {item.text}
                                 </Text>
