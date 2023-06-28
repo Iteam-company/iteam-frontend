@@ -94,6 +94,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                     <HorizontalSwiperElem
                         minHeight="500px"
                         width="100%"
+                        speed={100}
                         m="0 0 20% 0"
                         maxWidth="1450px"
                         slidesPerView={1}
