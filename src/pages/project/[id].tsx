@@ -399,7 +399,8 @@ const Project = () => {
                                                                   ) => (
                                                                       <Text
                                                                           key={
-                                                                              index
+                                                                              index +
+                                                                              1
                                                                           }
                                                                           color={
                                                                               COLORS.textPrimary
