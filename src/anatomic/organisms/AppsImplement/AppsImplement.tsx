@@ -34,6 +34,7 @@ export const AppsImplement: FC<Props> = memo(({ apps }) => {
                         slidesPerView={3}
                         spaceBetween={60}
                         loop={false}
+                        speed={100}
                         loopedSlides={1}
                         swiperRef={swiperRef}
                         centeredSlides={true}

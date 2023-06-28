@@ -13,6 +13,7 @@ export const Link: FC<Props> = ({
     gap,
     linkPosition,
     textStyles,
+    children,
 }) => {
     return (
         <StyledLink
@@ -31,6 +32,7 @@ export const Link: FC<Props> = ({
                     {linkText}
                 </Text>
             )}
+            {children}
         </StyledLink>
     );
 };

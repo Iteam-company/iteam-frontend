@@ -10,6 +10,7 @@ export interface Props {
     gap?: string;
     linkPosition?: LINK_POSITION | string;
     textStyles?: TextProps;
+    children?: JSX.Element;
 }
 
 export interface StyledProps {
