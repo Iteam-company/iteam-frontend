@@ -302,7 +302,7 @@ const Outstaffing = () => {
                                         ))}
                                     </FlexColumn>
                                     <Button
-                                        href="/projects"
+                                        href="/team"
                                         gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                         variant={BUTTON_VARIANTS.gradient_link}
                                         label={
