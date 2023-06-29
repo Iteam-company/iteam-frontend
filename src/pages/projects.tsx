@@ -64,7 +64,7 @@ const Projects = () => {
                 })),
             );
     }, [data?.projects]);
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
 
     return (
         <>

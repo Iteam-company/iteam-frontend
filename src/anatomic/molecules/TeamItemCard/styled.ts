@@ -15,6 +15,7 @@ export const Avatar = styled.div<{ image: any }>`
     background: transparent no-repeat center;
     background-size: cover;
     background-image: url(${({ image }) => image});
+
     @media all and (max-width: 600px) {
         height: 90px;
         width: 90px;

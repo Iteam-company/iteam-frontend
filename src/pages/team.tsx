@@ -71,7 +71,7 @@ const Team = () => {
                 }),
             );
     }, [data?.team]);
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
 
     return (
         <>
