@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { Info } from "@/anatomic/molecules/Info";
 import { AdaptiveElem } from "@/lib/pageStyles/contactUsStyles";
@@ -17,11 +17,19 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
     const size = useWindowSize();
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
+
     return (
         <>
             <Head>

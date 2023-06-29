@@ -22,6 +22,7 @@ import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 export interface TeamInterface {
     id?: number;
@@ -71,7 +72,13 @@ const Team = () => {
                 }),
             );
     }, [data?.team]);
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
 
     return (
         <>

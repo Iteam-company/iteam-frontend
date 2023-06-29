@@ -32,6 +32,7 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useInView } from "react-intersection-observer";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 export interface ProcessInterface {
     step?: number;
@@ -53,7 +54,13 @@ const Outsourcing = () => {
     const size = useWindowSize();
     const w = size.width! > 1800 ? "100%" : "60%";
     const [data, isLoading] = useStrapiData(Pages.outsourcing);
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
     return (
         <>
             <Head>

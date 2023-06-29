@@ -18,6 +18,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     technology,
     img,
     color,
+    index,
 }) => {
     const size = useWindowSize();
     return (
@@ -127,7 +128,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 w="100%"
             >
                 <Button
-                    href={`/project/${id}`}
+                    href={index < 4 ? `/project/${id!}` : `/project/${id! + 2}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     p="5px 5px 0 10px"

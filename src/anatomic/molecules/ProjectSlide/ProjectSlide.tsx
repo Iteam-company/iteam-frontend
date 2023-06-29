@@ -9,7 +9,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { icons } from "./utils";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
 import { Stick } from "./styled";
-import Image from 'next/image';
+import Image from "next/image";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,
@@ -19,6 +19,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     budget,
     technology,
     color,
+    index,
 }) => {
     return (
         <FlexColumn
@@ -81,7 +82,12 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                             gap="10px"
                             key={index}
                         >
-                            <Image src={el.techIcon.data.attributes.url} alt='techIcon' width='30' height='30'/>
+                            <Image
+                                src={el.techIcon.data.attributes.url}
+                                alt="techIcon"
+                                width="30"
+                                height="30"
+                            />
                             <Text
                                 size={TEXT_SIZES.small.m}
                                 weight={TEXT_WEIGHTS.main}
@@ -95,7 +101,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
             </FlexColumn>
             <FlexColumn w="100%" alignItems="center">
                 <Button
-                    href={`/project/${id}`}
+                    href={index < 4 ? `/project/${id!}` : `/project/${id! + 2}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
                     label={

@@ -20,6 +20,7 @@ import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 export interface ProjectsInterface {
     id?: number;
@@ -31,6 +32,7 @@ export interface ProjectsInterface {
     color: string;
     projectImg: any;
     img?: any;
+    index: number;
 }
 
 export interface Technologies {
@@ -47,7 +49,7 @@ const Projects = () => {
     useEffect(() => {
         data &&
             setSlides(
-                data.projects.map((item: ProjectsInterface) => ({
+                data.projects.map((item: ProjectsInterface, index: number) => ({
                     content: (
                         <Slide
                             id={item.id}
@@ -58,13 +60,20 @@ const Projects = () => {
                             technology={item.technology}
                             color={item.color}
                             projectImg={item.projectImg}
+                            index={index}
                         />
                     ),
                     image: getStrapiImage(item.projectImg.data.attributes.url),
                 })),
             );
     }, [data?.projects]);
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
 
     return (
         <>
