@@ -63,10 +63,7 @@ const Project = () => {
         `${Pages.projectItemDetails}/${id}`,
     );
 
-    console.log(data);
-
-    if (!data) return null;
-
+    if (!data) return <LogoAnimation />;
     return (
         <>
             <Head>

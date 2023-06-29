@@ -21,7 +21,7 @@ import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
     const size = useWindowSize();
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
     return (
         <>
             <Head>

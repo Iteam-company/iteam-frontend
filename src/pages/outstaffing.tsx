@@ -44,7 +44,7 @@ const Outstaffing = () => {
         setH(minHeight);
     }, [swiperRef.current]);
 
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
 
     return (
         <>

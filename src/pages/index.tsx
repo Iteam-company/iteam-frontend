@@ -27,7 +27,7 @@ const Home = () => {
         size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
     const widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
 
-    if (!data) return null;
+    if (!data) return <LogoAnimation />;
     return (
         <>
             {/* Global site tag (gtag.js) - Google Analytics */}
