@@ -17,7 +17,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
     transporter.sendMail(
         {
             from: `${name} <${email}>`,
-            to: email,
+            to: process.env.REACT_APP_SMTP_USER,
             text: comments,
             subject,
         },
