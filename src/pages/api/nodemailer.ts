@@ -27,7 +27,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
             {
                 from: `${name} <${email}>`,
                 to: process.env.REACT_APP_SMTP_USER,
-                text: `${comments} ${name} <${email}>`,
+                text: `text: ${comments} client's name: ${name} client's email<${email}>`,
                 subject,
             },
             (err, info) => {

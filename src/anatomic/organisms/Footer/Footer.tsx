@@ -15,12 +15,14 @@ import { PropsI, LinkDataI, SocialMediaI, CompanyInfoI } from "./utils";
 import { OptionsI } from "@/anatomic/atoms/Dropdown/Dropdown";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import upWorkLogo from "../../../assets/icon/upwork.svg";
+import { useWindowSize } from "@/hooks/useWindowSize";
 export const Footer: FC<PropsI> = ({
     data = [],
     title,
     socialMedia,
     footerText,
 }) => {
+    const size = useWindowSize();
     return (
         <footer>
             <FlexRow justifyContent="center" bg={COLORS.dark} p="45px 0">
@@ -31,7 +33,7 @@ export const Footer: FC<PropsI> = ({
                         gap="40px"
                         alignItems="start"
                     >
-                        <FlexColumn gap="20px">
+                        <FlexColumn gap="20px" justifyContent="space-between">
                             <Text
                                 color={COLORS.white}
                                 size={TEXT_SIZES.medium.xs}
@@ -109,6 +111,7 @@ export const Footer: FC<PropsI> = ({
                                 color={COLORS.white}
                                 size={TEXT_SIZES.medium.xs}
                                 weight={TEXT_WEIGHTS.main}
+                                whiteSpace="pre-line"
                             >
                                 Upwork Agency
                             </Text>
