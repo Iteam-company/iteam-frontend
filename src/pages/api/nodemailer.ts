@@ -27,7 +27,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
             {
                 from: `${name} <${email}>`,
                 to: process.env.REACT_APP_SMTP_USER,
-                text: `${comments}${name} <${email}>`,
+                text: `${comments} ${name} <${email}>`,
                 subject,
             },
             (err, info) => {
@@ -46,7 +46,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
         transporter.sendMail(
             {
                 from: "iteam.communication.manager@gmail.com",
-                to: email,
+                to: req.body.email,
                 text: text,
                 subject,
             },

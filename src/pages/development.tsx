@@ -7,7 +7,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import Head from "next/head";
 import { COLORS } from "@/lib/theme/color";
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import BgImage1 from "@/assets/bgImage/development/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/development/bgImage2.svg";
@@ -16,6 +16,7 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 export interface DevelopmentInterface {
     title: string;
     info: InfoInterface[];
@@ -28,8 +29,13 @@ export interface InfoInterface {
 }
 const Development = () => {
     const [data, isLoading] = useStrapiData(Pages.development);
+    const showLogo = useLogoAnimation(data);
 
-    if (!data) return <LogoAnimation />;
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
     return (
         <>
             <Head>

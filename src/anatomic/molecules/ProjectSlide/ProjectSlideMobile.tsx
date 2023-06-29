@@ -18,6 +18,7 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     technology,
     img,
     color,
+    index,
 }) => {
     const size = useWindowSize();
     return (

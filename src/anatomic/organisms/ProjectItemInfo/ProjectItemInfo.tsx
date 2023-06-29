@@ -95,7 +95,7 @@ export const ProjectItemInfo: FC<{
                                     {approachText}
                                 </Text>
                             </FlexColumn>
-                            <FlexColumn m="80px 0 0 0 ">
+                            <FlexColumn m="50px 0 0 0 ">
                                 <Button
                                     href={visitLink}
                                     gradient={data.projectDetail.color}
@@ -110,15 +110,18 @@ export const ProjectItemInfo: FC<{
                                                 color={COLORS.dark}
                                                 weight={TEXT_WEIGHTS.main}
                                             >
-                                                Visit site
+                                                {visitLink
+                                                    ? "Visit site"
+                                                    : "UNDER NDA"}
                                             </Text>
-
-                                            <Image
-                                                src={Arrow_Rigth.src}
-                                                alt="swiper-imagurkle"
-                                                width="21"
-                                                height="20"
-                                            />
+                                            {visitLink ? (
+                                                <Image
+                                                    src={Arrow_Rigth.src}
+                                                    alt="swiper-imagurkle"
+                                                    width="21"
+                                                    height="20"
+                                                />
+                                            ) : null}
                                         </FlexRow>
                                     }
                                 />
@@ -323,15 +326,16 @@ export const ProjectItemInfo: FC<{
                                         color={COLORS.dark}
                                         weight={TEXT_WEIGHTS.main}
                                     >
-                                        Visit site
+                                        {visitLink ? "Visit site" : "UNDER NDA"}
                                     </Text>
-
-                                    <Image
-                                        src={Arrow_Rigth.src}
-                                        alt="swiper-imagurkle"
-                                        width="21"
-                                        height="20"
-                                    />
+                                    {visitLink ? (
+                                        <Image
+                                            src={Arrow_Rigth.src}
+                                            alt="swiper-imagurkle"
+                                            width="21"
+                                            height="20"
+                                        />
+                                    ) : null}
                                 </FlexRow>
                             }
                         />

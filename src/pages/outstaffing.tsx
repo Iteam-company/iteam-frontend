@@ -32,6 +32,7 @@ import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSl
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { getElementMaxHeight } from "@/utils/element-height";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 const Outstaffing = () => {
     const [data, isLoading] = useStrapiData(Pages.outstaffing);
@@ -44,7 +45,13 @@ const Outstaffing = () => {
         setH(minHeight);
     }, [swiperRef.current]);
 
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
 
     return (
         <>

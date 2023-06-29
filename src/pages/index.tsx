@@ -18,6 +18,8 @@ import Image from "next/image";
 import { Layout } from "@/anatomic/molecules/Layout";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Script from "next/script";
+import { useEffect } from "react";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
@@ -27,7 +29,13 @@ const Home = () => {
         size.width! < 992 ? "calc(50vh - 100px)" : "calc(100vh - 100px)";
     const widthBg = size.width! > 992 || size.width! < 1160 ? 640 : 840;
 
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
     return (
         <>
             {/* Global site tag (gtag.js) - Google Analytics */}

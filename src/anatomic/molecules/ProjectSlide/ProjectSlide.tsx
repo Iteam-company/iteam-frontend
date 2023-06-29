@@ -19,6 +19,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
     budget,
     technology,
     color,
+    index,
 }) => {
     return (
         <FlexColumn

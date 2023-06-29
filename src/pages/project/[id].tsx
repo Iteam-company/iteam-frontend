@@ -24,6 +24,7 @@ import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import timeImage from "../../assets/projects/time.svg";
+import useLogoAnimation from "@/hooks/useLogoAnimation";
 
 export interface ProjectItemInterface {
     id: number;
@@ -63,7 +64,13 @@ const Project = () => {
         `${Pages.projectItemDetails}/${id}`,
     );
 
-    if (!data) return <LogoAnimation />;
+    const showLogo = useLogoAnimation(data);
+
+    if (!data) {
+        if (showLogo) {
+            return <LogoAnimation />;
+        }
+    }
     return (
         <>
             <Head>
@@ -277,28 +284,39 @@ const Project = () => {
                                                             COLORS.textPrimary
                                                         }
                                                     >
-                                                        {item?.text.map(
-                                                            (
-                                                                elem: TextI,
-                                                                index: number,
-                                                            ) => (
-                                                                <>
-                                                                    <Text
-                                                                        textAlign="center"
+                                                        <FlexColumn gap="8px">
+                                                            {item?.text.map(
+                                                                (
+                                                                    elem: TextI,
+                                                                    index: number,
+                                                                ) => (
+                                                                    <FlexRow
                                                                         key={
                                                                             index
                                                                         }
-                                                                        color={
-                                                                            COLORS.textPrimary
-                                                                        }
                                                                     >
-                                                                        {
-                                                                            elem.text
-                                                                        }
-                                                                    </Text>
-                                                                </>
-                                                            ),
-                                                        )}
+                                                                        <div
+                                                                            style={{
+                                                                                marginRight:
+                                                                                    "2px",
+                                                                            }}
+                                                                        >
+                                                                            {" "}
+                                                                            •
+                                                                        </div>
+                                                                        <Text
+                                                                            color={
+                                                                                COLORS.textPrimary
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                elem.text
+                                                                            }
+                                                                        </Text>
+                                                                    </FlexRow>
+                                                                ),
+                                                            )}
+                                                        </FlexColumn>
                                                     </Text>
                                                 </FlexColumn>
                                             </FlexColumn>
@@ -368,47 +386,22 @@ const Project = () => {
                                                         </Text>
                                                     </FlexRow>
                                                     <FlexColumn gap="8px">
-                                                        {index === 0
-                                                            ? item.text.map(
-                                                                  (
-                                                                      elem: TextI,
-                                                                      index: number,
-                                                                  ) => (
-                                                                      <Text
-                                                                          key={
-                                                                              index
-                                                                          }
-                                                                          color={
-                                                                              COLORS.textPrimary
-                                                                          }
-                                                                      >
-                                                                          •{" "}
-                                                                          {
-                                                                              elem.text
-                                                                          }
-                                                                      </Text>
-                                                                  ),
-                                                              )
-                                                            : item.text.map(
-                                                                  (
-                                                                      elem: TextI,
-                                                                      index: number,
-                                                                  ) => (
-                                                                      <Text
-                                                                          key={
-                                                                              index +
-                                                                              1
-                                                                          }
-                                                                          color={
-                                                                              COLORS.textPrimary
-                                                                          }
-                                                                      >
-                                                                          {
-                                                                              elem.text
-                                                                          }
-                                                                      </Text>
-                                                                  ),
-                                                              )}
+                                                        {item.text.map(
+                                                            (
+                                                                elem: TextI,
+                                                                index: number,
+                                                            ) => (
+                                                                <Text
+                                                                    key={index}
+                                                                    color={
+                                                                        COLORS.textPrimary
+                                                                    }
+                                                                >
+                                                                    •{" "}
+                                                                    {elem.text}
+                                                                </Text>
+                                                            ),
+                                                        )}
                                                     </FlexColumn>
                                                 </FlexColumn>
                                             </SwiperSlide>
