@@ -1,4 +1,4 @@
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import {
@@ -8,6 +8,7 @@ import {
     BoxForSpot,
     BoxForText,
     BoxHover,
+    ExploreBox,
     GridBox,
 } from "./styled";
 import { FC, Fragment } from "react";
@@ -51,15 +52,15 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                     >
                         <BoxForPinkSpot />
                     </div>
-                    <GridBox
-                        gridTemplateColumn="1fr 1fr"
-                        gridTemplateRow="repeat(4, 325px)"
-                        gridColumnGap="13px"
-                        gridRowGap="15px"
+                    <FlexRow
+                        flexWrap="wrap"
+                        gridGap="10px"
+                        gap="10px"
+                        justifyContent="center"
                     >
                         {data.map((block: any) => {
                             return (
-                                <Box
+                                <ExploreBox
                                     key={block.id}
                                     backgroundImage={`url(${block.backgroundImage.data.attributes.url})`}
                                     bg="rgba(77, 38, 95, 0.55)"
@@ -141,10 +142,10 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                                         </FlexColumn>
                                     </HoverBox>
                                     <BoxForSpot />
-                                </Box>
+                                </ExploreBox>
                             );
                         })}
-                    </GridBox>
+                    </FlexRow>
                 </FlexColumn>
             </FlexColumn>
         </AdaptContainer>
