@@ -1,4 +1,4 @@
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexColumn, FlexForIos } from "@/anatomic/atoms/Flex";
 import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
@@ -93,15 +93,16 @@ const Home = () => {
                     <HowWeWork howWeWork={data?.howWeWork} />
                 </FlexColumn>
 
-                <FlexColumn
+                <FlexForIos
                     w="100%"
-                    style={{
-                        background:
-                            "linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
-                    }}
+
+                    // style={{
+                    //     background:
+                    //         "-moz-linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
+                    // }}
                 >
                     <ExploreWithIteam data={data?.exploreWithIteam} />
-                </FlexColumn>
+                </FlexForIos>
                 <OurCoreValues coreValue={data?.coreValues} />
                 <FlexColumn
                     w="100%"

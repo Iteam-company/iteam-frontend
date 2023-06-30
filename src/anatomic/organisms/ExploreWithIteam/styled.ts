@@ -75,7 +75,7 @@ export const ExploreBox = styled.div<BoxProps>`
     position: relative;
     flex: 1 1 45%;
     min-width: 304px;
-    height: 325px;
+    height: 280px;
     border-radius: 8px;
     background: ${(props) => props.backgroundImage || "none"};
     background-repeat: no-repeat;
