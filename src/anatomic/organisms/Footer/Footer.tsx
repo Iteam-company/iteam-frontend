@@ -130,7 +130,10 @@ export const Footer: FC<PropsI> = ({
                                         key={item.id}
                                     />
                                 ))} */}
-                                <Link href="#" linkText="">
+                                <Link
+                                    href="https://www.upwork.com/agencies/1422842507989712896/"
+                                    linkText=""
+                                >
                                     <Image
                                         src={upWorkLogo}
                                         alt="upwork logo"
