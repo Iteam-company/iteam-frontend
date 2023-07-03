@@ -75,6 +75,7 @@ export const ExploreBox = styled.div<BoxProps>`
     position: relative;
     flex: 1 1 45%;
     min-width: 304px;
+    max-width: 504px;
     height: 280px;
     border-radius: 8px;
     background: ${(props) => props.backgroundImage || "none"};
@@ -102,6 +103,7 @@ export const ExploreBox = styled.div<BoxProps>`
     }
     @media (max-width: 1000px) {
         max-width: 532px;
+
         flex: 1 1 100%;
         max-height: 325px;
     }
@@ -114,6 +116,7 @@ export const ExploreBox = styled.div<BoxProps>`
     }
 
     @media (max-width: 500px) {
+        max-width: 280px;
         min-width: 280px;
 
         max-height: 180px;

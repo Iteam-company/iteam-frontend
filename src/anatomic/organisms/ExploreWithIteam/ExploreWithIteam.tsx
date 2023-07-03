@@ -52,10 +52,12 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                         <BoxForPinkSpot />
                     </div>
                     <FlexRow
+                        w="100%"
                         flexWrap="wrap"
                         gridGap="10px"
                         gap="10px"
                         justifyContent="center"
+                        alignItems="center"
                     >
                         {data.map((block: any) => {
                             return (
