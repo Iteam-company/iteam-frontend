@@ -9,17 +9,16 @@ import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
-import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam/ExploreWithIteam";
+
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
 import Image from "next/image";
-import { Layout } from "@/anatomic/molecules/Layout";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Script from "next/script";
-import { useEffect } from "react";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);
@@ -95,11 +94,10 @@ const Home = () => {
 
                 <FlexForIos
                     w="100%"
-
-                    // style={{
-                    //     background:
-                    //         "-moz-linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
-                    // }}
+                    style={{
+                        background:
+                            "-moz-linear-gradient(180deg, #170A2C 53.12%, #9F93BE 100%)",
+                    }}
                 >
                     <ExploreWithIteam data={data?.exploreWithIteam} />
                 </FlexForIos>

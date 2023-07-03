@@ -82,6 +82,7 @@ export const ExploreBox = styled.div<BoxProps>`
     background-size: 100% 100%;
     background-position: center;
     overflow: hidden;
+    box-sizing: border-box;
 
     &::before {
         background: ${(props) => props.bg || "none"};
@@ -113,7 +114,8 @@ export const ExploreBox = styled.div<BoxProps>`
     }
 
     @media (max-width: 500px) {
-        max-width: 314px;
+        min-width: 280px;
+
         max-height: 180px;
         &:last-child {
             margin-bottom: 20px;
