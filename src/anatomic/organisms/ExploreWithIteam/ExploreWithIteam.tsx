@@ -144,7 +144,6 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                                                 </BoxForPreview>
                                             </FlexColumn>
                                         </HoverBox>
-                                        <BoxForSpot />
                                     </ExploreBox>
                                 </>
                             );
