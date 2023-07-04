@@ -174,11 +174,9 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         paddingLeft: navigation ? "5%" : "0px",
                         boxSizing: "border-box",
                         borderRadius: "20px",
-
                         backgroundColor: COLORS.white,
                         boxShadow: "0px 4px 20px 0px #00000040",
                         display: "flex",
-
                         justifyContent: "space-between",
                         alignItems: "center",
                         overflow: "hidden",
@@ -191,6 +189,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                             position: "relative",
                             width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
+
                             overflow: "hidden",
                         }}
                     >
@@ -199,6 +198,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 const containerStyle = {
                                     position: "absolute",
                                     top: "0",
+
                                     height: "100%",
                                     display: "flex",
                                     justifyContent: slidePosition
@@ -255,7 +255,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 slides.map(({ image }, index) => {
                                     const containerStyle = {
                                         position: "absolute",
-                                        top: size.width! < 500 ? "-50%" : "0",
+                                        top: size.width! < 500 ? "-49%" : "0",
                                         left: leftPercent,
                                         width: "100%",
                                         height: "100%",

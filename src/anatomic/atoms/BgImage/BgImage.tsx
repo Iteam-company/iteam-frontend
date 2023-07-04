@@ -9,6 +9,8 @@ interface BgImageI {
     scrollable?: boolean;
     priority?: boolean;
     loading?: "lazy";
+    quality?: number;
+    onLoad?: (img: any) => void;
 }
 
 interface ImagePosition {
@@ -41,6 +43,8 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     mobileLeft,
     mobileRight,
     ds,
+    quality,
+    onLoad,
 }) => {
     const [rotateZ, setRotateZ] = useState<number>(0);
     const ref = useRef(null);
@@ -74,6 +78,8 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             priority={priority}
             loading={loading}
             ds={ds}
+            quality={quality}
+            onLoadingComplete={onLoad}
         />
     );
 };

@@ -110,7 +110,7 @@ const Team = () => {
                         top={34}
                         mobileTop={70}
                         mobileRight={0}
-                        priority
+                        priority={true}
                     />
                     <AdaptContainer>
                         <FlexColumn justifyContent="center" alignItems="start">

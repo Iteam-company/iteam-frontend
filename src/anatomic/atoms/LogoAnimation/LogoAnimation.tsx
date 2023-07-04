@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { FlexColumn } from "../Flex";
 import { COLORS } from "@/lib/theme/color";
 import { motion } from "framer-motion";
@@ -6,6 +6,7 @@ import { Mask, Triangle, Circle } from "./styled";
 
 export const LogoAnimation = () => {
     const [display, setDisplay] = useState<"block" | "none">("block");
+    const [isData, setIsData] = useState(false);
     display == "none" && document.body.classList.remove("no-scroll");
 
     return (
@@ -16,7 +17,9 @@ export const LogoAnimation = () => {
                 display: display,
             }}
             transition={{ duration: 2 }}
-            onAnimationComplete={() => setDisplay("none")}
+            onAnimationComplete={() => {
+                setDisplay("none");
+            }}
             style={{
                 height: "100vh",
                 width: "100%",
