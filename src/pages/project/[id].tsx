@@ -411,16 +411,17 @@ const Project = () => {
                             </Mobile>
                             <FlexContainer
                                 w="100%"
-                                mw="1180px"
+                                mw="1200px"
                                 gap="40px"
                                 zIndex="2"
                                 style={{
                                     alignItems: "center",
+                                    justifyContent: "space-between",
                                 }}
                             >
                                 <FlexRow>
                                     <FlexColumn
-                                        w="100%"
+                                        w="80%"
                                         justifyContent="space-between"
                                         alignItems="start"
                                         gap="15px"
@@ -472,7 +473,7 @@ const Project = () => {
                                 </FlexRow>
                                 <FlexColumn
                                     w="100%"
-                                    justifyContent="center"
+                                    justifyContent="space-between"
                                     alignItems="space-between"
                                     zIndex="2"
                                     style={{
