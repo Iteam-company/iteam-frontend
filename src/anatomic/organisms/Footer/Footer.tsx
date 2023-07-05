@@ -6,8 +6,6 @@ import { MdArrowForwardIos } from "react-icons/md";
 import { Link } from "@/anatomic/atoms/Link";
 import { LINK_POSITION } from "@/anatomic/atoms/Link/util";
 import Image from "next/image";
-import { Button } from "@/anatomic/atoms/Button";
-import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 import { Divider } from "./styled";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
@@ -16,6 +14,7 @@ import { OptionsI } from "@/anatomic/atoms/Dropdown/Dropdown";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import upWorkLogo from "../../../assets/icon/upwork.svg";
 import { useWindowSize } from "@/hooks/useWindowSize";
+
 export const Footer: FC<PropsI> = ({
     data = [],
     title,
@@ -47,7 +46,7 @@ export const Footer: FC<PropsI> = ({
                             >
                                 {footerText.companyInfo.map(
                                     (item: CompanyInfoI, index: number) => (
-                                        <FlexRow key={index}>
+                                        <FlexRow key={index} gridGap="10px">
                                             <Text
                                                 color={COLORS.white}
                                                 size={TEXT_SIZES.small.l}
@@ -55,13 +54,26 @@ export const Footer: FC<PropsI> = ({
                                             >
                                                 {item.title}
                                             </Text>
-                                            <Text
-                                                color={COLORS.white}
-                                                size={TEXT_SIZES.small.l}
-                                                weight={TEXT_WEIGHTS.main}
-                                            >
-                                                {item.value}
-                                            </Text>
+                                            {item.item_link ? (
+                                                <Link
+                                                    textStyles={{
+                                                        color: COLORS.white,
+                                                        size: TEXT_SIZES.small
+                                                            .l,
+                                                        weight: TEXT_WEIGHTS.main,
+                                                    }}
+                                                    href={item.item_link}
+                                                    linkText={item.value}
+                                                ></Link>
+                                            ) : (
+                                                <Text
+                                                    color={COLORS.white}
+                                                    size={TEXT_SIZES.small.l}
+                                                    weight={TEXT_WEIGHTS.main}
+                                                >
+                                                    {item.value}
+                                                </Text>
+                                            )}
                                         </FlexRow>
                                     ),
                                 )}
@@ -76,7 +88,7 @@ export const Footer: FC<PropsI> = ({
                                 >
                                     {item.title}
                                 </Text>
-                                <FlexColumn gap="10px">
+                                <FlexColumn gap="10px" flexWrap="wrap">
                                     {item.options.map((option: OptionsI) => (
                                         <Link
                                             key={option.href}

@@ -23,4 +23,5 @@ export interface SocialMediaI {
 export interface CompanyInfoI {
     title: string;
     value: string;
+    item_link?: string;
 }
