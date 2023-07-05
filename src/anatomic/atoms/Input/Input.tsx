@@ -55,7 +55,11 @@ export const Input: FC<Props> = ({
                     padding={padding}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.small.s}>{error}</Text>}
+            {error && (
+                <Text size={TEXT_SIZES.small.s} color={COLORS.red}>
+                    {error}
+                </Text>
+            )}
         </FlexColumn>
     );
 };
