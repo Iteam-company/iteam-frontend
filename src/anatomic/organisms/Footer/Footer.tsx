@@ -57,19 +57,19 @@ export const Footer: FC<PropsI> = ({
                                             {item.item_link ? (
                                                 <Link
                                                     textStyles={{
-                                                        color: COLORS.white,
+                                                        color: COLORS.link,
                                                         size: TEXT_SIZES.small
                                                             .l,
-                                                        weight: TEXT_WEIGHTS.main,
+                                                        weight: TEXT_WEIGHTS.normal,
                                                     }}
                                                     href={item.item_link}
                                                     linkText={item.value}
                                                 ></Link>
                                             ) : (
                                                 <Text
-                                                    color={COLORS.white}
+                                                    color={COLORS.link}
                                                     size={TEXT_SIZES.small.l}
-                                                    weight={TEXT_WEIGHTS.main}
+                                                    weight={TEXT_WEIGHTS.normal}
                                                 >
                                                     {item.value}
                                                 </Text>
