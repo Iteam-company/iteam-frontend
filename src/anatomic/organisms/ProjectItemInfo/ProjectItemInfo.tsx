@@ -51,7 +51,7 @@ export const ProjectItemInfo: FC<{
     return (
         <>
             <Desktop mW={1000}>
-                <Card mw="1150px">
+                <Card mw="1200px" p="0 10px">
                     <FlexRow w="100%" alignItems="center" gap="20px">
                         <FlexColumn w="100%" gap="20px">
                             <GradientTitle

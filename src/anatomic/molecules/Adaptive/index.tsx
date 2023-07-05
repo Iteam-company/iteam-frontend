@@ -18,20 +18,25 @@ export const mobile = (styles: string) =>
 
 export const Adaptive = styled(Flex)`
     padding: 0 10px;
-    min-width: 90%;
-    max-width: 90%;
+    margin: 0 auto;
     width: fit-content;
 
     ${tablet(`
         padding: 0 10px; 
         min-width: 80%;
         max-width: 80%;
+        margin: 0 auto;
     `)}
 
     ${desktop(`
         padding: 0 10px;
-        min-width: 65%;      
-        max-width: 65%;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 10px;
         margin: 0 auto;
     `)}
+
+    @media(min-width: 1650px) {
+        max-width: 1450px;
+    }
 `;

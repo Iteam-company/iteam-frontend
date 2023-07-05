@@ -262,6 +262,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                         minHeight: "290px",
                                         minWidth: "290px",
                                         overflow: "hidden",
+                                        marginLeft: "7px",
+                                        transform: "none",
 
                                         ...(!!index
                                             ? {
@@ -274,9 +276,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     const imageStyle = {
                                         position: "absolute",
                                         top: "0",
+                                        left: "0",
                                         width: "100%",
                                         height: "100%",
+                                        transform: "none",
                                         overflow: "hidden",
+                                        zIndex: `${index}`,
                                         ...(!!index
                                             ? {
                                                   transform:

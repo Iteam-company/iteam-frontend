@@ -85,10 +85,9 @@ const Project = () => {
                 gap="40px"
             >
                 <FlexRow
-                    mw="1068px"
+                    mw="1200px"
                     w="100%"
                     justifyContent="start"
-                    p="20px 20px 0"
                     style={{ boxSizing: "border-box" }}
                 >
                     <Link
@@ -133,7 +132,7 @@ const Project = () => {
                         <FlexColumn
                             w="100%"
                             h="100%"
-                            gap="20px"
+                            gap="40px"
                             alignItems="center"
                             position="relative"
                         >
@@ -146,7 +145,7 @@ const Project = () => {
                                 loading="lazy"
                             />
                             <FlexColumn
-                                mw="1068px"
+                                mw="1150px"
                                 w="100%"
                                 justifyContent="start"
                                 alignItems="start"
@@ -160,11 +159,12 @@ const Project = () => {
                                     Solution
                                 </Text>
                             </FlexColumn>
-                            <Desktop w="100%" mw="1068px" zIndex="2">
+                            <Desktop w="100%" mw="1200px" zIndex="2" p="0 10px">
                                 <FlexRow
                                     justifyContent="space-between"
                                     alignItems="center"
                                     w="100%"
+                                    gap="40px"
                                 >
                                     {[data.projectDetail.solution[0]].map(
                                         (
@@ -181,7 +181,7 @@ const Project = () => {
                                                 }}
                                                 w="25%"
                                                 p="24px"
-                                                gap="15px"
+                                                gap="40px"
                                                 key={index}
                                             >
                                                 <FlexRow
@@ -258,7 +258,7 @@ const Project = () => {
                                                 }}
                                                 w="25%"
                                                 p="24px"
-                                                gap="15px"
+                                                gap="8px"
                                                 key={index}
                                             >
                                                 <FlexRow
@@ -411,9 +411,8 @@ const Project = () => {
                             </Mobile>
                             <FlexContainer
                                 w="100%"
-                                mw="1068px"
+                                mw="1180px"
                                 gap="40px"
-                                p="30px 0"
                                 zIndex="2"
                                 style={{
                                     alignItems: "center",
@@ -422,7 +421,7 @@ const Project = () => {
                                 <FlexRow>
                                     <FlexColumn
                                         w="100%"
-                                        justifyContent="start"
+                                        justifyContent="space-between"
                                         alignItems="start"
                                         gap="15px"
                                     >
@@ -474,12 +473,15 @@ const Project = () => {
                                 <FlexColumn
                                     w="100%"
                                     justifyContent="center"
-                                    alignItems="center"
+                                    alignItems="space-between"
                                     zIndex="2"
+                                    style={{
+                                        justifyItems: "flex-end",
+                                        maxWidth: "450px",
+                                    }}
                                 >
                                     <div
                                         style={{
-                                            width: "100%",
                                             maxWidth: "450px",
                                             background: COLORS.white,
                                             boxShadow:
@@ -488,6 +490,7 @@ const Project = () => {
                                             borderRadius: "16px",
                                             overflow: "hidden",
                                             aspectRatio: "1.8/1",
+                                            display: "flex",
                                         }}
                                     >
                                         <div
@@ -523,6 +526,8 @@ const Project = () => {
                                                               "center",
                                                           //   padding: "0 0 200px 0",
                                                           aspectRatio: "1.8/1",
+                                                          justifyItems:
+                                                              "flex-end",
                                                       }
                                             }
                                         ></div>
@@ -546,10 +551,10 @@ const Project = () => {
                         <FlexColumn
                             gap="40px"
                             w="100%"
-                            mw="1068px"
+                            mw="1200px"
                             justifyContent="center"
                             alignItems="center"
-                            p="30px 0"
+                            p="40px 10px"
                         >
                             <Divider />
                             <Text
