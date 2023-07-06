@@ -151,7 +151,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     }, []);
 
     return (
-        <AdaptContainer>
+        <AdaptContainer mw="1450px">
             <section
                 className="container"
                 style={{

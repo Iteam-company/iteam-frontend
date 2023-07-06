@@ -112,7 +112,7 @@ const Team = () => {
                         mobileRight={0}
                         priority={true}
                     />
-                    <AdaptContainer>
+                    <AdaptContainer mw="1450px">
                         <FlexColumn justifyContent="center" alignItems="start">
                             <Text
                                 size={TEXT_SIZES.small.s}
