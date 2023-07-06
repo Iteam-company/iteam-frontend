@@ -162,7 +162,11 @@ export const Footer: FC<PropsI> = ({
             <FlexRow justifyContent="center" bg={COLORS.dark} p="30px 0">
                 <Adaptive>
                     <AdaptContainer>
-                        <Text color={COLORS.white} size={TEXT_SIZES.medium.xs}>
+                        <Text
+                            color={COLORS.white}
+                            size={TEXT_SIZES.small.l}
+                            weight={TEXT_WEIGHTS.main}
+                        >
                             {footerText.rights}
                         </Text>
                     </AdaptContainer>
