@@ -97,7 +97,7 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
     transition: 0.3s rotate;
     z-index: 0 !important;
     max-width: ${({ maxWidth }) => maxWidth}px;
-
+    pointer-events: none;
     ${({ top }) => top && `top: ${top}%`};
     ${({ bottom }) => bottom && `bottom: ${bottom}%`};
     ${({ right }) => right && `right: ${right}%`};
@@ -108,13 +108,16 @@ const BGImageStyled = styled(Image).attrs<BgImageI & ImagePosition>(
         ${({ mobileBottom }) => mobileBottom && `bottom: ${mobileBottom}%`};
         ${({ mobileRight }) => mobileRight && `right: ${mobileRight}%`};
         ${({ mobileLeft }) => mobileLeft && `left: ${mobileLeft}%`};
+        pointer-events: none;
     }
 
     @media (max-width: 992px) {
         display: ${({ ds }) => (ds ? ds : "none")};
+        pointer-events: none;
     }
     @media (min-width: 2000px) {
         positin: absolute;
+        pointer-events: none;
         top: 30%;
         right: -10%;
     }
