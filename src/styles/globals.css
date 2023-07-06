@@ -6,6 +6,9 @@
 @import "swiper/css/mousewheel";
 @import "swiper/swiper-bundle.css";
 
+.no-scroll {
+    overflow: hidden !important;
+}
 body,
 * {
     margin: 0;
@@ -17,6 +20,7 @@ body,
     user-select: none; 
  
 }
-.no-scroll {
-    overflow: hidden !important;
+body {
+    overflow-x: hidden !important;
 }
+

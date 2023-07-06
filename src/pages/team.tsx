@@ -134,7 +134,7 @@ const Team = () => {
                         </FlexColumn>
                     </AdaptContainer>
                 </FlexColumn>
-                {team?.length && (
+                {team?.length ? (
                     <>
                         <Desktop>
                             <SmoothSlider
@@ -229,7 +229,7 @@ const Team = () => {
                             />
                         </Mobile>
                     </>
-                )}
+                ) : null}
             </FlexColumn>
         </>
     );

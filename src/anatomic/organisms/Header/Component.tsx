@@ -19,7 +19,7 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
             p="50px 10px 0"
             bg={COLORS.pageBG}
         >
-            <FlexRow w="92%" alignItems="center" justifyContent="space-between">
+            <FlexRow w="90%" alignItems="center" justifyContent="space-between">
                 <Logo />
                 <FlexRow
                     w="74%"
