@@ -141,7 +141,12 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                 <Text
                                                     weight={TEXT_WEIGHTS.main}
                                                     color={COLORS.textSecondary}
-                                                    size={TEXT_SIZES.small.xs}
+                                                    size={
+                                                        size.width! > 1600
+                                                            ? TEXT_SIZES.small.s
+                                                            : TEXT_SIZES.small
+                                                                  .xs
+                                                    }
                                                 >
                                                     {elem.text}
                                                 </Text>
@@ -404,7 +409,12 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         >
                             Rate
                         </Text>
-                        <Text>{rate} $</Text>
+                        <Text
+                            weight={TEXT_WEIGHTS.main}
+                            size={TEXT_SIZES.medium.m}
+                        >
+                            {rate} $
+                        </Text>
                     </FlexColumn>
                 </FlexRow>
             </Mobile>

@@ -25,4 +25,5 @@ export const enum COLORS {
     textMinor = "#BFBFBF",
     inputBorder = "#B8B8B8",
     technologyGradient = "105.85deg, #6b18be 8.7%, #c6b8fc 95.24%",
+    greyTitle = "#736E87",
 }

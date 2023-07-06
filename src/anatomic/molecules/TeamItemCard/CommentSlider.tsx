@@ -1,11 +1,11 @@
 import React, { FC, memo } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper";
 import { ItalicText, StyledSwiper } from "./styled";
 import { COLORS } from "@/lib/theme/color";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
+import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
@@ -51,7 +51,7 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                 justifyContent="center"
                                 alignItems="center"
                             >
-                                <ItalicText
+                                {/* <ItalicText
                                     weight="300"
                                     size={
                                         size.width! < 1000
@@ -61,7 +61,18 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem?.text}&quot;
-                                </ItalicText>
+                                </ItalicText> */}
+                                <Text
+                                    weight={TEXT_WEIGHTS.normal}
+                                    size={
+                                        size.width! < 1000
+                                            ? TEXT_SIZES.small.m
+                                            : TEXT_SIZES.small.l
+                                    }
+                                    color={COLORS.textSecondary}
+                                >
+                                    &quot;{elem?.text}&quot;
+                                </Text>
                             </FlexColumn>
                         </Desktop>
                         <Mobile

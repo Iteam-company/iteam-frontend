@@ -96,15 +96,15 @@ export const TeamItemInfo: FC<{
                 <FlexColumn gap="10px">
                     <Avatar image={getStrapiImage(url)} />
                     <Text
-                        weight={TEXT_WEIGHTS.medium}
-                        color={COLORS.dark}
-                        size={TEXT_SIZES.small.xl}
+                        weight={TEXT_WEIGHTS.bold}
+                        color={COLORS.greyTitle}
+                        size={TEXT_SIZES.small.l}
                         textTransform="uppercase"
                     >
                         {name}
                     </Text>
                     <Text
-                        size={TEXT_SIZES.small.l}
+                        size={TEXT_SIZES.small.m}
                         color={COLORS.textSecondary}
                     >
                         {position}
