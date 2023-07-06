@@ -411,6 +411,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         </Text>
                         <Text
                             weight={TEXT_WEIGHTS.main}
+                            color={COLORS.black}
                             size={TEXT_SIZES.medium.m}
                         >
                             {rate} $

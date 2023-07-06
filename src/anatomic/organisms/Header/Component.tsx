@@ -16,7 +16,7 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
             alignItems="center"
             justifyContent="center"
             h="50px"
-            p="50px 0 0"
+            p="50px 10px 0"
             bg={COLORS.pageBG}
         >
             <FlexRow w="92%" alignItems="center" justifyContent="space-between">
