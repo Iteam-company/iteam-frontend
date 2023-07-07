@@ -10,7 +10,7 @@ export default function (req: NextApiRequest, res: NextApiResponse) {
     Thank you for your patience.
     
     Best regards,
-    Iteam
+    iTeam
     `;
 
     const transporter = nodemailer.createTransport({
