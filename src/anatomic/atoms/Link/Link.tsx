@@ -22,17 +22,19 @@ export const Link: FC<Props> = ({
             linkPosition={linkPosition}
             className={className}
         >
-            {icon ? (
-                <FlexRow alignItems="center" gap={gap}>
-                    {icon}
-                    <Text {...textStyles}>{linkText}</Text>
-                </FlexRow>
-            ) : (
-                <Text type={TEXT_TYPES.text_block} {...textStyles}>
-                    {linkText}
-                </Text>
-            )}
-            {children}
+            <>
+                {icon ? (
+                    <FlexRow alignItems="center" gap={gap}>
+                        {icon}
+                        <Text {...textStyles}>{linkText}</Text>
+                    </FlexRow>
+                ) : (
+                    <Text type={TEXT_TYPES.text_block} {...textStyles}>
+                        {linkText}
+                    </Text>
+                )}
+                {children}
+            </>
         </StyledLink>
     );
 };

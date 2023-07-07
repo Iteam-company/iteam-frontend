@@ -41,7 +41,7 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                             color={COLORS.light}
                             lineHeight="39px"
                         >
-                            Explore with ITeam:
+                            Explore with iTeam:
                         </Text>
                     </FlexColumn>
                     <div

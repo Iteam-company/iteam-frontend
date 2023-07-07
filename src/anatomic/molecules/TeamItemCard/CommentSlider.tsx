@@ -87,18 +87,17 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                 justifyContent="center"
                                 alignItems="center"
                             >
-                                <ItalicText
-                                    weight="300"
-                                    size={TEXT_SIZES.small.xl}
-                                    mobileSize={
-                                        size.height! < 600
-                                            ? "10px"
-                                            : TEXT_SIZES.small.s
+                                <Text
+                                    weight={TEXT_WEIGHTS.normal}
+                                    size={
+                                        size.width! < 1000
+                                            ? TEXT_SIZES.small.m
+                                            : TEXT_SIZES.small.l
                                     }
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem?.text}&quot;
-                                </ItalicText>
+                                </Text>
                             </FlexColumn>
                         </Mobile>
                     </SwiperSlide>
