@@ -6,6 +6,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { CSSProperties } from "styled-components";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -273,7 +274,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                             : {}),
                                     } as any;
 
-                                    const imageStyle = {
+                                    const imageStyle: CSSProperties = {
                                         position: "absolute",
                                         top: "0",
                                         left: "0",
@@ -288,7 +289,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                                       "translate(-100%, 0px)",
                                               }
                                             : {}),
-                                    } as any;
+                                    };
 
                                     return (
                                         <div
