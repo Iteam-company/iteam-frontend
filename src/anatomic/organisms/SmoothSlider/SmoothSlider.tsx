@@ -13,6 +13,7 @@ export interface SlidesInterface {
     navigation?: boolean;
     height?: string;
     editionContent?: ReactNode;
+    slidePosition?: string;
 }
 export interface SlideInterface {
     content: ReactNode[];
@@ -25,10 +26,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     navigation = true,
     height,
     editionContent,
+    slidePosition,
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const h = size.width! > 1800 ? "800px" : height;
+    const h = size.width! > 1800 ? "720px" : height;
+    const leftPercent = size.width! < 500 ? "-10%" : "0";
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
@@ -148,7 +151,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     }, []);
 
     return (
-        <AdaptContainer>
+        <AdaptContainer mw="1450px">
             <section
                 className="container"
                 style={{
@@ -168,7 +171,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         margin: "0 20px",
                         height: h ? h : "90vh",
                         width: "95vw",
-                        paddingLeft: navigation ? "50px" : "0px",
+                        paddingLeft: navigation ? "5%" : "0px",
                         boxSizing: "border-box",
                         borderRadius: "20px",
                         backgroundColor: COLORS.white,
@@ -176,6 +179,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
+                        overflow: "hidden",
                     }}
                 >
                     {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
@@ -185,6 +189,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                             position: "relative",
                             width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
+
                             overflow: "hidden",
                         }}
                     >
@@ -193,12 +198,15 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 const containerStyle = {
                                     position: "absolute",
                                     top: "0",
+
                                     height: "100%",
                                     display: "flex",
-                                    justifyContent: "center",
+                                    justifyContent: slidePosition
+                                        ? slidePosition
+                                        : "center",
                                     alignItems: "center",
                                     zIndex: index,
-                                    // width: "100%",
+                                    width: slidePosition ? "auto" : "100%",
                                     overflow: "hidden",
                                     ...(!!index
                                         ? {
@@ -240,17 +248,23 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 position: "relative",
                                 paddingBottom: "36.25%",
                                 height: "auto",
-                                width: "40vw",
+                                width: "55%",
                             }}
                         >
                             {!!slides.length &&
                                 slides.map(({ image }, index) => {
                                     const containerStyle = {
                                         position: "absolute",
-                                        top: "0",
+                                        top: size.width! < 500 ? "-49%" : "0",
+                                        left: leftPercent,
                                         width: "100%",
                                         height: "100%",
+                                        minHeight: "290px",
+                                        minWidth: "290px",
                                         overflow: "hidden",
+                                        marginLeft: "7px",
+                                        transform: "none",
+
                                         ...(!!index
                                             ? {
                                                   transform:
@@ -262,9 +276,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     const imageStyle = {
                                         position: "absolute",
                                         top: "0",
+                                        left: "0",
                                         width: "100%",
                                         height: "100%",
+                                        transform: "none",
                                         overflow: "hidden",
+                                        zIndex: `${index}`,
                                         ...(!!index
                                             ? {
                                                   transform:
@@ -311,6 +328,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         </div>
                     )}
                 </div>
+
                 {editionContent && editionContent}
             </section>
         </AdaptContainer>

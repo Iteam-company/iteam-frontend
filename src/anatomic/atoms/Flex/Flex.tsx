@@ -14,6 +14,7 @@ interface DefaultElementProps {
     borderRadius?: string;
     position?: string;
     zIndex?: string;
+    gridGap?: string;
 }
 
 interface FlexProps {
@@ -25,6 +26,8 @@ interface FlexProps {
     gap?: string;
     type?: "column";
     ov?: string;
+    bl?: string;
+    lg?: boolean;
 }
 
 export const Flex = styled.div<FlexProps & DefaultElementProps>`
@@ -49,6 +52,9 @@ export const Flex = styled.div<FlexProps & DefaultElementProps>`
     flex-direction: ${(props) => props.type || "row"};
     box-shadow: ${(props) => props.boxShadow || "none"};
     border-radius: ${(props) => props.borderRadius || "none"};
+    & > * {
+        margin-right: ${(props) => props.gridGap || "0px"};
+    }
 `;
 
 export const FlexRow = styled(Flex)`
@@ -58,4 +64,12 @@ export const FlexRow = styled(Flex)`
 export const FlexColumn = styled(Flex)`
     flex-direction: column;
     overflow: ${(props) => props.ov || "visible"};
+`;
+
+export const FlexForIos = styled(FlexColumn)`
+    background: -moz-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100);
+    background: -webkit-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100%);
+    background: -o-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100%);
+    background: -ms-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100%);
+    background: linear-gradient(180deg, #170a2c 53.12%, #9f93be 100%);
 `;

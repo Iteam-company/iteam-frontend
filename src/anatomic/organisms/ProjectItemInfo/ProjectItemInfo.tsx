@@ -4,19 +4,55 @@ import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { HorizontalSwiperElem } from "@/anatomic/molecules/HorizontalSwiper";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { COLORS } from "@/lib/theme/color";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { SwiperSlide } from "swiper/react";
+import Image from "next/image";
+import { Button } from "@/anatomic/atoms/Button";
+import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
+import Arrow_Rigth from "@/assets/icon/arrow-right.svg";
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { log } from "console";
+import { Box } from "../ExploreWithIteam/styled";
+import { Gallery } from "@/anatomic/molecules/Gallery";
 
-export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
-    color,
-    title,
-}) => {
+export const ProjectItemInfo: FC<{
+    data: any;
+}> = ({ data }) => {
+    const size = useWindowSize();
+    const { title, color } = data.projectDetail;
+    const {
+        developedTitle,
+        developedText,
+        requestTitle,
+        requestText,
+        approachTitle,
+        approachText,
+        visitLink,
+    } = data;
+    const [open, setOpen] = useState(false);
+    const func = (param: boolean) => {
+        setOpen(param);
+    };
+
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const openMobileGallery = () => {
+        setMobileOpen(true);
+    };
+
+    const mobFunc = (param: boolean) => {
+        setMobileOpen(param);
+    };
+
+    const openGallery = () => {
+        setOpen(true);
+    };
     return (
         <>
-            <Desktop>
-                <Card>
-                    <FlexRow w="100%" mh="80vh" alignItems="center" gap="20px">
+            <Desktop mW={1000}>
+                <Card mw="1200px" p="0 10px">
+                    <FlexRow w="100%" alignItems="center" gap="20px">
                         <FlexColumn w="100%" gap="20px">
                             <GradientTitle
                                 size={TEXT_SIZES.medium.l}
@@ -31,14 +67,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Developed responsive app, created new
-                                    features.
+                                    {developedTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {developedText}
                                 </Text>
                             </FlexColumn>
                             <FlexColumn gap="10px">
@@ -46,13 +78,10 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Client’s request
+                                    {requestTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {requestText}
                                 </Text>
                             </FlexColumn>
                             <FlexColumn gap="10px">
@@ -60,53 +89,123 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.main}
                                 >
-                                    Our approach
+                                    {approachTitle}
                                 </Text>
                                 <Text size={TEXT_SIZES.small.l}>
-                                    Design and development of a Angular app for
-                                    the users to deploy media content on
-                                    different platforms such as Apple Music,
-                                    Spotify, etc.
+                                    {approachText}
                                 </Text>
+                            </FlexColumn>
+                            <FlexColumn m="50px 0 0 0 ">
+                                <Button
+                                    href={visitLink}
+                                    gradient={data.projectDetail.color}
+                                    variant={BUTTON_VARIANTS.gradient_link}
+                                    label={
+                                        <FlexRow
+                                            alignItems="center"
+                                            gridGap="10px"
+                                        >
+                                            <Text
+                                                size={TEXT_SIZES.small.s}
+                                                color={COLORS.dark}
+                                                weight={TEXT_WEIGHTS.main}
+                                            >
+                                                {visitLink
+                                                    ? "Visit site"
+                                                    : "UNDER NDA"}
+                                            </Text>
+                                            {visitLink ? (
+                                                <Image
+                                                    src={Arrow_Rigth.src}
+                                                    alt="swiper-imagurkle"
+                                                    width="21"
+                                                    height="20"
+                                                />
+                                            ) : null}
+                                        </FlexRow>
+                                    }
+                                />
                             </FlexColumn>
                         </FlexColumn>
 
                         <FlexColumn w="100%">
                             <HorizontalSwiperElem
-                                minHeight="64vh"
-                                width="100%"
-                                maxWidth="42vw"
+                                minHeight={
+                                    size.height! > 800 ? "350px" : "58vh"
+                                }
+                                maxWidth="470px"
+                                loop={false}
+                                slidesPerView={1}
+                                spaceBetween={70}
+                                loopedSlides={1}
+                                m="0 0 50px 0"
+                                mb={size.height! < 580 ? "10%" : ""}
                             >
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    1
-                                </SwiperSlide>
-                                <SwiperSlide
-                                    style={{
-                                        background:
-                                            "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                                        boxShadow:
-                                            "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                                        borderRadius: "16px",
-                                        minHeight: "50vh",
-                                    }}
-                                >
-                                    2
-                                </SwiperSlide>
+                                {data.mainImages.data.map((item: any) => {
+                                    return (
+                                        <SwiperSlide
+                                            key={item.attributes.url}
+                                            style={{
+                                                background:
+                                                    "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
+                                                boxShadow:
+                                                    "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                                                borderRadius: "18px",
+                                                overflow: "hidden",
+                                                maxWidth: "470px",
+                                                maxHeight: "250px",
+                                                aspectRatio: "1.8/1.5",
+                                                cursor: "pointer",
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    justifyContent: "center",
+                                                    alignItems: "center",
+
+                                                    width: "100%",
+                                                    height: "auto",
+                                                }}
+                                            >
+                                                <div
+                                                    onClick={openGallery}
+                                                    style={{
+                                                        backgroundImage: `url(${item.attributes.url})`,
+                                                        backgroundRepeat:
+                                                            "no-repeat",
+                                                        backgroundSize:
+                                                            "100% 100%",
+                                                        backgroundPosition:
+                                                            "center",
+                                                        overflow: "hidden",
+                                                        width: "100%",
+                                                        height: "250px",
+                                                        aspectRatio: "1.8/1.5",
+                                                    }}
+                                                ></div>
+                                                {/* <Image
+                                                    src={item.attributes.url}
+                                                    alt="swiper-image"
+                                                    width="470"
+                                                    height="300"
+                                                /> */}
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                })}
                             </HorizontalSwiperElem>
+                            <Gallery
+                                open={open}
+                                func={func}
+                                data={data.mainImages.data}
+                            ></Gallery>
                         </FlexColumn>
                     </FlexRow>
                 </Card>
             </Desktop>
             <Mobile
+                mW={1000}
                 h="100%"
                 w="100%"
                 gap="20px"
@@ -122,65 +221,124 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
                 </GradientTitle>
 
                 <HorizontalSwiperElem
-                    minHeight="55vh"
+                    minHeight="230px"
+                    m="0 0 10px 0 "
                     width="100%"
                     maxWidth="850px"
                     navigation={false}
                     pagination={true}
                 >
-                    <SwiperSlide
-                        style={{
-                            background:
-                                "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                            borderRadius: "16px",
-                            minHeight: "45vh",
-                        }}
-                    >
-                        1
-                    </SwiperSlide>
-                    <SwiperSlide
-                        style={{
-                            background:
-                                "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
-                            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.25)",
-                            borderRadius: "16px",
-                            minHeight: "45vh",
-                        }}
-                    >
-                        2
-                    </SwiperSlide>
+                    {data.mainImages.data.map((item: any) => {
+                        return (
+                            <SwiperSlide
+                                key={item.attributes.url}
+                                style={{
+                                    background:
+                                        "linear-gradient(113.64deg, #F1F1F1 3.19%, rgba(197, 194, 194, 0.4) 95.85%)",
+                                    boxShadow:
+                                        "0px 10px 20px rgba(0, 0, 0, 0.25)",
+                                    borderRadius: "18px",
+                                    overflow: "hidden",
+                                    maxWidth: "800px",
+                                    aspectRatio: "1.8/1",
+                                }}
+                            >
+                                <div
+                                    onClick={openMobileGallery}
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        aspectRatio: "1.8/1",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            backgroundImage: `url(${item.attributes.url})`,
+                                            backgroundRepeat: "no-repeat",
+                                            backgroundSize: "100% 100%",
+                                            backgroundPosition: "center",
+                                            overflow: "hidden",
+                                            width: "100%",
+                                            height: "auto",
+                                            aspectRatio: "1.8/1",
+                                        }}
+                                    ></div>
+                                </div>
+                            </SwiperSlide>
+                        );
+                    })}
                 </HorizontalSwiperElem>
-
-                <FlexColumn gap="10px">
-                    <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
-                        Developed responsive app, created new features.
+                <Gallery
+                    open={mobileOpen}
+                    func={mobFunc}
+                    data={data.mainImages.data}
+                ></Gallery>
+                <FlexColumn gap="10px" w="100%">
+                    <Text
+                        color={COLORS.dark}
+                        weight={TEXT_WEIGHTS.main}
+                        whiteSpace="pre-line"
+                    >
+                        {developedTitle}
                     </Text>
-                    <Text size={TEXT_SIZES.small.l}>
-                        Design and development of a Angular app for the users to
-                        deploy media content on different platforms such as
-                        Apple Music, Spotify, etc.
+                    <Text size={TEXT_SIZES.small.l} whiteSpace="pre-line">
+                        {developedText}
                     </Text>
 
-                    <FlexColumn gap="10px">
-                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
-                            Client’s request
+                    <FlexColumn
+                        gap="10px"
+                        w="100%"
+                        style={{ minWidth: "100%" }}
+                    >
+                        <Text
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.main}
+                            whiteSpace="pre-line"
+                        >
+                            {requestTitle}
                         </Text>
-                        <Text size={TEXT_SIZES.small.l}>
-                            Design and development of a Angular app for the
-                            users to deploy media content on different platforms
-                            such as Apple Music, Spotify, etc.
+                        <Text size={TEXT_SIZES.small.l} whiteSpace="pre-line">
+                            {requestText}
                         </Text>
                     </FlexColumn>
-                    <FlexColumn gap="10px">
-                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
-                            Our approach
+                    <FlexColumn gap="10px" w="100%">
+                        <Text
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.main}
+                            whiteSpace="pre-line"
+                        >
+                            {approachTitle}
                         </Text>
-                        <Text size={TEXT_SIZES.small.l}>
-                            Design and development of a Angular app for the
-                            users to deploy media content on different platforms
-                            such as Apple Music, Spotify, etc.
+                        <Text size={TEXT_SIZES.small.l} whiteSpace="pre-line">
+                            {approachText}
                         </Text>
+                    </FlexColumn>
+                    <FlexColumn m="40px 0 0 0 ">
+                        <Button
+                            href={visitLink}
+                            gradient={data.projectDetail.color}
+                            variant={BUTTON_VARIANTS.gradient_link}
+                            label={
+                                <FlexRow alignItems="center" gridGap="10px">
+                                    <Text
+                                        size={TEXT_SIZES.small.s}
+                                        color={COLORS.dark}
+                                        weight={TEXT_WEIGHTS.main}
+                                    >
+                                        {visitLink ? "Visit site" : "UNDER NDA"}
+                                    </Text>
+                                    {visitLink ? (
+                                        <Image
+                                            src={Arrow_Rigth.src}
+                                            alt="swiper-imagurkle"
+                                            width="21"
+                                            height="20"
+                                        />
+                                    ) : null}
+                                </FlexRow>
+                            }
+                        />
                     </FlexColumn>
                 </FlexColumn>
             </Mobile>
@@ -188,9 +346,12 @@ export const ProjectItemInfo: FC<{ color: string; title: string }> = ({
     );
 };
 
-export const Card = styled(FlexColumn)`
+interface cardProps {
+    mw?: string;
+}
+export const Card = styled(FlexColumn)<cardProps>`
     z-index: 1;
-    max-width: 1068px;
+    max-width: ${({ mw }) => (mw ? mw : "1068px")};
     padding: 30px;
     background: ${COLORS.white};
     box-shadow: 0px 4px 20px rgba(37, 7, 67, 0.37);

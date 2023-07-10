@@ -17,7 +17,7 @@ export const BenefitsSlide: FC<BenefitsInterface> = ({
     id,
 }) => {
     return (
-        <FlexContainer gap="70px">
+        <FlexContainer gap="40px">
             <FlexColumn h="100%" gap="25px">
                 <Text
                     size={TEXT_SIZES.medium.m}

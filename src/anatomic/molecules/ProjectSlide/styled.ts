@@ -21,3 +21,6 @@ export const Stick = styled.div`
     height: 20px;
     background-color: black;
 `
+
+export const SliderBox = styled.div`
+    padding-left: 20px`

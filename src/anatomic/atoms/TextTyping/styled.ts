@@ -6,9 +6,7 @@ export const StyledTypingEffect = styled.div`
     font-size: ${TEXT_SIZES.large.m};
     color: ${COLORS.dark};
     font-weight: ${TEXT_WEIGHTS.medium};
-
 `;
-
 
 export const ShowContainet = styled.div`
     display: none;
@@ -16,7 +14,7 @@ export const ShowContainet = styled.div`
     @media (min-width: 670px) {
         display: block;
     }
-`
+`;
 
 export const AdoptForText = styled.div`
     font-size: ${TEXT_SIZES.small.m};
@@ -32,5 +30,4 @@ export const AdoptForText = styled.div`
         font-size: ${TEXT_SIZES.medium.l};
         margin-bottom: 10px;
     }
-`
-
+`;

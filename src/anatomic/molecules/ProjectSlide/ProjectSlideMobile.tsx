@@ -8,6 +8,8 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
+import Image from "next/image";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
@@ -16,63 +18,106 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     technology,
     img,
     color,
+    index,
 }) => {
+    const size = useWindowSize();
     return (
         <>
             <FlexColumn
                 justifyContent="center"
                 alignItems="center"
-                gap="20px"
+                gap="15px"
                 w="fit-content"
             >
                 <FlexColumn
                     gap="20px"
-                    w="100%"
-                    p="0 20px"
-                    style={{ boxSizing: "border-box" }}
+                    w="90%"
+                    justifyContent="flex-start"
+                    flexWrap="wrap"
+                    style={
+                        size.width! < 381
+                            ? {
+                                  boxSizing: "border-box",
+                                  whiteSpace: "pre-line",
+                                  wordBreak: "break-all",
+                              }
+                            : {
+                                  boxSizing: "border-box",
+                              }
+                    }
                 >
                     <Text
+                        w="100%"
+                        whiteSpace="pre-line"
                         color={COLORS.dark}
-                        size={TEXT_SIZES.medium.xs}
+                        size={TEXT_SIZES.medium.s}
                         weight={TEXT_WEIGHTS.medium}
                     >
                         {title}
                     </Text>
                     <Text
+                        w="100%"
                         color={COLORS.dark}
-                        size={TEXT_SIZES.small.m}
-                        weight={TEXT_WEIGHTS.main}
+                        size={
+                            size.width! < 381
+                                ? TEXT_SIZES.small.s
+                                : TEXT_SIZES.small.l
+                        }
+                        weight={TEXT_WEIGHTS.normal}
+                        whiteSpace="pre-line"
                     >
                         {description}
                     </Text>
 
-                    <FlexRow gap="15px" flexWrap="wrap">
+                    <FlexColumn
+                        gap="15px"
+                        flexWrap="wrap"
+                        justifyContent="center"
+                        alignItems="start"
+                    >
                         {technology &&
                             technology.map(
-                                (el: Technologies, index: number) => (
-                                    <FlexRow
-                                        justifyContent="center"
-                                        alignItems="center"
-                                        gap="5px"
-                                        key={index}
-                                    >
-                                        <>{iconsMobile[el.icon]}</>
-                                        <Text
-                                            size={TEXT_SIZES.small.s}
-                                            weight={TEXT_WEIGHTS.main}
-                                            color={COLORS.warmGray}
+                                (el: Technologies, index: number) => {
+                                    return (
+                                        <FlexColumn
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            flexWrap="wrap"
+                                            gap="10px"
+                                            key={index}
                                         >
-                                            {el.name}
-                                        </Text>
-                                    </FlexRow>
-                                ),
+                                            <FlexRow
+                                                justifyContent="space-between"
+                                                alignItems="center"
+                                                gap="5px"
+                                            >
+                                                <Image
+                                                    src={
+                                                        el.techIcon.data
+                                                            .attributes.url
+                                                    }
+                                                    alt="techIcon"
+                                                    width="20"
+                                                    height="20"
+                                                />
+                                                <Text
+                                                    size={TEXT_SIZES.small.l}
+                                                    weight={TEXT_WEIGHTS.main}
+                                                    color={COLORS.warmGray}
+                                                >
+                                                    {el.name}
+                                                </Text>
+                                            </FlexRow>
+                                        </FlexColumn>
+                                    );
+                                },
                             )}
-                    </FlexRow>
+                    </FlexColumn>
                 </FlexColumn>
 
                 <FitToViewport
                     style={{
-                        maxWidth: "300px",
+                        maxWidth: "350px",
                         height: "auto",
                         width: "100%",
                         display: "flex",
@@ -88,13 +133,24 @@ export const ProjectSlideMobile: FC<ProjectsInterface> = ({
                 </FitToViewport>
             </FlexColumn>
 
-            <FlexRow justifyContent="center" alignItems="center" w="100%">
+            <FlexRow
+                justifyContent={size.width! < 401 ? "flex-start" : "center"}
+                alignItems="center"
+                w="100%"
+                p="0 0 0 5px"
+            >
                 <Button
-                    href={`/project/${id}`}
+                    href={id! > 4 ? `/project/${id! + 2}` : `/project/${id}`}
                     gradient={color}
                     variant={BUTTON_VARIANTS.gradient_link}
+                    p="5px 5px 0 10px"
+                    w={size.width! < 401 ? "140px" : "160px"}
                     label={
-                        <Text color={COLORS.dark} weight={TEXT_WEIGHTS.main}>
+                        <Text
+                            color={COLORS.dark}
+                            weight={TEXT_WEIGHTS.main}
+                            size={TEXT_SIZES.small.s}
+                        >
                             View Case
                         </Text>
                     }

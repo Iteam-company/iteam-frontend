@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import { Technology } from "@/pages/team";
 import label from "../../../assets/icon/label.svg";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
     technology?: Technology[];
@@ -23,6 +24,7 @@ interface Props {
 }
 
 export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
+    const size = useWindowSize();
     return (
         <FlexColumn w="100%" alignItems="space-between">
             <Desktop w="100%" alignItems="space-between" mW={1250}>
@@ -55,7 +57,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             >
                                 <Text size="12px">0</Text>
                                 <Text size="12px">
-                                    {experience.year < 5 ? experience.year : ""}
+                                    {experience.year < 5 ? 5 : ""}
                                 </Text>
                                 <Label
                                     justifyContent="center"
@@ -95,7 +97,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         <FlexRow
                             flexWrap="wrap"
                             gap="16px"
-                            alignItems="space-between"
+                            alignItems="center"
                             h="100%"
                             w="100%"
                         >
@@ -104,7 +106,7 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                     <GradientElem
                                         gradient={COLORS.technologyGradient}
                                         key={elem.id}
-                                        width="90px"
+                                        width="44%"
                                     >
                                         <GradientElemContent
                                             justifyContent="center"
@@ -113,10 +115,11 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                         >
                                             <FlexRow
                                                 alignItems="center"
-                                                justifyContent="space-around"
+                                                justifyContent="flex-start"
+                                                gap="10px"
                                                 w="100%"
                                                 h="100%"
-                                                p="5px"
+                                                p="10px"
                                             >
                                                 <Image
                                                     src={
@@ -124,13 +127,26 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                             .attributes.url
                                                     }
                                                     alt="tech_logo"
-                                                    width="20"
-                                                    height="20"
+                                                    width={
+                                                        size.width! > 1700
+                                                            ? "25"
+                                                            : "18"
+                                                    }
+                                                    height={
+                                                        size.width! > 1700
+                                                            ? "25"
+                                                            : "18"
+                                                    }
                                                 />
                                                 <Text
                                                     weight={TEXT_WEIGHTS.main}
                                                     color={COLORS.textSecondary}
-                                                    size={TEXT_SIZES.small.xs}
+                                                    size={
+                                                        size.width! > 1600
+                                                            ? TEXT_SIZES.small.s
+                                                            : TEXT_SIZES.small
+                                                                  .xs
+                                                    }
                                                 >
                                                     {elem.text}
                                                 </Text>
@@ -269,17 +285,24 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
             </Desktop>
 
             <Mobile mW={1250}>
-                <FlexRow justifyContent="space-between" w="100%" gap="20px">
+                <FlexRow
+                    justifyContent={
+                        size.height! > 650 ? "space-between" : "center"
+                    }
+                    w="100%"
+                    gap="20px"
+                >
                     <FlexColumn gap="10px" w="100%" alignItems="center">
                         <Text
                             color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size="12px"
+                            size={size.height! > 650 ? "12px" : "10px"}
                         >
                             Experience
                         </Text>
+
                         <Text
                             color={COLORS.dark}
                             size={TEXT_SIZES.small.s}
@@ -292,26 +315,26 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                         </Text>
                     </FlexColumn>
 
-                    <FlexColumn gap="10px" w="100%" alignItems="center">
+                    <FlexColumn gap="10px" w="50%" alignItems="center">
                         <Text
                             color={COLORS.purple}
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size="12px"
+                            size={size.height! > 650 ? "12px" : "10px"}
                         >
                             Expertise
                         </Text>
                         <FlexRow
-                            flexWrap="nowrap"
+                            flexWrap={size.width! > 600 ? "nowrap" : "wrap"}
                             gap="20px"
                             alignItems="space-between"
                             h="100%"
+                            style={size.width! > 600 ? {} : { flex: "1 1 60%" }}
                         >
                             {technology &&
                                 technology.map(
                                     (elem: Technology, index: number) => {
-                                        console.log(elem);
                                         return (
                                             <FlexRow
                                                 key={elem.id}
@@ -321,6 +344,13 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                 gap="10px"
                                                 w="100%"
                                                 h="100%"
+                                                style={
+                                                    size.width! < 600
+                                                        ? {
+                                                              flex: "1 1 25%",
+                                                          }
+                                                        : {}
+                                                }
                                             >
                                                 {!(index % 2) && (
                                                     <Image
@@ -329,8 +359,16 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                                 .attributes.url
                                                         }
                                                         alt="tech_logo"
-                                                        width="17"
-                                                        height="17"
+                                                        width={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
+                                                        height={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
                                                     />
                                                 )}
                                                 {!!(index % 2) && (
@@ -340,8 +378,16 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                                                                 .attributes.url
                                                         }
                                                         alt="tech_logo"
-                                                        width="17"
-                                                        height="17"
+                                                        width={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
+                                                        height={
+                                                            size.height! > 650
+                                                                ? "17"
+                                                                : "13"
+                                                        }
                                                     />
                                                 )}
                                             </FlexRow>
@@ -359,11 +405,17 @@ export const TeamItemCard: FC<Props> = ({ technology, experience, rate }) => {
                             textTransform="uppercase"
                             textDecoration="underline"
                             weight={TEXT_WEIGHTS.medium}
-                            size="12px"
+                            size={size.height! > 650 ? "12px" : "10px"}
                         >
                             Rate
                         </Text>
-                        <Text>{rate} $</Text>
+                        <Text
+                            weight={TEXT_WEIGHTS.main}
+                            color={COLORS.black}
+                            size={TEXT_SIZES.medium.m}
+                        >
+                            {rate} $
+                        </Text>
                     </FlexColumn>
                 </FlexRow>
             </Mobile>

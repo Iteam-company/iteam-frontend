@@ -64,7 +64,9 @@ export const MobileComponent: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                 key={item.id}
                             >
                                 <LinkElem
-                                    href={item.href}
+                                    href={
+                                        item.href === "/home" ? "/" : item.href
+                                    }
                                     linkText={item.title}
                                     textStyles={{
                                         color: COLORS.white,

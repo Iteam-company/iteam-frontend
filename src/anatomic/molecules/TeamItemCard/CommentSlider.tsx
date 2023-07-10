@@ -1,11 +1,11 @@
 import React, { FC, memo } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
-import { TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper";
 import { ItalicText, StyledSwiper } from "./styled";
 import { COLORS } from "@/lib/theme/color";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
+import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
@@ -19,7 +19,7 @@ export interface CommentsI {
 export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
     const size = useWindowSize();
     const windowWidth =
-        size.width! > 1800 ? "100%" : size.width! < 700 ? "90%" : width;
+        size.width! > 1650 ? "100%" : size.width! < 700 ? "100%" : width;
     return (
         <StyledSwiper
             style={{
@@ -51,13 +51,28 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                 justifyContent="center"
                                 alignItems="center"
                             >
-                                <ItalicText
+                                {/* <ItalicText
                                     weight="300"
-                                    size={TEXT_SIZES.small.xl}
+                                    size={
+                                        size.width! < 1000
+                                            ? TEXT_SIZES.small.l
+                                            : TEXT_SIZES.small.xl
+                                    }
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem?.text}&quot;
-                                </ItalicText>
+                                </ItalicText> */}
+                                <Text
+                                    weight={TEXT_WEIGHTS.normal}
+                                    size={
+                                        size.width! < 1000
+                                            ? TEXT_SIZES.small.m
+                                            : TEXT_SIZES.small.l
+                                    }
+                                    color={COLORS.textSecondary}
+                                >
+                                    &quot;{elem?.text}&quot;
+                                </Text>
                             </FlexColumn>
                         </Desktop>
                         <Mobile
@@ -72,14 +87,17 @@ export const CommentSlider: FC<Props> = memo(({ comments, width = "62vw" }) => {
                                 justifyContent="center"
                                 alignItems="center"
                             >
-                                <ItalicText
-                                    weight="300"
-                                    size={TEXT_SIZES.small.xl}
-                                    mobileSize={TEXT_SIZES.small.s}
+                                <Text
+                                    weight={TEXT_WEIGHTS.normal}
+                                    size={
+                                        size.width! < 1000
+                                            ? TEXT_SIZES.small.m
+                                            : TEXT_SIZES.small.l
+                                    }
                                     color={COLORS.textSecondary}
                                 >
                                     &quot;{elem?.text}&quot;
-                                </ItalicText>
+                                </Text>
                             </FlexColumn>
                         </Mobile>
                     </SwiperSlide>

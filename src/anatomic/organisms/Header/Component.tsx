@@ -16,10 +16,10 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
             alignItems="center"
             justifyContent="center"
             h="50px"
-            p="50px 0 0"
+            p="50px 10px 0"
             bg={COLORS.pageBG}
         >
-            <FlexRow w="92%" alignItems="center" justifyContent="space-between">
+            <FlexRow w="90%" alignItems="center" justifyContent="space-between">
                 <Logo />
                 <FlexRow
                     w="74%"
@@ -50,16 +50,14 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                         }}
                                     />
                                 </FlexRow>
-                            ) : (
-                                item.options && (
-                                    <Dropdown
-                                        title={item.title}
-                                        activeRoute={activeRoute}
-                                        options={item.options}
-                                        key={item.id}
-                                    />
-                                )
-                            ),
+                            ) : item.options ? (
+                                <Dropdown
+                                    title={item.title}
+                                    activeRoute={activeRoute}
+                                    options={item.options}
+                                    key={item.id}
+                                />
+                            ) : null,
                         )}
                     </FlexRow>
 

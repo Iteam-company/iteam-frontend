@@ -6,11 +6,21 @@
 @import "swiper/css/mousewheel";
 @import "swiper/swiper-bundle.css";
 
+.no-scroll {
+    overflow: hidden !important;
+}
 body,
 * {
     margin: 0;
     font-family: "Poppins", sans-serif;
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+ 
 }
-.no-scroll {
-    overflow: hidden !important;
+body {
+    overflow-x: hidden !important;
 }
+

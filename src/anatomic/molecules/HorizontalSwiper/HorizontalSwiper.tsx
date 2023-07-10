@@ -31,6 +31,10 @@ interface Props {
     onSlideNext?: any;
     onSlidePrev?: any;
     centeredSlides?: any;
+    maxH?: string;
+    m?: string;
+    ref?: any;
+    mb?: string;
 }
 
 export const HorizontalSwiperElem: FC<Props> = memo(
@@ -41,6 +45,7 @@ export const HorizontalSwiperElem: FC<Props> = memo(
         maxWidth,
         onSwiper,
         onChangeSlide,
+        maxH,
         swiperRef,
         navigation = true,
         slidesPerView = 1,
@@ -57,6 +62,8 @@ export const HorizontalSwiperElem: FC<Props> = memo(
         onSlideNext,
         onSlidePrev,
         centeredSlides,
+        m,
+        mb,
     }) => {
         const onSwiperHandler = (e: any) => {
             onSwiper && onSwiper(e);
@@ -98,6 +105,8 @@ export const HorizontalSwiperElem: FC<Props> = memo(
                 initialSlide={0}
                 onSlideNextTransitionEnd={onSlideNextTransitionEnd}
                 onSlidePrevTransitionEnd={onSlidePrevTransitionEnd}
+                m={m}
+                mb={mb}
             >
                 {children}
             </StyledSwiper>

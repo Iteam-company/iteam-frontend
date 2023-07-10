@@ -2,7 +2,7 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React from "react";
+import React, { FC } from "react";
 import { Input } from "@/anatomic/atoms/Input";
 import { Formik, Form } from "formik";
 import { Button } from "@/anatomic/atoms/Button";
@@ -10,19 +10,25 @@ import { FlexContainer } from "./styled";
 import { FormSchema, FormikValues, initialValues } from "./util";
 import { useRouter } from "next/router";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
-export const BookingForm = () => {
+type Props = {
+    h?: string;
+};
+
+export const BookingForm: FC<Props> = ({ h }) => {
     const router = useRouter();
+    const size = useWindowSize();
 
     const onSubmit = (values: FormikValues) => {
         const date = new Date().toISOString().split(".")[0];
         router.push(
-            `https://calendly.com/labk19/30min/${date}?email=${values.email}`,
+            `https://calendly.com/iteamcom/30min/${date}?email=${values.email}`,
         );
     };
 
     return (
-        <WhiteSection>
+        <WhiteSection h={h}>
             <Text
                 color={COLORS.textPrimary}
                 weight={TEXT_WEIGHTS.medium}
@@ -40,7 +46,13 @@ export const BookingForm = () => {
                 validationSchema={FormSchema}
             >
                 {({ values, setFieldValue, errors, touched }) => (
-                    <Form style={{ width: "500px" }}>
+                    <Form
+                        style={
+                            size.width! < 321
+                                ? { width: "460px" }
+                                : { width: "500px" }
+                        }
+                    >
                         <FlexContainer
                             gap="45px"
                             alignItems="start"

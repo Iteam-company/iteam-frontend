@@ -52,7 +52,12 @@ export const TextArea: FC<Props> = ({
                     value={value}
                 />
             </Container>
-            {error && <Text size={TEXT_SIZES.small.m}>{error}</Text>}
+            {error && (
+                <Text size={TEXT_SIZES.small.m} color={COLORS.red}>
+                    {" "}
+                    {error}
+                </Text>
+            )}
         </FlexColumn>
     );
 };
