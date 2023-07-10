@@ -30,7 +30,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const h = size.width! > 1800 ? "720px" : height;
+    const h = size.width! > 1800 ? "700px" : height;
     const leftPercent = size.width! < 500 ? "-10%" : "0";
     useIsomorphicLayoutEffect(() => {
         const context = gsap.context(() => {
@@ -264,6 +264,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                         overflow: "hidden",
                                         marginLeft: "7px",
                                         transform: "none",
+                                        zIndex: `${10 + index}`,
+                                        background: "white",
 
                                         ...(!!index
                                             ? {

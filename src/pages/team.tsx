@@ -23,6 +23,7 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { SiZwave } from "react-icons/si";
 
 export interface TeamInterface {
     id?: number;

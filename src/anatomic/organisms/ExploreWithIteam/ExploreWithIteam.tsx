@@ -65,7 +65,6 @@ export const ExploreWithIteam: FC<Props> = ({ data }) => {
                                     <ExploreBox
                                         key={`${block.backgroundImage.data.attributes.url}_${block.id}`}
                                         backgroundImage={`url(${block.backgroundImage.data.attributes.url})`}
-                                        bg="rgba(77, 38, 95, 0.55)"
                                     >
                                         <HoverBox>
                                             <FlexColumn

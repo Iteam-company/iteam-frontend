@@ -84,6 +84,7 @@ const Home = () => {
                             mobileTop={14}
                             priority={true}
                         />
+
                         <FlexColumn
                             h={widthSize}
                             w="90%"
