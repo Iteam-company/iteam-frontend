@@ -16,7 +16,6 @@ import Image from "next/image";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Script from "next/script";
 import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam";
-import { useEffect, useState } from "react";
 
 const Home = () => {
     const [data, isLoading] = useStrapiData(Pages.homepage);

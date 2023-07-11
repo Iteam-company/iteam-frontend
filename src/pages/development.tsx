@@ -100,8 +100,8 @@ const Development = () => {
                         maxWidth={550}
                         right={-20}
                         bottom={20}
-                        mobileRight={-50}
-                        mobileBottom={20}
+                        mobileRight={-70}
+                        mobileBottom={25}
                         loading="lazy"
                     />
                     <BgImage
