@@ -2,7 +2,7 @@ import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import nodemailerClient from "@/axios-nodemailer";
 import { Input } from "@/anatomic/atoms/Input";
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { FiMail } from "react-icons/fi";
 import { BiUser } from "react-icons/bi";
 import { BsWindowDock } from "react-icons/bs";
@@ -24,9 +24,23 @@ import { motion } from "framer-motion";
 import { FormSchema, FormikValues, initialValues } from "./util";
 import { StyledForm, Icon } from "./styled";
 
-export const FormElem = () => {
+type Props = {
+    closeDeskModal?: () => void;
+};
+
+export const FormElem: FC<Props> = ({ closeDeskModal }) => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        if (closeDeskModal) {
+            const timer = setTimeout(() => {
+                success && closeDeskModal();
+            }, 2500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [success]);
 
     const onSubmit = async (values: FormikValues) => {
         try {

@@ -17,6 +17,7 @@ export interface Props {
     disabled?: boolean;
     gradient?: any;
     h?: string | null;
+    clickFunc?: () => void;
 }
 
 export const enum BUTTON_VARIANTS {
