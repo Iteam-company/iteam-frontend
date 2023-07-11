@@ -26,7 +26,8 @@ export const Button: FC<Props> = ({
     disabled,
     gradient,
     h,
-    m
+    m,
+    clickFunc,
 }) => {
     if (variant === BUTTON_VARIANTS.color) {
         return (
@@ -70,7 +71,15 @@ export const Button: FC<Props> = ({
     }
     if (variant === BUTTON_VARIANTS.gradient_link) {
         return (
-            <GradientLink href={href} className={className} gradient={gradient} h={h} w={w} m={m}>
+            <GradientLink
+                href={href}
+                className={className}
+                gradient={gradient}
+                h={h}
+                w={w}
+                m={m}
+                onClick={clickFunc}
+            >
                 <GradientButtonContent
                     justifyContent="center"
                     alignItems="center"

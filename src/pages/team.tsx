@@ -24,6 +24,8 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
 import { SiZwave } from "react-icons/si";
+import { ContactUsModal } from "@/anatomic/organisms/Modal";
+import { FormElem } from "@/anatomic/organisms/Form/Form";
 
 export interface TeamInterface {
     id?: number;
@@ -48,7 +50,18 @@ export interface Technology {
 const Team = () => {
     const [team, setTeam] = useState<any>([]);
     const [data, isLoading] = useStrapiData(Pages.company);
+    const [openDeskModal, setOpenDeskModal] = useState(false);
     const size = useWindowSize();
+
+    const closeDeskModal = () => {
+        setOpenDeskModal(false);
+    };
+
+    const openDeskModalFunc = () => {
+        console.log("true");
+
+        setOpenDeskModal(true);
+    };
 
     useEffect(() => {
         data &&
@@ -158,7 +171,7 @@ const Team = () => {
                                         zIndex="100"
                                     >
                                         <Button
-                                            href="/contact_us"
+                                            clickFunc={openDeskModalFunc}
                                             gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                             variant={
                                                 BUTTON_VARIANTS.gradient_link
@@ -176,6 +189,12 @@ const Team = () => {
                                     </FlexColumn>
                                 }
                             />
+                            <ContactUsModal
+                                openModal={openDeskModal}
+                                closeFunc={closeDeskModal}
+                            >
+                                <FormElem closeDeskModal={closeDeskModal} />
+                            </ContactUsModal>
                         </Desktop>
                         <Mobile>
                             <SmoothSlider

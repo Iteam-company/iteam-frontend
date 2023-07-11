@@ -18,6 +18,7 @@ import { useStrapiData, Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { ContactUsModal } from "@/anatomic/organisms/Modal";
 
 const ContactUs = () => {
     const [data, isLoading] = useStrapiData(Pages.contactUs);
