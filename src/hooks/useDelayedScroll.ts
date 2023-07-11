@@ -18,7 +18,7 @@ export const useDelayedScroll = (
                 isRouteIncludesAnimations &&
                 scrollTo(
                     fraction
-                        ? { top: 400, behavior: "smooth" }
+                        ? { top: 410, behavior: "smooth" }
                         : { top: window.innerHeight, behavior: "smooth" },
                 );
         }, delay);
