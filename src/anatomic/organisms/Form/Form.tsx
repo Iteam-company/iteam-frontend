@@ -26,17 +26,17 @@ import { StyledForm, Icon } from "./styled";
 import close from "../../../assets/icon/icons8-close.svg";
 import Image from "next/image";
 type Props = {
-    closeDeskModal?: () => void;
+    closeModal?: () => void;
 };
 
-export const FormElem: FC<Props> = ({ closeDeskModal }) => {
+export const FormElem: FC<Props> = ({ closeModal }) => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        if (closeDeskModal) {
+        if (closeModal) {
             const timer = setTimeout(() => {
-                success && closeDeskModal();
+                success && closeModal();
             }, 2500);
 
             return () => clearTimeout(timer);
@@ -61,12 +61,12 @@ export const FormElem: FC<Props> = ({ closeDeskModal }) => {
             {({ values, setFieldValue, errors, touched }) => (
                 <StyledForm
                     style={
-                        closeDeskModal && {
+                        closeModal && {
                             position: "relative",
                         }
                     }
                 >
-                    {closeDeskModal && (
+                    {closeModal && (
                         <div
                             style={{
                                 position: "absolute",
@@ -74,7 +74,7 @@ export const FormElem: FC<Props> = ({ closeDeskModal }) => {
                                 right: "15px",
                                 cursor: "pointer",
                             }}
-                            onClick={closeDeskModal}
+                            onClick={closeModal}
                         >
                             <Image
                                 src={close}

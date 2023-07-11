@@ -28,7 +28,7 @@ export const ContactUsModal: FC<Props> = ({
         openModal
             ? document.body.classList.add("no-scroll")
             : document.body.classList.remove("no-scroll");
-    }, [openModal]);
+    }, [openModal, closeFunc]);
 
     return (
         <div>
