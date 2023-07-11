@@ -23,7 +23,8 @@ import successIcon from "@/assets/icon/success-image.svg";
 import { motion } from "framer-motion";
 import { FormSchema, FormikValues, initialValues } from "./util";
 import { StyledForm, Icon } from "./styled";
-
+import close from "../../../assets/icon/icons8-close.svg";
+import Image from "next/image";
 type Props = {
     closeDeskModal?: () => void;
 };
@@ -58,7 +59,32 @@ export const FormElem: FC<Props> = ({ closeDeskModal }) => {
             validationSchema={FormSchema}
         >
             {({ values, setFieldValue, errors, touched }) => (
-                <StyledForm>
+                <StyledForm
+                    style={
+                        closeDeskModal && {
+                            position: "relative",
+                        }
+                    }
+                >
+                    {closeDeskModal && (
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: "15px",
+                                right: "15px",
+                                cursor: "pointer",
+                            }}
+                            onClick={closeDeskModal}
+                        >
+                            <Image
+                                src={close}
+                                alt="close"
+                                width="16"
+                                height="16"
+                            />
+                        </div>
+                    )}
+
                     {!success && (
                         <FlexColumn gap="20px" alignItems="center">
                             <FlexRow gap="20px">
