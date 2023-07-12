@@ -46,7 +46,7 @@ export const TeamItem: FC<TeamInterface> = memo(
                         />
                         <FlexColumn
                             w="80%"
-                            gap={size.width! > 1600 ? "60px" : "40px"}
+                            gap={size.width! > 1200 ? "50px" : "40px"}
                             p={padding}
                         >
                             <TeamItemCard
