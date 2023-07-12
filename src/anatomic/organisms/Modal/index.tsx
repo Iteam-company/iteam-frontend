@@ -26,9 +26,9 @@ export const ContactUsModal: FC<Props> = ({
 }) => {
     useEffect(() => {
         openModal
-            ? document.body.classList.add("no-scroll")
-            : document.body.classList.remove("no-scroll");
-    }, [openModal, closeFunc]);
+            ? (document.body.style.overflow = "hidden")
+            : (document.body.style.overflow = "auto");
+    }, [openModal]);
 
     return (
         <div>

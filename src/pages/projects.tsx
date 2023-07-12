@@ -45,6 +45,7 @@ const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
     const [data, isLoading] = useStrapiData(Pages.portfolio);
     const size = useWindowSize();
+    console.log(data);
 
     useEffect(() => {
         data &&
