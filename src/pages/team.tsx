@@ -26,6 +26,8 @@ import useLogoAnimation from "@/hooks/useLogoAnimation";
 import { SiZwave } from "react-icons/si";
 import { ContactUsModal } from "@/anatomic/organisms/Modal";
 import { FormElem } from "@/anatomic/organisms/Form/Form";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
 export interface TeamInterface {
     id?: number;
@@ -47,9 +49,10 @@ export interface Technology {
     techIcon: any;
 }
 
-const Team = () => {
+const Team = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [team, setTeam] = useState<any>([]);
-    const [data, isLoading] = useStrapiData(Pages.company);
     const [openDeskModal, setOpenDeskModal] = useState(false);
     const [openMobModal, setOpenMobModal] = useState(false);
     const size = useWindowSize();
@@ -91,13 +94,10 @@ const Team = () => {
                     };
                 }),
             );
-    }, [data?.team]);
-    const showLogo = useLogoAnimation(data);
+    }, [data, data.team]);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -130,7 +130,7 @@ const Team = () => {
                         top={34}
                         mobileTop={70}
                         mobileRight={0}
-                        priority={true}
+                        priority
                     />
                     <AdaptContainer mw="1450px">
                         <FlexColumn justifyContent="center" alignItems="start">
@@ -267,6 +267,14 @@ const Team = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.company);
+
+    return { props: { data } };
 };
 
 export default memo(Team);

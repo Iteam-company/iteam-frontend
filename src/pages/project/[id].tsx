@@ -587,6 +587,7 @@ const Project = () => {
         </>
     );
 };
+
 export default memo(Project);
 
 const Container = styled(FlexColumn)`

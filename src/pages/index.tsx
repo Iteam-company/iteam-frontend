@@ -13,12 +13,14 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
 import Image from "next/image";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Script from "next/script";
 import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
-const Home = () => {
-    const [data, isLoading] = useStrapiData(Pages.homepage);
+const Home = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
 
     let widthSize;
@@ -32,7 +34,7 @@ const Home = () => {
     }
 
     if (!data) {
-        return <LogoAnimation />;
+        return null;
     }
 
     return (
@@ -128,6 +130,14 @@ const Home = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.homepage);
+
+    return { props: { data } };
 };
 
 export default Home;

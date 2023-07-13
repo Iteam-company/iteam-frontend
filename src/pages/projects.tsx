@@ -21,6 +21,8 @@ import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
 export interface ProjectsInterface {
     id?: number;
@@ -41,11 +43,11 @@ export interface Technologies {
     techIcon: any;
 }
 
-const Projects = () => {
+const Projects = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
-    const [data, isLoading] = useStrapiData(Pages.portfolio);
     const size = useWindowSize();
-    console.log(data);
 
     useEffect(() => {
         data &&
@@ -68,12 +70,9 @@ const Projects = () => {
                 })),
             );
     }, [data?.projects]);
-    const showLogo = useLogoAnimation(data);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -199,4 +198,11 @@ const Projects = () => {
     );
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.portfolio);
+
+    return { props: { data } };
+};
 export default Projects;

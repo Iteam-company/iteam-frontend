@@ -33,9 +33,12 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { getElementMaxHeight } from "@/utils/element-height";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
-const Outstaffing = () => {
-    const [data, isLoading] = useStrapiData(Pages.outstaffing);
+const Outstaffing = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [h, setH] = useState("");
     const size = useWindowSize();
     const swiperRef = useRef<any | null>(null);
@@ -45,12 +48,8 @@ const Outstaffing = () => {
         setH(minHeight);
     }, [swiperRef.current]);
 
-    const showLogo = useLogoAnimation(data);
-
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -353,5 +352,13 @@ const Outstaffing = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.outstaffing);
+
+    return { props: { data } };
 };
 export default memo(Outstaffing);
