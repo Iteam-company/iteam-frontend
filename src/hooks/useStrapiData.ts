@@ -20,7 +20,7 @@ export enum Pages {
     headerFooter = "header-footer",
 }
 
-export const useStrapiData = (page?: Pages | string, depen?: any) => {
+export const useStrapiData = (page?: Pages | string) => {
     const [data, setData] = useState<any>();
     const [isAnimate, setIsAnimate] = useState(false);
 
@@ -37,11 +37,11 @@ export const useStrapiData = (page?: Pages | string, depen?: any) => {
         } finally {
             setIsAnimate(false);
         }
-    }, [page, depen]);
+    }, [page]);
 
     useEffect(() => {
         getData();
-    }, [depen]);
+    }, []);
 
     return [data, isAnimate];
 };

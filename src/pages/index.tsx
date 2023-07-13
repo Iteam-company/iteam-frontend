@@ -8,7 +8,7 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";

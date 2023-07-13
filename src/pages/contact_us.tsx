@@ -14,17 +14,10 @@ import { COLORS } from "@/lib/theme/color";
 import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
-import { ContactUsModal } from "@/anatomic/organisms/Modal";
-import {
-    GetServerSideProps,
-    GetStaticProps,
-    InferGetServerSidePropsType,
-    InferGetStaticPropsType,
-} from "next/types";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
 
 const ContactUs = ({

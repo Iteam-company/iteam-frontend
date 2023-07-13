@@ -8,10 +8,7 @@ import { StyledLayout } from "./styled";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useDelayedScroll } from "@/hooks/useDelayedScroll";
 import { useStrapiData, Pages } from "@/hooks/useStrapiData";
-import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { useRouter } from "next/router";
-import { log } from "console";
 
 interface Props {
     children: ReactNode;
@@ -22,12 +19,8 @@ export const Layout: FC<Props> = ({ children }) => {
     const partial = size.width! < 801 ? 410 : null;
 
     useDelayedScroll(4000, partial);
-    const router = useRouter();
-    const currentRoute = router.pathname;
 
-    console.log(currentRoute);
-
-    const [data, isLoading] = useStrapiData(Pages.headerFooter, currentRoute);
+    const [data, isLoading] = useStrapiData(Pages.headerFooter);
 
     if (!data) return null;
 

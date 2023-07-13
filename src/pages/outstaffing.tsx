@@ -30,9 +30,7 @@ import { FitToViewport } from "react-fit-to-viewport";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { getElementMaxHeight } from "@/utils/element-height";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
 
