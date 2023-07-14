@@ -156,7 +156,6 @@ const Projects = ({
                             </Text>
                         </FlexColumn>
                     </Mobile>
-
                     <BgImage
                         ds="block"
                         src={BgImage1}
@@ -168,7 +167,7 @@ const Projects = ({
                         mobileLeft={-40}
                     />
                 </FlexBoxForDifferentWidth>
-∆
+
                 {slides.length && (
                     <>
                         <Desktop>
