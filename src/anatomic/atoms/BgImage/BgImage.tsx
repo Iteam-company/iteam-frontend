@@ -22,6 +22,9 @@ interface ImagePosition {
     mobileBottom?: number;
     mobileLeft?: number;
     mobileRight?: number;
+    width?: number;
+    height?: number;
+    placeholder?: string;
 }
 interface ImageSize {
     maxWidth?: number;
@@ -39,12 +42,15 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     loading,
     maxWidth,
     mobileTop,
+    placeholder,
     mobileBottom,
     mobileLeft,
     mobileRight,
     ds,
     quality,
     onLoad,
+    width,
+    height,
 }) => {
     const [rotateZ, setRotateZ] = useState<number>(0);
     const ref = useRef(null);
@@ -74,8 +80,9 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             mobileLeft={mobileLeft}
             mobileRight={mobileRight}
             alt="Background image"
-            placeholder="blur"
             priority={priority}
+            width={width}
+            height={height}
             loading={loading}
             ds={ds}
             quality={quality}

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
 import BgImage1 from "@/assets/bgImage/home/back.min.webp";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.webp";
-import bgMain from "@/assets/bgImage/home/bgMain.webp";
+import bgMain from "@/assets/bgImage/home/bgMain.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
@@ -77,12 +77,14 @@ const Home = ({
                     </AddaptFoIbg>
                     <AdaptContainer w="90%" h="visible">
                         <BgImage
-                            src={BgImage1}
+                            src={data.main.bgMain.data[0].attributes.url}
                             maxWidth={size.width! < 1200 ? 700 : 820}
+                            width={820}
                             right={size.width! > 1800 ? -14 : -20}
-                            bottom={38}
+                            bottom={34}
                             mobileRight={-24}
                             mobileTop={14}
+                            height={400}
                             priority={true}
                         />
 

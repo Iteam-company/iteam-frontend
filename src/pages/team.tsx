@@ -15,7 +15,7 @@ import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import BgImage1 from "@/assets/bgImage/team/bgImage1.webp";
+import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
 import Head from "next/head";
 import { Pages } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
@@ -25,7 +25,6 @@ import { ContactUsModal } from "@/anatomic/organisms/Modal";
 import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { fetchDataPage } from "@/utils/fetchDataPage";
-import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export interface TeamInterface {
     id?: number;
@@ -122,8 +121,10 @@ const Team = ({
                 >
                     <BgImage
                         ds="block"
-                        src={BgImage1}
+                        src={data.main.bgMain.data[0].attributes.url}
                         maxWidth={710}
+                        width={820}
+                        height={400}
                         right={-30}
                         top={34}
                         mobileTop={70}

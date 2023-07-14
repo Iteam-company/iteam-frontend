@@ -43,8 +43,8 @@ export const SideChevron: FC<Props> = ({ children }) => {
                     <Image
                         src={ArrowLeft.src}
                         alt="arrowLeft"
-                        width="30"
-                        height="30"
+                        width="15"
+                        height="15"
                     />
                 </Card>
             )}

@@ -160,11 +160,13 @@ const Projects = ({
                     </Mobile>
                     <BgImage
                         ds="block"
-                        src={BgImage1}
+                        src={data.main.bgMain.data[0].attributes.url}
+                        width={700}
+                        height={400}
                         maxWidth={710}
                         top={-15}
                         left={size.width! < 1700 ? -20 : -15}
-                        priority
+                        priority={true}
                         mobileTop={75}
                         mobileLeft={-40}
                     />

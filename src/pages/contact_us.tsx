@@ -76,7 +76,7 @@ const ContactUs = ({
                         maxWidth={size.width! < 1600 ? 550 : 600}
                         bottom={size.width! < 1600 ? 56 : 50}
                         left={size.width! < 1600 ? -14 : -10}
-                        mobileBottom={40}
+                        mobileBottom={50}
                         mobileLeft={50}
                         priority
                     />
