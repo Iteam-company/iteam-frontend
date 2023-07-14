@@ -24,7 +24,6 @@ const ContactUs = ({
     data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
-    const showLogo = useLogoAnimation(data);
 
     return (
         <>
