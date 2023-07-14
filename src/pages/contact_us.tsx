@@ -11,12 +11,11 @@ import {
     TEXT_WEIGHTS,
 } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
-import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
+import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.webp";
+import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.webp";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
 

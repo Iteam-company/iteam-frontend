@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexBoxForDifferentWidth, FlexColumn } from "@/anatomic/atoms/Flex";
 import {
     LETTER_SPACING,
     Text,
@@ -14,13 +14,14 @@ import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import BgImage1 from "@/assets/bgImage/projects/bg.svg";
+import BgImage1 from "@/assets/bgImage/projects/bg.webp";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export interface ProjectsInterface {
     id?: number;
@@ -88,8 +89,7 @@ const Projects = ({
                     overflow: "hidden",
                 }}
             >
-                <FlexColumn
-                    h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
+                <FlexBoxForDifferentWidth
                     justifyContent="center"
                     alignItems="center"
                     w="100%"
@@ -167,7 +167,7 @@ const Projects = ({
                         mobileTop={75}
                         mobileLeft={-40}
                     />
-                </FlexColumn>
+                </FlexBoxForDifferentWidth>
 
                 {slides.length && (
                     <>

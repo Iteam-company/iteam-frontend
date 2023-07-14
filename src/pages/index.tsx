@@ -1,9 +1,9 @@
 import { FlexColumn, FlexForIos } from "@/anatomic/atoms/Flex";
 import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
-import BgImage1 from "@/assets/bgImage/home/back.min.svg";
-import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
-import bgMain from "@/assets/bgImage/home/bgMain.svg";
+import BgImage1 from "@/assets/bgImage/home/back.min.webp";
+import BgImage2 from "@/assets/bgImage/home/bgImage2.webp";
+import bgMain from "@/assets/bgImage/home/bgMain.webp";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";

@@ -1,4 +1,4 @@
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexBoxForDifferentWidth, FlexColumn } from "@/anatomic/atoms/Flex";
 import { memo, useEffect, useState } from "react";
 import {
     TEXT_SIZES,
@@ -15,7 +15,7 @@ import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Button } from "@/anatomic/atoms/Button";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
+import BgImage1 from "@/assets/bgImage/team/bgImage1.webp";
 import Head from "next/head";
 import { Pages } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
@@ -25,6 +25,7 @@ import { ContactUsModal } from "@/anatomic/organisms/Modal";
 import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { fetchDataPage } from "@/utils/fetchDataPage";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export interface TeamInterface {
     id?: number;
@@ -52,6 +53,7 @@ const Team = ({
     const [team, setTeam] = useState<any>([]);
     const [openDeskModal, setOpenDeskModal] = useState(false);
     const [openMobModal, setOpenMobModal] = useState(false);
+
     const size = useWindowSize();
 
     const closeDeskModal = () => {
@@ -112,8 +114,7 @@ const Team = ({
                     overflow: "hidden",
                 }}
             >
-                <FlexColumn
-                    h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
+                <FlexBoxForDifferentWidth
                     w="90%"
                     justifyContent="center"
                     alignItems="start"
@@ -127,7 +128,7 @@ const Team = ({
                         top={34}
                         mobileTop={70}
                         mobileRight={0}
-                        priority
+                        priority={true}
                     />
                     <AdaptContainer mw="1450px">
                         <FlexColumn justifyContent="center" alignItems="start">
@@ -150,7 +151,7 @@ const Team = ({
                             </Title>
                         </FlexColumn>
                     </AdaptContainer>
-                </FlexColumn>
+                </FlexBoxForDifferentWidth>
                 {team?.length ? (
                     <>
                         <Desktop>

@@ -8,10 +8,10 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
-import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
-import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
-import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
-import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.svg";
+import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.webp";
+import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.webp";
+import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.webp";
+import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.webp";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { Button } from "@/anatomic/atoms/Button";
 import Head from "next/head";

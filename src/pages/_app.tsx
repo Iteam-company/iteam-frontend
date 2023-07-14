@@ -8,6 +8,7 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Head from "next/head";
+import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
     useIsomorphicLayoutEffect(() => {
