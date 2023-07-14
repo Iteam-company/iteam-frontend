@@ -156,7 +156,6 @@ const Projects = ({
                             </Text>
                         </FlexColumn>
                     </Mobile>
-
                     <BgImage
                         ds="block"
                         src={BgImage1}
