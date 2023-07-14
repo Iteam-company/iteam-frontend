@@ -14,22 +14,16 @@ import { COLORS } from "@/lib/theme/color";
 import BgImage1 from "@/assets/bgImage/contact_us/bgImage1.svg";
 import BgImage2 from "@/assets/bgImage/contact_us/bgImage2.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import { useStrapiData, Pages } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
-import { ContactUsModal } from "@/anatomic/organisms/Modal";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
-const ContactUs = () => {
-    const [data, isLoading] = useStrapiData(Pages.contactUs);
+const ContactUs = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
-    const showLogo = useLogoAnimation(data);
-
-    if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
-    }
 
     return (
         <>
@@ -56,10 +50,10 @@ const ContactUs = () => {
                         weight={TEXT_WEIGHTS.medium}
                         type={TEXT_TYPES.title}
                     >
-                        {data.main.title}
+                        {data?.main?.title}
                     </Text>
                     <Text color={COLORS.textThird} size={TEXT_SIZES.medium.xs}>
-                        {data.main.description}
+                        {data?.main?.description}
                     </Text>
                 </FlexColumn>
                 <FlexColumn
@@ -74,7 +68,7 @@ const ContactUs = () => {
                         or={size.width! < 886 ? "column-reverse" : "column"}
                     >
                         <FormElem />
-                        <Info {...data.contact} />
+                        <Info {...data?.contact} />
                     </AdaptiveElem>
 
                     <BgImage
@@ -102,4 +96,11 @@ const ContactUs = () => {
     );
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.contactUs);
+
+    return { props: { data } };
+};
 export default ContactUs;

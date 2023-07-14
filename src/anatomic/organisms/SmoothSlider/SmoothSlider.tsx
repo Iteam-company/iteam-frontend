@@ -6,6 +6,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import Image from "next/image";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -298,10 +299,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                             style={containerStyle}
                                             key={index}
                                         >
-                                            <img
+                                            <Image
                                                 className={`image--${index}`}
                                                 style={imageStyle}
-                                                src={image}
+                                                src={image!}
+                                                width={1000}
+                                                height={500}
                                                 alt="before"
                                             />
                                         </div>

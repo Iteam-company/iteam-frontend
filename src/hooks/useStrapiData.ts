@@ -1,6 +1,12 @@
 import client from "@/axios";
 import { Router } from "next/router";
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
+import {
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useMemo,
+    useState,
+} from "react";
 
 export enum Pages {
     homepage = "homepage",
@@ -35,7 +41,7 @@ export const useStrapiData = (page?: Pages | string) => {
 
     useEffect(() => {
         getData();
-    }, [page]);
+    }, []);
 
     return [data, isAnimate];
 };

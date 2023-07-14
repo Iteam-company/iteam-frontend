@@ -14,9 +14,9 @@ import BgImage2 from "@/assets/bgImage/development/bgImage2.svg";
 import BgImage3 from "@/assets/bgImage/development/bgImage3.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
-import { useStrapiData, Pages } from "@/hooks/useStrapiData";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { Pages } from "@/hooks/useStrapiData";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 export interface DevelopmentInterface {
     title: string;
     info: InfoInterface[];
@@ -27,14 +27,11 @@ export interface InfoInterface {
     icon: any;
     href: string;
 }
-const Development = () => {
-    const [data, isLoading] = useStrapiData(Pages.development);
-    const showLogo = useLogoAnimation(data);
-
+const Development = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
     return (
         <>
@@ -144,4 +141,11 @@ const Development = () => {
     );
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.development);
+
+    return { props: { data } };
+};
 export default memo(Development);

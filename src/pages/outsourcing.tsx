@@ -27,12 +27,12 @@ import { FitToViewport } from "react-fit-to-viewport";
 import { SwiperRange } from "@/anatomic/organisms/SwiperRange";
 import { AppsImplement } from "@/anatomic/organisms/AppsImplement";
 import { CountUpNumbers } from "@/anatomic/molecules/CountUpNumbers";
-import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { useInView } from "react-intersection-observer";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
 export interface ProcessInterface {
     step?: number;
@@ -48,18 +48,16 @@ export interface NumbersInterface {
     subTitle?: string;
     text: string;
 }
-const Outsourcing = () => {
+const Outsourcing = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const numbersViewRef = useRef(null);
     const { ref, inView, entry } = useInView();
     const size = useWindowSize();
     const w = size.width! > 1800 ? "100%" : "60%";
-    const [data, isLoading] = useStrapiData(Pages.outsourcing);
-    const showLogo = useLogoAnimation(data);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
     return (
         <>
@@ -343,5 +341,13 @@ const Outsourcing = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.outsourcing);
+
+    return { props: { data } };
 };
 export default Outsourcing;
