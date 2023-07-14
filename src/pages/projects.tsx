@@ -104,7 +104,7 @@ const Projects = ({
                             position="relative"
                         >
                             <FlexColumn
-                                mw="700px"
+                                mw="900px"
                                 justifyContent="center"
                                 alignItems="start"
                                 position="absolute"
@@ -124,8 +124,9 @@ const Projects = ({
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.medium}
                                 >
-                                    Creating digital products your clients fall
-                                    in love with.
+                                    Crafting exceptional and user-centric
+                                    digital products that captivate and enchant
+                                    your clients, sparking love at first click.
                                 </Text>
                             </FlexColumn>
                         </FlexColumn>
@@ -151,8 +152,9 @@ const Projects = ({
                                 weight={TEXT_WEIGHTS.medium}
                                 mobileSize={TEXT_SIZES.medium.s}
                             >
-                                Creating digital products your clients fall in
-                                love with.
+                                Crafting exceptional and user-centric digital
+                                products that captivate and enchant your
+                                clients, sparking love at first click.
                             </Text>
                         </FlexColumn>
                     </Mobile>
