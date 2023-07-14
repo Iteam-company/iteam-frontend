@@ -168,7 +168,7 @@ const Projects = ({
                         mobileLeft={-40}
                     />
                 </FlexBoxForDifferentWidth>
-
+∆
                 {slides.length && (
                     <>
                         <Desktop>
