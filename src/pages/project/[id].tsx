@@ -64,6 +64,8 @@ const Project = () => {
         `${Pages.projectItemDetails}/${id}`,
     );
 
+    console.log(data, "!!!!!");
+
     const showLogo = useLogoAnimation(data);
 
     if (!data) {

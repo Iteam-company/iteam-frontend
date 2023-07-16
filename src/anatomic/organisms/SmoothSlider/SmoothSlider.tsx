@@ -1,4 +1,11 @@
-import React, { FC, ReactNode, useRef } from "react";
+import React, {
+    FC,
+    ReactNode,
+    SetStateAction,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { Dot } from "./styled";
@@ -7,6 +14,8 @@ import { COLORS } from "@/lib/theme/color";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { CSSProperties } from "styled-components";
+import { DeviceFrame } from "./DeviceFrame";
+import "react-device-frameset/styles/marvel-devices.min.css";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -15,6 +24,7 @@ export interface SlidesInterface {
     height?: string;
     editionContent?: ReactNode;
     slidePosition?: string;
+    link?: string;
 }
 export interface SlideInterface {
     content: ReactNode[];
@@ -33,7 +43,40 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     const size = useWindowSize();
     const h = size.width! > 1800 ? "720px" : height;
     const leftPercent = size.width! < 500 ? "-10%" : "0";
+
+    // const dots = useMemo(
+    //     () => gsap.utils.toArray(".dot", containerRef.current || null),
+    //     [containerRef],
+    // );
+
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    const getDotByProgress = (progress: number) => {
+        const dots = Array.from(document.querySelectorAll(".dot"));
+
+        const dotIndex = +(progress * slides.length);
+
+        return dots[Math.floor(+dotIndex)];
+    };
+
+    const setActive = (dot: HTMLDivElement) => {
+        if (!dot) return;
+        const dots = Array.from(document.querySelectorAll(".dot"));
+        dots.forEach((el: any) => el.classList.remove("dot--outer-circle"));
+        dot.classList.add("dot--outer-circle");
+    };
+
+    const initDots = () => {
+        const dots = Array.from(document.querySelectorAll(".dot"));
+
+        setActive(dots[0] as HTMLDivElement);
+    };
+
+    // const [activeSlide, setActiveSlide] = useState(0);
+
     useIsomorphicLayoutEffect(() => {
+        initDots();
+
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
                 containerRef,
@@ -41,12 +84,22 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 {
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "-1 top",
+                        start: "top",
                         end: `+=${
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
                         pin: true,
                         scrub: true,
+                        snap: 1 / slides.length,
+                        onSnapComplete: (s) => {
+                            if (s.isActive) {
+                                setActive(
+                                    getDotByProgress(
+                                        s.progress,
+                                    ) as HTMLDivElement,
+                                );
+                            }
+                        },
                     },
                     duration: slides.length,
                 },
@@ -59,7 +112,9 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                     // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
                     end: () =>
                         `+=${
-                            containerRef!.current!.offsetHeight * slides.length
+                            containerRef!.current!.offsetHeight *
+                                slides.length -
+                            1
                         }`,
                     scrub: true,
                 },
@@ -106,7 +161,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 );
 
             for (let i = 1; i < slides.length; i++) {
-                const isLastSlide = i === slides.length - 1;
+                const isLastSlide = i === slides.length;
                 contentTimeLine
                     .add(`${incrementor}`, `${incrementor}`)
                     // animate the container one way...
@@ -125,26 +180,20 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 
                 incrementor += 0.5;
             }
-            const elements = gsap.utils.toArray(
+
+            const elements: Array<HTMLDivElement> = gsap.utils.toArray(
                 ".page-definer",
                 containerRef.current,
             );
-
-            const dots = gsap.utils.toArray(".dot", containerRef.current);
-
-            const setActive = (dot: any) => {
-                dots.forEach((el: any) =>
-                    el.classList.remove("dot--outer-circle"),
-                );
-                dot.classList.add("dot--outer-circle");
-            };
 
             dots.forEach((element, index) => {
                 ScrollTrigger.create({
                     trigger: elements[index] as any,
                     start: "top center",
                     end: "bottom center",
-                    onToggle: (self) => self.isActive && setActive(element),
+                    onToggle: (self) => {
+                        self.isActive && setActive(element as HTMLDivElement);
+                    },
                 });
             });
         }, containerRef);
@@ -226,7 +275,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 );
                             })}
                     </div>
-                    <div style={{ position: "absolute", top: 0 }}>
+                    {/* <div style={{ position: "absolute", top: 0 }}>
                         {!!slides.length &&
                             slides.map((_, index) => {
                                 const style = {
@@ -241,7 +290,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                     ></div>
                                 );
                             })}
-                    </div>
+                    </div> */}
                     {isTwoColumn && (
                         <div
                             className="images-container comparisonSection"
@@ -252,60 +301,75 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 width: "55%",
                             }}
                         >
-                            {!!slides.length &&
-                                slides.map(({ image }, index) => {
-                                    const containerStyle = {
-                                        position: "absolute",
-                                        top: size.width! < 500 ? "-49%" : "0",
-                                        left: leftPercent,
-                                        width: "100%",
-                                        height: "100%",
-                                        minHeight: "290px",
-                                        minWidth: "290px",
-                                        overflow: "hidden",
-                                        marginLeft: "7px",
-                                        transform: "none",
+                            <div
+                                style={{
+                                    transform:
+                                        "scale(0.65) translate(-20%, 50%)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    height: "100%",
+                                }}
+                            >
+                                <DeviceFrame device="MacBook Pro">
+                                    {!!slides.length &&
+                                        slides.map(({ image }, index) => {
+                                            const containerStyle = {
+                                                position: "absolute",
+                                                top:
+                                                    size.width! < 500
+                                                        ? "-49%"
+                                                        : "0",
+                                                left: leftPercent,
+                                                width: "100%",
+                                                height: "100%",
+                                                minHeight: "290px",
+                                                minWidth: "290px",
+                                                overflow: "hidden",
+                                                transform: "none",
 
-                                        ...(!!index
-                                            ? {
-                                                  transform:
-                                                      "translate(100%, 0px)",
-                                              }
-                                            : {}),
-                                    } as any;
+                                                ...(!!index
+                                                    ? {
+                                                          transform:
+                                                              "translate(100%, 0px)",
+                                                      }
+                                                    : {}),
+                                            } as any;
 
-                                    const imageStyle: CSSProperties = {
-                                        position: "absolute",
-                                        top: "0",
-                                        left: "0",
-                                        width: "100%",
-                                        height: "100%",
-                                        transform: "none",
-                                        overflow: "hidden",
-                                        zIndex: `${index}`,
-                                        ...(!!index
-                                            ? {
-                                                  transform:
-                                                      "translate(-100%, 0px)",
-                                              }
-                                            : {}),
-                                    };
+                                            const imageStyle: CSSProperties = {
+                                                position: "absolute",
+                                                top: "0",
+                                                left: "0",
+                                                width: "100%",
+                                                height: "100%",
+                                                transform: "none",
+                                                overflow: "hidden",
+                                                // zIndex: `${index * 10}`,
+                                                ...(!!index
+                                                    ? {
+                                                          transform:
+                                                              "translate(0%, 0px)",
+                                                      }
+                                                    : {}),
+                                            };
 
-                                    return (
-                                        <div
-                                            className={`image-container--${index}`}
-                                            style={containerStyle}
-                                            key={index}
-                                        >
-                                            <img
-                                                className={`image--${index}`}
-                                                style={imageStyle}
-                                                src={image}
-                                                alt="before"
-                                            />
-                                        </div>
-                                    );
-                                })}
+                                            return (
+                                                <div
+                                                    className={`image-container image-container--${index}`}
+                                                    style={containerStyle}
+                                                    key={index}
+                                                >
+                                                    <iframe
+                                                        src="https://labk19.com"
+                                                        style={{
+                                                            ...imageStyle,
+                                                            border: "none",
+                                                        }}
+                                                    />
+                                                </div>
+                                            );
+                                        })}
+                                </DeviceFrame>
+                            </div>
                         </div>
                     )}
 

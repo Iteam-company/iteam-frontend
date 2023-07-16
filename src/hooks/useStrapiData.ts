@@ -18,24 +18,31 @@ export const useStrapiData = (page?: Pages | string) => {
     const [data, setData] = useState<any>();
     const [isAnimate, setIsAnimate] = useState(false);
 
-    const getData = useCallback(async () => {
-        try {
-            setIsAnimate(true);
+    const getData = useCallback(
+        async (initialPage = page) => {
+            try {
+                setIsAnimate(true);
 
-            const { data } = await client.get(`${page}?populate=deep`);
-            setData(data.data.attributes);
+                const { data } = await client.get(
+                    `${initialPage || page}?populate=deep`,
+                );
 
-            return;
-        } catch (err) {
-            console.log(err);
-        } finally {
-            setIsAnimate(false);
-        }
-    }, [page]);
+                initialPage === page && setData(data.data.attributes);
+
+                console.log(data.data.attributes, "DATA!!!");
+                return data.data.attributes;
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setIsAnimate(false);
+            }
+        },
+        [page],
+    );
 
     useEffect(() => {
         getData();
-    }, [page]);
+    }, [getData, page]);
 
-    return [data, isAnimate];
+    return [data, isAnimate, setData, getData];
 };

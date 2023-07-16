@@ -43,30 +43,65 @@ export interface Technologies {
 
 const Projects = () => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
-    const [data, isLoading] = useStrapiData(Pages.portfolio);
+    const [data, isLoading, setData, getData] = useStrapiData(Pages.portfolio);
+
     const size = useWindowSize();
 
+    console.log(data, "DATA");
+
+    const dataLinkTransform = async () => {
+        if (data) {
+            const links: Array<string> = [];
+            for await (let project of data.projects) {
+                const projectData = await getData(
+                    `${Pages.projectItemDetails}/${project.id}`,
+                );
+
+                console.log(projectData, "!!!!!!!!");
+
+                links.push(projectData?.visitLink);
+            }
+
+            setData({
+                ...data,
+                projects: data.projects.map(
+                    (project: ProjectsInterface, i) => ({
+                        ...project,
+                        visitLink: links[i],
+                    }),
+                ),
+            });
+        }
+    };
+
     useEffect(() => {
-        data &&
-            setSlides(
-                data.projects.map((item: ProjectsInterface, index: number) => ({
-                    content: (
-                        <Slide
-                            id={item.id}
-                            title={item.title}
-                            description={item.description}
-                            location={item.location}
-                            budget={item.budget}
-                            technology={item.technology}
-                            color={item.color}
-                            projectImg={item.projectImg}
-                            index={index}
-                        />
+        dataLinkTransform().then(
+            () =>
+                data &&
+                setSlides(
+                    data.projects.map(
+                        (item: ProjectsInterface, index: number) => ({
+                            content: (
+                                <Slide
+                                    id={item.id}
+                                    title={item.title}
+                                    description={item.description}
+                                    location={item.location}
+                                    budget={item.budget}
+                                    technology={item.technology}
+                                    color={item.color}
+                                    projectImg={item.projectImg}
+                                    index={index}
+                                />
+                            ),
+                            image: getStrapiImage(
+                                item.projectImg.data.attributes.url,
+                            ),
+                        }),
                     ),
-                    image: getStrapiImage(item.projectImg.data.attributes.url),
-                })),
-            );
-    }, [data?.projects]);
+                ),
+        );
+    }, [data, data?.projects]);
     const showLogo = useLogoAnimation(data);
 
     if (!data) {

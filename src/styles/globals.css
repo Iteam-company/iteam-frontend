@@ -5,6 +5,8 @@
 @import "swiper/css/pagination";
 @import "swiper/css/mousewheel";
 @import "swiper/swiper-bundle.css";
+@import "devices.css/dist/devices.css";
+/* @import "react-device-frameset/dist/styles/marvel-devices.min.css"; */
 
 .no-scroll {
     overflow: hidden !important;
