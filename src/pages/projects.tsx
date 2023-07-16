@@ -48,6 +48,8 @@ const Projects = ({
     const [slides, setSlides] = useState<SlideInterface[]>([]);
     const size = useWindowSize();
 
+    console.log("data", data);
+
     useEffect(() => {
         data &&
             setSlides(
