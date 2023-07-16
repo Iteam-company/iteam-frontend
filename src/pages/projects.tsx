@@ -48,33 +48,6 @@ const Projects = ({
     const [slides, setSlides] = useState<SlideInterface[]>([]);
     const size = useWindowSize();
 
-    console.log(data, "DATA");
-
-    const dataLinkTransform = async () => {
-        if (data) {
-            const links: Array<string> = [];
-            for await (let project of data.projects) {
-                const projectData = await getData(
-                    `${Pages.projectItemDetails}/${project.id}`,
-                );
-
-                console.log(projectData, "!!!!!!!!");
-
-                links.push(projectData?.visitLink);
-            }
-
-            setData({
-                ...data,
-                projects: data.projects.map(
-                    (project: ProjectsInterface, i) => ({
-                        ...project,
-                        visitLink: links[i],
-                    }),
-                ),
-            });
-        }
-    };
-
     useEffect(() => {
         data &&
             setSlides(
@@ -95,7 +68,7 @@ const Projects = ({
                     image: getStrapiImage(item.projectImg.data.attributes.url),
                 })),
             );
-    }, [data?.projects]);
+    }, [data, data.projects]);
 
     if (!data) {
         return null;
