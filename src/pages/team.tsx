@@ -1,4 +1,4 @@
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexBoxForDifferentWidth, FlexColumn } from "@/anatomic/atoms/Flex";
 import { memo, useEffect, useState } from "react";
 import {
     TEXT_SIZES,
@@ -17,12 +17,14 @@ import { Button } from "@/anatomic/atoms/Button";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/team/bgImage1.svg";
 import Head from "next/head";
-import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { CommentsI } from "@/anatomic/molecules/TeamItemCard/CommentSlider";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { ContactUsModal } from "@/anatomic/organisms/Modal";
+import { FormElem } from "@/anatomic/organisms/Form/Form";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
 export interface TeamInterface {
     id?: number;
@@ -44,11 +46,30 @@ export interface Technology {
     techIcon: any;
 }
 
-const Team = () => {
+const Team = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [team, setTeam] = useState<any>([]);
-    const [data, isLoading] = useStrapiData(Pages.company);
+    const [openDeskModal, setOpenDeskModal] = useState(false);
+    const [openMobModal, setOpenMobModal] = useState(false);
+
     const size = useWindowSize();
 
+    const closeDeskModal = () => {
+        setOpenDeskModal(false);
+    };
+
+    const closeMobModal = () => {
+        setOpenMobModal(false);
+    };
+
+    const openDeskModalFunc = () => {
+        setOpenDeskModal(true);
+    };
+
+    const openMobModalFunc = () => {
+        setOpenMobModal(true);
+    };
     useEffect(() => {
         data &&
             setTeam(
@@ -71,13 +92,10 @@ const Team = () => {
                     };
                 }),
             );
-    }, [data?.team]);
-    const showLogo = useLogoAnimation(data);
+    }, [data, data.team]);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -95,8 +113,7 @@ const Team = () => {
                     overflow: "hidden",
                 }}
             >
-                <FlexColumn
-                    h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
+                <FlexBoxForDifferentWidth
                     w="90%"
                     justifyContent="center"
                     alignItems="start"
@@ -104,8 +121,10 @@ const Team = () => {
                 >
                     <BgImage
                         ds="block"
-                        src={BgImage1}
+                        src={data.main.bgMain.data[0].attributes.url}
                         maxWidth={710}
+                        width={820}
+                        height={400}
                         right={-30}
                         top={34}
                         mobileTop={70}
@@ -133,7 +152,7 @@ const Team = () => {
                             </Title>
                         </FlexColumn>
                     </AdaptContainer>
-                </FlexColumn>
+                </FlexBoxForDifferentWidth>
                 {team?.length ? (
                     <>
                         <Desktop>
@@ -157,7 +176,7 @@ const Team = () => {
                                         zIndex="100"
                                     >
                                         <Button
-                                            href="/contact_us"
+                                            clickFunc={openDeskModalFunc}
                                             gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                             variant={
                                                 BUTTON_VARIANTS.gradient_link
@@ -175,6 +194,12 @@ const Team = () => {
                                     </FlexColumn>
                                 }
                             />
+                            <ContactUsModal
+                                openModal={openDeskModal}
+                                closeFunc={closeDeskModal}
+                            >
+                                <FormElem closeModal={closeDeskModal} />
+                            </ContactUsModal>
                         </Desktop>
                         <Mobile>
                             <SmoothSlider
@@ -199,7 +224,7 @@ const Team = () => {
                                         zIndex="100"
                                     >
                                         <Button
-                                            href="/contact_us"
+                                            clickFunc={openMobModalFunc}
                                             gradient="94.1deg, rgba(93, 33, 171, 0.62) 13.49%, rgba(13, 112, 154, 0.55) 93.74%"
                                             variant={
                                                 BUTTON_VARIANTS.gradient_link
@@ -224,6 +249,14 @@ const Team = () => {
                                                 </Text>
                                             }
                                         />
+                                        <ContactUsModal
+                                            openModal={openMobModal}
+                                            closeFunc={closeMobModal}
+                                        >
+                                            <FormElem
+                                                closeModal={closeMobModal}
+                                            />
+                                        </ContactUsModal>
                                     </FlexColumn>
                                 }
                             />
@@ -233,6 +266,14 @@ const Team = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.company);
+
+    return { props: { data } };
 };
 
 export default memo(Team);

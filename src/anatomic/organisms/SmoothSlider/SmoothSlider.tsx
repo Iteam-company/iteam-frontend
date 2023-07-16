@@ -41,7 +41,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const h = size.width! > 1800 ? "720px" : height;
+    const h = size.width! > 1800 ? "700px" : height;
     const leftPercent = size.width! < 500 ? "-10%" : "0";
 
     // const dots = useMemo(

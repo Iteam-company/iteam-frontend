@@ -44,7 +44,11 @@ export const TeamItem: FC<TeamInterface> = memo(
                             position={position}
                             rateImage={rateImage!}
                         />
-                        <FlexColumn w="80%" gap="40px" p={padding}>
+                        <FlexColumn
+                            w="80%"
+                            gap={size.width! > 1200 ? "50px" : "40px"}
+                            p={padding}
+                        >
                             <TeamItemCard
                                 technology={technology}
                                 experience={experience}

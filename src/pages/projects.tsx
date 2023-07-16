@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlexColumn } from "@/anatomic/atoms/Flex";
+import { FlexBoxForDifferentWidth, FlexColumn } from "@/anatomic/atoms/Flex";
 import {
     LETTER_SPACING,
     Text,
@@ -14,13 +14,14 @@ import { Slide } from "@/anatomic/molecules/ProjectSlide";
 import { SlideInterface } from "@/anatomic/organisms/SmoothSlider/SmoothSlider";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import BgImage1 from "@/assets/bgImage/projects/bg.svg";
+import BgImage1 from "@/assets/bgImage/projects/bg.webp";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 
 export interface ProjectsInterface {
     id?: number;
@@ -41,10 +42,10 @@ export interface Technologies {
     techIcon: any;
 }
 
-const Projects = () => {
+const Projects = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
-    const [data, isLoading, setData, getData] = useStrapiData(Pages.portfolio);
-
     const size = useWindowSize();
 
     console.log(data, "DATA");
@@ -75,39 +76,29 @@ const Projects = () => {
     };
 
     useEffect(() => {
-        dataLinkTransform().then(
-            () =>
-                data &&
-                setSlides(
-                    data.projects.map(
-                        (item: ProjectsInterface, index: number) => ({
-                            content: (
-                                <Slide
-                                    id={item.id}
-                                    title={item.title}
-                                    description={item.description}
-                                    location={item.location}
-                                    budget={item.budget}
-                                    technology={item.technology}
-                                    color={item.color}
-                                    projectImg={item.projectImg}
-                                    index={index}
-                                />
-                            ),
-                            image: getStrapiImage(
-                                item.projectImg.data.attributes.url,
-                            ),
-                        }),
+        data &&
+            setSlides(
+                data.projects.map((item: ProjectsInterface, index: number) => ({
+                    content: (
+                        <Slide
+                            id={item.id}
+                            title={item.title}
+                            description={item.description}
+                            location={item.location}
+                            budget={item.budget}
+                            technology={item.technology}
+                            color={item.color}
+                            projectImg={item.projectImg}
+                            index={index}
+                        />
                     ),
-                ),
-        );
-    }, [data, data?.projects]);
-    const showLogo = useLogoAnimation(data);
+                    image: getStrapiImage(item.projectImg.data.attributes.url),
+                })),
+            );
+    }, [data?.projects]);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -125,8 +116,7 @@ const Projects = () => {
                     overflow: "hidden",
                 }}
             >
-                <FlexColumn
-                    h={size.width! > 992 ? "calc(100vh - 100px)" : "300px"}
+                <FlexBoxForDifferentWidth
                     justifyContent="center"
                     alignItems="center"
                     w="100%"
@@ -141,7 +131,7 @@ const Projects = () => {
                             position="relative"
                         >
                             <FlexColumn
-                                mw="700px"
+                                mw="900px"
                                 justifyContent="center"
                                 alignItems="start"
                                 position="absolute"
@@ -161,8 +151,9 @@ const Projects = () => {
                                     color={COLORS.dark}
                                     weight={TEXT_WEIGHTS.medium}
                                 >
-                                    Creating digital products your clients fall
-                                    in love with.
+                                    Crafting exceptional and user-centric
+                                    digital products that captivate and enchant
+                                    your clients, sparking love at first click.
                                 </Text>
                             </FlexColumn>
                         </FlexColumn>
@@ -188,23 +179,25 @@ const Projects = () => {
                                 weight={TEXT_WEIGHTS.medium}
                                 mobileSize={TEXT_SIZES.medium.s}
                             >
-                                Creating digital products your clients fall in
-                                love with.
+                                Crafting exceptional and user-centric digital
+                                products that captivate and enchant your
+                                clients, sparking love at first click.
                             </Text>
                         </FlexColumn>
                     </Mobile>
-
                     <BgImage
                         ds="block"
-                        src={BgImage1}
+                        src={data.main.bgMain.data[0].attributes.url}
+                        width={700}
+                        height={400}
                         maxWidth={710}
                         top={-15}
                         left={size.width! < 1700 ? -20 : -15}
-                        priority
+                        priority={true}
                         mobileTop={75}
                         mobileLeft={-40}
                     />
-                </FlexColumn>
+                </FlexBoxForDifferentWidth>
 
                 {slides.length && (
                     <>
@@ -233,4 +226,11 @@ const Projects = () => {
     );
 };
 
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.portfolio);
+
+    return { props: { data } };
+};
 export default Projects;

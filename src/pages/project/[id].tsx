@@ -1,10 +1,9 @@
 import { FlexColumn, FlexRow } from "@/anatomic/atoms/Flex";
 import Head from "next/head";
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { SwiperSlide } from "swiper/react";
-import { useRouter } from "next/router";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Divider } from "@/lib/pageStyles/projectItem";
@@ -15,8 +14,8 @@ import { FlexContainer } from "@/lib/pageStyles/outstaffing";
 import { Desktop, Mobile } from "@/anatomic/molecules/ProjectSlide/styled";
 import { ProjectItemInfo } from "@/anatomic/organisms/ProjectItemInfo";
 import { BgImage } from "@/anatomic/atoms/BgImage";
-import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.svg";
-import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.svg";
+import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.webp";
+import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.webp";
 import styled from "styled-components";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { TextI } from "@/anatomic/molecules/Banner/Banner";
@@ -25,6 +24,9 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import timeImage from "../../assets/projects/time.svg";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
+import router from "next/router";
 
 export interface ProjectItemInterface {
     id: number;
@@ -54,10 +56,9 @@ export interface ResultInterface {
     text: TextI[];
 }
 
-const Project = () => {
-    const router = useRouter();
-    const { id } = router.query;
-
+const Project = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
 
     const [data, isLoading] = useStrapiData(
@@ -69,9 +70,7 @@ const Project = () => {
     const showLogo = useLogoAnimation(data);
 
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
     return (
         <>
@@ -589,6 +588,19 @@ const Project = () => {
         </>
     );
 };
+
+interface Props extends GetServerSideProps {
+    id: number;
+}
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async (context) => {
+    const { id } = context.query;
+    const data = await fetchDataPage<any>(`${Pages.projectItemDetails}/${id}`);
+
+    return { props: { data } };
+};
+
 export default memo(Project);
 
 const Container = styled(FlexColumn)`

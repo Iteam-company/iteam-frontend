@@ -66,6 +66,13 @@ export const FlexColumn = styled(Flex)`
     overflow: ${(props) => props.ov || "visible"};
 `;
 
+export const FlexBoxForDifferentWidth = styled(FlexColumn)`
+    height: calc(100vh - 100px);
+    @media (max-width: 992px) {
+        height: 300px;
+    }
+`;
+
 export const FlexForIos = styled(FlexColumn)`
     background: -moz-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100);
     background: -webkit-linear-gradient(180deg, #170a2c 53.12%, #9f93be 100%);

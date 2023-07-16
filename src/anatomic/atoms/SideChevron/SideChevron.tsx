@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useState } from "react";
 import ArrowLeft from "@/assets/icon/leftArrow.svg";
 import { motion } from "framer-motion";
 import { Card } from "./styled";
+import Image from "next/image";
 
 const slideIn = {
     initial: { right: "-90%" },
@@ -39,7 +40,12 @@ export const SideChevron: FC<Props> = ({ children }) => {
                     p="5px"
                     onClick={() => setOpen(!open)}
                 >
-                    <img src={ArrowLeft.src} />
+                    <Image
+                        src={ArrowLeft.src}
+                        alt="arrowLeft"
+                        width="15"
+                        height="15"
+                    />
                 </Card>
             )}
         </>

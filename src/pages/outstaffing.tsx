@@ -8,10 +8,10 @@ import {
 import { COLORS } from "@/lib/theme/color";
 import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import BgImage1 from "@/assets/bgImage/home/back.svg";
-import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.svg";
-import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.svg";
-import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.svg";
-import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.svg";
+import BgImage2 from "@/assets/bgImage/outstaffing/bgImage2.webp";
+import BgImage3 from "@/assets/bgImage/outstaffing/bgImage3.webp";
+import BgImage4 from "@/assets/bgImage/outstaffing/bgImage4.webp";
+import BgImage5 from "@/assets/bgImage/outstaffing/bgImage5.webp";
 import ITeamIcon from "@/assets/bgImage/iTeam.svg";
 import { Button } from "@/anatomic/atoms/Button";
 import Head from "next/head";
@@ -30,12 +30,13 @@ import { FitToViewport } from "react-fit-to-viewport";
 import { Pages, useStrapiData } from "@/hooks/useStrapiData";
 import { BenefitsInterface } from "@/anatomic/molecules/BenefitsSlide/BenefitsSlide";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import { getElementMaxHeight } from "@/utils/element-height";
-import useLogoAnimation from "@/hooks/useLogoAnimation";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
-const Outstaffing = () => {
-    const [data, isLoading] = useStrapiData(Pages.outstaffing);
+const Outstaffing = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [h, setH] = useState("");
     const size = useWindowSize();
     const swiperRef = useRef<any | null>(null);
@@ -45,12 +46,8 @@ const Outstaffing = () => {
         setH(minHeight);
     }, [swiperRef.current]);
 
-    const showLogo = useLogoAnimation(data);
-
     if (!data) {
-        if (showLogo) {
-            return <LogoAnimation />;
-        }
+        return null;
     }
 
     return (
@@ -353,5 +350,13 @@ const Outstaffing = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.outstaffing);
+
+    return { props: { data } };
 };
 export default memo(Outstaffing);

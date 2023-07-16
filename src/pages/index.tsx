@@ -1,25 +1,26 @@
 import { FlexColumn, FlexForIos } from "@/anatomic/atoms/Flex";
 import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
-import BgImage1 from "@/assets/bgImage/home/back.min.svg";
-import BgImage2 from "@/assets/bgImage/home/bgImage2.svg";
+import BgImage1 from "@/assets/bgImage/home/back.min.webp";
+import BgImage2 from "@/assets/bgImage/home/bgImage2.webp";
 import bgMain from "@/assets/bgImage/home/bgMain.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
 import { HowWeWork } from "@/anatomic/organisms/HowWeWork";
 import { OurCoreValues } from "@/anatomic/organisms/OurCoreValues";
 import { BookingForm } from "@/anatomic/organisms/BookingForm";
-import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { AddaptFoIbg, AddaptTextMain } from "@/anatomic/atoms/Addapt/addapt";
 import Image from "next/image";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Script from "next/script";
 import { ExploreWithIteam } from "@/anatomic/organisms/ExploreWithIteam";
-import { useEffect, useState } from "react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
+import { fetchDataPage } from "@/utils/fetchDataPage";
 
-const Home = () => {
-    const [data, isLoading] = useStrapiData(Pages.homepage);
+const Home = ({
+    data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
 
     let widthSize;
@@ -33,7 +34,7 @@ const Home = () => {
     }
 
     if (!data) {
-        return <LogoAnimation />;
+        return null;
     }
 
     return (
@@ -76,14 +77,17 @@ const Home = () => {
                     </AddaptFoIbg>
                     <AdaptContainer w="90%" h="visible">
                         <BgImage
-                            src={BgImage1}
+                            src={data.main.bgMain.data[0].attributes.url}
                             maxWidth={size.width! < 1200 ? 700 : 820}
+                            width={820}
                             right={size.width! > 1800 ? -14 : -20}
-                            bottom={38}
+                            bottom={34}
                             mobileRight={-24}
                             mobileTop={14}
+                            height={400}
                             priority={true}
                         />
+
                         <FlexColumn
                             h={widthSize}
                             w="90%"
@@ -128,6 +132,14 @@ const Home = () => {
             </FlexColumn>
         </>
     );
+};
+
+export const getServerSideProps: GetServerSideProps<{
+    data: any;
+}> = async () => {
+    const data = await fetchDataPage<any>(Pages.homepage);
+
+    return { props: { data } };
 };
 
 export default Home;

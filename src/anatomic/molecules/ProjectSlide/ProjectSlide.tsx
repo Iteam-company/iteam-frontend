@@ -6,7 +6,6 @@ import { COLORS } from "@/lib/theme/color";
 import React, { FC } from "react";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
-import { icons } from "./utils";
 import { ProjectsInterface, Technologies } from "@/pages/projects";
 import { Stick } from "./styled";
 import Image from "next/image";
