@@ -25,6 +25,7 @@ interface ImagePosition {
     width?: number;
     height?: number;
     placeholder?: string;
+    imageUrl?: string;
 }
 interface ImageSize {
     maxWidth?: number;
@@ -42,10 +43,10 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     loading,
     maxWidth,
     mobileTop,
-    placeholder,
     mobileBottom,
     mobileLeft,
     mobileRight,
+    imageUrl,
     ds,
     quality,
     onLoad,
@@ -70,7 +71,7 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             scrollable={scrollable}
             rotateZ={rotateZ}
             maxWidth={maxWidth}
-            blurDataURL={src.src}
+            blurDataURL={imageUrl}
             top={top}
             bottom={bottom}
             left={left}
@@ -80,6 +81,7 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             mobileLeft={mobileLeft}
             mobileRight={mobileRight}
             alt="Background image"
+            placeholder={imageUrl ? "blur" : "empty"}
             priority={priority}
             width={width}
             height={height}

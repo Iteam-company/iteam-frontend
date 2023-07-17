@@ -85,6 +85,7 @@ const Home = ({
                             mobileRight={-24}
                             mobileTop={14}
                             height={400}
+                            
                             priority={true}
                         />
 
