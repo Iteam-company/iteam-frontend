@@ -6,9 +6,12 @@ import { COLORS } from "@/lib/theme/color";
 import React, { FC } from "react";
 import { FiDollarSign } from "react-icons/fi";
 import { SlLocationPin } from "react-icons/sl";
-import { ProjectsInterface, Technologies } from "@/pages/projects";
 import { Stick } from "./styled";
 import Image from "next/image";
+import {
+    ProjectsInterface,
+    Technologies,
+} from "@/interfaces/pages/team/projects";
 
 export const ProjectSlide: FC<ProjectsInterface> = ({
     id,

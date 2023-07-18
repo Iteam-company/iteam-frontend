@@ -7,10 +7,11 @@ import { CommentSlider } from "./CommentSlider";
 import UpWorkLink from "@/assets/icon/upWorkLink.svg";
 import { TeamItemCard } from "./TeamItemCard";
 import { Desktop, Mobile } from "../ProjectSlide/styled";
-import { TeamInterface } from "@/pages/team";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import Link from "next/link";
 import Image from "next/image";
+import { TeamInterface } from "@/interfaces/pages/team";
+
 
 export const TeamItem: FC<TeamInterface> = memo(
     ({

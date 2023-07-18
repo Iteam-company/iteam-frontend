@@ -13,9 +13,9 @@ import {
     GradientElemContent,
 } from "./styled";
 import Image from "next/image";
-import { Technology } from "@/pages/team";
 import label from "../../../assets/icon/label.svg";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Technology } from "@/interfaces/pages/team";
 
 interface Props {
     technology?: Technology[];

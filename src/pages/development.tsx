@@ -7,6 +7,7 @@ import {
 } from "@/anatomic/atoms/Text";
 import Head from "next/head";
 import { COLORS } from "@/lib/theme/color";
+import Bg from "../assets/bgImage/development/development.webp";
 import React, { memo, useEffect } from "react";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import BgImage1 from "@/assets/bgImage/development/bgImage1.svg";
@@ -17,6 +18,7 @@ import { DevelopmentSwiper } from "@/anatomic/organisms/DevelopmentSwiper";
 import { Pages } from "@/hooks/useStrapiData";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
+import { DevelopmentTitle } from "@/anatomic/organisms/DevelopmentTitle";
 export interface DevelopmentInterface {
     title: string;
     info: InfoInterface[];
@@ -55,7 +57,8 @@ const Development = ({
                     left={-16}
                     mobileLeft={-55}
                     mobileTop={6}
-                    priority
+                    priority={true}
+                    imageUrl={Bg.src}
                 />
                 <FlexColumn
                     justifyContent="center"
@@ -64,26 +67,10 @@ const Development = ({
                     p="100px 0 120px"
                     gap="30px"
                 >
-                    <Text
-                        textAlign="center"
-                        color={COLORS.textPrimary}
-                        size={TEXT_SIZES.large.xs}
-                        weight={TEXT_WEIGHTS.medium}
-                        mobileSize={TEXT_SIZES.small.xl}
-                        type={TEXT_TYPES.title}
-                    >
-                        {data.main.title}
-                    </Text>
-
-                    <Text
-                        textAlign="center"
-                        color={COLORS.textThird}
-                        size={TEXT_SIZES.medium.xs}
-                        letterSpacing={LETTER_SPACING.s}
-                        mobileSize={TEXT_SIZES.small.l}
-                    >
-                        {data.main.description}
-                    </Text>
+                    <DevelopmentTitle
+                        title={data?.main.title}
+                        description={data?.main.description}
+                    />
                 </FlexColumn>
                 <FlexColumn
                     w="100%"

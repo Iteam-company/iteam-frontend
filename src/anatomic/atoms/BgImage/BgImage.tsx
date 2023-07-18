@@ -1,36 +1,12 @@
 import useScrollUp from "@/hooks/useScrollUp";
+import {
+    BgImageI,
+    ImagePosition,
+    ImageSize,
+} from "@/interfaces/common/bgImage";
 import Image from "next/image";
 import React, { FC, useRef, useState } from "react";
 import styled from "styled-components";
-
-interface BgImageI {
-    src: any;
-    rotateZ?: number;
-    scrollable?: boolean;
-    priority?: boolean;
-    loading?: "lazy";
-    quality?: number;
-    onLoad?: (img: any) => void;
-}
-
-interface ImagePosition {
-    top?: number;
-    bottom?: number;
-    left?: number;
-    right?: number;
-    mobileTop?: number;
-    mobileBottom?: number;
-    mobileLeft?: number;
-    mobileRight?: number;
-    width?: number;
-    height?: number;
-    placeholder?: string;
-    imageUrl?: string;
-}
-interface ImageSize {
-    maxWidth?: number;
-    ds?: string;
-}
 
 export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     src,
@@ -50,6 +26,7 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
     ds,
     quality,
     onLoad,
+    onLoadComplete,
     width,
     height,
 }) => {
@@ -87,8 +64,9 @@ export const BgImage: FC<BgImageI & ImagePosition & ImageSize> = ({
             height={height}
             loading={loading}
             ds={ds}
+            onLoad={onLoad}
             quality={quality}
-            onLoadingComplete={onLoad}
+            onLoadingComplete={onLoadComplete}
         />
     );
 };
