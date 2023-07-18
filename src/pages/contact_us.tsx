@@ -3,6 +3,7 @@ import { FormElem } from "@/anatomic/organisms/Form/Form";
 import { Info } from "@/anatomic/molecules/Info";
 import { AdaptiveElem } from "@/lib/pageStyles/contactUsStyles";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
+import Bg from "../assets/bgImage/contact_us/contact.webp";
 import Head from "next/head";
 import {
     Text,
@@ -78,7 +79,8 @@ const ContactUs = ({
                         left={size.width! < 1600 ? -14 : -10}
                         mobileBottom={50}
                         mobileLeft={50}
-                        priority
+                        imageUrl={Bg.src}
+                        priority={true}
                     />
                 </FlexColumn>
                 <BgImage
