@@ -84,7 +84,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 {
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "top",
+                        start: `top`,
                         end: `+=${
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
@@ -244,7 +244,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         }}
                     >
                         {!!slides.length &&
-                            slides.map(({ content }, index) => {
+                            slides.map((project, index) => {
+                                const { content } = project;
                                 const containerStyle = {
                                     position: "absolute",
                                     top: "0",
