@@ -2,8 +2,8 @@ import { FC } from "react";
 import { ProjectSlide } from "./ProjectSlide";
 import { ProjectSlideMobile } from "./ProjectSlideMobile";
 import { Desktop, Mobile, SliderBox } from "./styled";
-import { ProjectsInterface } from "@/pages/projects";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { ProjectsInterface } from "@/interfaces/pages/team/projects";
 
 export const Slide: FC<ProjectsInterface> = (props) => {
     const size = useWindowSize();

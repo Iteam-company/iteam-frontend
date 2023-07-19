@@ -1,7 +1,7 @@
 import { FlexColumn, FlexForIos } from "@/anatomic/atoms/Flex";
 import Head from "next/head";
 import { Banner } from "@/anatomic/molecules/Banner";
-import BgImage1 from "@/assets/bgImage/home/back.min.webp";
+import BgImage1 from "@/assets/bgImage/home/homeBg.svg";
 import BgImage2 from "@/assets/bgImage/home/bgImage2.webp";
 import bgMain from "@/assets/bgImage/home/bgMain.svg";
 import { BgImage } from "@/anatomic/atoms/BgImage";
@@ -86,6 +86,7 @@ const Home = ({
                             mobileTop={14}
                             height={400}
                             priority={true}
+                            imageUrl={BgImage1.src}
                         />
 
                         <FlexColumn

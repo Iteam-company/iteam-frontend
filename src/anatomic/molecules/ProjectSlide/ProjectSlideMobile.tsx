@@ -3,13 +3,15 @@ import { FlexRow, FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
 import { FitToViewport } from "react-fit-to-viewport";
-import { iconsMobile } from "./utils";
 import { Button } from "@/anatomic/atoms/Button";
 import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { Device } from "@/anatomic/atoms/Device";
-import { ProjectsInterface, Technologies } from "@/pages/projects";
 import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import {
+    ProjectsInterface,
+    Technologies,
+} from "@/interfaces/pages/team/projects";
 
 export const ProjectSlideMobile: FC<ProjectsInterface> = ({
     id,
