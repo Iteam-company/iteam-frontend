@@ -1,5 +1,7 @@
 import React, {
     FC,
+    ReactElement,
+    ReactInstance,
     ReactNode,
     SetStateAction,
     useMemo,
@@ -8,7 +10,14 @@ import React, {
 } from "react";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Dot } from "./styled";
+import {
+    Dot,
+    StyledContainer,
+    StyledFrameContainer,
+    StyledIframe,
+    StyledImage,
+    StyledNavDots,
+} from "./styled";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
@@ -27,7 +36,7 @@ export interface SlidesInterface {
     link?: string;
 }
 export interface SlideInterface {
-    content: ReactNode[];
+    content: ReactNode;
     image?: string;
 }
 
@@ -43,11 +52,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     const size = useWindowSize();
     const h = size.width! > 1800 ? "700px" : height;
     const leftPercent = size.width! < 500 ? "-10%" : "0";
-
-    // const dots = useMemo(
-    //     () => gsap.utils.toArray(".dot", containerRef.current || null),
-    //     [containerRef],
-    // );
 
     const dots = Array.from(document.querySelectorAll(".dot"));
 
@@ -72,8 +76,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({
         setActive(dots[0] as HTMLDivElement);
     };
 
-    // const [activeSlide, setActiveSlide] = useState(0);
-
     useIsomorphicLayoutEffect(() => {
         initDots();
 
@@ -84,7 +86,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 {
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: `top`,
+                        start: `-1 top`,
                         end: `+=${
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
@@ -112,16 +114,16 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                     // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
                     end: () =>
                         `+=${
-                            containerRef!.current!.offsetHeight *
-                                slides.length -
-                            1
+                            containerRef!.current!.offsetHeight * slides.length
                         }`,
                     scrub: true,
                 },
             });
             let incrementor = 0;
 
-            for (let i = 1; i < slides.length; i++) {
+            // here is incrementor logic which affects the slides sliding effect (needs to be adjusted due to slides quantity)
+
+            for (let i = 1; i <= slides.length; i++) {
                 contentTimeLine
                     .add(`${incrementor}`, `${incrementor}`)
                     // animate the container one way...
@@ -161,7 +163,7 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 );
 
             for (let i = 1; i < slides.length; i++) {
-                const isLastSlide = i === slides.length;
+                const isLastSlide = i === slides.length - 1;
                 contentTimeLine
                     .add(`${incrementor}`, `${incrementor}`)
                     // animate the container one way...
@@ -232,7 +234,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         overflow: "hidden",
                     }}
                 >
-                    {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
                     <div
                         className="left-content-container"
                         style={{
@@ -246,52 +247,27 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         {!!slides.length &&
                             slides.map((project, index) => {
                                 const { content } = project;
-                                const containerStyle = {
-                                    position: "absolute",
-                                    top: "0",
-
-                                    height: "100%",
-                                    display: "flex",
-                                    justifyContent: slidePosition
-                                        ? slidePosition
-                                        : "center",
-                                    alignItems: "center",
-                                    zIndex: index,
-                                    width: slidePosition ? "auto" : "100%",
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform: "translate(100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
                                 return (
-                                    <div
+                                    <StyledContainer
                                         key={index}
                                         className={`content-container content-container--${index}`}
-                                        style={containerStyle}
+                                        style={{
+                                            justifyContent: slidePosition
+                                                ? slidePosition
+                                                : "center",
+                                            ...(!!index
+                                                ? {
+                                                      transform:
+                                                          "translate(100%, 0px)",
+                                                  }
+                                                : {}),
+                                        }}
                                     >
                                         {content}
-                                    </div>
+                                    </StyledContainer>
                                 );
                             })}
                     </div>
-                    {/* <div style={{ position: "absolute", top: 0 }}>
-                        {!!slides.length &&
-                            slides.map((_, index) => {
-                                const style = {
-                                    height: "115vh",
-                                    width: "1px",
-                                };
-                                return (
-                                    <div
-                                        className={`page-definer page-definer--${index}`}
-                                        style={style}
-                                        key={index}
-                                    ></div>
-                                );
-                            })}
-                    </div> */}
                     {isTwoColumn && (
                         <div
                             className="images-container comparisonSection"
@@ -300,51 +276,41 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 paddingBottom: "36.25%",
                                 height: "auto",
                                 width: "55%",
+                                background: "transparent",
                             }}
                         >
                             <div
                                 style={{
-                                    transform:
-                                        "scale(0.65) translate(-20%, 50%)",
                                     display: "flex",
                                     alignItems: "center",
                                     height: "100%",
+                                    width: "100%",
+                                    background: "transparent",
                                 }}
                             >
-                                <DeviceFrame device="MacBook Pro">
+                                <DeviceFrame isDynamicAdaptive={true}>
                                     {!!slides.length &&
-                                        slides.map(({ image }, index) => {
-                                            const containerStyle = {
-                                                position: "absolute",
-                                                top:
-                                                    size.width! < 500
-                                                        ? "-49%"
-                                                        : "0",
-                                                left: leftPercent,
-                                                width: "100%",
-                                                height: "100%",
-                                                minHeight: "290px",
-                                                minWidth: "290px",
-                                                overflow: "hidden",
-                                                transform: "none",
+                                        slides.map((project, index) => {
+                                            const { image, content } = project;
+                                            const typedContent =
+                                                content as ReactElement<any>;
 
-                                                ...(!!index
-                                                    ? {
-                                                          transform:
-                                                              "translate(100%, 0px)",
-                                                      }
-                                                    : {}),
-                                            } as any;
+                                            const containerStyle: CSSProperties =
+                                                {
+                                                    left: leftPercent,
+                                                    top:
+                                                        size.width! < 500
+                                                            ? "-49%"
+                                                            : "0",
+                                                    ...(!!index
+                                                        ? {
+                                                              transform:
+                                                                  "translate(100%, 0px)",
+                                                          }
+                                                        : {}),
+                                                };
 
                                             const imageStyle: CSSProperties = {
-                                                position: "absolute",
-                                                top: "0",
-                                                left: "0",
-                                                width: "100%",
-                                                height: "100%",
-                                                transform: "none",
-                                                overflow: "hidden",
-                                                // zIndex: `${index * 10}`,
                                                 ...(!!index
                                                     ? {
                                                           transform:
@@ -354,19 +320,33 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                             };
 
                                             return (
-                                                <div
+                                                <StyledFrameContainer
                                                     className={`image-container image-container--${index}`}
                                                     style={containerStyle}
                                                     key={index}
                                                 >
-                                                    <iframe
-                                                        src="https://labk19.com"
-                                                        style={{
-                                                            ...imageStyle,
-                                                            border: "none",
-                                                        }}
-                                                    />
-                                                </div>
+                                                    {typedContent.props
+                                                        .projectUrl ? (
+                                                        <StyledIframe
+                                                            src={
+                                                                typedContent
+                                                                    .props
+                                                                    .projectUrl
+                                                            }
+                                                            style={{
+                                                                ...imageStyle,
+                                                                border: "none",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <StyledImage
+                                                            src={image}
+                                                            style={{
+                                                                ...imageStyle,
+                                                            }}
+                                                        />
+                                                    )}
+                                                </StyledFrameContainer>
                                             );
                                         })}
                                 </DeviceFrame>
@@ -375,23 +355,12 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                     )}
 
                     {navigation && (
-                        <div
-                            className="nav-dots"
-                            style={{
-                                position: "absolute",
-                                left: "30px",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                gridGap: "22px",
-                            }}
-                        >
+                        <StyledNavDots className="nav-dots">
                             {!!slides.length &&
                                 slides.map((_, index) => {
                                     return <Dot className="dot" key={index} />;
                                 })}
-                        </div>
+                        </StyledNavDots>
                     )}
                 </div>
 

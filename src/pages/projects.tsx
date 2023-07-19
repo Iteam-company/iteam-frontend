@@ -34,6 +34,7 @@ export interface ProjectsInterface {
     projectImg: any;
     img?: any;
     index: number;
+    projectUrl?: string;
 }
 
 export interface Technologies {
@@ -58,6 +59,7 @@ const Projects = ({
                         <Slide
                             id={item.id}
                             title={item.title}
+                            projectUrl={item.projectUrl}
                             description={item.description}
                             location={item.location}
                             budget={item.budget}
@@ -205,7 +207,7 @@ export const getServerSideProps: GetServerSideProps<{
     data: any;
 }> = async () => {
     const data = await fetchDataPage<any>(Pages.portfolio);
-
+    console.log(data);
     return { props: { data } };
 };
 export default Projects;

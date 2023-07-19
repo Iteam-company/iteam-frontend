@@ -20,3 +20,55 @@ export const Dot = styled.div`
         background-color: ${COLORS.dark};
     }
 `;
+
+export const StyledContainer = styled.div`
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+`;
+
+export const StyledFrameContainer = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 290px;
+    min-width: 290px;
+    overflow: hidden;
+`;
+
+export const StyledImage = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 100%;
+    transform: none;
+    overflow: hidden;
+    border: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+export const StyledIframe = styled.iframe`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    overflow: hidden;
+`;
+
+export const StyledNavDots = styled.div`
+    position: absolute;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 22px;
+`;

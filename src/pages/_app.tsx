@@ -9,6 +9,7 @@ import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Head from "next/head";
 import { useEffect } from "react";
+import { ResponsiveContextProvider } from "@/contexts/ResponsiveContext";
 
 export default function App({ Component, pageProps }: AppProps) {
     useIsomorphicLayoutEffect(() => {
@@ -21,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
                 <title>iTeam</title>
             </Head>
             <AnimatePresence mode="wait" initial={false}>
-                <Layout>{<Component {...pageProps} />}</Layout>
+                <ResponsiveContextProvider>
+                    <Layout>{<Component {...pageProps} />}</Layout>
+                </ResponsiveContextProvider>
             </AnimatePresence>
         </>
     );
