@@ -60,11 +60,10 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 
         const dotIndex = +(progress * slides.length);
 
-        return dots[Math.floor(+dotIndex)];
+        return dots[Math.trunc(+dotIndex)] || dots[0];
     };
 
     const setActive = (dot: HTMLDivElement) => {
-        if (!dot) return;
         const dots = Array.from(document.querySelectorAll(".dot"));
         dots.forEach((el: any) => el.classList.remove("dot--outer-circle"));
         dot.classList.add("dot--outer-circle");
@@ -94,13 +93,9 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         scrub: true,
                         snap: 1 / slides.length,
                         onSnapComplete: (s) => {
-                            if (s.isActive) {
-                                setActive(
-                                    getDotByProgress(
-                                        s.progress,
-                                    ) as HTMLDivElement,
-                                );
-                            }
+                            setActive(
+                                getDotByProgress(s.progress) as HTMLDivElement,
+                            );
                         },
                     },
                     duration: slides.length,
@@ -193,8 +188,8 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                     trigger: elements[index] as any,
                     start: "top center",
                     end: "bottom center",
-                    onToggle: (self) => {
-                        self.isActive && setActive(element as HTMLDivElement);
+                    onToggle: () => {
+                        setActive(element as HTMLDivElement);
                     },
                 });
             });
@@ -240,7 +235,6 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                             position: "relative",
                             width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
-
                             overflow: "hidden",
                         }}
                     >

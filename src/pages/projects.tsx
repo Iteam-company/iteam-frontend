@@ -93,7 +93,6 @@ const Projects = ({
                     style={{ boxSizing: "border-box" }}
                 >
                     <ProjectTitle />
-
                     <BgImage
                         ds="block"
                         src={data.main.bgMain.data[0].attributes.url}

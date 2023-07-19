@@ -13,8 +13,7 @@ export const DeviceFrame: FC<Props> = ({
     children,
     isDynamicAdaptive = true,
 }) => {
-    const { isMobile, isDesktop, isTablet } = useContext(ResponsiveContext);
-    console.log(isMobile, isTablet, isDesktop, "IS");
+    const { isMobile, isTablet } = useContext(ResponsiveContext);
 
     const getDevice = (): keyof DeviceOptionsType => {
         const device =
@@ -35,8 +34,6 @@ export const DeviceFrame: FC<Props> = ({
     };
 
     const device = !isDynamicAdaptive ? "MacBook Pro" : getDevice();
-
-    console.log(device, deviceStyleRules[device]);
 
     return (
         <StyledAdaptiveWrapper>
