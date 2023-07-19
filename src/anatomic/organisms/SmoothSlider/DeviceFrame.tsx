@@ -52,6 +52,8 @@ export const DeviceFrame: FC<Props> = ({
 };
 
 const StyledAdaptiveWrapper = styled.div`
+    background: transparent;
+
     @media (max-width: 2000px) {
         .device-frame-wrapper {
             transform: translate(-15%, 35%) scale(0.7) !important;

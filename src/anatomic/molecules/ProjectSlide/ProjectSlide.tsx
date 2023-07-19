@@ -76,7 +76,7 @@ export const ProjectSlide: FC<ProjectsInterface> = ({
                     </FlexRow>
                 </FlexRow>
 
-                <FlexRow gap="20px">
+                <FlexRow gap="20px" flexWrap="wrap">
                     {technology.map((el: Technologies, index: number) => (
                         <FlexRow
                             justifyContent="center"
