@@ -11,6 +11,8 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
+import { ProjectsSlider } from "@/anatomic/organisms/ProjectsSlider";
+import { ProjectTitle } from "@/anatomic/organisms/ProjectsTitle";
 
 export interface ProjectsInterface {
     id?: number;
