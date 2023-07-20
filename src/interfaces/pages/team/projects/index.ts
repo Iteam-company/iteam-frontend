@@ -9,6 +9,7 @@ export interface ProjectsInterface {
     projectImg: any;
     img?: any;
     index: number;
+    projectUrl?: string;
 }
 
 export interface Technologies {

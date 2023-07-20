@@ -15,7 +15,7 @@ const useScrollUp = ({ useCase = "default", onScroll }: Arguments) => {
         };
         window.addEventListener("scroll", scrollListener);
         return () => window.removeEventListener("scroll", scrollListener);
-    }, []);
+    }, [onScroll]);
 
     if (typeof window !== "undefined" && !onScroll) {
         const onScrollTop = (behavior?: ScrollBehavior, y = 0) =>

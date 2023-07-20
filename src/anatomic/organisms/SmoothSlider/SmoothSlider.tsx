@@ -1,12 +1,30 @@
-import React, { FC, ReactNode, useRef } from "react";
+import React, {
+    FC,
+    ReactElement,
+    ReactInstance,
+    ReactNode,
+    SetStateAction,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { Dot } from "./styled";
+import {
+    Dot,
+    StyledContainer,
+    StyledFrameContainer,
+    StyledIframe,
+    StyledImage,
+    StyledNavDots,
+} from "./styled";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { COLORS } from "@/lib/theme/color";
 import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import Image from "next/image";
+import { CSSProperties } from "styled-components";
+import { DeviceFrame } from "./DeviceFrame";
+import "react-device-frameset/styles/marvel-devices.min.css";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -15,9 +33,10 @@ export interface SlidesInterface {
     height?: string;
     editionContent?: ReactNode;
     slidePosition?: string;
+    link?: string;
 }
 export interface SlideInterface {
-    content: ReactNode[];
+    content: ReactNode;
     image?: string;
 }
 
@@ -33,7 +52,32 @@ export const SmoothSlider: FC<SlidesInterface> = ({
     const size = useWindowSize();
     const h = size.width! > 1800 ? "700px" : height;
     const leftPercent = size.width! < 500 ? "-10%" : "0";
+
+    const dots = Array.from(document.querySelectorAll(".dot"));
+
+    const getDotByProgress = (progress: number) => {
+        const dots = Array.from(document.querySelectorAll(".dot"));
+
+        const dotIndex = +(progress * slides.length);
+
+        return dots[Math.trunc(+dotIndex)] || dots[0];
+    };
+
+    const setActive = (dot: HTMLDivElement) => {
+        const dots = Array.from(document.querySelectorAll(".dot"));
+        dots.forEach((el: any) => el.classList.remove("dot--outer-circle"));
+        dot.classList.add("dot--outer-circle");
+    };
+
+    const initDots = () => {
+        const dots = Array.from(document.querySelectorAll(".dot"));
+
+        setActive(dots[0] as HTMLDivElement);
+    };
+
     useIsomorphicLayoutEffect(() => {
+        initDots();
+
         const context = gsap.context(() => {
             gsap.timeline().fromTo(
                 containerRef,
@@ -41,12 +85,18 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                 {
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "-1 top",
+                        start: `-1 top`,
                         end: `+=${
                             containerRef!.current!.offsetHeight * slides.length
                         }`,
                         pin: true,
                         scrub: true,
+                        snap: 1 / slides.length,
+                        onSnapComplete: (s) => {
+                            setActive(
+                                getDotByProgress(s.progress) as HTMLDivElement,
+                            );
+                        },
                     },
                     duration: slides.length,
                 },
@@ -66,7 +116,9 @@ export const SmoothSlider: FC<SlidesInterface> = ({
             });
             let incrementor = 0;
 
-            for (let i = 1; i < slides.length; i++) {
+            // here is incrementor logic which affects the slides sliding effect (needs to be adjusted due to slides quantity)
+
+            for (let i = 1; i <= slides.length; i++) {
                 contentTimeLine
                     .add(`${incrementor}`, `${incrementor}`)
                     // animate the container one way...
@@ -125,26 +177,20 @@ export const SmoothSlider: FC<SlidesInterface> = ({
 
                 incrementor += 0.5;
             }
-            const elements = gsap.utils.toArray(
+
+            const elements: Array<HTMLDivElement> = gsap.utils.toArray(
                 ".page-definer",
                 containerRef.current,
             );
-
-            const dots = gsap.utils.toArray(".dot", containerRef.current);
-
-            const setActive = (dot: any) => {
-                dots.forEach((el: any) =>
-                    el.classList.remove("dot--outer-circle"),
-                );
-                dot.classList.add("dot--outer-circle");
-            };
 
             dots.forEach((element, index) => {
                 ScrollTrigger.create({
                     trigger: elements[index] as any,
                     start: "top center",
                     end: "bottom center",
-                    onToggle: (self) => self.isActive && setActive(element),
+                    onToggle: () => {
+                        setActive(element as HTMLDivElement);
+                    },
                 });
             });
         }, containerRef);
@@ -183,62 +229,36 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                         overflow: "hidden",
                     }}
                 >
-                    {/* <BgImage top={0} right={50} src={BgImage1.src} /> */}
                     <div
                         className="left-content-container"
                         style={{
                             position: "relative",
                             width: isTwoColumn ? "55%" : "100%",
                             height: "100%",
-
                             overflow: "hidden",
                         }}
                     >
                         {!!slides.length &&
-                            slides.map(({ content }, index) => {
-                                const containerStyle = {
-                                    position: "absolute",
-                                    top: "0",
-
-                                    height: "100%",
-                                    display: "flex",
-                                    justifyContent: slidePosition
-                                        ? slidePosition
-                                        : "center",
-                                    alignItems: "center",
-                                    zIndex: index,
-                                    width: slidePosition ? "auto" : "100%",
-                                    overflow: "hidden",
-                                    ...(!!index
-                                        ? {
-                                              transform: "translate(100%, 0px)",
-                                          }
-                                        : {}),
-                                } as any;
+                            slides.map((project, index) => {
+                                const { content } = project;
                                 return (
-                                    <div
+                                    <StyledContainer
                                         key={index}
                                         className={`content-container content-container--${index}`}
-                                        style={containerStyle}
+                                        style={{
+                                            justifyContent: slidePosition
+                                                ? slidePosition
+                                                : "center",
+                                            ...(!!index
+                                                ? {
+                                                      transform:
+                                                          "translate(100%, 0px)",
+                                                  }
+                                                : {}),
+                                        }}
                                     >
                                         {content}
-                                    </div>
-                                );
-                            })}
-                    </div>
-                    <div style={{ position: "absolute", top: 0 }}>
-                        {!!slides.length &&
-                            slides.map((_, index) => {
-                                const style = {
-                                    height: "115vh",
-                                    width: "1px",
-                                };
-                                return (
-                                    <div
-                                        className={`page-definer page-definer--${index}`}
-                                        style={style}
-                                        key={index}
-                                    ></div>
+                                    </StyledContainer>
                                 );
                             })}
                     </div>
@@ -250,87 +270,91 @@ export const SmoothSlider: FC<SlidesInterface> = ({
                                 paddingBottom: "36.25%",
                                 height: "auto",
                                 width: "55%",
+                                background: "transparent",
                             }}
                         >
-                            {!!slides.length &&
-                                slides.map(({ image }, index) => {
-                                    const containerStyle = {
-                                        position: "absolute",
-                                        top: size.width! < 500 ? "-49%" : "0",
-                                        left: leftPercent,
-                                        width: "100%",
-                                        height: "100%",
-                                        minHeight: "290px",
-                                        minWidth: "290px",
-                                        overflow: "hidden",
-                                        marginLeft: "7px",
-                                        transform: "none",
-                                        zIndex: `${10 + index}`,
-                                        background: "white",
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    height: "100%",
+                                    width: "100%",
+                                    background: "transparent",
+                                }}
+                            >
+                                <DeviceFrame isDynamicAdaptive={true}>
+                                    {!!slides.length &&
+                                        slides.map((project, index) => {
+                                            const { image, content } = project;
+                                            const typedContent =
+                                                content as ReactElement<any>;
 
-                                        ...(!!index
-                                            ? {
-                                                  transform:
-                                                      "translate(100%, 0px)",
-                                              }
-                                            : {}),
-                                    } as any;
+                                            const containerStyle: CSSProperties =
+                                                {
+                                                    left: leftPercent,
+                                                    top:
+                                                        size.width! < 500
+                                                            ? "-49%"
+                                                            : "0",
+                                                    ...(!!index
+                                                        ? {
+                                                              transform:
+                                                                  "translate(100%, 0px)",
+                                                          }
+                                                        : {}),
+                                                };
 
-                                    const imageStyle = {
-                                        position: "absolute",
-                                        top: "0",
-                                        left: "0",
-                                        width: "100%",
-                                        height: "100%",
-                                        transform: "none",
-                                        overflow: "hidden",
-                                        zIndex: `${index}`,
-                                        ...(!!index
-                                            ? {
-                                                  transform:
-                                                      "translate(-100%, 0px)",
-                                              }
-                                            : {}),
-                                    } as any;
+                                            const imageStyle: CSSProperties = {
+                                                ...(!!index
+                                                    ? {
+                                                          transform:
+                                                              "translate(0%, 0px)",
+                                                      }
+                                                    : {}),
+                                            };
 
-                                    return (
-                                        <div
-                                            className={`image-container--${index}`}
-                                            style={containerStyle}
-                                            key={index}
-                                        >
-                                            <Image
-                                                className={`image--${index}`}
-                                                style={imageStyle}
-                                                src={image!}
-                                                width={1000}
-                                                height={500}
-                                                alt="before"
-                                            />
-                                        </div>
-                                    );
-                                })}
+                                            return (
+                                                <StyledFrameContainer
+                                                    className={`image-container image-container--${index}`}
+                                                    style={containerStyle}
+                                                    key={index}
+                                                >
+                                                    {typedContent.props
+                                                        .projectUrl ? (
+                                                        <StyledIframe
+                                                            src={
+                                                                typedContent
+                                                                    .props
+                                                                    .projectUrl
+                                                            }
+                                                            style={{
+                                                                ...imageStyle,
+                                                                border: "none",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <StyledImage
+                                                            src={image}
+                                                            style={{
+                                                                ...imageStyle,
+                                                            }}
+                                                        />
+                                                    )}
+                                                </StyledFrameContainer>
+                                            );
+                                        })}
+                                </DeviceFrame>
+                            </div>
                         </div>
                     )}
 
                     {navigation && (
-                        <div
-                            className="nav-dots"
-                            style={{
-                                position: "absolute",
-                                left: "30px",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                gridGap: "22px",
-                            }}
-                        >
+                        <StyledNavDots className="nav-dots">
                             {!!slides.length &&
                                 slides.map((_, index) => {
                                     return <Dot className="dot" key={index} />;
                                 })}
-                        </div>
+                        </StyledNavDots>
                     )}
                 </div>
 

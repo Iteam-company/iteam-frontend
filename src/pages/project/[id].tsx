@@ -17,16 +17,14 @@ import { BgImage } from "@/anatomic/atoms/BgImage";
 import BgImage1 from "@/assets/bgImage/projectItem/bgImage1.webp";
 import BgImage2 from "@/assets/bgImage/projectItem/bgImage2.webp";
 import styled from "styled-components";
-import { Pages, useStrapiData } from "@/hooks/useStrapiData";
+import { Pages } from "@/hooks/useStrapiData";
 import { TextI } from "@/anatomic/molecules/Banner/Banner";
 import Image from "next/image";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import timeImage from "../../assets/projects/time.svg";
 import useLogoAnimation from "@/hooks/useLogoAnimation";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
-import router from "next/router";
 
 export interface ProjectItemInterface {
     id: number;
@@ -60,6 +58,8 @@ const Project = ({
     data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const size = useWindowSize();
+
+    const showLogo = useLogoAnimation(data);
 
     if (!data) {
         return null;

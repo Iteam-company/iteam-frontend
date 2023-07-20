@@ -10,15 +10,37 @@ import { getStrapiImage } from "@/hooks/useStrapiContentData";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import { fetchDataPage } from "@/utils/fetchDataPage";
-import { ProjectsInterface } from "@/interfaces/pages/team/projects";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
 import { ProjectsSlider } from "@/anatomic/organisms/ProjectsSlider";
 import { ProjectTitle } from "@/anatomic/organisms/ProjectsTitle";
+
+export interface ProjectsInterface {
+    id?: number;
+    title: string;
+    description: string;
+    location: string;
+    budget: string;
+    technology: Technologies[];
+    color: string;
+    projectImg: any;
+    img?: any;
+    index: number;
+    projectUrl?: string;
+}
+
+export interface Technologies {
+    icon: "react" | "ts" | "js" | "angular";
+    name: string;
+    techIcon: any;
+}
 
 const Projects = ({
     data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
     const [slides, setSlides] = useState<SlideInterface[]>([]);
     const size = useWindowSize();
+
+    console.log("data", data);
 
     useEffect(() => {
         data &&
@@ -28,6 +50,7 @@ const Projects = ({
                         <Slide
                             id={item.id}
                             title={item.title}
+                            projectUrl={item.projectUrl}
                             description={item.description}
                             location={item.location}
                             budget={item.budget}
@@ -40,7 +63,7 @@ const Projects = ({
                     image: getStrapiImage(item.projectImg.data.attributes.url),
                 })),
             );
-    }, [data?.projects]);
+    }, [data, data.projects]);
 
     if (!data) {
         return null;
@@ -70,7 +93,6 @@ const Projects = ({
                     style={{ boxSizing: "border-box" }}
                 >
                     <ProjectTitle />
-
                     <BgImage
                         ds="block"
                         src={data.main.bgMain.data[0].attributes.url}
@@ -95,7 +117,7 @@ export const getServerSideProps: GetServerSideProps<{
     data: any;
 }> = async () => {
     const data = await fetchDataPage<any>(Pages.portfolio);
-
+    console.log(data);
     return { props: { data } };
 };
 export default Projects;
