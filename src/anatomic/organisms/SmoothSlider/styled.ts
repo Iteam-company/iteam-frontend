@@ -65,7 +65,7 @@ export const LeftContentContainer = styled.div<{ isTwoColumn?: boolean }>`
 `;
 export const ImagesContainer = styled.div`
     position: relative;
-    padding-bottom: 36.25%;
+    padding-bottom: 35%;
     height: auto;
     width: 55%;
 `;
@@ -118,10 +118,11 @@ export const StyledContentContainer = styled.div<{
 `;
 
 export const StyledWrapper = styled.div`
-    height: 115vh;
+    height: 125%;
     width: 1px;
 `;
 export const AbsoluteWrapper = styled.div`
     position: absolute;
     top: 0;
+    height: 100%;
 `;
