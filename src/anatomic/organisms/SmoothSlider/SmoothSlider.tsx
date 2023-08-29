@@ -1,6 +1,11 @@
 import React, { FC, ReactNode, useRef } from "react";
 import gsap from "gsap/dist/gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
+import { useWindowSize } from "@/hooks/useWindowSize";
+
+import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
 import {
     AbsoluteWrapper,
     Dot,
@@ -14,9 +19,6 @@ import {
     StyledImage,
     StyledWrapper,
 } from "./styled";
-import { useIsomorphicLayoutEffect } from "@/hooks/useIsomLayoutEffect";
-import { AdaptContainer } from "@/anatomic/atoms/Container/Container";
-import { useWindowSize } from "@/hooks/useWindowSize";
 
 export interface SlidesInterface {
     slides: SlideInterface[];
@@ -45,6 +47,39 @@ export const SmoothSlider: FC<SlidesInterface> = React.memo(
 
         useIsomorphicLayoutEffect(() => {
             const context = gsap.context(() => {
+                let incrementor = 0;
+
+                const contentTimeLine = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: `-1 top`,
+                        // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
+                        end: () =>
+                            `+=${
+                                containerRef!.current!.offsetHeight *
+                                slides.length
+                            }`,
+                        scrub: true,
+                    },
+                });
+
+                const elements = gsap.utils.toArray(
+                    ".page-definer",
+                    containerRef.current,
+                );
+
+                const dots = gsap.utils.toArray(
+                    ".dot",
+                    containerRef.current,
+                ) as HTMLElement[];
+
+                const setActive = (dot: HTMLElement) => {
+                    dots.forEach((el) =>
+                        el.classList.remove("dot--outer-circle"),
+                    );
+                    dot.classList.add("dot--outer-circle");
+                };
+
                 gsap.timeline().fromTo(
                     containerRef,
                     {},
@@ -62,21 +97,6 @@ export const SmoothSlider: FC<SlidesInterface> = React.memo(
                         duration: slides.length,
                     },
                 );
-
-                const contentTimeLine = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: `-1 top`,
-                        // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
-                        end: () =>
-                            `+=${
-                                containerRef!.current!.offsetHeight *
-                                slides.length
-                            }`,
-                        scrub: true,
-                    },
-                });
-                let incrementor = 0;
 
                 for (let i = 1; i < slides.length; i++) {
                     contentTimeLine
@@ -137,22 +157,6 @@ export const SmoothSlider: FC<SlidesInterface> = React.memo(
 
                     incrementor += 0.5;
                 }
-                const elements = gsap.utils.toArray(
-                    ".page-definer",
-                    containerRef.current,
-                );
-
-                const dots = gsap.utils.toArray(
-                    ".dot",
-                    containerRef.current,
-                ) as HTMLElement[];
-
-                const setActive = (dot: HTMLElement) => {
-                    dots.forEach((el) =>
-                        el.classList.remove("dot--outer-circle"),
-                    );
-                    dot.classList.add("dot--outer-circle");
-                };
 
                 dots.forEach((element, index) => {
                     ScrollTrigger.create({
@@ -234,9 +238,10 @@ export const SmoothSlider: FC<SlidesInterface> = React.memo(
                         )}
                     </PinedWindow>
 
-                    {editionContent && editionContent}
+                    {editionContent || null}
                 </Section>
             </AdaptContainer>
         );
     },
 );
+SmoothSlider.displayName = "SmoothSlider";

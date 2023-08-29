@@ -29,7 +29,7 @@ export const NavDots = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-gap: 22px;
+    gap: 22px;
 `;
 
 export const Section = styled.section`
@@ -80,12 +80,13 @@ export const StyledContainer = styled.div<{
     height: 100%;
     min-height: 290px;
     min-width: 290px;
+    aspect-ratio: 1/1;
     overflow: hidden;
     margin-left: 7px;
     transform: none;
-    z-index: ${({ index }) => index + 10};
+    z-index: ${({ index = 1 }) => index};
     background: white;
-    transform: ${({ index }) => !!index && "translate(100%, 0px)"};
+    transform: ${({ index = 1 }) => !!index && "translate(100%, 0px)"};
 `;
 export const StyledImage = styled(Image)<{ index: number }>`
     position: absolute;
@@ -95,8 +96,8 @@ export const StyledImage = styled(Image)<{ index: number }>`
     height: 100%;
     transform: none;
     overflow: hidden;
-    z-index: ${({ index }) => index};
-    transform: ${({ index }) => !!index && "translate(-100%, 0px)"};
+    z-index: ${({ index = 1 }) => index};
+    transform: ${({ index = 1 }) => !!index && "translate(-100%, 0px)"};
 `;
 
 export const StyledContentContainer = styled.div<{
@@ -110,10 +111,10 @@ export const StyledContentContainer = styled.div<{
     justify-content: ${({ slidePosition }) =>
         slidePosition ? slidePosition : "center"};
     align-items: center;
-    z-index: ${({ index }) => index};
+    z-index: ${({ index = 1 }) => index};
     width: ${({ slidePosition }) => (slidePosition ? "auto" : "100%")};
     overflow: hidden;
-    transform: ${({ index }) => !!index && "translate(100%, 0px)"};
+    transform: ${({ index = 1 }) => !!index && "translate(100%, 0px)"};
 `;
 
 export const StyledWrapper = styled.div`
