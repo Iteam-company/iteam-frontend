@@ -10,7 +10,7 @@ export const TEXT_CONTENT = {
             outstaffing: "Outstaffing",
         },
         development: "Development",
-        contact_us: "Contact Us",
+        contact_us: "Get in Touch",
     },
     banner: {
         options: [
@@ -23,5 +23,6 @@ export const TEXT_CONTENT = {
             "Your ultimate IT partner - ITeam delivers.",
             "Unlock the power of digital - with ITeam's cutting-edge solutions.",
         ],
+        button: "Book a Free Strategy Session",
     },
 };

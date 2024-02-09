@@ -8,16 +8,16 @@ interface Props {
 export const TextTyping: FC<Props> = ({ text }) => {
     return (
         <>
-        <StyledTypingEffectAdapt>
-        <Typewriter
-                options={{
-                    strings: text,
-                    autoStart: true,
-                    loop: true,
-                    delay: 100,
-                }}
-            />
-       </StyledTypingEffectAdapt>
-        </>   
+            <StyledTypingEffectAdapt>
+                <Typewriter
+                    options={{
+                        strings: text,
+                        autoStart: true,
+                        loop: true,
+                        delay: 100,
+                    }}
+                />
+            </StyledTypingEffectAdapt>
+        </>
     );
 };

@@ -10,6 +10,7 @@ import { LogoAnimation } from "@/anatomic/atoms/LogoAnimation";
 import Head from "next/head";
 import { useEffect } from "react";
 import { ResponsiveContextProvider } from "@/contexts/ResponsiveContext";
+import { ScrollElementsContextProvider } from "@/contexts/ScrollElementsContext";
 
 export default function App({ Component, pageProps }: AppProps) {
     useIsomorphicLayoutEffect(() => {
@@ -23,7 +24,9 @@ export default function App({ Component, pageProps }: AppProps) {
             </Head>
             <AnimatePresence mode="wait" initial={false}>
                 <ResponsiveContextProvider>
-                    <Layout>{<Component {...pageProps} />}</Layout>
+                    <ScrollElementsContextProvider>
+                        <Layout>{<Component {...pageProps} />}</Layout>
+                    </ScrollElementsContextProvider>
                 </ResponsiveContextProvider>
             </AnimatePresence>
         </>
