@@ -80,8 +80,8 @@ export const ExploreBox = styled.div<BoxProps>`
     border-radius: 8px;
     background: ${(props) => props.backgroundImage || "none"};
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: center;
+    background-size: cover;
+    background-position: start;
     overflow: hidden;
     box-sizing: border-box;
 
