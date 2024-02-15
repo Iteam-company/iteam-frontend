@@ -72,8 +72,12 @@ export const StyledTypingEffectAdapt = styled.div`
     font-weight: ${TEXT_WEIGHTS.medium};
 
     @media (min-width: 670px) {
-        font-size: ${TEXT_SIZES.large.m};
+        font-size: ${TEXT_SIZES.large.s};
         color: ${COLORS.dark};
         font-weight: ${TEXT_WEIGHTS.medium};
+    }
+
+    @media (min-width: 1000px) {
+        font-size: ${TEXT_SIZES.large.xl};
     }
 `;

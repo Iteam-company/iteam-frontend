@@ -5,7 +5,7 @@ import { Logo } from "@/anatomic/atoms/Logo/Logo";
 import { Link } from "@/anatomic/atoms/Link";
 import { TEXT_SIZES, TEXT_WEIGHTS } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import { LinkElem, Button } from "./styled";
+import { LinkElem, Button, ButtonGradientBorder } from "./styled";
 import { HeaderI, HeaderLinksI } from "./utils";
 import { Adaptive } from "@/anatomic/molecules/Adaptive";
 
@@ -83,18 +83,20 @@ export const Component: FC<HeaderI> = ({ activeRoute, data = [] }) => {
                                 </FlexRow>
                             </FlexRow>
                         ) : (
-                            <Button>
-                                <Link
-                                    href={data[5].href! || ""}
-                                    linkText={data[5].title}
-                                    textStyles={{
-                                        textAlign: "center",
-                                        color: COLORS.dark,
-                                        weight: TEXT_WEIGHTS.main,
-                                        size: TEXT_SIZES.small.m,
-                                    }}
-                                />
-                            </Button>
+                            <ButtonGradientBorder>
+                                <Button>
+                                    <Link
+                                        href={data[5].href! || ""}
+                                        linkText={data[5].title}
+                                        textStyles={{
+                                            textAlign: "center",
+                                            color: COLORS.dark,
+                                            weight: TEXT_WEIGHTS.main,
+                                            size: TEXT_SIZES.small.m,
+                                        }}
+                                    />
+                                </Button>
+                            </ButtonGradientBorder>
                         )}
                     </FlexRow>
                 </FlexRow>

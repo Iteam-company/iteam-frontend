@@ -2,7 +2,7 @@ import { BUTTON_VARIANTS } from "@/anatomic/atoms/Button/util";
 import { FlexColumn } from "@/anatomic/atoms/Flex";
 import { Text, TEXT_WEIGHTS, TEXT_SIZES } from "@/anatomic/atoms/Text";
 import { COLORS } from "@/lib/theme/color";
-import React, { FC } from "react";
+import React, { FC, useContext, useEffect, useRef } from "react";
 import { Input } from "@/anatomic/atoms/Input";
 import { Formik, Form } from "formik";
 import { Button } from "@/anatomic/atoms/Button";
@@ -11,6 +11,7 @@ import { FormSchema, FormikValues, initialValues } from "./util";
 import { useRouter } from "next/router";
 import { WhiteSection } from "@/anatomic/atoms/WhiteSection";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { ScrollElementsContext } from "@/contexts/ScrollElementsContext";
 
 type Props = {
     h?: string;
@@ -19,6 +20,13 @@ type Props = {
 export const BookingForm: FC<Props> = ({ h }) => {
     const router = useRouter();
     const size = useWindowSize();
+
+    const { addScrollableElement } = useContext(ScrollElementsContext);
+    const formRef = useRef(null);
+
+    useEffect(() => {
+        addScrollableElement!("book-a-call-form", formRef);
+    }, [addScrollableElement]);
 
     const onSubmit = (values: FormikValues) => {
         const date = new Date().toISOString().split(".")[0];
@@ -47,6 +55,7 @@ export const BookingForm: FC<Props> = ({ h }) => {
             >
                 {({ values, setFieldValue, errors, touched }) => (
                     <Form
+                        ref={formRef}
                         style={
                             size.width! < 321
                                 ? { width: "460px" }

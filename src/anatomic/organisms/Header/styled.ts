@@ -26,21 +26,54 @@ export const LinkElem = styled(Link)<{ active: boolean }>`
     }
 `;
 
-export const Button = styled.button`
-    background-color: ${COLORS.dark};
-    border: 1px solid ${COLORS.dark};
-    border-radius: 8px;
-    height: 40px;
+export const ButtonGradientBorder = styled.div<{ $bg?: string }>`
+    padding: 2px;
+    background: ${({ $bg }) =>
+        $bg || "linear-gradient(90deg, #9a75cb, #7ab0c7)"};
+    border-radius: 22px;
+
+    transition: 0.1s all;
+    cursor: pointer;
 
     &:hover {
-        background-color: ${COLORS.white};
-        border: 1px solid ${COLORS.dark};
-        & > * > * {
-            color: ${COLORS.dark};
+        padding: 3px;
+        background: linear-gradient(90deg, #5e0ec9, #0574a2);
+    }
+
+    &:active {
+        background: transparent;
+    }
+`;
+
+export const Button = styled.button`
+    padding: 8px 20px;
+    width: 162px;
+    height: 40px;
+    color: black;
+    position: relative;
+    border: 2px solid transparent;
+    background: white;
+    border-radius: 22px;
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.3s all;
+
+    &:active {
+        border: 1px solid transparent;
+        background: #250743;
+        & > a > p {
+            color: white !important;
         }
     }
-    & > * > * {
-        color: ${COLORS.white};
+
+    & > a > p {
         font-weight: ${TEXT_WEIGHTS.medium};
         padding: 0 30px;
     }
